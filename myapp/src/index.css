@@ -48,13 +48,11 @@
       
   }
 
-  .sidebar:hover .settings {
-      display: block;
-  }
+  
 
   .space:hover .spaceicon{
       display:inline-block;
   }
-  .space:hover .right-col{
+  .space .right-col{
     display:inline-flex;
 }
