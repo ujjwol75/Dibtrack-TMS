@@ -16,6 +16,7 @@ import {
   SearchIcon,
 } from "@heroicons/react/solid";
 import { Disclosure } from "@headlessui/react";
+import Space from "../Space/Space";
 function Sidebar() {
   return (
     <div className="grid grid-cols-1 h-[100vh] overflow-scroll">
@@ -215,6 +216,9 @@ function Sidebar() {
             )}
           </Disclosure>
         </div>
+      </div>
+      <div >
+          <Space/>
       </div>
       
     </div>
