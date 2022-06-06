@@ -1,0 +1,60 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+
+
+ .login{
+     background-color: #fafbfc;
+     position: relative;
+     overflow:hidden;
+ }
+
+
+ .gradient{
+     background-image: linear-gradient(to right  , #725afa , #e44aa5);
+     position: absolute;
+     top: 60%;
+     left:-25px;
+     bottom:0px;
+     
+     min-height:600px;
+     border-radius: 270px;
+
+ }
+
+  .form-container{
+     background-color: #fff;
+     position: absolute;
+     top:50%;
+     left:50%;
+     z-index: 20;
+     transform:translate(-50% , -50%)
+ } 
+
+ 
+ input::placeholder {
+    
+      font-family: FontAwesome, "Open Sans";
+      font-size: 10px;
+      
+  }
+
+  .sidebar:hover .settings {
+      display: block;
+  }
+
+  .space:hover .spaceicon{
+      display:inline-block;
+  }
+  .space:hover .right-col{
+    display:inline-flex;
+}
