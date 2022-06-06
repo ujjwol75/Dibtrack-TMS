@@ -28,7 +28,7 @@ function Sidebar() {
           <div className="mt-4 inline-block grid grid-cols-2">
             <CogIcon className=" settings h-5 w-5 text-gray-400 hidden " />
 
-            <ChevronDoubleLeftIcon className="text-blue-400 ml-5 h-5 w-5" />
+            <ChevronDoubleLeftIcon className="text-blue-400 ml-5 h-5 w-5 justify-self-end" />
           </div>
         </div>
 

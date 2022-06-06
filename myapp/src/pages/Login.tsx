@@ -8,7 +8,7 @@ function Login() {
       <div className="login h-[100vh] w-screen overflow-hidden ">
       <Navbar />
       <Form />
-      <div className='gradient w-[110%] rounded-3xl transform -rotate-12 '></div>
+      <div className='gradient w-[110%]  transform -rotate-12 '></div>
       </div>
     </div>
   )
