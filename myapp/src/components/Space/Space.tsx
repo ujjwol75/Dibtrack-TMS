@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     PlusCircleIcon,
     BookmarkIcon,
@@ -6,13 +6,20 @@ import {
     CalendarIcon,
     FlagIcon
     } from "@heroicons/react/solid";
+import SidePopUp from '../../Reusable/SidePopUp/SidePopUp';
 
 type Props = {}
 
 const Space = (props: Props) => {
+    const [popUp, setpopUp] = useState(false)
+    const showPop= ()=>{
+            setpopUp(!popUp)
+            console.log('press')
+    }
   return (
+    // [64.5rem]
     <>
-    <div className='flex w-full h-7  border-y-2 border-r-2 border-gray-200 mt-4 space justify-between'>
+    <div className='flex w-full h-7  border-y-2 border-r-2  border-gray-200 mt-4 space justify-between relative '>
           <div className='w-[64.5rem] h-7 flex'>
 
             <div className='w-[3rem] h-6   border-r-2 border-gray-200 text-center'>
@@ -39,11 +46,16 @@ const Space = (props: Props) => {
           </div>
           <div className=''>
             <div className='w-[3rem] h-6   border-l-2 border-gray-200 text-center'>
-              <PlusCircleIcon className='h-6 w-6 inline-block cursor-pointer' onClick={()=>{}}/>
+              <PlusCircleIcon className='h-6 w-6 mb-1 inline-block cursor-pointer' onClick={()=>showPop()}/>
             </div>
           </div>
+          <div className='absolute right-0 top-9'>
 
+        { popUp && <SidePopUp popUp = {popUp} showPop ={showPop} />}
+          </div>
         </div>
+        {/* <SidePopUp/> */}
+        
     </>
   )
 }

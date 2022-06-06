@@ -1,5 +1,6 @@
 
 import Sidebar from '../components/dashboard/Sidebar'
+import Space from '../components/Space/Space'
 
 
 function Dashboard() {
@@ -10,6 +11,10 @@ function Dashboard() {
         <div>
           <Sidebar />
         </div>
+
+        
+          <Space/>
+        
         
       </div>
 

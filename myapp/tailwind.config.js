@@ -5,7 +5,8 @@ module.exports = {
       colors:{
         'white':'#fafbfc',
         'btncolor': '#7b68ee',
-        'bgsearchbar':'#f6f7f9'
+        'bgsearchbar':'#f6f7f9',
+        
       }
     },
     

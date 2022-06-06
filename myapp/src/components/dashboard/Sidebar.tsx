@@ -19,7 +19,7 @@ import { Disclosure } from "@headlessui/react";
 import Space from "../Space/Space";
 function Sidebar() {
   return (
-    <div className="grid grid-cols-1 h-[100vh] overflow-scroll">
+    <div className="grid grid-cols-1 h-[100vh] overflow-scroll ">
       <div className="sidebar  md:w-[300px] xs:w-
         [100vw] bg-white-100 border border-black-100">
         <div className="flex flex-row justify-between p-2">
@@ -217,9 +217,7 @@ function Sidebar() {
           </Disclosure>
         </div>
       </div>
-      <div >
-          <Space/>
-      </div>
+     
       
     </div>
   );
