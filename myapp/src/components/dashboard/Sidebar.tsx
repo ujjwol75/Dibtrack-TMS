@@ -19,10 +19,8 @@ import { Disclosure } from "@headlessui/react";
 function Sidebar() {
   return (
     <div className="grid grid-cols-1 h-[100vh] overflow-scroll">
-      <div
-        className="sidebar  md:w-[300px] xs:w-
-        [100vw] bg-white-100 border border-black-100"
-      >
+      <div className="sidebar  md:w-[300px] xs:w-
+        [100vw] bg-white-100 border border-black-100">
         <div className="flex flex-row justify-between p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
           <div className="mt-4 inline-block grid grid-cols-2">
@@ -119,6 +117,8 @@ function Sidebar() {
                     <span>
                       <PlusIcon className="h-4 w-3 text-xs" />
                     </span>
+
+                    {/* Add space */}
                     <span className="text-[12px] ml-1 ">NEW SPACE</span>
                   </div>
                   <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
@@ -216,6 +216,7 @@ function Sidebar() {
           </Disclosure>
         </div>
       </div>
+      
     </div>
   );
 }
