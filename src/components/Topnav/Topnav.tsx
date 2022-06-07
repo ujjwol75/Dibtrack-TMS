@@ -4,6 +4,8 @@ import {
   ViewListIcon,
   ViewBoardsIcon,
 } from "@heroicons/react/solid";
+import KanbanBoard from "../KanbanBoard/KanbanBoard"
+import Space from "../Space/Space"
 
 type Props = {}
 
@@ -70,10 +72,14 @@ const Topnav = (props: Props) => {
           </Tab>
         </Tab.List>
         <Tab.Panels>
-          <Tab.Panel>Content 1</Tab.Panel>
-          <Tab.Panel>Content 2</Tab.Panel>
-          <Tab.Panel>Content 3</Tab.Panel>
-          <Tab.Panel>Content 4</Tab.Panel>
+          <div className='bg-gray-100'>
+            <Tab.Panel>Content 1</Tab.Panel>
+            <Tab.Panel>Content 2</Tab.Panel>
+            <Tab.Panel>
+              <KanbanBoard />
+            </Tab.Panel>
+            <Tab.Panel>Content 4</Tab.Panel>
+          </div>
         </Tab.Panels>
       </Tab.Group>
     </>

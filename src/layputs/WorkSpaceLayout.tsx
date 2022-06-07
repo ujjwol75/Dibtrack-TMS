@@ -5,9 +5,9 @@ import Topnav from "../components/Topnav/Topnav";
 const DashboardLayout = () => {
   return (
     <>
-      <div className="flex">
+      <div className="grid grid-cols-5">
         <Sidebar />
-        <div>
+        <div className="col-span-4">
           <Topnav />
           <Outlet />
         </div>

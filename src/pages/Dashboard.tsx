@@ -10,7 +10,7 @@ import Calendar_component from '../components/dashboard/Calendar_component';
 function Dashboard() {
   return (
     <>
-      <div className='flex'>
+      {/* <div className='flex'>
 
         <div>
           <Sidebar />
@@ -23,7 +23,7 @@ function Dashboard() {
       </div>
 
     <Sidebar />
-    <Calendar_component />
+    <Calendar_component /> */}
     {/* <CalendarTest /> */}
     </>
   )

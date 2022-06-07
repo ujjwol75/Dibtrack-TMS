@@ -27,10 +27,9 @@ function Sidebar() {
   };
 
   return !collapse ? (
-    <div className="grid grid-cols-1 h-[100vh] z-1">
+    <div className="h-[100vh] z-1">
       <div
-        className="sidebar  md:w-[300px] xs:w-
-        [100vw] bg-white-100 border border-black-100"
+        className="sidebar border border-black-100"
       >
         <div className="flex flex-row justify-around p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
