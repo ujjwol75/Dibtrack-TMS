@@ -78,7 +78,9 @@ const Topnav = (props: Props) => {
             <Tab.Panel>
               <KanbanBoard />
             </Tab.Panel>
-            <Tab.Panel>Content 4</Tab.Panel>
+            <Tab.Panel>
+              <Space />
+            </Tab.Panel>
           </div>
         </Tab.Panels>
       </Tab.Group>
