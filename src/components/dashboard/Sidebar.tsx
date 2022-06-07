@@ -18,6 +18,8 @@ import {
 } from "@heroicons/react/solid";
 import { Disclosure } from "@headlessui/react";
 import SpaceDropdown from "../sidebar/SpaceDropdown";
+import NewSpaceModal from "../sidebar/NewSpaceModal";
+import SpacePlusTab from "../sidebar/SpacePlusTab";
 function Sidebar() {
   const [collapse, setCollapse] = useState<boolean>(false);
 
@@ -29,7 +31,7 @@ function Sidebar() {
   return !collapse ? (
     <div className="h-[100vh] z-1">
       <div
-        className="sidebar border border-black-100"
+        className="sidebar border border-black-100 overflow-scroll"
       >
         <div className="flex flex-row justify-around p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
@@ -136,15 +138,9 @@ function Sidebar() {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="pt-4 pb-2 text-gray-500 hover:cursor-pointer">
-                  <div className="flex flex-row justify-center w-[90%] mx-auto bg-bgsearchbar py-2 rounded-sm hover:bg-gray-300 text-xs">
-                    <span>
-                      <PlusIcon className="h-4 w-3 text-xs" />
-                    </span>
-
-                    {/* Add space */}
-                    <span className="text-[12px] ml-1 ">NEW SPACE</span>
-                  </div>
-                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
+                  <NewSpaceModal />
+                  
+                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2"> 
                     
                       <ViewGridIcon className="h-4 w-4 text-xs ml-2" />
                       
@@ -168,7 +164,15 @@ function Sidebar() {
                             <SpaceDropdown/>
                       </Menu.Items>
                     </Menu>
-                      <PlusIcon className="h-4 w-4 ml-2" />
+                      <Menu>
+                        <Menu.Button>
+                        <PlusIcon className="h-4 w-4 ml-2" />
+                        </Menu.Button>
+                        <Menu.Items>
+                          <SpacePlusTab />
+                        </Menu.Items>
+                      </Menu>
+                    
                     </div>
                   </div>
                 </Disclosure.Panel>
