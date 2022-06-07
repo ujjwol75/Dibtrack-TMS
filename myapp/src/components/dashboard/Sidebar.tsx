@@ -142,6 +142,8 @@ function Sidebar() {
                     <span>
                       <PlusIcon className="h-4 w-3 text-xs" />
                     </span>
+
+                    {/* Add space */}
                     <span className="text-[12px] ml-1 ">NEW SPACE</span>
                   </div>
                   <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
@@ -253,6 +255,8 @@ function Sidebar() {
           </Disclosure>
         </div>
       </div>
+     
+      
     </div>
   ) : (
     <h1>collapse</h1>

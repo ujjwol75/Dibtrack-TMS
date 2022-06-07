@@ -1,9 +1,24 @@
-import React from 'react'
+
 import Sidebar from '../components/dashboard/Sidebar'
+import Space from '../components/Space/Space'
+
 
 function Dashboard() {
   return (
-    <Sidebar />
+    <>
+      <div className='flex'>
+
+        <div>
+          <Sidebar />
+        </div>
+
+        
+          <Space/>
+        
+        
+      </div>
+
+    </>
   )
 }
 
