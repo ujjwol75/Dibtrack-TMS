@@ -2,7 +2,9 @@ import React from 'react'
 
 import {
   SearchIcon,
-  TrendingDownIcon
+  TrendingDownIcon,
+  NewspaperIcon,
+  StarIcon,
 } from "@heroicons/react/outline";
 import { Tab } from '@headlessui/react';
 
@@ -56,15 +58,13 @@ const SidePopUp = (props: Props) => {
         </div>
 
       </div> */}
-      <div className='shadow-2xl border-t-2 border-gray-100 w-[19rem] h-[38rem]  rounded-md'>
+      <div className='shadow-2xl border-t-2 bg-white border-gray-100 w-[19rem] h-[38rem]  rounded-md'>
         <Tab.Group>
           <Tab.List className='flex ' >
             <Tab className='w-1/2' >
               {({ selected }) => (
                 <div
-                  className={
-                    selected ? ' text-blue-500 border-b-2 border-blue-500 text-sm font-light p-2' : 'bg-white text-black text-sm font-light p-2'
-                  }
+                  className={selected ? ' text-blue-500 border-b-2 border-blue-500 text-sm font-light p-2' : 'bg-white text-black text-sm font-light p-2'}
                 >
 
 
@@ -90,35 +90,78 @@ const SidePopUp = (props: Props) => {
             <input type="text" className=' w-full pl-2 outline-none' placeholder='Search' />
           </div>
           <hr />
-          <Tab.Panels className='overflow-y-scroll w-[19rem] h-[32rem] p-3'>
-            <Tab.Panel>
+          <Tab.Panels >
+            <Tab.Panel className="p-3">
 
               <p>Hi content</p>
             </Tab.Panel>
-            <Tab.Panel>
-              <div>
+            <Tab.Panel >
+              <div className='overflow-y-scroll w-[19rem] h-[30rem] p-3 relative'>
                 <div className='flex cursor-pointer mt-4'>
                   <TrendingDownIcon className='h-5 w-5 mr-2 ml-2 ' />
                   <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
                 </div>
                 <div className='flex cursor-pointer mt-4'>
-                  <TrendingDownIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <NewspaperIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>News</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <StarIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>Space</p>
+                </div>
+                
+                <div className='flex cursor-pointer mt-4'>
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
                   <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
                 </div>
                 <div className='flex cursor-pointer mt-4'>
-                  <TrendingDownIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
                   <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
                 </div>
                 <div className='flex cursor-pointer mt-4'>
-                  <TrendingDownIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <NewspaperIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>News</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <NewspaperIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>News</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <StarIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>Space</p>
+                </div>
+                
+                <div className='flex cursor-pointer mt-4'>
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
                   <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
                 </div>
                 <div className='flex cursor-pointer mt-4'>
-                  <TrendingDownIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
                   <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
                 </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <NewspaperIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>News</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <StarIcon className='h-5 w-5 mr-2 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>Space</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
+                </div>
+                <div className='flex cursor-pointer mt-4'>
+                  <TrendingDownIcon className='h-5 w-5 mr-4 ml-2 ' />
+                  <p onClick={() => { showPop(!popUp) }}>fsljflas</p>
+                </div>
+                
               </div>
             </Tab.Panel>
+            <div className='w-25  h-19 shadow-md absolute bottom-2 left-5 content-center cursor-pointer ml-[3.25rem] p-2'>
+              <p className='text-sm'>Use field from library</p>
+            </div>
+
 
           </Tab.Panels>
         </Tab.Group>

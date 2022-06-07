@@ -6,6 +6,7 @@ module.exports = {
         'white':'#fafbfc',
         'btncolor': '#7b68ee',
         'bgsearchbar':'#f6f7f9',
+        'tableBorder':'text-gray-200'
         
       }
     },
