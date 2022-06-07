@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import { Menu } from "@headlessui/react";
 import { Dialog, Transition } from '@headlessui/react';
 import {XIcon} from '@heroicons/react/solid';
+import CalendarRightBar from "./CalendarRightBar";
 
 
 
@@ -35,7 +36,8 @@ function Calendar_component() {
         
      };
 
-  let [isOpen, setIsOpen] = useState(true)
+  let [isOpen, setIsOpen] = useState(false)
+  const [inputValue, setInputValue] = useState("");
 
   function closeModal() {
     setIsOpen(false)
@@ -44,6 +46,12 @@ function Calendar_component() {
   function openModal() {
     setIsOpen(true)
   }
+
+  function sendModal(){
+    setIsOpen(false)
+    console.log(inputValue)
+  }
+
   return (
     <div className="App">
 
@@ -77,22 +85,39 @@ function Calendar_component() {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    <XIcon className="h-6 w-6"/>
-                    successfully opened!
+                    <XIcon className="h-6 w-6" onClick={closeModal}/>
+                    <textarea
+                      className="
+                        form-control
+                        block
+                        w-full
+                        px-3
+                        py-1.5
+                        text-base
+                        font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                      "
+                        id="exampleFormControlTextarea1"
+                        placeholder="Your message"
+                        value={inputValue}
+                        onChange={e=>setInputValue(e.target.value)}
+                    ></textarea>
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Modal Opened!
-                    </p>
-                  </div>
 
                   <div className="mt-4">
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={sendModal}
                     >
-                      okay!
+                      Send
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -102,7 +127,7 @@ function Calendar_component() {
         </Dialog>
       </Transition>
 
-      <h1>Calendar</h1>
+      <div className="grid grid-cols-1" style={{display:"flex"}}>
       <Calendar
                localizer={localizer}
                // events={myEventsList}
@@ -116,9 +141,15 @@ function Calendar_component() {
                // slotPropGetter={() => }
                // date={new Date()}
                // onNavigate={handleSelectNavigate}
-               style={{height: 500, cursor: "pointer", margin:"200px"}}
+               className="w-full overflow-auto cursor-pointer"
+               style={{height:700, margin:"0 30px 0 10px",backgroundColor:"white"}}
+               
             
             />
+          <CalendarRightBar />
+      </div>
+
+      
     </div>
   );
 }
