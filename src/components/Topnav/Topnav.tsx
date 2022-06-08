@@ -4,6 +4,7 @@ import {
   ViewListIcon,
   ViewBoardsIcon,
 } from "@heroicons/react/solid";
+import Calendar_component from '../dashboard/Calendar_component';
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
 
@@ -73,12 +74,26 @@ const Topnav = (props: Props) => {
           <Tab as={"span"}>
             {({ selected }) => (
               <>
-                <span 
+                <span
+                  className={
+                    selected ? 'border-ttransparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center p-5 border-b-2 font-bold text-lg' : "p-5 flex flex-row items-center font-bold text-lg"}
+                >
+                  <span><PlusIcon className='h-5 w-5' /></span>
+                  <span>Space</span>
+                </span>
+              </>
+
+            )}
+          </Tab>
+          <Tab as={"span"}>
+            {({ selected }) => (
+              <>
+                <span
                   className={
                     selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center p-5 border-b-2 font-bold text-lg' : "p-5 flex flex-row items-center font-bold text-lg"}
                 >
                   <span><PlusIcon className='h-5 w-5' /></span>
-                  <span>Space</span>
+                  <span>Calendar</span>
                 </span>
               </>
 
@@ -93,7 +108,8 @@ const Topnav = (props: Props) => {
               <KanbanBoard />
             </Tab.Panel>
             <Tab.Panel>4</Tab.Panel>
-            <Tab.Panel><Space/></Tab.Panel>
+            <Tab.Panel><Space /></Tab.Panel>
+            <Tab.Panel><Calendar_component /></Tab.Panel>
           </div>
         </Tab.Panels>
       </Tab.Group>
