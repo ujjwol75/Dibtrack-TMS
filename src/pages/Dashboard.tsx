@@ -3,6 +3,8 @@ import Space from '../components/Space/Space'
 import React from 'react'
 import Sidebar from '../components/dashboard/Sidebar';
 import Calendar_component from '../components/dashboard/Calendar_component';
+import InviteSideBar from '../components/dashboard/InviteSideBar';
+import InviteMain from './Dashboard/InviteMain';
 // import CalendarTest from '../components/dashboard/CalendarTest';
 
 
@@ -10,21 +12,11 @@ import Calendar_component from '../components/dashboard/Calendar_component';
 function Dashboard() {
   return (
     <>
-      {/* <div className='flex'>
-
-        <div>
-          <Sidebar />
-        </div>
-
-        
-          <Space/>
-        
-        
-      </div>
-
-    <Sidebar />
-    <Calendar_component /> */}
-    {/* <CalendarTest /> */}
+    <div className="flex flex-row">
+    <InviteSideBar />
+    <InviteMain />
+    </div>
+      
     </>
   )
 }
