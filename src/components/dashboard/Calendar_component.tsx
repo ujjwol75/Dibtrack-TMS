@@ -69,7 +69,7 @@ function Calendar_component() {
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto">
+          <div className="fixed inset-0 overflow-y">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
@@ -127,8 +127,9 @@ function Calendar_component() {
         </Dialog>
       </Transition>
 
-      <div className="grid grid-cols-1" style={{display:"flex"}}>
-      <Calendar
+      <div  style={{display:"flex"}}>
+        <div className="h-screen overflow-scroll" style={{width:"1200px"}}>
+        <Calendar
                localizer={localizer}
                // events={myEventsList}
                events={[]}
@@ -141,11 +142,13 @@ function Calendar_component() {
                // slotPropGetter={() => }
                // date={new Date()}
                // onNavigate={handleSelectNavigate}
-               className="w-full overflow-auto cursor-pointer"
-               style={{height:700, margin:"0 30px 0 10px",backgroundColor:"white"}}
+               className="w-full cursor-pointer"
+               style={{height:"800px", margin:"0 10px 0 0px",backgroundColor:"white"}}
                
             
             />
+        </div>
+      
           <CalendarRightBar />
       </div>
 
