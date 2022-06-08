@@ -16,7 +16,7 @@ const SmallBox = (props: Props) => {
     <>
 
       <div className='w-[36rem] h-[10.75rem] shadow-2xl p-4 rounded-md inline-block '>
-        <div>
+<div>
           <p className='text-sm text-gray-400 font-thin'>ADD COLOUMN</p>
         </div>
         <div className='flex mt-2'>
@@ -25,7 +25,7 @@ const SmallBox = (props: Props) => {
             <div className='flex'>
               <div className='outline-none  w-[18rem] h-[2rem]   border-2 border-red-400 focus:border-red-500 focus:border-2 rounded-sm flex '>
                 {/* <input type="text" /> */}
-                <input type="text" name="" id="" className='w-[17rem] outline-none' />
+                <input type="text" name="" id="" className='w-[17rem] outline-none font-light text-sm' />
               <div className='border-l-2 border-gray-300 '>
                 <ChevronDownIcon className='w-8 h-8 cursor-pointer' />
               </div>
@@ -56,7 +56,7 @@ const SmallBox = (props: Props) => {
             <Button text='Add Column' />
           </span>
         </div>
-
+        
       </div>
     </>
   )
