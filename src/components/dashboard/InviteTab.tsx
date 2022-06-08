@@ -1,11 +1,11 @@
 import React from 'react'
 
-type Props = {}
 
-const InviteTab = (props: Props) => {
+
+const InviteTab = () => {
   return (
     <div>
-        
+         
     </div>
   )
 }
