@@ -5,7 +5,7 @@ import ButtonPopUp from "../../Reusable/SidePopUp/ButtonPopUp"
 
 function WorkSpaceDashboard() {
   
-
+const[sidePopUp,setSidePopUp] = useState(false)
   return (
     <>
       <h1>WorkSpace Dashboard</h1>
@@ -13,7 +13,10 @@ function WorkSpaceDashboard() {
       {/* <SmallBox/> */}
       {/* <MidBox/> */}
 
-      {/* <ButtonPopUp/> */}
+      {/* <ButtonPopUp sidePopup ={sidePopUp}/> */}
+
+      {/* { sidePopUp && <MidBox  /> } */}
+     {sidePopUp && <MidBox setBox={undefined}  /> } 
       
 
     </>

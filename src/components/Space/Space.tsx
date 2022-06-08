@@ -8,11 +8,13 @@ import {
     } from "@heroicons/react/solid";
 import SidePopUp from '../../Reusable/SidePopUp/SidePopUp';
 import SpaceTable from './SpaceTable';
+import MidBox from '../../Reusable/BoxLayout/MidBox';
 
 type Props = {}
 
 const Space = (props: Props) => {
     const [popUp, setpopUp] = useState(false)
+    const[box,setbox] = useState(false)
     const showPop= ()=>{
             setpopUp(!popUp)
             console.log('press')
@@ -28,10 +30,15 @@ const Space = (props: Props) => {
             </div>
             <div className='absolute right-4 top-9'>
 
-        { popUp && <SidePopUp popUp = {popUp} showPop ={showPop} />}
+        { popUp && <SidePopUp  showPop ={setpopUp} popUp = {popUp} setbox ={setbox} box ={box}/>}
           </div>
+        <div className='absolute right-[6rem] top-[6.5rem]'>
+
+        { box && <MidBox  setBox={setbox} /> }
+        </div>
 
         </div>
+        
         
     </>
   )

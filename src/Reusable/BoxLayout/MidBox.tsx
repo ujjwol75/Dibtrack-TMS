@@ -11,13 +11,17 @@ import OptionText from '../InputLayout/OptionText'
 
 import List from '../ListBox/List'
 
-type Props = {}
+type Props = {
+ 
+  setBox:any
+}
 
 const MidBox = (props: Props) => {
+  const{ setBox} = props
   return (
     <>
 
-      <div className='w-[34rem] h-[19rem] shadow-2xl p-4 rounded-md inline-block '>
+      <div className='w-[34rem] h-[19rem] shadow-2xl p-4 rounded-md inline-block bg-white'>
 
         <div>
           <p className='text-sm text-gray-400 font-thin'>ADD COLOUMN</p>
@@ -79,11 +83,11 @@ const MidBox = (props: Props) => {
             <div className='w-1/2'>
               <div className='flex justify-end mt-3'>
 
-                <span className='mr-2'>
+                <span className='mr-2' onClick={()=>{setBox(false)}}>
 
-                  <GrayBtn text='Cancel' />
+                  <GrayBtn text='Cancel'  />
                 </span>
-                <span>
+                <span onClick={()=>{setBox(false)}}>
 
                   <Button text='Add Column' />
                 </span>
