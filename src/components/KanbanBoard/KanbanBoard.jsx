@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Board from 'react-trello'
 import { createTranslate } from 'react-trello'
 import Modal from '../../Reusable/Modal'
-import CardPopup from './CardPopup'
+import CardPopup from './CardPopup/CardPopup'
 import KanbanCard from './KanbanCard'
 
 const KanbanBoard = () => {
@@ -11,6 +11,7 @@ const KanbanBoard = () => {
 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
+    console.log(cardId, metadata, laneId)
   }
 
   const data = {
@@ -53,7 +54,7 @@ const KanbanBoard = () => {
   }
 
   const components = {
-    // AddCardLink: () => <button className='px-3 py-1 hover:text-primary'>+ New Card</button>,
+    AddCardLink: () => <button className='px-3 py-1 hover:text-primary'>+ New Card</button>,
     Card: KanbanCard,
   };
 
@@ -84,8 +85,6 @@ const KanbanBoard = () => {
           onDataChange={(newData) => { console.log(newData) }}
 
           onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
-
-          cardStyle={{ backgroundColor: "rgb(241 245 249)", boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)" }}
           laneStyle={{
             boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
             backgroundColor: "white",
@@ -97,8 +96,8 @@ const KanbanBoard = () => {
         />
       </div>
 
-      <Modal title='Demo' isOpen={openCardModal} setIsOpen={setOpenCardModal}>
-        <CardPopup  />
+      <Modal title='Resualbe' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
+        <CardPopup />
       </Modal>
     </>
   )

@@ -6,7 +6,7 @@ module.exports = {
         'white': '#fafbfc',
         'btncolor': '#7b68ee',
         'bgsearchbar': '#f6f7f9',
-        'primary': '#e778eb',
+        'primary': '#5b43ea',
       }
     },
 
