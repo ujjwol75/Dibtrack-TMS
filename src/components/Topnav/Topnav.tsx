@@ -97,7 +97,7 @@ const Navbar = (props: Props) => {
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 font-bold text-lg' : "px-2 py-4 flex flex-row items-center font-bold text-lg"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 text-lg' : "px-2 py-4 flex flex-row items-center text-lg"}
                     >
                       <span className='border-l-2 border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
                       <span className='border-r-2 border-gray-400 pr-3'>List</span>
@@ -111,7 +111,7 @@ const Navbar = (props: Props) => {
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
                       <span className='border-r-2 border-gray-400 pr-3'>Board</span>
@@ -125,7 +125,7 @@ const Navbar = (props: Props) => {
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
                       <span className='border-r-2 border-gray-400 pr-3'>Space</span>
@@ -139,7 +139,7 @@ const Navbar = (props: Props) => {
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
                       <span className='border-r-2 border-gray-400 pr-3'>Calendar</span>
@@ -156,7 +156,7 @@ const Navbar = (props: Props) => {
                 >
                   <Popover className="relative">
                     <Popover.Button>
-                      <div className='flex flex-row cursor-pointer items-center'>
+                      <div className='flex flex-row cursor-pointer items-center py-5 px-2'>
                         <span><PlusIcon className='h-5 w-5' /></span>
                         <span className=''>View</span>
                       </div>
