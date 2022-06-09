@@ -1,4 +1,4 @@
-import { Tab } from '@headlessui/react'
+import { Listbox, Tab } from '@headlessui/react'
 import {
   PlusIcon,
   ViewListIcon,
@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
-
+import ListBox from"../List/ListBox"
 type Props = {}
 
 const Topnav = (props: Props) => {
@@ -88,7 +88,9 @@ const Topnav = (props: Props) => {
         <Tab.Panels>
           <div className='bg-gray-100'>
             <Tab.Panel>Content 1</Tab.Panel>
-            <Tab.Panel>Content 2</Tab.Panel>
+            <Tab.Panel>
+              <ListBox>dfd</ListBox>
+              </Tab.Panel>
             <Tab.Panel>
               <KanbanBoard />
             </Tab.Panel>
