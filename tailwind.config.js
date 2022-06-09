@@ -10,7 +10,8 @@ module.exports = {
         'bgsearchbar':'#f6f7f9',
         'tableBorder':'text-gray-200',
         'lightGray': '#D1D5DB'
-        
+        'profilecolor':'#afb42b',
+        'txtcolor':'#575a60'
       }
     },
 
