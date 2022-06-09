@@ -258,7 +258,7 @@ const Tasks = (props: Props) => {
                       className={`${
                         open
                           ? "transform rotate-90 w-8 text-gray-400"
-                          : "w-18 text-gray-400"
+                          : "w-8 text-gray-400"
                       }`}
                     />
                   </Disclosure.Button>
@@ -291,8 +291,9 @@ const Tasks = (props: Props) => {
               <Menu.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
                 <ViewGridIcon className="w-4" />
               </Menu.Button>
-              <Menu.Items className="bg-white w-20 absolute -top-[90px] right-[26px] drop-shadow-lg rounded-lg ">
+              <Menu.Items className="bg-white w-40 absolute -top-[215px] right-[26px] drop-shadow-lg rounded-lg ">
                 <Menu.Item>
+                  <PlusSmIcon />
                   <h1 className="text-black pt-2">Record Clip</h1>
                 </Menu.Item>
                 <Menu.Item>
@@ -311,7 +312,7 @@ const Tasks = (props: Props) => {
                   <h1 className="text-black pt-2">Calendar</h1>
                 </Menu.Item>
                 <Menu.Item>
-                  <h1 className="text-black pt-2">Task tray</h1>
+                  <h1 className="text-black pt-2 pb-2">Task tray</h1>
                 </Menu.Item>
               </Menu.Items>
             </Menu>
