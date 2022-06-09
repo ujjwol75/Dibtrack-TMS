@@ -4,9 +4,7 @@ import {
     InformationCircleIcon,
     CheckIcon,
     ArrowCircleUpIcon,
-    IdentificationIcon,
-    CalendarIcon,
-    FlagIcon,
+   
 
 } from "@heroicons/react/solid";
 import {
@@ -25,7 +23,7 @@ type Props = {
 
 const LBox = (props: Props) => {
 
-    const [listItem, setListItem] = useState(['a', 'b', 'c'])
+    const [listItem, setListItem] = useState(['aasdfasd', 'bfsadfasd', 'cfasdfsa'])
     const [add ,setAdd] =useState(false)
     const[topEdit,setTopEdit] = useState(false)
 
