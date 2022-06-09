@@ -4,7 +4,7 @@ type Props = {}
 
 const UserInfoPopup = (props: Props) => {
   return (
-    <div>UserInfoPopup</div>
+    <div></div>
   )
 }
 

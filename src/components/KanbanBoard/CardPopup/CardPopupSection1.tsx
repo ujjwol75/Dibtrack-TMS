@@ -1,6 +1,7 @@
 import { DotsHorizontalIcon, ShareIcon } from '@heroicons/react/outline'
 import { CheckIcon } from '@heroicons/react/solid'
 import React from 'react'
+import CircleUserIcon from '../../../Reusable/CircleUserIcon'
 
 type Props = {}
 
@@ -22,7 +23,7 @@ const CardPopupSection1 = (props: Props) => {
           </span>
 
           <span>
-            users
+            <CircleUserIcon size='md'/>
           </span>
 
           <span>
