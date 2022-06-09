@@ -1,7 +1,6 @@
 import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { Tab } from '@headlessui/react'
 import Down from './Down/Down';
 import Models from './Models/Models'
 import View from './View/View'
@@ -9,8 +8,7 @@ import Show from './Show/Show';
 import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
 import Calendar_component from '../dashboard/Calendar_component';
-import KanbanBoard from "../KanbanBoard/KanbanBoard"
-import Space from "../Space/Space"
+import { Listbox, Tab } from '@headlessui/react'
 import {
   ViewListIcon,
   ViewBoardsIcon,
@@ -54,7 +52,9 @@ import {
   IdentificationIcon,
   LockClosedIcon
 } from "@heroicons/react/solid";
-
+import KanbanBoard from "../KanbanBoard/KanbanBoard"
+import Space from "../Space/Space"
+import LBox from '../List/LBox';
 type Props = {}
 
 const Navbar = (props: Props) => {
@@ -234,7 +234,7 @@ const Navbar = (props: Props) => {
           <Tab.Panels>
             <div className='bg-gray-100 h-full'>
               <Tab.Panel>Content 1</Tab.Panel>
-              <Tab.Panel>List</Tab.Panel>
+              <Tab.Panel><LBox/></Tab.Panel>
               <Tab.Panel><KanbanBoard /></Tab.Panel>
               <Tab.Panel>
                 <Space />
