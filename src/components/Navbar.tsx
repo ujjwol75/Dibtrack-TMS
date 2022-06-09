@@ -1,7 +1,11 @@
 import React from "react";
 import logo from "../images/logo.png";
 import { Link } from "react-router-dom";
-function Navbar() {
+type Props  = {
+  text:string
+  text1:string
+}
+function Navbar({text , text1}:Props) {
   return (
     <div className="p-2">
       <div className="flex flex-row justify-between mt-2">

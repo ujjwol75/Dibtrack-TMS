@@ -18,6 +18,9 @@ import {
 } from "@heroicons/react/solid";
 import { Disclosure } from "@headlessui/react";
 import SpaceDropdown from "../sidebar/SpaceDropdown";
+import NewSpaceModal from "../sidebar/NewSpaceModal";
+import SpacePlusTab from "../sidebar/SpacePlusTab";
+import User from "../sidebar/User";
 function Sidebar() {
   const [collapse, setCollapse] = useState<boolean>(false);
 
@@ -27,10 +30,9 @@ function Sidebar() {
   };
 
   return !collapse ? (
-    <div className="h-[100vh] z-1">
+    <div className="h-screen z-1">
       <div
-        className="sidebar border border-black-100"
-      >
+        className="sidebar border  h-screen border-black-100 overflow-scroll">
         <div className="flex flex-row justify-around p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
           <div className="mt-2 flex flex-row">
@@ -54,10 +56,10 @@ function Sidebar() {
           <input
             type="text"
             className=" bg-bgsearchbar focus:outline-none 
-                border border-black-100 p-1 w-[75%]"
-            placeholder="&nbsp; &nbsp;&nbsp;&nbsp;Search"
+                border border-black-100 pl-5 w-[75%] text-sm text-gray-400"
+            placeholder="Search"
           />
-          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-0 top-2"/>
+          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-0 top-2 "/>
           </div>
           
 
@@ -136,15 +138,9 @@ function Sidebar() {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="pt-4 pb-2 text-gray-500 hover:cursor-pointer">
-                  <div className="flex flex-row justify-center w-[90%] mx-auto bg-bgsearchbar py-2 rounded-sm hover:bg-gray-300 text-xs">
-                    <span>
-                      <PlusIcon className="h-4 w-3 text-xs" />
-                    </span>
-
-                    {/* Add space */}
-                    <span className="text-[12px] ml-1 ">NEW SPACE</span>
-                  </div>
-                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
+                  <NewSpaceModal />
+                  
+                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2"> 
                     
                       <ViewGridIcon className="h-4 w-4 text-xs ml-2" />
                       
@@ -168,7 +164,15 @@ function Sidebar() {
                             <SpaceDropdown/>
                       </Menu.Items>
                     </Menu>
-                      <PlusIcon className="h-4 w-4 ml-2" />
+                      <Menu>
+                        <Menu.Button>
+                        <PlusIcon className="h-4 w-4 ml-2" />
+                        </Menu.Button>
+                        <Menu.Items>
+                          <SpacePlusTab />
+                        </Menu.Items>
+                      </Menu>
+                    
                     </div>
                   </div>
                 </Disclosure.Panel>
@@ -235,16 +239,16 @@ function Sidebar() {
                     </span>
                     <span className="text-[12px] ml-1 ">NEW DOCS</span>
                   </div>
-                  <p className="w-ull text-xs hover:bg-bgsearchbar mt-2  p-2">
+                  <p className="w-full text-xs hover:bg-bgsearchbar mt-2  p-2">
                     All
                   </p>
-                  <p className="w-ull text-xs hover:bg-bgsearchbar mt-2 p-2">
+                  <p className="w-full text-xs hover:bg-bgsearchbar mt-2 p-2">
                     Assigned to me
                   </p>
-                  <p className="w-ull text-xs hover:bg-bgsearchbar mt-2 p-2">
+                  <p className="w-full text-xs hover:bg-bgsearchbar mt-2 p-2">
                     shared
                   </p>
-                  <p className="w-ull text-xs hover:bg-bgsearchbar mt-2 p-2">
+                  <p className="w-full text-xs hover:bg-bgsearchbar mt-2 p-2">
                     private
                   </p>
                 </Disclosure.Panel>
@@ -252,6 +256,10 @@ function Sidebar() {
             )}
           </Disclosure>
         </div>
+        <div className="grid grid-cols-1">
+        <User />
+        </div>
+        
       </div>
      
       
