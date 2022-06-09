@@ -6,7 +6,8 @@ import {
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
-import ListBox from"../List/ListBox"
+import ListBox from"../List/LBox"
+import LBox from '../List/LBox';
 type Props = {}
 
 const Topnav = (props: Props) => {
@@ -89,7 +90,7 @@ const Topnav = (props: Props) => {
           <div className='bg-gray-100'>
             <Tab.Panel>Content 1</Tab.Panel>
             <Tab.Panel>
-              <ListBox>dfd</ListBox>
+              <LBox/>
               </Tab.Panel>
             <Tab.Panel>
               <KanbanBoard />
