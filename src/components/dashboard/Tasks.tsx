@@ -10,7 +10,14 @@ import {
   ViewGridIcon,
 } from "@heroicons/react/solid";
 import CalendarRightBar from "./CalendarRightBar";
-import { Tab, Menu, Transition, Disclosure } from "@headlessui/react";
+import {
+  Tab,
+  Menu,
+  Transition,
+  Disclosure,
+  Popover,
+  } from "@headlessui/react";
+import Task_popover from "./Task_popover";
 
 type Props = {};
 
@@ -20,6 +27,7 @@ const Tasks = (props: Props) => {
   function handleHide() {
     setHide(true);
   }
+
   return !hide ? (
     <>
       <div className="flex flex-col text-sm">
@@ -279,43 +287,86 @@ const Tasks = (props: Props) => {
             </button>
           </div>
 
-          <div className="flex flex-row justify-end mt-2 text-white text-sm">
-            <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg shadow-lg cursor">
-              <div className="flex flex-row">
+          <div className="flex flex-row justify-end mt-2 text-sm">
+            <Popover className="relative">
+              <Popover.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
                 <PlusSmIcon className="w-4" />
                 <p>Task</p>
-              </div>
-            </button>
+              </Popover.Button>
+
+              <Task_popover />
+            </Popover>
             <div className="relative">
-            <Menu>
-              <Menu.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
-                <ViewGridIcon className="w-4" />
-              </Menu.Button>
-              <Menu.Items className="bg-white w-40 absolute -top-[215px] right-[26px] drop-shadow-lg rounded-lg ">
-                <Menu.Item>
-                  <PlusSmIcon />
-                  <h1 className="text-black pt-2">Record Clip</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2">Track Time</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2">Reminder</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2">Notepad</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2">New Doc</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2">Calendar</h1>
-                </Menu.Item>
-                <Menu.Item>
-                  <h1 className="text-black pt-2 pb-2">Task tray</h1>
-                </Menu.Item>
-              </Menu.Items>
-            </Menu>
+              <Menu>
+                <Menu.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
+                  <ViewGridIcon className="w-4" />
+                </Menu.Button>
+                <Menu.Items className="bg-white w-40 absolute -top-[255px] right-[26px] drop-shadow-lg rounded-lg ">
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Record Clip</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Track Time</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Reminder (r)</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Notepad(p)</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">New Doc</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Calendar</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="flex flex-row justify-between p-2 text-sm">
+                      <div className="flex flex-row">
+                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <h1 className="text-black">Task tray</h1>
+                      </div>
+                      <PlusSmIcon className="text-red-500 w-4" />
+                    </div>
+                  </Menu.Item>
+                </Menu.Items>
+              </Menu>
             </div>
           </div>
         </div>
