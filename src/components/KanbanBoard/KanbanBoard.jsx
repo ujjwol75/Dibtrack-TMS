@@ -1,7 +1,21 @@
-import React from 'react'
+import { Dialog, Menu } from '@headlessui/react'
+import React, { useState } from 'react'
 import Board from 'react-trello'
+import { createTranslate } from 'react-trello'
+import Modal from '../../Reusable/Modal'
+import CardPopup from './CardPopup/CardPopup'
+import KanbanCard from './KanbanCard'
 
 const KanbanBoard = () => {
+
+  const [openCardModal, setOpenCardModal] = useState(false)
+  let [isOpen, setIsOpen] = useState(true)
+
+  const handleClickCard = (cardId, metadata, laneId) => {
+    setOpenCardModal(true)
+    console.log(cardId, metadata, laneId)
+  }
+
   const data = {
     lanes: [
       {
@@ -9,7 +23,7 @@ const KanbanBoard = () => {
         title: 'Planned Tasks',
         label: '2/2',
         cards: [
-          { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', editable: true },
+          { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', },
           { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
         ]
       },
@@ -40,21 +54,38 @@ const KanbanBoard = () => {
       },
     ]
   }
+
+  const components = {
+    AddCardLink: ({ onClick }) => <button className='px-3 py-1 mt-3 hover:text-primary' onClick={onClick}>+ New Card</button>,
+    Card: KanbanCard,
+    NewLaneSection: ({ onClick }) => <button className='ml-[50%] mt-1 border px-7 -z-1 py-1 hover:text-primary' onClick={onClick}>+ Add Lane</button>
+  };
+
   return (
     <>
       <div>
         <Board data={data}
-          editable={true}
           draggable
           canAddLanes
+          editable
+          editLaneTitle
           onDataChange={(newData) => { console.log(newData) }}
-          cardStyle={{ backgroundColor: "white" }}
-          laneStyle={{ boxShadow: '2px 2px 6px 0px rgba(0,0,0,0.75)' }}
+
+          onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
+          laneStyle={{
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            backgroundColor: "white",
+            borderRadius: "0.375rem",
+          }}
           style={{ backgroundColor: "transparent" }}
+          components={components}
         />
       </div>
-    </>
 
+      <Modal title='Resualbe' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
+        <CardPopup />
+      </Modal>
+    </>
   )
 }
 
