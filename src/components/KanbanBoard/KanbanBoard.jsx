@@ -1,3 +1,4 @@
+import { Dialog, Menu } from '@headlessui/react'
 import React, { useState } from 'react'
 import Board from 'react-trello'
 import { createTranslate } from 'react-trello'
@@ -8,6 +9,7 @@ import KanbanCard from './KanbanCard'
 const KanbanBoard = () => {
 
   const [openCardModal, setOpenCardModal] = useState(false)
+  let [isOpen, setIsOpen] = useState(true)
 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
@@ -54,26 +56,10 @@ const KanbanBoard = () => {
   }
 
   const components = {
-    AddCardLink: () => <button className='px-3 py-1 hover:text-primary'>+ New Card</button>,
+    AddCardLink: ({ onClick }) => <button className='px-3 py-1 mt-3 hover:text-primary' onClick={onClick}>+ New Card</button>,
     Card: KanbanCard,
+    NewLaneSection: ({ onClick }) => <button className='ml-[50%] mt-1 border px-7 -z-1 py-1 hover:text-primary' onClick={onClick}>+ Add Lane</button>
   };
-
-  const TEXTS = {
-    "Add another lane": "Add New Section",
-    "Click to add card": "Add New Card",
-    "Delete lane": "Delete lane",
-    "Lane actions": "Lane actions",
-    "button": {
-      "Add lane": "Add lane",
-      "Add card": "ADD CARD",
-      "Cancel": "Cancel"
-    },
-    "placeholder": {
-      "title": "title",
-      "description": "description",
-      "label": "label"
-    }
-  }
 
   return (
     <>
@@ -81,6 +67,7 @@ const KanbanBoard = () => {
         <Board data={data}
           draggable
           canAddLanes
+          editable
           editLaneTitle
           onDataChange={(newData) => { console.log(newData) }}
 
@@ -92,7 +79,6 @@ const KanbanBoard = () => {
           }}
           style={{ backgroundColor: "transparent" }}
           components={components}
-          t={createTranslate(TEXTS)}
         />
       </div>
 

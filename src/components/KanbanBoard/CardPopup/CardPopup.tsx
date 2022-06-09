@@ -3,6 +3,9 @@ import React from 'react'
 import CardPopupSection1 from './CardPopupSection1'
 import CardPopupSection2 from './CardPopupSection2'
 import CardPopupSection3 from './CardPopupSection3'
+import CardPopupSection4 from './CardPopupSection4'
+import CardPopupSection5 from './CardPopupSection5'
+import CardPopupSection6 from './CardPopupSection6'
 
 type Props = {}
 
@@ -27,20 +30,18 @@ const CardPopup = (props: Props) => {
 
       {/* CARD SECTION 4 */}
       <div className='col-span-2 h-[27rem]'>
-        <section className='p-4 bg-slate-100 h-full'>
-          
-        </section>
+        <CardPopupSection4 />
       </div>
 
 
       {/* CARD SECTION 5 */}
       <div className='col-span-3 -row-end-1 h-screen'>
-        <section className='p-4'></section>
+        <CardPopupSection5 />
       </div>
 
       {/* CARD SECTION 6 */}
-      <div className='col-span-2 -row-end-1'>
-        <section className='p-4'></section>
+      <div className='col-span-2 -row-end-1 h-screen'>
+        <CardPopupSection6 />
       </div>
     </div>
   )

@@ -1,14 +1,16 @@
+import { Popover } from '@headlessui/react'
 import { DotsHorizontalIcon, ShareIcon } from '@heroicons/react/outline'
 import { CheckIcon } from '@heroicons/react/solid'
 import React from 'react'
 import CircleUserIcon from '../../../Reusable/CircleUserIcon'
+import UserInfoPopup from '../../../Reusable/CircleUserIcon/UserInfoPopup'
 
 type Props = {}
 
 const CardPopupSection1 = (props: Props) => {
   return (
     <>
-      <section className='p-4 w-full flex items-center  justify-between'>
+      <section className='p-4 w-full flex items-center  justify-between relative'>
 
         <section className='flex items-center space-x-5'>
           {/* Button */}
@@ -23,7 +25,14 @@ const CardPopupSection1 = (props: Props) => {
           </span>
 
           <span>
-            <CircleUserIcon size='md'/>
+            <Popover>
+              <Popover.Button>
+                <CircleUserIcon size='md' />
+              </Popover.Button>
+              <Popover.Panel className="absolute z-10 mt-3">
+                <UserInfoPopup />
+              </Popover.Panel>
+            </Popover>
           </span>
 
           <span>
