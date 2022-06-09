@@ -1,17 +1,20 @@
+import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
-import Form from '../../components/form/Form'
+import SignupForm from '../../components/form/Form'
 import Navbar from '../../components/Navbar'
-function Login() {
+
+const Signup = () => {
+    
   return (
     <div>
       
       <div className="login h-[100vh] w-screen overflow-hidden ">
-      <Navbar text = "signup" text1='Dont have an account? '/>
-      <Form />
+      <Navbar text = "login" text1 = "Already signed up ? "/>
+      <SignupForm />
       <div className='gradient w-[110%]  transform -rotate-12 '></div>
       </div>
     </div>
   )
 }
 
-export default Login
+export default Signup

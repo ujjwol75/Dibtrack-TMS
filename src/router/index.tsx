@@ -3,6 +3,7 @@ import AuthLayout from "../layputs/AuthLayout";
 import WorkSpaceLayout from "../layputs/WorkSpaceLayout";
 
 import Login from "../pages/Auth/Login";
+import Signup from "../pages/Auth/Signup";
 import Dashboard from "../pages/Dashboard";
 import DynamicDashboard from "../pages/Dashboard/DynamicDashboard";
 import WorkSpaceDashboard from "../pages/Dashboard/WorkSpaceDashboard";
@@ -22,7 +23,11 @@ const Router = () => {
 
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
+        
       </Route>
+
+      
+      
       <Route
         element={
           <PrivateRoute>
@@ -30,11 +35,14 @@ const Router = () => {
           </PrivateRoute>
         }
       >
+        
         <Route path={"/"} element={<WorkSpaceDashboard />} />
         <Route path={"/dashboard"} element={<Dashboard />} />
         <Route path={"/dashboard/:name"} element={<DynamicDashboard />} />
         <Route path="/*" element={<DashboardNotFound />} />
+        
       </Route>
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 };
