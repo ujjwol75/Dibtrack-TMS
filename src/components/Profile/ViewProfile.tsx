@@ -54,7 +54,7 @@ const ViewProfile = ({name}: Props) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[45%] transform overflow-hidden rounded-2xl bg-white p-6 text-left
+                <Dialog.Panel className="w-[45%] transform overflow-hidden rounded-md bg-white p-6 text-left
                  align-middle shadow-xl transition-all absolute right-0 h-screen ">
                      <div className='relative w-ful h-full'>
                      <div className="mt-4">
