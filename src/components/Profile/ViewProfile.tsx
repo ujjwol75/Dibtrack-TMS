@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import FlyoutMenu from './FlyoutMenu'
+import FlyoutMenu from '../dashboard/FlyoutMenu'
 type Props = {
     name : string
 }

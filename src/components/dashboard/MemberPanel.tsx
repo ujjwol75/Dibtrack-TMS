@@ -3,7 +3,7 @@ import React , {useState} from "react";
 import CircleUserIcon from "../../Reusable/CircleUserIcon";
 import FlyoutMenu from "./FlyoutMenu";
 import UserSettings from "./UserSettings";
-import ViewProfile from "./ViewProfile";
+import ViewProfile from "../Profile/ViewProfile";
 
 type Props = {};
 
