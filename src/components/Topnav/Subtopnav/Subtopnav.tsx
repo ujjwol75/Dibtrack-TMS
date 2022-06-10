@@ -24,10 +24,15 @@ const Subtopnav = (props: Props) => {
           {/* <Popover.Button><ChevronDownIcon className='h-5 w-5'/></Popover.Button> */}
 
           <Popover.Panel className="absolute z-10 border w-80 shadow-2xl">
-            <div className="grid grid-cols-1 p-4">
-              <Down enabled={enabled} setEnabled={setEnabled} name={"Task Name"}/>
-              <Down enabled={enabled1} setEnabled={setEnabled1} name={"Task Description"}/>
-              <Down enabled={enabled2} setEnabled={setEnabled2} name={"Custom Field"}/>
+            <div className="grid grid-cols-1 bg-white p-4">
+              <div>
+                <span className='pl-4 pt-4 text-gray-400 font-bold'>SEARCH IN</span>
+              </div>
+              <div>
+                <Down enabled={enabled} setEnabled={setEnabled} name={"Task Name"}/>
+                <Down enabled={enabled1} setEnabled={setEnabled1} name={"Task Description"}/>
+                <Down enabled={enabled2} setEnabled={setEnabled2} name={"Custom Field"}/>
+              </div>
             </div>
 
             <img src="/solutions.jpg" alt="" />

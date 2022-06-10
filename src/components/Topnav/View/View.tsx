@@ -8,7 +8,7 @@ type Props = {}
 const View = (props: Props) => {
   return (
     <>
-      <Popover.Panel className="view bg-white shadow-2xl absolute z-10 border mt-10 w-96 p-4">
+      <Popover.Panel className="view bg-white shadow-2xl absolute z-10 border w-96 p-4">
         <div className="grid grid-cols-1">
             <div>
                 <span className='text-gray-400'>TASK VIEWS</span>
