@@ -50,7 +50,8 @@ import {
   TemplateIcon,
   GlobeAltIcon,
   IdentificationIcon,
-  LockClosedIcon
+  LockClosedIcon,
+  DotsHorizontalIcon
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
@@ -77,77 +78,84 @@ const Navbar = (props: Props) => {
         <Tab.Group>
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
-            <span className='flex'>
+            <span className='flex flex-row items-center'>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 whitespace-nowrap items-center px-2 py-1 border-b-2  font-bold text-lg border-gray-400' : " flex flex-row px-2 py-1 items-center font-bold text-lg "}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 whitespace-nowrap items-center px-2 py-1 border-b-2  font-bold text-lg border-gray-400' : " flex flex-row px-2 py-1 items-center font-bold text-lg"}
                     >
                       <span className='font-bold text-xl border rounded-lg bg-gray-400 text-white p-3 px-6'>S</span>
                       <span className=''>Space</span>
+                      <span><DotsHorizontalIcon className='h-5 w-5'/></span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 font-bold text-lg' : "px-2 py-4 flex flex-row items-center font-bold text-lg"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center mx-2 px-2 py-4 border-b-2 text-lg' : "px-2 py-4 mx-2 flex flex-row items-center text-lg"}
                     >
-                      <span className='border-l-2 border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>List</span>
+                      <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
+                      <span className='border-gray-400 pr-3'>List</span>
+                      <span><DotsHorizontalIcon className='h-5 w-5'/></span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl1 h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
-                    >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Board</span>
-                    </span>
-                  </>
-
-                )}
-              </Tab>
-              <Tab as={"span"} className='cursor-pointer'>
-                {({ selected }) => (
-                  <>
-                    <span
-                      className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 mx-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Space</span>
+                      <span className=' border-gray-400 pr-3'>Board</span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl2 h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 mx-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Calendar</span>
+                      <span className='border-gray-400 pr-3'>Space</span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl3 h-10 border-l-2 border-gray-200 mx-2'></div>
+              <Tab as={"span"} className='cursor-pointer'>
+                {({ selected }) => (
+                  <>
+                    <span
+                      className={
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 text-lg' : " flex flex-row items-center text-lg py-4 px-2"}
+                    >
+                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span className='border-gray-400 pr-3'>Calendar</span>
+                    </span>
+                  </>
+
+                )}
+              </Tab>
+              <div className='vl4 h-10 border-l-2 border-gray-200 mx-2'></div>
               <div className='cursor-pointer'>
 
                 <span
@@ -156,7 +164,7 @@ const Navbar = (props: Props) => {
                 >
                   <Popover className="relative">
                     <Popover.Button>
-                      <div className='flex flex-row cursor-pointer items-center'>
+                      <div className='flex flex-row cursor-pointer items-center py-5 px-2'>
                         <span><PlusIcon className='h-5 w-5' /></span>
                         <span className=''>View</span>
                       </div>

@@ -16,7 +16,7 @@ const Subtopnav = (props: Props) => {
         <div className='container-2 flex flex-row items justify-between px-5 py-2'> 
       <div className='flex flex-row items-center cursor-pointer'>
         <SearchIcon className='h-5 w-5'/>
-        <input className='border-r-2 outline-none'/>
+        <input className='border-r-2 outline-none input' placeholder='Search tasks...'/>
         <Popover className="relative">
           {
             upShow?<Popover.Button><ChevronDownIcon className='h-5 w-5' onClick={()=>setUpShow(false)}/></Popover.Button>:<Popover.Button><ChevronUpIcon className='h-5 w-5' onClick={()=>setUpShow(true)}/></Popover.Button>

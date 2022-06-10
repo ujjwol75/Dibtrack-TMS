@@ -1,6 +1,6 @@
-import { Transition, Dialog } from '@headlessui/react'
+import { Transition, Dialog, Switch } from '@headlessui/react'
 import { GlobeAltIcon, LinkIcon, IdentificationIcon, LockClosedIcon } from '@heroicons/react/solid'
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 
 type Props = { 
   isOpen:any
@@ -9,6 +9,9 @@ type Props = {
 
 const Model = (props: Props) => {
   const { isOpen , closeModal} = props
+  const [enabled, setEnabled] = useState(false)
+  const [enabled1,setEnabled1] = useState(false)
+  const [enabled2,setEnabled2] = useState(false)
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -50,13 +53,29 @@ const Model = (props: Props) => {
                         you an email with all of the details of your order.
                         </p>
                       </div>
-                      <div className='py-2'>
+                      <div className='py-2 flex flex-row justify-between items-center'>
                         <div className='flex flex-row'>
                           <span><GlobeAltIcon className='h-5 w-5'/></span>  
                           <span>Public link</span>
                         </div>
                         <div>
-                          <span></span>
+                          <span>
+                            <div className="py-4">
+                              <Switch
+                                checked={enabled}
+                                onChange={setEnabled}
+                                className={`${enabled ? 'bg-teal-900' : 'bg-teal-700'}
+                                  relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                              >
+                                <span className="sr-only">Use setting</span>
+                                <span
+                                  aria-hidden="true"
+                                  className={`${enabled ? 'translate-x-4' : 'translate-x-0'}
+                                    pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                                />
+                              </Switch>
+                            </div>
+                          </span>
                         </div>
                       </div>
                       <div className='py-2 flex flex-row justify-between items-center'>
@@ -68,22 +87,54 @@ const Model = (props: Props) => {
                           <span className='border rounded-lg px-4 py-1'>Copy link</span>
                         </div>
                       </div>
-                      <div className='py-2'>
+                      <div className='py-2 flex flex-row justify-between items-center'>
                         <div className='flex flex-row'>
                           <span><IdentificationIcon className='h-5 w-5'/></span>  
                           <span>Protect view</span>
                         </div>
                         <div>
-                          <span></span>
+                          <span>
+                            <div className="py-4">
+                              <Switch
+                                checked={enabled1}
+                                onChange={setEnabled1}
+                                className={`${enabled1 ? 'bg-teal-900' : 'bg-teal-700'}
+                                  relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                              >
+                                <span className="sr-only">Use setting</span>
+                                <span
+                                  aria-hidden="true"
+                                  className={`${enabled1? 'translate-x-4' : 'translate-x-0'}
+                                    pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                                />
+                              </Switch>
+                            </div>
+                          </span>
                         </div>
                       </div>
-                      <div className='py-2'>
+                      <div className='py-2 flex flex-row justify-between items-center'>
                         <div className='flex flex-row'>
                           <span><LockClosedIcon className='h-5 w-5'/></span>  
                           <span>Private link</span>
                         </div>
                         <div>
-                          <span></span>
+                          <span>
+                            <div className="py-4">
+                              <Switch
+                                checked={enabled2}
+                                onChange={setEnabled2}
+                                className={`${enabled2 ? 'bg-teal-900' : 'bg-teal-700'}
+                                  relative inline-flex h-6 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                              >
+                                <span className="sr-only">Use setting</span>
+                                <span
+                                  aria-hidden="true"
+                                  className={`${enabled2 ? 'translate-x-4' : 'translate-x-0'}
+                                    pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                                />
+                              </Switch>
+                            </div>
+                          </span>
                         </div>
                       </div>
 
