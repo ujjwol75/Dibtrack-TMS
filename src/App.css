@@ -4,6 +4,28 @@
   text-align: center;
 }
 
+
+.view{
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.container-2{
+  z-index: -1;
+}
+
+.automate{
+  position: absolute;
+  top: 50px;
+  right: -100px;
+}
+
+.show{
+  position: absolute;
+  top: 50px;
+  right: -70px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

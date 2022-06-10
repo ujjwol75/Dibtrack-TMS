@@ -1,9 +1,10 @@
 import { Popover } from '@headlessui/react'
-import { DotsHorizontalIcon, ShareIcon } from '@heroicons/react/outline'
+import { DotsHorizontalIcon, FlagIcon, ShareIcon } from '@heroicons/react/outline'
 import { CheckIcon } from '@heroicons/react/solid'
 import React from 'react'
 import CircleUserIcon from '../../../Reusable/CircleUserIcon'
 import UserInfoPopup from '../../../Reusable/CircleUserIcon/UserInfoPopup'
+import DropDownList from '../../../Reusable/DropDownList/DropDownList'
 
 
 type Props = {}
@@ -11,11 +12,11 @@ type Props = {}
 const CardPopupSection1 = (props: Props) => {
   return (
     <>
-      <section className='p-4 w-full flex items-center  justify-between relative'>
+      <section className='p-4 w-full flex items-center justify-between relative'>
 
         <section className='flex items-center space-x-5'>
           {/* Button */}
-          <span className='p-2 px-6 bg-orange-500 border hover:border-orange-500 rounded text-white divide-x divide-white'>
+          <span className=' flex p-2 px-6 bg-orange-500 border hover:border-orange-500 rounded text-white divide-x divide-white'>
             <button className='mr-2'>Progress</button>
             <span className='pl-1'>F</span>
           </span>
@@ -36,9 +37,11 @@ const CardPopupSection1 = (props: Props) => {
             </Popover>
           </span>
 
-          <span>
-            priority
+          <span className='p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer'>
+            <FlagIcon className='w-6 h-6 ' />
           </span>
+
+          <DropDownList />
         </section>
 
         <section className='flex space-x-5 items-center'>
