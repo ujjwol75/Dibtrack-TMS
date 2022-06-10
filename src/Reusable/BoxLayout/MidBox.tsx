@@ -9,7 +9,7 @@ import GrayBtn from '../Button/GrayBtn'
 import NameField from '../InputLayout/NameField'
 import OptionText from '../InputLayout/OptionText'
 
-import List from '../ListBox/List'
+import List from '../DropDownList/DropDownList'
 
 type Props = {
  

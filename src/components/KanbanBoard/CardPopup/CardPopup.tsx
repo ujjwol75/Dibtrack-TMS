@@ -1,5 +1,3 @@
-import { CheckIcon } from '@heroicons/react/outline'
-import React from 'react'
 import CardPopupSection1 from './CardPopupSection1'
 import CardPopupSection2 from './CardPopupSection2'
 import CardPopupSection3 from './CardPopupSection3'
@@ -24,12 +22,12 @@ const CardPopup = (props: Props) => {
       </div>
 
       {/* CARD SECTION 3 */}
-      <div className='col-span-3 h-[27rem]'>
+      <div className='col-span-3 min-h-[25rem]'>
         <CardPopupSection3 />
       </div>
 
       {/* CARD SECTION 4 */}
-      <div className='col-span-2 h-[27rem]'>
+      <div className='col-span-2 min-h-[25rem]'>
         <CardPopupSection4 />
       </div>
 
