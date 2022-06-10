@@ -74,7 +74,7 @@ function Sidebar() {
               <div className="mr-3">
                 <HomeIcon className="h-4 w-5 " />
               </div>
-              <div>home</div>
+              <div>Home</div>
             </div>
             <div className="flex flex-row mt-3  w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
@@ -86,7 +86,7 @@ function Sidebar() {
               <div className="mr-3">
                 <ArrowNarrowDownIcon className="h-4 w-5 " />
               </div>
-              <div>show more</div>
+              <div>Show More</div>
             </div>
           </div>
         </div>
