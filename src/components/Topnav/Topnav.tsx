@@ -1,7 +1,6 @@
 import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { Tab } from '@headlessui/react'
 import Down from './Down/Down';
 import Models from './Models/Models'
 import View from './View/View'
@@ -9,8 +8,7 @@ import Show from './Show/Show';
 import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
 import Calendar_component from '../dashboard/Calendar_component';
-import KanbanBoard from "../KanbanBoard/KanbanBoard"
-import Space from "../Space/Space"
+import { Listbox, Tab } from '@headlessui/react'
 import {
   ViewListIcon,
   ViewBoardsIcon,
@@ -55,7 +53,9 @@ import {
   LockClosedIcon,
   DotsHorizontalIcon
 } from "@heroicons/react/solid";
-
+import KanbanBoard from "../KanbanBoard/KanbanBoard"
+import Space from "../Space/Space"
+import LBox from '../List/LBox';
 type Props = {}
 
 const Navbar = (props: Props) => {
@@ -159,8 +159,8 @@ const Navbar = (props: Props) => {
               <div className='cursor-pointer'>
 
                 <span
-                  // className={
-                  //   selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 font-bold text-lg' : "px-2 py-4 flex flex-row items-center font-bold text-lg"}
+                // className={
+                //   selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 font-bold text-lg' : "px-2 py-4 flex flex-row items-center font-bold text-lg"}
                 >
                   <Popover className="relative">
                     <Popover.Button>
@@ -242,10 +242,12 @@ const Navbar = (props: Props) => {
           <Tab.Panels>
             <div className='bg-gray-100 h-full'>
               <Tab.Panel>Content 1</Tab.Panel>
-              <Tab.Panel>List</Tab.Panel>
+              <Tab.Panel><LBox /></Tab.Panel>
               <Tab.Panel><KanbanBoard /></Tab.Panel>
               <Tab.Panel>
-                <Space />
+                <div className='h-screen'>
+                  <Space />
+                </div>
               </Tab.Panel>
               <Tab.Panel>
                 <Calendar_component />

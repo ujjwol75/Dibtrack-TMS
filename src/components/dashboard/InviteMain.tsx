@@ -1,6 +1,7 @@
 import { Menu } from "@headlessui/react";
 import { ChevronUpIcon, SearchIcon } from "@heroicons/react/solid";
 import React from "react";
+import InviteTab from "./InviteTab";
 import MemberDropdown from "./MemberDropdown";
 
 type Props = {};
@@ -41,7 +42,7 @@ const InviteMain = (props: Props) => {
         </div>
       </div>
 
-      
+      <InviteTab />
     </div>
   );
 };
