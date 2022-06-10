@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import AuthLayout from "../layputs/AuthLayout";
 import WorkSpaceLayout from "../layputs/WorkSpaceLayout";
 
@@ -9,6 +9,8 @@ import DynamicDashboard from "../pages/Dashboard/DynamicDashboard";
 import WorkSpaceDashboard from "../pages/Dashboard/WorkSpaceDashboard";
 import DashboardNotFound from "../pages/Error/DashboardNotFound";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layputs/DashboardLayout";
+
 
 // https://adarshaacharya.com.np/blog/role-based-auth-with-react-router-v6
 
@@ -20,29 +22,31 @@ import PrivateRoute from "./PrivateRoute";
 const Router = () => {
   return (
     <Routes>
-
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        
+      <Route element={<AuthLayout/>}>
+        <Route path="/login" element={<Login/>}/>
       </Route>
-
-      
-      
       <Route
         element={
           <PrivateRoute>
-            <WorkSpaceLayout />
+            <WorkSpaceLayout/>
           </PrivateRoute>
         }
       >
-        
-        <Route path={"/"} element={<WorkSpaceDashboard />} />
-        <Route path={"/dashboard"} element={<Dashboard />} />
-        <Route path={"/dashboard/:name"} element={<DynamicDashboard />} />
-        <Route path="/*" element={<DashboardNotFound />} />
-        
+        <Route path={"/"} element={<WorkSpaceDashboard/>}/>
+        <Route path={"/dashboard/:name"} element={<DynamicDashboard/>}/>
+        <Route path="/*" element={<DashboardNotFound/>}/>
       </Route>
-      <Route path="/signup" element={<Signup />} />
+      <Route
+        element={
+          <PrivateRoute>
+            <DashboardLayout/>
+          </PrivateRoute>
+        }
+      >
+        <Route path={"/dashboard"} element={<Dashboard/>}/>
+        <Route path="/*" element={<DashboardNotFound/>}/>
+      </Route>
+      <Route path="/signup" element={<Signup/>}/>
     </Routes>
   );
 };
