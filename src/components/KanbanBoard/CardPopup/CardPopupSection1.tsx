@@ -5,6 +5,7 @@ import React from 'react'
 import CircleUserIcon from '../../../Reusable/CircleUserIcon'
 import UserInfoPopup from '../../../Reusable/CircleUserIcon/UserInfoPopup'
 
+
 type Props = {}
 
 const CardPopupSection1 = (props: Props) => {

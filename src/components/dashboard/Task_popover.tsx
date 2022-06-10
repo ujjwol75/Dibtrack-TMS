@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tab, Menu, Transition, Disclosure, Popover } from "@headlessui/react";
 import {
   SearchIcon,
@@ -9,30 +9,42 @@ import {
   PlusSmIcon,
   ChevronDoubleUpIcon,
   ViewGridIcon,
+  ClockIcon,
+  StarIcon,
+  CalendarIcon,
+  EyeIcon,
+  StopIcon,
+  XIcon,
+  ExternalLinkIcon,
+  UploadIcon,
+  CloudIcon,
 } from "@heroicons/react/solid";
+import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup";
+import CircleUserIcon from "../../Reusable/CircleUserIcon";
 
 type Props = {};
 
 const Task_popover = (props: Props) => {
+  // const [close, setClose] = useState(false)
   return (
     <div>
-      <Popover.Panel className="absolute z-10 bg-white drop-shadow-lg right-10 bottom-[12rem] w-[38rem] ">
-        <div className="flex flex-row justify-between text-center">
+      <Popover.Panel className="absolute z-10 bg-white drop-shadow-lg -right-[3rem] bottom-[5rem] w-[38rem] text-gray-500">
+        <div className="flex flex-row justify-between items-center mx-2">
           <div className="flex flex-row">
-            <PlusSmIcon className="w-7 -mt-4" />
+            <StopIcon className="w-7 text-gray-500" />
             <textarea
-              className="form-control w-full px-3 py-1.5 text-base font-normal mt-6 text-gray-500 bg-white  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control w-full px-3 py-1.5 text-base font-normal mt-8 text-gray-500 bg-white  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleFormControlTextarea1"
               placeholder="Task name or type '/' for commands"
             ></textarea>
           </div>
           <div className="flex flex-row">
-            <PlusSmIcon className="w-8 -mt-4" />
-            <PlusSmIcon className="w-8 -mt-4" />
+            <ExternalLinkIcon className="w-8 text-gray-500" />
+            <XIcon className="w-8 text-gray-500" />
           </div>
         </div>
 
-        <div className="flex flex-row justify-between text-center mt-4">
+        <div className="flex flex-row justify-between items-center mt-4">
           <div className="flex flex-row">
             <p className="ml-2 mr-2">In</p>
 
@@ -91,15 +103,29 @@ const Task_popover = (props: Props) => {
 
             <p className="mr-2">For</p>
 
-            <div className="ml-2 w-6 bg-yellow-500 rounded-full h-6 text-sm justify-center items-center flex">
+            {/* <div className="ml-2 w-6 bg-yellow-500 rounded-full h-6 text-sm justify-center items-center flex">
               <p>UN</p>
-            </div>
+            </div> */}
+            {/* <UserInfoPopup size='md'/> */}
+            <span>
+              <Popover>
+                <Popover.Button>
+                  <CircleUserIcon size="md" />
+                </Popover.Button>
+                <Popover.Panel className="absolute z-10 mt-3">
+                  <UserInfoPopup />
+                </Popover.Panel>
+              </Popover>
+            </span>
           </div>
 
-          <div className="mr-2">
+          <div className="mr-2 relative">
             <Menu>
-              <Menu.Button>More</Menu.Button>
-              <Menu.Items>
+              <Menu.Button className="border px-2 flex">
+                <p>3/3</p> 
+                <ChevronDownIcon className="w-3" />
+              </Menu.Button>
+              <Menu.Items className="absolute bg-white drop-shadow-lg px-16 rounded-md mt-2 -right-2">
                 <Menu.Item>
                   <p>1</p>
                 </Menu.Item>
@@ -139,7 +165,7 @@ const Task_popover = (props: Props) => {
           ></textarea>
         </div>
 
-        <div className="flex flex-row justify-between mt-4 mx-2">
+        <div className="flex flex-row justify-between mt-4 mx-2 text-black">
           <div className="flex flex-row">
             <PlusSmIcon className="w-6" />
             <p>Add Subtask</p>
@@ -150,7 +176,7 @@ const Task_popover = (props: Props) => {
           </div>
         </div>
 
-        <div className="flex flex-row justify-start ml-4 mt-4 relative">
+        <div className="flex flex-row justify-start ml-4 mt-4 relative text-black">
           <p className="mr-2">Attachments</p>
           <Menu>
             <Menu.Button className="flex flex-row border">
@@ -174,13 +200,13 @@ const Task_popover = (props: Props) => {
                 </Menu.Item>
                 <Menu.Item>
                   <div className="flex flex-row justify-start">
-                    <PlusSmIcon className="w-6" />
+                    <UploadIcon className="w-6" />
                     <p>Dropbox</p>
                   </div>
                 </Menu.Item>
                 <Menu.Item>
                   <div className="flex flex-row justify-start">
-                    <PlusSmIcon className="w-6" />
+                    <CloudIcon className="w-6" />
                     <p>OneDrive/Sharepoint</p>
                   </div>
                 </Menu.Item>
@@ -207,14 +233,47 @@ const Task_popover = (props: Props) => {
           </Menu>
         </div>
 
-        <div className="flex flex-row mt-1 ml-1">
+        <div className="flex flex-row mt-1 ml-1 ">
           <PlusSmIcon className="w-6" />
           <p>
             Drag & Drop files to attach or{" "}
-            <span className="text-red-500 border-dashed border-b border-red-500">
-              <a href="">Browse</a>{" "}
-            </span>
+            <input type="file" className="text-btncolor" />
           </p>
+        </div>
+
+        <div className="flex flex-row justify-between items-center mx-2">
+          <span className="px-4 flex gap-4 mt-12 mb-6">
+            <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+              <ClockIcon className="w-7 h-7" />
+            </i>
+            <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+              <StarIcon className="w-7 h-7" />
+            </i>
+            <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+              <CalendarIcon className="w-7 h-7" />
+            </i>
+            <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+              <StarIcon className="w-7 h-7" />
+            </i>
+            <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+              <CalendarIcon className="w-7 h-7" />
+            </i>
+            <EyeIcon className="w-7 h-7 cursor-pointer text-red-500 mt-1" />
+          </span>
+          <div className="mt-4 text-white">
+            <button
+              type="submit"
+              className="border p-2 mr-1 px-4 bg-red-400 hover:bg-red-500 "
+            >
+              Create Task
+            </button>
+            <button
+              type="submit"
+              className="border py-2 h-10 bg-red-400 hover:bg-red-500"
+            >
+              <ChevronUpIcon className="w-4" />
+            </button>
+          </div>
         </div>
       </Popover.Panel>
     </div>
