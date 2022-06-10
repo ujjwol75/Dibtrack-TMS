@@ -23,7 +23,7 @@ const Space = (props: Props) => {
    
     <>
    
-        <div className='flex justify-between relative'>
+        <div className='flex justify-between relative h-screen'>
           <SpaceTable/>
           <div className='w-[3rem] h-6   border-gray-200 text-center'>
               <PlusCircleIcon className='h-6 w-6 mb-1 inline-block cursor-pointer' onClick={()=>showPop()}/>
