@@ -1,6 +1,6 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
-import SignupForm from '../../components/form/Form'
+import SignupForm from '../../components/form/SignupForm'
 import Navbar from '../../components/Navbar'
 
 const Signup = () => {

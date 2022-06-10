@@ -5,8 +5,8 @@ type Props = {};
 
 const SettingsTab = (props: Props) => {
   return (
-    <div className="absolute p-4 rounded top-12 left-[195px] border border-gray-300 rounded shadow shadow-md
-     z-100 h-50 w-50 bg-white opacity-100 overflow-visible">
+    <div className="absolute p-4 rounded top-8  border border-gray-300 rounded shadow shadow-md
+     z-1000 h-50 w-[200px] bg-white opacity-100">
        
       <Menu.Item>
       <h4 className="text-gray-500 text-center ">Account settings</h4>

@@ -9,7 +9,7 @@ const InviteSideBar = (props: Props) => {
     <div>
         <div className=" flex flex-col">
            <div className="w-[250px] justify-start  border bg-bgsearchbar
-         text-sm text-gray-500  h-screen border-black-100 overflow-scroll pl-[30px]">
+         text-sm text-gray-500  h-screen border-black-100 overflow-auto pl-[30px]">
           <Link to  = "/"> <button className='bg-btncolor  px-2 py-1 rounded-md flex flex-row  mt-5 text-white'>
 
                  
