@@ -9,7 +9,7 @@ import GrayBtn from '../Button/GrayBtn'
 import NameField from '../InputLayout/NameField'
 import OptionText from '../InputLayout/OptionText'
 
-import List from '../ListBox/List'
+import List from '../DropDownList/DropDownList'
 
 type Props = {
  
@@ -55,7 +55,7 @@ const MidBox = (props: Props) => {
         <div className='mt-2'>
           <div>
             <div>
-              <p className='text-sm text-gray-400 font-thin ml-3'>FIELD TYPE</p>
+              <p className='text-sm text-gray-400 font-thin ml-3'>OPTION</p>
             </div>
         {/* FIELD Text */}
             <OptionText name={'OptionField'} type={'text'}/>
