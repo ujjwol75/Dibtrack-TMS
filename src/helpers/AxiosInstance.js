@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { accessToken } from "./sessionKey";
 
-const DOMAIN = "https://dibtrack.dibtech.com.au/";
+const DOMAIN = "https://dibtrack.dibtech.com.au";
 const HOSTNAME = window.location.hostname === "localhost" ? DOMAIN : "";
 const API_ROOT = `${HOSTNAME}/api`;
 
