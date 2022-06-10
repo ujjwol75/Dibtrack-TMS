@@ -1,7 +1,9 @@
 import { ChevronDownIcon, DotsHorizontalIcon } from "@heroicons/react/solid";
-import React from "react";
+import React , {useState} from "react";
 import CircleUserIcon from "../../Reusable/CircleUserIcon";
+import FlyoutMenu from "./FlyoutMenu";
 import UserSettings from "./UserSettings";
+import ViewProfile from "./ViewProfile";
 
 type Props = {};
 
@@ -30,6 +32,10 @@ const users = [
 ];
 
 const MemberPanel = (props: Props) => {
+  const[copystatus , setCopyStatus] = useState<string>('copy')
+
+ 
+
   return (
     <table className="  text-xs border border-slate-400 w-full">
       <thead className="border-b border-slate-400 rounded">
@@ -50,19 +56,29 @@ const MemberPanel = (props: Props) => {
       <tbody className="text-txtcolor ml-1">
         {users.map((user) => (
           <tr>
-            <td className="p-3">
-              <CircleUserIcon size="sm" />
+                  <ViewProfile name = {user.name} />
+            {/* <td className="p-3">
+              <span className="flex flex-row">
+              <FlyoutMenu />
+              {/* <CircleUserIcon size="sm" /> */}
 
-             <span className="ml-2">{user.name}</span> 
-            </td>
+             {/* <span className="ml-2">{user.name}</span> 
+        </span> */}
+              
+            {/* </td> */} 
             <td className="p-3 flex flex-row useremail">
               
                 <button className="border border-btncolor py-[1px] px-[6px] text-[8px] text-white mr-2 text-btncolor rounded-md">
                   OWNER
                 </button>
                 <p>{user.email}</p>
-                <button className="bg-btncolor py-[2px] px-[4px] rounded  text-white ml-2 invisible copy">
-                  copy
+                <button className="bg-btncolor py-[2px] px-[4px] rounded  text-white ml-2 invisible copy" 
+                 onClick={() => {
+                  navigator.clipboard.writeText(user.email)
+                  setCopyStatus('copied')
+                 } }
+                >
+                  {copystatus}
                 </button>
               
             </td>
@@ -70,7 +86,7 @@ const MemberPanel = (props: Props) => {
             <td className="p-2 ">{user.role}</td>
             <td className="p-2 ">{user.lastactive}</td>
             <td className="p-2 ">
-                <UserSettings />
+                <UserSettings  id = {user.id}/>
             </td>
           </tr>
         ))}

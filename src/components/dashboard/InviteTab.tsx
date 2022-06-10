@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import { Fragment } from "react";
 import { Tab } from "@headlessui/react";
 import { QuestionMarkCircleIcon } from "@heroicons/react/solid";
@@ -7,6 +7,7 @@ import MemberPanel from "./MemberPanel";
 const InviteTab = () => {
   const membersCount = 1;
   const GuestMembersCount = 0;
+ 
   return (
     <div>
       <Tab.Group>
@@ -17,7 +18,7 @@ const InviteTab = () => {
                 className={
                   selected
                     ? "bg-white text-txtcolor mr-4 focus:outline-none"
-                    : "bg-white text-gray-400 mr-4"
+                    : "bg-white text-gray-400 mr-4 cursor-pointer"
                 }
               >
                 Full Members ({membersCount})
@@ -31,7 +32,7 @@ const InviteTab = () => {
                 className={
                   selected
                     ? "bg-white text-txtcolor focus:outline-none"
-                    : "bg-white text-gray-400"
+                    : "bg-white text-gray-400 cursor-pointer" 
                 }
               >
                 <span className="flex flex-row">
