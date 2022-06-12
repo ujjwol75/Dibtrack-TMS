@@ -1,8 +1,9 @@
 import { Popover, Tab } from '@headlessui/react'
-import { SearchIcon, ChevronDownIcon, ChevronUpIcon, FilterIcon, XIcon, PlusIcon, InformationCircleIcon, SparklesIcon, DuplicateIcon, QuestionMarkCircleIcon, AnnotationIcon, CheckIcon, TagIcon, CalendarIcon, XCircleIcon, PencilIcon, ChevronRightIcon, LinkIcon, UserIcon, UsersIcon, EyeIcon } from '@heroicons/react/solid'
+import { SearchIcon, ChevronDownIcon, ChevronUpIcon, FilterIcon, XIcon, PlusIcon, InformationCircleIcon, SparklesIcon, DuplicateIcon, QuestionMarkCircleIcon, AnnotationIcon, CheckIcon, TagIcon, CalendarIcon, XCircleIcon, PencilIcon, ChevronRightIcon, LinkIcon, UserIcon, UsersIcon, EyeIcon, ChevronDoubleRightIcon, ChevronDoubleUpIcon } from '@heroicons/react/solid'
 import React,{useState} from 'react'
 import Down from '../Down/Down'
 import Show from '../Show/Show'
+import Collapseasignees from "./Collapseasignees"
 
 type Props = {}
 
@@ -11,10 +12,11 @@ const Subtopnav = (props: Props) => {
     const [enabled1,setEnabled1] = useState(false)
     const [enabled2,setEnabled2] = useState(false)
     const [upShow,setUpShow] = useState(true)
+    const [collapse,setCollapse] = useState(true)
   return (
     <div>
-        <div className='container-2 flex flex-row items justify-between px-5 py-2'> 
-      <div className='flex flex-row items-center cursor-pointer'>
+      <div className='container-2 flex flex-row items-start justify-between px-5 py-2'> 
+      <div className='flex flex-row items-center mt-2 cursor-pointer'>
         <SearchIcon className='h-5 w-5'/>
         <input className='border-r-2 outline-none input' placeholder='Search tasks...'/>
         <Popover className="relative">
@@ -41,7 +43,7 @@ const Subtopnav = (props: Props) => {
       </div>
       <div>
         <Tab.Group>
-          <Tab.List className='flex flex-row items-center' >
+          <Tab.List className='flex flex-row items-center flex-wrap' >
             <Tab className='px-5 py-2 flex flex-row hover:bg-gray-300'>
               {/* <div className='flex flex-row'>
                 <FilterIcon className='h-5 w-5'/>
@@ -199,7 +201,7 @@ const Subtopnav = (props: Props) => {
             </Tab>
             <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
               <UsersIcon className='h-5 w-5'/>
-              <span>Asignees</span>
+              <span onClick={()=>setCollapse(!collapse)}>Asignees</span>
               </Tab>
             <Tab className='px-5 py-2 hover:bg-gray-300'>
               {/* <div className='flex flex-row'>
@@ -226,7 +228,59 @@ const Subtopnav = (props: Props) => {
           </Tab.Panels>
         </Tab.Group>
       </div>
+      <div>
+      {
+        collapse ? (
+          <div className='collapse1 w-96 border z-100'>
+            <div className='p-4'>
+              <div className='flex flex-row justify-between'>
+                <span>Asignees</span>
+                <span><ChevronDoubleRightIcon className='h-5 w-5 text-purple-600'/></span>
+              </div>
+              <div className='flex flex-row items-center border p-2 mt-2 bg-gray-300 rounded-lg'>
+                <span className='font-bold'><SearchIcon className='h-5 w-5 mr-2 text-gray-400'/></span>
+                <input className='bg-gray-300' placeholder='search'/>
+              </div>
+              <div className='flex flex-row justify-between py-3'>
+                <span className='text-gray-400'>ASIGNEES</span>
+                <span className='text-purple-600'>select all</span>
+              </div>
+            </div>
+            <div className='h-96 overflow-y-auto'>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+              <Collapseasignees/>
+            </div>
+            <hr/>
+            <div>
+              <div className='flex flex-row justify-between p-4'>
+                <span className='text-gray-400'>TEAMS</span>
+                <span className='text-purple-600'>select all</span>
+            </div>
+            </div>
+            <hr/>
+            <div>
+              <p className='text-center'>No results</p>
+            </div>
+              <div className='flex flex-row text-purple-600 p-4'>
+                <UserIcon className='h-5 w-5'/>
+                <span>Assigned comments</span>
+              </div>
+          </div>
+        ):(
+          <div className='collapse2'>
+          </div>
+        )
+      }
     </div>
+    </div>
+    
     </div>
   )
 }
