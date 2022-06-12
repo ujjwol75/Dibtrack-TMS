@@ -30,9 +30,9 @@ function Sidebar() {
   };
 
   return !collapse ? (
-    <div className="h-screen z-1">
+    <div className="z-1 w-full relative h-[100vh]  relative">
       <div
-        className="sidebar border  h-screen border-black-100 overflow-scroll">
+        className="sidebar w-full border  h-full  border-black-100 overflow-auto  scrollbar">
         <div className="flex flex-row justify-around p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
           <div className="mt-2 flex flex-row">
@@ -52,19 +52,19 @@ function Sidebar() {
         </div>
 
         <div className="search-bar  flex flex-row justify-between mt-3 p-2">
-          <div className="search-input w-full relative ">
+          <div className="search-input  relative ">
           <input
             type="text"
             className=" bg-bgsearchbar focus:outline-none 
-                border border-black-100 pl-5 w-[75%] text-sm text-gray-400"
+                border border-black-100 pl-12 text-sm text-gray-400 py-1 w-[85%]"
             placeholder="Search"
           />
-          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-0 top-2 "/>
+          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-5 bottom-[10px]"/>
           </div>
           
 
-          <div className="p-1 bg-bgsearchbar text-center text-gray-500  text-xs w-[20%]">
-            <i className="fa-solid fa-bolt p-2 text-black-300 hover:text-blue-400"></i>
+          <div className="p-1 mt-[3px] flex justify-center items-center bg-bgsearchbar text-center text-gray-500  text-xs h-[30px] w-[40px]">
+            <i className="fa-solid fa-bolt  text-black-300 hover:text-blue-400  "></i>
           </div>
         </div>
 
@@ -74,7 +74,7 @@ function Sidebar() {
               <div className="mr-3">
                 <HomeIcon className="h-4 w-5 " />
               </div>
-              <div>home</div>
+              <div>Home</div>
             </div>
             <div className="flex flex-row mt-3  w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
@@ -86,7 +86,7 @@ function Sidebar() {
               <div className="mr-3">
                 <ArrowNarrowDownIcon className="h-4 w-5 " />
               </div>
-              <div>show more</div>
+              <div>Show More</div>
             </div>
           </div>
         </div>
@@ -255,14 +255,19 @@ function Sidebar() {
               </>
             )}
           </Disclosure>
+        
+         
         </div>
-        <div className="grid grid-cols-1">
+        <div className="w-full absolute bottom-0">
         <User />
         </div>
+       
         
       </div>
      
-      
+      {/* <div className="w-full fixed bottom-0 left-0">
+        
+        </div> */}
     </div>
   ) : (
     <h1>collapse</h1>

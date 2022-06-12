@@ -55,8 +55,8 @@ const MemberPanel = (props: Props) => {
       </thead>
       <tbody className="text-txtcolor ml-1">
         {users.map((user) => (
-          <tr>
-                  <ViewProfile name = {user.name} />
+          <tr key = {user.id}>
+                  <ViewProfile user = {user} />
             {/* <td className="p-3">
               <span className="flex flex-row">
               <FlyoutMenu />

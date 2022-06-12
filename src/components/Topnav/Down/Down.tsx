@@ -10,15 +10,12 @@ type Props = {
 const Down = (props: Props) => {
     const {enabled,setEnabled,name} = props
   return (
-    <>
-            <div className="grid grid-cols-1 p-4">
-              {/* <div>
-                <span className='text-gray-400'>Space in</span>
-              </div> */}
-              <div className='pt-2 flex flex-row justify-between items-center'>
+    <> 
+            <div className="grid grid-cols-1 px-4 py-2">
+              <div className='flex flex-row justify-between items-center'>
                 <span>{name}</span>
                 <span>
-                  <div className="py-4">
+                  <div className="">
                     <Switch
                       checked={enabled}
                       onChange={setEnabled}

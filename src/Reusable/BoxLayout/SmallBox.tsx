@@ -1,4 +1,4 @@
-import List from '../DropDownList/DropDownList'
+import List from '../DropDownList/DropDownListBox'
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 import GrayBtn from '../Button/GrayBtn'

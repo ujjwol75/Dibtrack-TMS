@@ -1,15 +1,27 @@
 import { Popover } from '@headlessui/react'
-import { DotsHorizontalIcon, FlagIcon, ShareIcon } from '@heroicons/react/outline'
-import { CheckIcon } from '@heroicons/react/solid'
-import React from 'react'
+import { DotsHorizontalIcon, ShareIcon, UserAddIcon } from '@heroicons/react/outline'
+import { CheckIcon, XIcon, FlagIcon } from '@heroicons/react/solid'
+import React, { useRef } from 'react'
 import CircleUserIcon from '../../../Reusable/CircleUserIcon'
 import UserInfoPopup from '../../../Reusable/CircleUserIcon/UserInfoPopup'
-import DropDownList from '../../../Reusable/DropDownList/DropDownList'
+import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
+import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
+import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
 
 type Props = {}
 
+
 const CardPopupSection1 = (props: Props) => {
+
+  const PriorityOptions = [
+    { id: '1', title: 'Urgent', icon: <FlagIcon className='w-5 h-5 text-red-500' /> },
+    { id: '2', title: 'High', icon: <FlagIcon className='w-5 h-5 text-orange-500' /> },
+    { id: '3', title: 'Medium', icon: <FlagIcon className='w-5 h-5 text-blue-500' /> },
+    { id: '4', title: 'Low', icon: <FlagIcon className='w-5 h-5 text-gray-500' /> },
+    { id: '5', title: 'Clear', icon: <XIcon className='w-5 h-5 text-red-500' /> },
+  ]
+
   return (
     <>
       <section className='p-4 w-full flex items-center justify-between relative'>
@@ -26,22 +38,18 @@ const CardPopupSection1 = (props: Props) => {
             <CheckIcon className='w-5 h-5 ' />
           </span>
 
-          <span>
-            <Popover>
-              <Popover.Button>
-                <CircleUserIcon size='md' />
-              </Popover.Button>
-              <Popover.Panel className="absolute z-10 mt-3">
-                <UserInfoPopup />
-              </Popover.Panel>
-            </Popover>
+          {/* ASSIGN USERS */}
+          <span className='flex items-center'>
+            <FlyoutMenu />
+            <UserAddIcon className='p-1 w-8 border-2 h-fit border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
           </span>
 
-          <span className='p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer'>
-            <FlagIcon className='w-6 h-6 ' />
-          </span>
+          <DropDownListBox options={PriorityOptions}
+            customButton={
+              <FlagIcon className='w-8 p-1 h-fit border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+            }
+          />
 
-          <DropDownList />
         </section>
 
         <section className='flex space-x-5 items-center'>

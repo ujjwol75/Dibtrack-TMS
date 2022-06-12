@@ -8,8 +8,8 @@ type Props = {};
 
 const InviteMain = (props: Props) => {
   return (
-    <div className="p-5 text-gray-400">
-      <div className="flex flex-row justify-between w-[950px]">
+    <div className="p-5 text-gray-400 w-full">
+      <div className="flex flex-row justify-between w-full">
         <p className="text-2xl font-bold ">Manage People</p>
         <p className="text-blue-300">learn More</p>
       </div>
@@ -17,16 +17,16 @@ const InviteMain = (props: Props) => {
         <div className="w-[50%] relative">
           <input
             type="text"
-            className=" bg-white border border-gray-500  focus:outline-none p-2 pl-10"
+            className="w-full bg-white border border-gray-500  focus:outline-none p-2 pl-10"
             placeholder="search by name or email"
           ></input>
           <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3" />
         </div>
 
-        <div className="w-[50%] relative flex flex-row">
+        <div className=" relative flex flex-row">
           <input
             type="text"
-            className=" bg-white border  border-gray-500 text-low focus:outline-none p-2 pl-10"
+            className="w-ful bg-white border  border-gray-500 text-low focus:outline-none p-2 pl-10"
             placeholder="Invite by email"
           ></input>
             <MemberDropdown />

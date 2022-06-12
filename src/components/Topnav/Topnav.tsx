@@ -5,6 +5,7 @@ import Down from './Down/Down';
 import Models from './Models/Models'
 import View from './View/View'
 import Show from './Show/Show';
+// import Popup from './Popup/SpacePopup';
 import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
 import Calendar_component from '../dashboard/Calendar_component';
@@ -50,7 +51,10 @@ import {
   TemplateIcon,
   GlobeAltIcon,
   IdentificationIcon,
-  LockClosedIcon
+  LockClosedIcon,
+  DotsHorizontalIcon,
+  EyeOffIcon,
+  StarIcon
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
@@ -77,77 +81,175 @@ const Navbar = (props: Props) => {
         <Tab.Group>
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
-            <span className='flex'>
+            <span className='flex flex-row items-center'>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
-                    <span
+                    <span 
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 whitespace-nowrap items-center px-2 py-1 border-b-2  font-bold text-lg border-gray-400' : " flex flex-row px-2 py-1 items-center font-bold text-lg "}
+                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 border-gray-300 hover:border-gray-300 whitespace-nowrap items-center px-2 py-1 border-b-4 font-bold text-lg hover:border-b-4 dot-wrapper1 ml-2' : "flex flex-row px-2 py-1 items-center font-bold text-lg ml-2"}
                     >
-                      <span className='font-bold text-xl border rounded-lg bg-gray-400 text-white p-3 px-6'>S</span>
-                      <span className=''>Space</span>
+                        <span className='font-bold text-xl border rounded-lg bg-gray-400 text-white p-3 px-6'>S</span>
+                        <span className=''>Space</span>
+                        {/* <span><DotsHorizontalIcon className='h-5 w-5 dot1 invisible'/></span> */}
+                        <Popover className="relative">
+                          <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot1 mt-3 invisible'/></span></Popover.Button>
+                          <Popover.Panel className="absolute z-10 bg-white border w-60 p-4 font-normal top-12">
+                            <div className="grid grid-cols-1">
+                              <div className='flex flex-row items-center p-2'>
+                                <span className='pr-4'><DesktopComputerIcon className='h-5 w-5'/></span>
+                                <span>Automations</span>
+                              </div>
+                              <div className='flex flex-row items-center p-2'>
+                                <span className='pr-4'><EyeOffIcon className='h-5 w-5'/></span>
+                                <span>Hide in my sidebar</span>
+                              </div>
+                              <div className='flex flex-row items-center p-2'>
+                                <span className='pr-4'><StarIcon className='h-5 w-5'/></span>
+                                <span>Favourite</span>
+                              </div>
+                              <hr/>
+                              
+                              <span className='p-2 pt-4'><i>Limited permission</i></span>
+                            </div>
+
+                            <img src="/solutions.jpg" alt="" />
+                          </Popover.Panel>
+                          {/* <Popup/> */}
+                        </Popover>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center px-2 py-4 border-b-2 font-bold text-lg' : "px-2 py-4 flex flex-row items-center font-bold text-lg"}
+                        selected ? 'border-transparent flex flex-row text-purple-500 border-purple-600 hover:text-purple-700 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center mx-2 px-2 py-4 border-b-4 text-lg dot-wrapper' : "px-2 py-4 mx-2 flex flex-row items-center text-lg"}
                     >
-                      <span className='border-l-2 border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>List</span>
+                      <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
+                      <span className='border-gray-400 pr-3'>List</span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
+
+                        <Popover.Panel className="absolute z-10">
+                          <div className="grid grid-cols1 border w-72 p-4 bg-white text-black">
+                            <div className='flex flex-row justify-between items-center text-gray-400 py-4'>
+                              <div>
+                                <span className='font-bold'>VIEW OPOTION</span>
+                              </div>
+                              <div className='flex flex-row'>
+                                <span><PencilIcon className='h-5 w-5'/></span>
+                                <span><LinkIcon className='h-5 w-5'/></span>
+                              </div>
+                            </div>
+                            <div className='flex flex-row items-center text-gray-400 pb-2'>
+                              <span>This view is required.</span>
+                              <span><QuestionMarkCircleIcon className='h-5 w-5'/></span>
+                            </div>
+                            <div className='flex flex-row items-center text-gray-600 py-2'>
+                              <span><PencilIcon className='h-5 w-5'/></span>
+                              <span>Pin</span>
+                            </div>
+                            <div className='flex flex-row items-center text-gray-600 py-2'>
+                              <span><StarIcon className='h-5 w-5'/></span>
+                              <span>Favorite</span>
+                            </div>
+                            <div className='flex flex-row justify-between text-gray-600 py-2'>
+                              <div className='flex flex-row items-center'>
+                                <span><DuplicateIcon className='h-5 w-5'/></span>
+                                <span>Duplicate as</span>
+                              </div>
+                              <div>
+                                <span><ChevronRightIcon className='h-5 w-5'/></span>
+                              </div>
+                            </div>
+                            <div className='flex flex-row items-center text-gray-600 py-2'>
+                              <span><ShareIcon className='h-5 w-5'/></span>
+                              <span>Sharing & Permissions</span>
+                            </div>
+                            <hr className='py-2'/>
+                            <div className='flex flex-row items-center justify-between text-gray-600 py-2'>
+                              <div className='flex flex-row items-center'>
+                                <span><SparklesIcon className='h-5 w-5'/></span>
+                                <span>Template Center</span>
+                              </div>
+                              <div>
+                                <span><ChevronRightIcon className='h-5 w-5'/></span>
+                              </div>
+                            </div>
+                            <div className='flex flex-row items-center justify-between text-gray-600 py-2'>
+                              <div className='flex flex-row items-center'>
+                                <span><DotsHorizontalIcon className='h-5 w-5'/></span>
+                                <span>More Settings</span>
+                              </div>
+                              <div>
+                                <span><ChevronRightIcon className='h-5 w-5'/></span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <img src="/solutions.jpg" alt="" />
+                        </Popover.Panel>
+                      </Popover>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl1 h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Board</span>
+                      <span className=' border-gray-400 pr-3'>Board</span>
+                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl2 h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Space</span>
+                      <span className='border-gray-400 pr-3'>Space</span>
+                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl3 h-10 border-l-2 border-gray-200 mx-2'></div>
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
                     <span
                       className={
-                        selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap items-center border-b-2 py-4 px-2 font-bold text-lg' : " flex flex-row items-center font-bold text-lg py-4 px-2"}
+                        selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
                       <span><ViewBoardsIcon className='h-5 w-5' /></span>
-                      <span className='border-r-2 border-gray-400 pr-3'>Calendar</span>
+                      <span className='border-gray-400 pr-3'>Calendar</span>
+                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
                   </>
 
                 )}
               </Tab>
+              <div className='vl4 h-10 border-l-2 border-gray-200 mx-2'></div>
               <div className='cursor-pointer'>
 
                 <span
@@ -156,7 +258,7 @@ const Navbar = (props: Props) => {
                 >
                   <Popover className="relative">
                     <Popover.Button>
-                      <div className='flex flex-row cursor-pointer items-center'>
+                      <div className='flex flex-row cursor-pointer items-center py-5 px-2'>
                         <span><PlusIcon className='h-5 w-5' /></span>
                         <span className=''>View</span>
                       </div>

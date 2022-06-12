@@ -16,7 +16,7 @@ const Subtopnav = (props: Props) => {
         <div className='container-2 flex flex-row items justify-between px-5 py-2'> 
       <div className='flex flex-row items-center cursor-pointer'>
         <SearchIcon className='h-5 w-5'/>
-        <input className='border-r-2 outline-none'/>
+        <input className='border-r-2 outline-none input' placeholder='Search tasks...'/>
         <Popover className="relative">
           {
             upShow?<Popover.Button><ChevronDownIcon className='h-5 w-5' onClick={()=>setUpShow(false)}/></Popover.Button>:<Popover.Button><ChevronUpIcon className='h-5 w-5' onClick={()=>setUpShow(true)}/></Popover.Button>
@@ -24,10 +24,15 @@ const Subtopnav = (props: Props) => {
           {/* <Popover.Button><ChevronDownIcon className='h-5 w-5'/></Popover.Button> */}
 
           <Popover.Panel className="absolute z-10 border w-80 shadow-2xl">
-            <div className="grid grid-cols-1 p-4">
-              <Down enabled={enabled} setEnabled={setEnabled} name={"Task Name"}/>
-              <Down enabled={enabled1} setEnabled={setEnabled1} name={"Task Description"}/>
-              <Down enabled={enabled2} setEnabled={setEnabled2} name={"Custom Field"}/>
+            <div className="grid grid-cols-1 bg-white p-4">
+              <div>
+                <span className='pl-4 pt-4 text-gray-400 font-bold'>SEARCH IN</span>
+              </div>
+              <div>
+                <Down enabled={enabled} setEnabled={setEnabled} name={"Task Name"}/>
+                <Down enabled={enabled1} setEnabled={setEnabled1} name={"Task Description"}/>
+                <Down enabled={enabled2} setEnabled={setEnabled2} name={"Custom Field"}/>
+              </div>
             </div>
 
             <img src="/solutions.jpg" alt="" />
