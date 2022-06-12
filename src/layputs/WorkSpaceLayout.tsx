@@ -20,11 +20,11 @@ const DashboardLayout = () => {
     <>
       <div className="grid grid-cols-5">
         <Sidebar />
-        {/* <div className="col-span-4">
+        <div className="col-span-4">
           <Topnav /> 
           <Outlet />
-        </div> */}
-        <div className="h-[3.5rem] w-[92rem] bg-slate-600 flex justify-between">
+        </div>
+        {/* <div className="h-[3.5rem] w-[92rem] bg-slate-600 flex justify-between">
           <div className="flex">
             <p>Home</p>
           </div>
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
          
           </div>
 
-        </div>
+        </div> */}
       </div>
     </>
   );
