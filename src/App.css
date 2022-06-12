@@ -4,6 +4,9 @@
   text-align: center;
 }
 
+.collapse2{
+  display: none;
+}
 
 .view{
   overflow-y: scroll;
