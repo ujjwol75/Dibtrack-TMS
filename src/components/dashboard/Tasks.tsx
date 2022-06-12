@@ -23,12 +23,12 @@ type Props = {};
 
 const Tasks = (props: Props) => {
   const [hide, setHide] = useState(false);
-  
+  const [close, setClose] = useState(false)
 
   function handleHide() {
     setHide(true);
   }
-
+   console.log("ujjwol", close)
   return !hide ? (
     <>
       <div className="flex flex-col text-sm">
@@ -294,8 +294,9 @@ const Tasks = (props: Props) => {
                 <PlusSmIcon className="w-4" />
                 <p>Task</p>
               </Popover.Button>
-
-              <Task_popover />
+           
+              {!close && <Task_popover close={!close} setClose={setClose} />}
+              
             </Popover>
             <div className="relative">
               <Menu>
