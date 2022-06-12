@@ -55,9 +55,14 @@ import {
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
 import LBox from '../List/LBox';
-type Props = {}
+import SidebarFlyoutMenu from '../sidebar/SidebarFlyout';
+type Props = {
+  collapse : boolean
+  setCollapse:any
+}
 
-const Navbar = (props: Props) => {
+const Navbar = ({collapse , setCollapse}: Props) => {
+  console.log('topnav collapse: ' , collapse)
   let [isOpen, setIsOpen] = useState(false)
   const [enabled, setEnabled] = useState(false)
   const [enabled1, setEnabled1] = useState(false)
@@ -74,10 +79,15 @@ const Navbar = (props: Props) => {
   return (
     <>
       <div className='mt-2'>
+        
+        {/* <MenuAlt1Icon className='mt-3 h-5 w-5 text-black-300' /> */}
         <Tab.Group>
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
+
             <span className='flex'>
+            {collapse && <SidebarFlyoutMenu collapse = {collapse} setCollapse = {setCollapse}/>}
+              {/* {collapse && <MenuAlt1Icon className='h-8 w-8 mt-2' onClick={() => setCollapse(!collapse)} />} */}
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
@@ -168,8 +178,10 @@ const Navbar = (props: Props) => {
             </span>
             {/* RIGHT TOPNAV */}
             <div>
+            
               <Tab.Group>
                 <div className=''>
+                  
                   <Tab.List className='flex flex-row space-x-2'>
                     <Tab className='flex flex-row px-5 py-2 items-center cursor-pointer border rounded-lg'>
                       <DesktopComputerIcon className='h-5 w-5' />

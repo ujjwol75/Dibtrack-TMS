@@ -3,6 +3,7 @@ import logo from "../../images/logo.png";
 import { Menu } from '@headlessui/react'
 import SettingsTab from "../sidebar/SettingsTab";
 
+
 import {
   CogIcon,
   ChevronDoubleLeftIcon,
@@ -21,19 +22,27 @@ import SpaceDropdown from "../sidebar/SpaceDropdown";
 import NewSpaceModal from "../sidebar/NewSpaceModal";
 import SpacePlusTab from "../sidebar/SpacePlusTab";
 import User from "../sidebar/User";
-function Sidebar() {
-  const [collapse, setCollapse] = useState<boolean>(false);
+import CloseSideBar from "../sidebar/CloseSideBar";
+ 
+type Props = {
+  collapse?:any;
+  setCollapse:any
+}
+function Sidebar(props:Props) {
+  const {collapse,setCollapse} = props;
+  console.log('collapse in sidebar' , collapse)
 
   const handleCollapse = () => {
-    setCollapse(true);
-    console.log("collapse: ", collapse);
+      setCollapse(!collapse)
+      
+      
   };
 
-  return !collapse ? (
-    <div className="z-1 w-full relative h-[100vh]  relative">
+  return (
+    <div className="z-1  relative h-[100vh]  relative">
       <div
-        className="sidebar w-full border  h-full  border-black-100 overflow-auto  scrollbar">
-        <div className="flex flex-row justify-around p-2">
+        className="sidebar  border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white">
+        <div className="flex flex-row justify-between p-2">
           <img src={logo} className="h-[45px] w-[100px]" />
           <div className="mt-2 flex flex-row">
             <Menu>
@@ -55,16 +64,16 @@ function Sidebar() {
           <div className="search-input  relative ">
           <input
             type="text"
-            className=" bg-bgsearchbar focus:outline-none 
+            className=" bg-bgsearchbar focus:outline-none hover:text-btncolor
                 border border-black-100 pl-12 text-sm text-gray-400 py-1 w-[85%]"
             placeholder="Search"
           />
-          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-5 bottom-[10px]"/>
+          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-5 bottom-[10px] hover:text-blue-500"/>
           </div>
           
 
           <div className="p-1 mt-[3px] flex justify-center items-center bg-bgsearchbar text-center text-gray-500  text-xs h-[30px] w-[40px]">
-            <i className="fa-solid fa-bolt  text-black-300 hover:text-blue-400  "></i>
+            <i className="fa-solid fa-bolt text-black-300 hover:text-blue-400  "></i>
           </div>
         </div>
 
@@ -269,9 +278,7 @@ function Sidebar() {
         
         </div> */}
     </div>
-  ) : (
-    <h1>collapse</h1>
-  );
+  ) 
 }
 
 export default Sidebar;
