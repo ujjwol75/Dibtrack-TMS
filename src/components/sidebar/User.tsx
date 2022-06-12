@@ -5,7 +5,7 @@ type Props = {}
 
 const User = (props: Props) => {
   return (
-    <div className="h-[50px] border  w-[307px] overflow-hidden  border-gray-300  bg-white opacity-100 fixed bottom-0 left-0  grid grid-cols-1 p-1">
+    <div className="h-[50px] border  w-full overflow-hidden  border-gray-300  bg-white opacity-100  p-1">
             <div className="flex flex-row justify-between cursor-pointer">
                 <UserModal />
             {/* <div className="flex flex-row">
