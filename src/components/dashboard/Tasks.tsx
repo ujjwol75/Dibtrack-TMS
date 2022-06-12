@@ -23,6 +23,7 @@ type Props = {};
 
 const Tasks = (props: Props) => {
   const [hide, setHide] = useState(false);
+  
 
   function handleHide() {
     setHide(true);
@@ -256,7 +257,7 @@ const Tasks = (props: Props) => {
           </Tab.Group>
           <hr className="mt-40" />
 
-          <div>
+          <div className="-mt-[80px]">
             <Disclosure>
               {({ open }) => (
                 <>

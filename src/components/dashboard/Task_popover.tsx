@@ -18,17 +18,40 @@ import {
   ExternalLinkIcon,
   UploadIcon,
   CloudIcon,
+  TrashIcon,
 } from "@heroicons/react/solid";
 import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup";
 import CircleUserIcon from "../../Reusable/CircleUserIcon";
+import { add } from "date-fns";
+import AddTask from "./AddTask";
 
 type Props = {};
 
 const Task_popover = (props: Props) => {
   // const [close, setClose] = useState(false)
+  const [userInput, setUserInput] = useState("");
+  const [addTask, setAddTask] = useState(false);
+  const [addTaskArr, setAddTaskArr] = useState([])
+  const [addCheckList, setAddCheckList] = useState(false);
+  const [submit, setSubmit] = useState(false)
+
+  const handleForm=(e:any)=>{
+    e.preventDefault()
+  }
+
+  const handleSubmit = ()=>{
+    setSubmit(!submit)
+    console.log("ram")  
+    if (addTask && !submit){
+      return <AddTask />
+    }          
+     
+         
+   
+  }
   return (
     <div>
-      <Popover.Panel className="absolute z-10 bg-white drop-shadow-lg -right-[3rem] bottom-[5rem] w-[38rem] text-gray-500">
+      <Popover.Panel className="absolute z-10 bg-white drop-shadow-lg -right-[1rem] bottom-[5rem] w-[38rem] text-gray-500 h-[32rem] overflow-scroll">
         <div className="flex flex-row justify-between items-center mx-2">
           <div className="flex flex-row">
             <StopIcon className="w-7 text-gray-500" />
@@ -49,18 +72,31 @@ const Task_popover = (props: Props) => {
             <p className="ml-2 mr-2">In</p>
 
             <div className="mr-2 relative">
-              <Menu>
-                <Menu.Button>
+            <Tab.Group>
+      <Tab.List>
+        <Tab>Tab 1</Tab>
+        
+      </Tab.List>
+      <Tab.Panels className="w-40px bg-red-400">
+        <Tab.Panel>Content 1</Tab.Panel>
+        
+      </Tab.Panels>
+    </Tab.Group>
+              {/* <Tab.Group>
+                <Tab.List>
+                  <Tab>
                   <input
                     className="cursor-pointer shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="username"
                     type="text"
                     placeholder="List"
                   />
-                </Menu.Button>
-                <Menu.Items className="absolute w-[15rem] bg-white drop-shadow-lg mt-3 rounded-lg">
-                  <Menu.Item>
-                    <div className="flex flex-row">
+                  </Tab>
+               
+                </Tab.List>
+                <Tab.Panels className="bg-red">
+                  <Tab.Panel>
+                  <div className="flex flex-row">
                       <PlusSmIcon className="w-6" />
                       <textarea
                         className="form-control w-[15rem] px-3 py-1.5 text-base font-normal mt-6 text-gray-500 bg-white  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -68,37 +104,10 @@ const Task_popover = (props: Props) => {
                         placeholder="Search Spaces, Folders, Lists"
                       ></textarea>
                     </div>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <div>
-                      <Disclosure>
-                        <Disclosure.Button className="py-2 -ml-[10rem]">
-                          <div className="flex flex-row justify-start">
-                            <ChevronDownIcon className="w-6" />
-                            <p>Space</p>
-                          </div>
-                        </Disclosure.Button>
-                        <Disclosure.Panel className="text-gray-500">
-                          {/* <div>
-                            <Disclosure>
-                              <Disclosure.Button className="py-2 -ml-[14rem]">
-                                <div className="flex flex-row justify-start">
-                                  <ChevronDownIcon className="w-6" />
-                                  <p>Space</p>
-                                </div>
-                              </Disclosure.Button>
-                              <Disclosure.Panel className="text-gray-500">
-                                <h1>hello</h1>
-                              </Disclosure.Panel>
-                            </Disclosure>
-                          </div> */}
-                        </Disclosure.Panel>
-                      </Disclosure>
-                    </div>
-                  </Menu.Item>
-                  <hr />
-                </Menu.Items>
-              </Menu>
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group> */}
+                  
             </div>
 
             <p className="mr-2">For</p>
@@ -122,7 +131,7 @@ const Task_popover = (props: Props) => {
           <div className="mr-2 relative">
             <Menu>
               <Menu.Button className="border px-2 flex">
-                <p>3/3</p> 
+                <p>3/3</p>
                 <ChevronDownIcon className="w-3" />
               </Menu.Button>
               <Menu.Items className="absolute bg-white drop-shadow-lg px-16 rounded-md mt-2 -right-2">
@@ -165,16 +174,82 @@ const Task_popover = (props: Props) => {
           ></textarea>
         </div>
 
-        <div className="flex flex-row justify-between mt-4 mx-2 text-black">
-          <div className="flex flex-row">
-            <PlusSmIcon className="w-6" />
-            <p>Add Subtask</p>
+        <div className="relative">
+          <div className="flex flex-row justify-between mt-4 mx-2 text-black">
+            <div className="flex flex-row">
+              <PlusSmIcon className="w-6" />
+              <p
+                onClick={() => {
+                  setAddTask(!addTask);
+                  setAddCheckList(false);
+                }}
+              >
+                Add Subtask
+              </p>
+            </div>
+            <div className="flex flex-row">
+              <PlusSmIcon className="w-6" />
+              <p
+                onClick={() => {
+                  setAddCheckList(!addCheckList);
+                  setAddTask(false)
+                }}
+              >
+                Add Checklist
+              </p>
+            </div>
           </div>
-          <div className="flex flex-row">
-            <PlusSmIcon className="w-6" />
-            <p>Add Checklist</p>
+
+          { addTask ? (
+            <form onSubmit={handleForm}>
+            <span className="flex flex-start ml-4 my-2">tasks</span>
+            
+            <div className="flex flex-row mx-2 ml-4">
+            <StopIcon className="w-4" />
+            <input
+              type="text"
+              value={userInput}
+              onChange={(e) => {
+                setUserInput(e.target.value);
+              }}
+              className="w-[30rem] bg-white outline-none border-gray-200 border mx-2"
+            />
+            <PlusSmIcon className="w-8 cursor-pointer text-red-500 hover:bg-red-200" onClick={handleSubmit}/>
+           
+            <StopIcon className="w-6 ml-4 mr-2" />
+            <TrashIcon className="w-6" />
+            
+           
+            
           </div>
+            
+          </form>
+          ) : null}
         </div>
+          
+
+        {addCheckList ? (
+          <div>
+            <span className="flex flex-start ml-2 my-2">
+              CHECKLIST <span>(0/0)</span>
+            </span>
+            <div className="flex flex-row mx-2">
+              <PlusSmIcon className="w-4 ml-4" />
+              <input
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                className="w-[10rem] bg-white outline-none border-gray-200 border mx-2"
+              />
+              <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
+                <StarIcon className="w-7 h-7" />
+              </i>
+              
+            </div>
+            
+          </div>
+          
+        ) : null}
 
         <div className="flex flex-row justify-start ml-4 mt-4 relative text-black">
           <p className="mr-2">Attachments</p>
