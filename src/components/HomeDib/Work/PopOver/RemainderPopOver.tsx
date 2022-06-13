@@ -1,7 +1,9 @@
-import { Dialog } from '@headlessui/react'
-import React, { useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import React, { Fragment, useState } from 'react'
 
-type Props = {}
+type Props = {
+    // rtext:any
+}
 
 const RemainderPopOver = (props: Props) => {
     let [isOpen, setIsOpen] = useState(true)
