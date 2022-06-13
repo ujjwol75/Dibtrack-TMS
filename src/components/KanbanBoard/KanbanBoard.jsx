@@ -10,11 +10,10 @@ import KanbanCard from './KanbanCard'
 const KanbanBoard = () => {
 
   const [openCardModal, setOpenCardModal] = useState(false)
-  let [isOpen, setIsOpen] = useState(true)
 
   const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
     queryKey: "boardData",
-    url: `${APIS.TASK}?workspace=1&parent=`
+    url: `${APIS.KANBAN_TASK}?workspace=9`
   })
 
   console.log(boardsData, "boardsData")
@@ -46,49 +45,68 @@ const KanbanBoard = () => {
     }
   }
 
+  const handleCreateCard = (e, laneId) => {
+    const url = APIS.TASK;
+    const formData = {
+      name: e?.title,
+      parent: laneId,
+      content_type: null,
+      object_id: null,
+      workspace: 9,
+      order: "7",
+      description: "",
+      estimated_time: null
+    };
+    try {
+      createBoardMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
     console.log(cardId, metadata, laneId)
   }
 
-  const data = {
-    lanes: [
-      {
-        id: 'lane1',
-        title: 'Planned Tasks',
-        label: '2/2',
-        cards: [
-          { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', },
-          { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
-        ]
-      },
-      {
-        id: 'lane2',
-        title: 'Completed',
-        label: '0/0',
-        cards: []
-      },
-      {
-        id: 'PLANNED',
-        title: 'Planned Tasks 2',
-        label: '20/70',
-        cards: [
-          {
-            id: 'Milk',
-            title: 'Buy milk',
-            label: '15 mins',
-            description: '2 Gallons of milk at the Deli store',
-          },
-          {
-            id: 'Plan2',
-            title: 'Dispose Garbage',
-            label: '10 mins',
-            description: 'Sort out recyclable and waste as needed'
-          }
-        ]
-      },
-    ]
-  }
+  // const data = {
+  //   lanes: [
+  //     {
+  //       id: 'lane1',
+  //       title: 'Planned Tasks',
+  //       label: '2/2',
+  //       cards: [
+  //         { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', },
+  //         { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
+  //       ]
+  //     },
+  //     {
+  //       id: 'lane2',
+  //       title: 'Completed',
+  //       label: '0/0',
+  //       cards: []
+  //     },
+  //     {
+  //       id: 'PLANNED',
+  //       title: 'Planned Tasks 2',
+  //       label: '20/70',
+  //       cards: [
+  //         {
+  //           id: 'Milk',
+  //           title: 'Buy milk',
+  //           label: '15 mins',
+  //           description: '2 Gallons of milk at the Deli store',
+  //         },
+  //         {
+  //           id: 'Plan2',
+  //           title: 'Dispose Garbage',
+  //           label: '10 mins',
+  //           description: 'Sort out recyclable and waste as needed'
+  //         }
+  //       ]
+  //     },
+  //   ]
+  // }
 
   const components = {
     AddCardLink: ({ onClick }) => <button className='px-3 py-1 mt-3 hover:text-primary' onClick={onClick}>+ New Card</button>,
@@ -102,7 +120,7 @@ const KanbanBoard = () => {
         boardDataLoading ?
           "Loading..." :
           <div>
-            <Board data={data}
+            <Board data={{ lanes: boardsData && boardsData }}
               draggable
               canAddLanes
               editable
@@ -114,12 +132,12 @@ const KanbanBoard = () => {
                 boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
                 backgroundColor: "white",
                 borderRadius: "0.375rem",
-        
+
               }}
-              cardStyle={{}}
               style={{ backgroundColor: "transparent", position: 'relative' }}
               components={components}
               onLaneAdd={(e) => handleCreateBoard(e)}
+              onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
             />
           </div>
 

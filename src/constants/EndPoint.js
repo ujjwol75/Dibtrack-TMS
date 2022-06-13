@@ -7,7 +7,8 @@ const APIS = {
   CURRENT_USER_CHANGE_PASSWORD: `/user/set_password/`,
 
   // TASKS
-  TASK: `/task/`
+  TASK: `/task/`,
+  KANBAN_TASK: `/task/status-wise-task/`
 };
 
 export default APIS;
