@@ -1,7 +1,6 @@
 import { AdjustmentsIcon, CalendarIcon, CheckIcon, ClockIcon, DotsHorizontalIcon, FlagIcon, TagIcon } from '@heroicons/react/outline'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CircleUserIcon from '../../Reusable/CircleUserIcon'
-import FlyoutMenu from '../dashboard/FlyoutMenu'
 
 const KanbanCard = (props) => {
 
@@ -24,7 +23,7 @@ const KanbanCard = (props) => {
         <section onClick={onClick} className="cursor-pointer">
           <header className='flex justify-between p-3 '>
             <h5 className='text-sm'>{title}</h5>
-            <FlyoutMenu />
+            <CircleUserIcon />
           </header>
           <div className='flex items-center space-x-2 text-xs my-3 px-3' >
             <AdjustmentsIcon className='text-blue-300 w-5 h-5' /><span>1</span>
