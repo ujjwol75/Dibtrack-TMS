@@ -1,6 +1,6 @@
 import { Listbox, Transition } from '@headlessui/react'
-import { SelectorIcon, CheckIcon, MailIcon, FlagIcon } from '@heroicons/react/solid'
-import React, { forwardRef, Fragment, useState } from 'react'
+import { SelectorIcon, MailIcon } from '@heroicons/react/solid'
+import { Fragment, useState } from 'react'
 
 type Props = {
   options?: any

@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AuthLayout from "../layputs/AuthLayout";
 import WorkSpaceLayout from "../layputs/WorkSpaceLayout";
 
@@ -10,6 +10,8 @@ import WorkSpaceDashboard from "../pages/Dashboard/WorkSpaceDashboard";
 import DashboardNotFound from "../pages/Error/DashboardNotFound";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layputs/DashboardLayout";
+import HomeDib from "../components/HomeDib/HomeDib";
+import HomeLayout from "../layputs/HomeLayout";
 
 
 // https://adarshaacharya.com.np/blog/role-based-auth-with-react-router-v6
@@ -22,31 +24,50 @@ import DashboardLayout from "../layputs/DashboardLayout";
 const Router = () => {
   return (
     <Routes>
-      <Route element={<AuthLayout/>}>
-        <Route path="/login" element={<Login/>}/>
+
+      {/* LAYOUT FOR AUTHENTICATION PROCESSES */}
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Route>
+
+      {/* LAYOUT WITH SIDEBAR AND TOPNAV */}
       <Route
         element={
           <PrivateRoute>
-            <WorkSpaceLayout/>
+            <WorkSpaceLayout />
           </PrivateRoute>
         }
       >
-        <Route path={"/"} element={<WorkSpaceDashboard/>}/>
-        <Route path={"/dashboard/:name"} element={<DynamicDashboard/>}/>
-        <Route path="/*" element={<DashboardNotFound/>}/>
+        <Route path={"/"} element={<WorkSpaceDashboard />} />
+        <Route path={"/dashboard/:name"} element={<DynamicDashboard />} />
+        <Route path="/*" element={<DashboardNotFound />} />
       </Route>
+
+      {/* PLAIN LAYOUT */}
       <Route
         element={
           <PrivateRoute>
-            <DashboardLayout/>
+            <DashboardLayout />
           </PrivateRoute>
         }
       >
-        <Route path={"/dashboard"} element={<Dashboard/>}/>
-        <Route path="/*" element={<DashboardNotFound/>}/>
+        <Route path={"/dashboard"} element={<Dashboard />} />
+        <Route path="/*" element={<DashboardNotFound />} />
       </Route>
-      <Route path="/signup" element={<Signup/>}/>
+
+
+      {/* LAYOUT WITH SIDEBAR ONLY */}
+      <Route element={
+        <PrivateRoute>
+          <HomeLayout />
+        </PrivateRoute>
+      }
+      >
+        <Route path={"/home"} element={<HomeDib />} />
+      </Route>
+
+
     </Routes>
   );
 };

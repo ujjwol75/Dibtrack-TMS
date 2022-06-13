@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../images/logo.png";
 import { Menu } from '@headlessui/react'
 import SettingsTab from "../sidebar/SettingsTab";
@@ -28,8 +27,8 @@ import useGetHook from "../../customHooks/useGetHook";
 
  
 type Props = {
-  collapse?:any;
-  setCollapse:any
+  collapse?: any;
+  setCollapse: any
 }
 function Sidebar(props:Props) {
   const {collapse,setCollapse} = props;
@@ -51,12 +50,12 @@ console.log(workSpaceData,"workSpaceData")
           <img src={logo} className="h-[45px] w-[100px]" alt="logo"/>
           <div className="mt-2 flex flex-row">
             <Menu>
-            <Menu.Button className = "mr-5"><CogIcon className=" settings h-5 w-5 text-gray-400" /></Menu.Button>
-            <Menu.Items>
-               <SettingsTab />
-            </Menu.Items>
+              <Menu.Button className="mr-5"><CogIcon className=" settings h-5 w-5 text-gray-400" /></Menu.Button>
+              <Menu.Items>
+                <SettingsTab />
+              </Menu.Items>
             </Menu>
-           
+
 
             <ChevronDoubleLeftIcon
               className="text-blue-400 ml-5 h-5 w-5 justify mt-2"
@@ -67,15 +66,15 @@ console.log(workSpaceData,"workSpaceData")
 
         <div className="search-bar  flex flex-row justify-between mt-3 p-2">
           <div className="search-input  relative ">
-          <input
-            type="text"
-            className=" bg-bgsearchbar focus:outline-none hover:text-btncolor
+            <input
+              type="text"
+              className=" bg-bgsearchbar focus:outline-none hover:text-btncolor
                 border border-black-100 pl-12 text-sm text-gray-400 py-1 w-[85%]"
-            placeholder="Search"
-          />
-          <SearchIcon className = "h-4 w-5 text-gray-400 absolute left-5 bottom-[10px] hover:text-blue-500"/>
+              placeholder="Search"
+            />
+            <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[10px] hover:text-blue-500" />
           </div>
-          
+
 
           <div className="p-1 mt-[3px] flex justify-center items-center bg-bgsearchbar text-center text-gray-500  text-xs h-[30px] w-[40px]">
             <i className="fa-solid fa-bolt text-black-300 hover:text-blue-400  "></i>
@@ -115,9 +114,8 @@ console.log(workSpaceData,"workSpaceData")
                 >
                   <span>FAVOURITES</span>
                   <ChevronUpIcon
-                    className={`${
-                      open ? "rotate-180 transform" : ""
-                    } h-5 w-5 text-gray-500`}
+                    className={`${open ? "rotate-180 transform" : ""
+                      } h-5 w-5 text-gray-500`}
                   />
                 </Disclosure.Button>
 
@@ -139,25 +137,23 @@ console.log(workSpaceData,"workSpaceData")
                   <span>SPACES</span>
                   <span className="flex flex-row">
                     <SearchIcon
-                      className={`${
-                        open ? "block" : "hidden"
-                      } h-5 w-4  text-gray-500`}
+                      className={`${open ? "block" : "hidden"
+                        } h-5 w-4  text-gray-500`}
                     />
                     <ChevronUpIcon
-                      className={`${
-                        open ? "rotate-180 transform" : ""
-                      } h-5 w-5 text-gray-500 ml-3`}
+                      className={`${open ? "rotate-180 transform" : ""
+                        } h-5 w-5 text-gray-500 ml-3`}
                     />
                   </span>
                 </Disclosure.Button>
 
                 <Disclosure.Panel className="pt-4 pb-2 text-gray-500 hover:cursor-pointer">
                   <NewSpaceModal />
-                  
-                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2"> 
-                    
-                      <ViewGridIcon className="h-4 w-4 text-xs ml-2" />
-                      
+
+                  <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
+
+                    <ViewGridIcon className="h-4 w-4 text-xs ml-2" />
+
                     <span className="text-[12px] ml-4 ">Everything</span>
                   </div>
                   
@@ -180,15 +176,24 @@ console.log(workSpaceData,"workSpaceData")
                             <SpaceDropdown/>
                       </Menu.Items>
                     </Menu>
+                    <div className="right-col  flex flex-row mt-2">
                       <Menu>
                         <Menu.Button>
-                        <PlusIcon className="h-4 w-4 ml-2" />
+                          <DotsHorizontalIcon className="h-4 w-4" />
+                        </Menu.Button>
+                        <Menu.Items>
+                          <SpaceDropdown />
+                        </Menu.Items>
+                      </Menu>
+                      <Menu>
+                        <Menu.Button>
+                          <PlusIcon className="h-4 w-4 ml-2" />
                         </Menu.Button>
                         <Menu.Items>
                           <SpacePlusTab />
                         </Menu.Items>
                       </Menu>
-                    
+
                     </div>
                   </div> */}
                 </Disclosure.Panel>
@@ -206,14 +211,12 @@ console.log(workSpaceData,"workSpaceData")
                   <span>DASHBOARDS</span>
                   <span className="flex flex-row">
                     <SearchIcon
-                      className={`${
-                        open ? "block" : "hidden"
-                      } h-5 w-4 text-gray-500`}
+                      className={`${open ? "block" : "hidden"
+                        } h-5 w-4 text-gray-500`}
                     />
                     <ChevronUpIcon
-                      className={`${
-                        open ? "rotate-180 transform" : ""
-                      } h-5 w-5 text-gray-500 ml-3`}
+                      className={`${open ? "rotate-180 transform" : ""
+                        } h-5 w-5 text-gray-500 ml-3`}
                     />
                   </span>
                 </Disclosure.Button>
@@ -242,9 +245,8 @@ console.log(workSpaceData,"workSpaceData")
                 >
                   <span>DOCS</span>
                   <ChevronUpIcon
-                    className={`${
-                      open ? "rotate-180 transform" : ""
-                    } h-5 w-5 text-gray-500`}
+                    className={`${open ? "rotate-180 transform" : ""
+                      } h-5 w-5 text-gray-500`}
                   />
                 </Disclosure.Button>
 
@@ -271,21 +273,21 @@ console.log(workSpaceData,"workSpaceData")
               </>
             )}
           </Disclosure>
-        
-         
+
+
         </div>
         <div className="w-full absolute bottom-0">
-        <User />
+          <User />
         </div>
-       
-        
+
+
       </div>
-     
+
       {/* <div className="w-full fixed bottom-0 left-0">
         
         </div> */}
     </div>
-  ) 
+  )
 }
 
 export default Sidebar;
