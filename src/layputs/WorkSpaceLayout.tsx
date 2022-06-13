@@ -6,7 +6,6 @@ import Topnav from "../components/Topnav/Topnav";
 import { accessToken } from "../helpers/sessionKey";
 
 const DashboardLayout = () => {
-
   const token = accessToken()
   const navigate = useNavigate()
   useEffect(() => {

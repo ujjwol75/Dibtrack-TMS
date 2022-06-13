@@ -5,11 +5,13 @@ import Down from './Down/Down';
 import Models from './Models/Models'
 import View from './View/View'
 import Show from './Show/Show';
-// import Popup from './Popup/SpacePopup';
+import Spacepop from './Popup/SpacePopup';
+import Listpop from './Popup/List'
 import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
 import CalendarComponent from '../dashboard/CalendarComponent';
-import { Listbox, Tab } from '@headlessui/react'
+import { Listbox, Tab } from '@headlessui/react';
+import Collapseasignees from "./Subtopnav/Collapseasignees"
 import {
   ViewListIcon,
   ViewBoardsIcon,
@@ -60,14 +62,15 @@ import {
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
 import LBox from '../List/LBox';
+import SpacePopup from './Popup/SpacePopup';
+import ChevronDoubleRightIcon from '@heroicons/react/outline/ChevronDoubleRightIcon';
 import SidebarFlyoutMenu from '../sidebar/SidebarFlyout';
 type Props = {
-  collapse : boolean
-  setCollapse:any
+  collapse?: any;
+  setCollapse?: any;
 }
 
 const Navbar = ({collapse , setCollapse}: Props) => {
-  console.log('topnav collapse: ' , collapse)
   let [isOpen, setIsOpen] = useState(false)
   const [enabled, setEnabled] = useState(false)
   const [enabled1, setEnabled1] = useState(false)
@@ -105,28 +108,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                         {/* <span><DotsHorizontalIcon className='h-5 w-5 dot1 invisible'/></span> */}
                         <Popover className="relative">
                           <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot1 mt-3 invisible'/></span></Popover.Button>
-                          <Popover.Panel className="absolute z-10 bg-white border w-60 p-4 font-normal top-12">
-                            <div className="grid grid-cols-1">
-                              <div className='flex flex-row items-center p-2'>
-                                <span className='pr-4'><DesktopComputerIcon className='h-5 w-5'/></span>
-                                <span>Automations</span>
-                              </div>
-                              <div className='flex flex-row items-center p-2'>
-                                <span className='pr-4'><EyeOffIcon className='h-5 w-5'/></span>
-                                <span>Hide in my sidebar</span>
-                              </div>
-                              <div className='flex flex-row items-center p-2'>
-                                <span className='pr-4'><StarIcon className='h-5 w-5'/></span>
-                                <span>Favourite</span>
-                              </div>
-                              <hr/>
-                              
-                              <span className='p-2 pt-4'><i>Limited permission</i></span>
-                            </div>
-
-                            <img src="/solutions.jpg" alt="" />
-                          </Popover.Panel>
-                          {/* <Popup/> */}
+                          <Spacepop/>
                         </Popover>
                     </span>
                   </>
@@ -141,72 +123,13 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 border-purple-600 hover:text-purple-700 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center mx-2 px-2 py-4 border-b-4 text-lg dot-wrapper' : "px-2 py-4 mx-2 flex flex-row items-center text-lg"}
                     >
-                      <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
-                      <span className='border-gray-400 pr-3'>List</span>
-                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
-                      <Popover className="relative">
-                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
-
-                        <Popover.Panel className="absolute z-10">
-                          <div className="grid grid-cols1 border w-72 p-4 bg-white text-black">
-                            <div className='flex flex-row justify-between items-center text-gray-400 py-4'>
-                              <div>
-                                <span className='font-bold'>VIEW OPOTION</span>
-                              </div>
-                              <div className='flex flex-row'>
-                                <span><PencilIcon className='h-5 w-5'/></span>
-                                <span><LinkIcon className='h-5 w-5'/></span>
-                              </div>
-                            </div>
-                            <div className='flex flex-row items-center text-gray-400 pb-2'>
-                              <span>This view is required.</span>
-                              <span><QuestionMarkCircleIcon className='h-5 w-5'/></span>
-                            </div>
-                            <div className='flex flex-row items-center text-gray-600 py-2'>
-                              <span><PencilIcon className='h-5 w-5'/></span>
-                              <span>Pin</span>
-                            </div>
-                            <div className='flex flex-row items-center text-gray-600 py-2'>
-                              <span><StarIcon className='h-5 w-5'/></span>
-                              <span>Favorite</span>
-                            </div>
-                            <div className='flex flex-row justify-between text-gray-600 py-2'>
-                              <div className='flex flex-row items-center'>
-                                <span><DuplicateIcon className='h-5 w-5'/></span>
-                                <span>Duplicate as</span>
-                              </div>
-                              <div>
-                                <span><ChevronRightIcon className='h-5 w-5'/></span>
-                              </div>
-                            </div>
-                            <div className='flex flex-row items-center text-gray-600 py-2'>
-                              <span><ShareIcon className='h-5 w-5'/></span>
-                              <span>Sharing & Permissions</span>
-                            </div>
-                            <hr className='py-2'/>
-                            <div className='flex flex-row items-center justify-between text-gray-600 py-2'>
-                              <div className='flex flex-row items-center'>
-                                <span><SparklesIcon className='h-5 w-5'/></span>
-                                <span>Template Center</span>
-                              </div>
-                              <div>
-                                <span><ChevronRightIcon className='h-5 w-5'/></span>
-                              </div>
-                            </div>
-                            <div className='flex flex-row items-center justify-between text-gray-600 py-2'>
-                              <div className='flex flex-row items-center'>
-                                <span><DotsHorizontalIcon className='h-5 w-5'/></span>
-                                <span>More Settings</span>
-                              </div>
-                              <div>
-                                <span><ChevronRightIcon className='h-5 w-5'/></span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <img src="/solutions.jpg" alt="" />
-                        </Popover.Panel>
-                      </Popover>
+                        <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
+                        <span className='border-gray-400 pr-3'>List</span>
+                        {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                        <Popover className="relative">
+                          <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
+                          <Listpop/>
+                        </Popover>
                     </span>
                   </>
 
@@ -222,7 +145,11 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                     >
                       <span><BookOpenIcon className='h-5 w-5' /></span>
                       <span className=' border-gray-400 pr-3'>Board</span>
-                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
+                        <Listpop/>
+                      </Popover>
                     </span>
                   </>
 
@@ -238,7 +165,11 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                     >
                       <span><DesktopComputerIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Space</span>
-                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
+                        <Listpop/>
+                      </Popover>
                     </span>
                   </>
 
@@ -254,7 +185,11 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                     >
                       <span><CalendarIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Calendar</span>
-                      <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
+                        <Listpop/>
+                      </Popover>
                     </span>
                   </>
 
@@ -344,23 +279,27 @@ const Navbar = ({collapse , setCollapse}: Props) => {
               </Tab.Group>
             </div>
           </Tab.List>
-          <Subtopnav />
+          <div className='flex flex-row'>
+            <div>
+              <Subtopnav/>
 
-          <Tab.Panels>
-            <div className='bg-gray-100 h-full'>
-              <Tab.Panel>Content 1</Tab.Panel>
-              <Tab.Panel><LBox /></Tab.Panel>
-              <Tab.Panel><KanbanBoard /></Tab.Panel>
-              <Tab.Panel>
-                <div className='h-screen'>
-                  <Space />
+              <Tab.Panels>
+                <div className='bg-gray-100 h-full'>
+                  <Tab.Panel>Content 1</Tab.Panel>
+                  <Tab.Panel><LBox /></Tab.Panel>
+                  <Tab.Panel><KanbanBoard /></Tab.Panel>
+                  <Tab.Panel>
+                    <div className='h-screen'>
+                      <Space />
+                    </div>
+                  </Tab.Panel>
+                  <Tab.Panel>
+                    <CalendarComponent />
+                  </Tab.Panel>
                 </div>
-              </Tab.Panel>
-              <Tab.Panel>
-                <CalendarComponent />
-              </Tab.Panel>
+              </Tab.Panels>
             </div>
-          </Tab.Panels>
+          </div>  
         </Tab.Group>
       </div>
     </>

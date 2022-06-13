@@ -8,7 +8,9 @@ const APIS = {
 
   // TASKS
   TASK: `/task/`,
-  KANBAN_TASK: `/task/status-wise-task/`
+  KANBAN_TASK: `/task/status-wise-task/`,
+  //Work Space 
+  WORKSPACE:`/work-space/filter_work_space/`
 };
 
 export default APIS;
