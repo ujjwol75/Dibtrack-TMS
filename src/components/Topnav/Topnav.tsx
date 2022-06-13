@@ -8,7 +8,7 @@ import Show from './Show/Show';
 // import Popup from './Popup/SpacePopup';
 import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
-import Calendar_component from '../dashboard/Calendar_component';
+import CalendarComponent from '../dashboard/CalendarComponent';
 import { Listbox, Tab } from '@headlessui/react'
 import {
   ViewListIcon,
@@ -357,7 +357,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                 </div>
               </Tab.Panel>
               <Tab.Panel>
-                <Calendar_component />
+                <CalendarComponent />
               </Tab.Panel>
             </div>
           </Tab.Panels>

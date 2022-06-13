@@ -24,7 +24,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-function Calendar_component() {
+function CalendarComponent() {
 
   const [currentSelectedDate, setCurrentSelectedDate] = useState(new Date())
     const [currentSelectedSlot, setCurrentSelectedSlot] = useState({})
@@ -157,5 +157,5 @@ function Calendar_component() {
   );
 }
 
-export default Calendar_component;
+export default CalendarComponent;
 
