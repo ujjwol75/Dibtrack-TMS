@@ -54,14 +54,20 @@ import {
   LockClosedIcon,
   DotsHorizontalIcon,
   EyeOffIcon,
-  StarIcon
+  StarIcon,
+  BookOpenIcon
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
 import LBox from '../List/LBox';
-type Props = {}
+import SidebarFlyoutMenu from '../sidebar/SidebarFlyout';
+type Props = {
+  collapse : boolean
+  setCollapse:any
+}
 
-const Navbar = (props: Props) => {
+const Navbar = ({collapse , setCollapse}: Props) => {
+  console.log('topnav collapse: ' , collapse)
   let [isOpen, setIsOpen] = useState(false)
   const [enabled, setEnabled] = useState(false)
   const [enabled1, setEnabled1] = useState(false)
@@ -78,10 +84,15 @@ const Navbar = (props: Props) => {
   return (
     <>
       <div className='mt-2'>
+        
+        {/* <MenuAlt1Icon className='mt-3 h-5 w-5 text-black-300' /> */}
         <Tab.Group>
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
-            <span className='flex flex-row items-center'>
+
+            <span className='flex'>
+            {collapse && <SidebarFlyoutMenu collapse = {collapse} setCollapse = {setCollapse}/>}
+              {/* {collapse && <MenuAlt1Icon className='h-8 w-8 mt-2' onClick={() => setCollapse(!collapse)} />} */}
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
@@ -209,7 +220,7 @@ const Navbar = (props: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><BookOpenIcon className='h-5 w-5' /></span>
                       <span className=' border-gray-400 pr-3'>Board</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
@@ -225,7 +236,7 @@ const Navbar = (props: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><DesktopComputerIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Space</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
@@ -241,7 +252,7 @@ const Navbar = (props: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><CalendarIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Calendar</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
@@ -270,8 +281,10 @@ const Navbar = (props: Props) => {
             </span>
             {/* RIGHT TOPNAV */}
             <div>
+            
               <Tab.Group>
                 <div className=''>
+                  
                   <Tab.List className='flex flex-row space-x-2'>
                     <Tab className='flex flex-row px-5 py-2 items-center cursor-pointer border rounded-lg'>
                       <DesktopComputerIcon className='h-5 w-5' />

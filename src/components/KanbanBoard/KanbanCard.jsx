@@ -1,5 +1,5 @@
 import { AdjustmentsIcon, CalendarIcon, CheckIcon, ClockIcon, DotsHorizontalIcon, FlagIcon, TagIcon } from '@heroicons/react/outline'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CircleUserIcon from '../../Reusable/CircleUserIcon'
 
 const KanbanCard = (props) => {
