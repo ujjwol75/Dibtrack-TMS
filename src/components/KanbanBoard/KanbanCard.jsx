@@ -46,6 +46,10 @@ const KanbanCard = (props) => {
             </div> : null
         }
       </div>
+
+      {/* <div className='w-52 max-w-md transform overflow-hidden rounded-2xl bg-gray-500 p-6 text-left align-middle shadow-xl transition-all'>
+pokasopd
+      </div> */}
     </>
   )
 }

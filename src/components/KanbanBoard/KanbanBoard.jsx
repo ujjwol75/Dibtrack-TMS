@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Board from 'react-trello'
 import APIS from '../../constants/EndPoint'
+import useGetHook from '../../customHooks/useGetHook'
 import usePostHook from '../../customHooks/usePostHook'
 import Modal from '../../Reusable/Modal'
 import CardPopup from './CardPopup/CardPopup'
@@ -11,15 +12,22 @@ const KanbanBoard = () => {
   const [openCardModal, setOpenCardModal] = useState(false)
   let [isOpen, setIsOpen] = useState(true)
 
+  const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
+    queryKey: "boardData",
+    url: `${APIS.TASK}?workspace=1&parent=`
+  })
+
+  console.log(boardsData, "boardsData")
+
   const {
     isPostLoading,
-    mutate: createLaneMutate,
+    mutate: createBoardMutate,
     successMsg,
     addSuccessSnackBar,
     setAddSuccessSnackBar,
-  } = usePostHook({ queryKey: "createdLane" });
+  } = usePostHook({ queryKey: "createdBoard" });
 
-  const handleCreateLane = (e) => {
+  const handleCreateBoard = (e) => {
     const url = APIS.TASK;
     const formData = {
       name: e?.title,
@@ -27,18 +35,16 @@ const KanbanBoard = () => {
       content_type: null,
       object_id: null,
       workspace: 3,
-      order: 4,
+      order: "6",
       description: "",
       estimated_time: null
     };
     try {
-      createLaneMutate({ url, formData });
+      createBoardMutate({ url, formData });
     } catch (e) {
       console.log(e);
     }
   }
-
-
 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
@@ -92,26 +98,32 @@ const KanbanBoard = () => {
 
   return (
     <>
-      <div>
-        <Board data={data}
-          draggable
-          canAddLanes
-          editable
-          editLaneTitle
-          onDataChange={(newData) => { console.log(newData) }}
+      {
+        boardDataLoading ?
+          "Loading..." :
+          <div>
+            <Board data={data}
+              draggable
+              canAddLanes
+              editable
+              editLaneTitle
+              onDataChange={(newData) => { console.log(newData) }}
 
-          onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
-          laneStyle={{
-            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-            backgroundColor: "white",
-            borderRadius: "0.375rem",
-          }}
-          style={{ backgroundColor: "transparent" }}
-          components={components}
-          onLaneAdd={(e) => handleCreateLane(e)}
-        />
-      </div>
+              onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
+              laneStyle={{
+                boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+                backgroundColor: "white",
+                borderRadius: "0.375rem",
+        
+              }}
+              cardStyle={{}}
+              style={{ backgroundColor: "transparent", position: 'relative' }}
+              components={components}
+              onLaneAdd={(e) => handleCreateBoard(e)}
+            />
+          </div>
 
+      }
       <Modal title='Resualbe' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
         <CardPopup />
       </Modal>
