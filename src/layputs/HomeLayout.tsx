@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import Sidebar from "../components/dashboard/Sidebar";
-import HomeDib from "../components/HomeDib/HomeDib";
-import Topnav from "../components/Topnav/Topnav";
-import { accessToken } from "../helpers/sessionKey";
+import React, { useEffect, useState } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom';
+import Sidebar from '../components/dashboard/Sidebar';
+import { accessToken } from '../helpers/sessionKey';
 
-const DashboardLayout = () => {
+type Props = {}
+
+const HomeLayout = (props: Props) => {
 
   const token = accessToken()
   const navigate = useNavigate()
@@ -15,19 +15,16 @@ const DashboardLayout = () => {
     }
   }, [token])
 
-
   const [collapse, setCollapse] = useState<boolean>(false);
-
-  console.log('workspace collapse: ', collapse)
   return (
+
     <>
       {
         collapse ? (
           <div className="grid grid-cols-5">
             <div className="col-span-5">
-              <Topnav collapse={collapse} setCollapse={setCollapse} />
+              <Outlet />
             </div>
-            <Outlet />
           </div>)
 
           : (
@@ -40,15 +37,13 @@ const DashboardLayout = () => {
               </div>
 
               <div className="col-span-4">
-                <Topnav collapse={collapse} setCollapse={setCollapse} />
                 <Outlet />
               </div>
-
             </div>
           )
       }
     </>
   );
-};
+}
 
-export default DashboardLayout;
+export default HomeLayout

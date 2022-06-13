@@ -54,7 +54,8 @@ import {
   LockClosedIcon,
   DotsHorizontalIcon,
   EyeOffIcon,
-  StarIcon
+  StarIcon,
+  BookOpenIcon
 } from "@heroicons/react/solid";
 import KanbanBoard from "../KanbanBoard/KanbanBoard"
 import Space from "../Space/Space"
@@ -219,7 +220,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><BookOpenIcon className='h-5 w-5' /></span>
                       <span className=' border-gray-400 pr-3'>Board</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
@@ -235,7 +236,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 mx-2 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg mx-2 py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><DesktopComputerIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Space</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
@@ -251,7 +252,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 hover:text-purple-700 border-purple-600 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center border-b-4 py-4 px-2 text-lg dot-wrapper' : " flex flex-row items-center text-lg py-4 px-2"}
                     >
-                      <span><ViewBoardsIcon className='h-5 w-5' /></span>
+                      <span><CalendarIcon className='h-5 w-5' /></span>
                       <span className='border-gray-400 pr-3'>Calendar</span>
                       <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span>
                     </span>
