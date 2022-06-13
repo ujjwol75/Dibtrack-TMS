@@ -25,7 +25,7 @@ type Props = {
 
 const SpacePlusTab = () => {
   return (
-    <div className="absolute p-4 rounded md:botttom-50  md:left-[195px] border border-gray-300 rounded shadow shadow-md
+    <div className="absolute p-4 rounded bottom-[200px]  md:left-[195px] border border-gray-300 rounded shadow shadow-md
     z-100 h-auto w-[250px] bg-white opacity-100 overflow-visible text-txtcolor">
       
      <Menu.Item>

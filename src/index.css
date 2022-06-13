@@ -66,6 +66,10 @@
     visibility: visible;
 }
 
+.spaceitem:hover .threeicons {
+    visibility: visible;
+}
+
 /* custom scrollbar *//* width */
 ::-webkit-scrollbar {
     width: 5px;
