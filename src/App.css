@@ -17,24 +17,20 @@
 .input{
   padding-left: 5px;
 }
-/* .vl,.vl1,.vl2,.vl3,.vl4{
-  border-left: 2px solid rgb(189, 188, 188);
+
+.dot{
+  display: none;
 }
-.vl{
-  left:144px
+
+.dot-wrapper:hover .dot{
+  display: block;
+  color: gray;
 }
-.vl1{
-  left: 244px;
+
+.dot-wrapper1:hover .dot1{
+  visibility: visible;
 }
-.vl2{
-  left: 356px;
-}
-.vl3{
-  left: 468px;
-}
-.vl4{
-  left: 596px;
-} */
+
 .automate{
   position: absolute;
   top: 50px;
