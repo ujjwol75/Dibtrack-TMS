@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import {
   SearchIcon,
   ChevronUpIcon,
@@ -10,25 +10,23 @@ import {
   ViewGridIcon,
 } from "@heroicons/react/solid";
 import CalendarRightBar from "./CalendarRightBar";
-import {
-  Tab,
-  Menu,
-  Transition,
-  Disclosure,
-  Popover,
-  } from "@headlessui/react";
-import Task_popover from "./Task_popover";
+import { Tab, Menu, Transition, Disclosure, Popover } from "@headlessui/react";
+import TaskPopover from "./TaskPopover";
 
 type Props = {};
 
 const Tasks = (props: Props) => {
   const [hide, setHide] = useState(false);
-  const [close, setClose] = useState(false)
+  const [open, setOpen] = useState(true);
 
   function handleHide() {
     setHide(true);
   }
-   console.log("ujjwol", close)
+
+    console.log("tasks", open)
+
+
+
   return !hide ? (
     <>
       <div className="flex flex-col text-sm">
@@ -294,9 +292,9 @@ const Tasks = (props: Props) => {
                 <PlusSmIcon className="w-4" />
                 <p>Task</p>
               </Popover.Button>
-           
-              {!close && <Task_popover close={!close} setClose={setClose} />}
-              
+              <Popover.Panel className="absolute z-10">
+                <TaskPopover open={open} setOpen={setOpen}/>
+              </Popover.Panel>
             </Popover>
             <div className="relative">
               <Menu>

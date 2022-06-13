@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Tab, Menu, Transition, Disclosure, Popover } from "@headlessui/react";
+import React, { useEffect, useState } from "react";
+import { Tab, Menu, Transition, Disclosure, Popover, Dialog } from "@headlessui/react";
 import {
   SearchIcon,
   ChevronUpIcon,
@@ -21,30 +21,40 @@ import {
   TrashIcon,
   SearchCircleIcon,
   FolderOpenIcon,
+  FlagIcon,
 } from "@heroicons/react/solid";
 import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup";
 import CircleUserIcon from "../../Reusable/CircleUserIcon";
 import { add } from "date-fns";
 import AddTask from "./AddTask";
+import Tasks from "./Tasks";
+import ProfileDropdown from "../Profile/ProfileDropdown";
+import Dependecies from "./Dependecies";
 
 type Props = {
-  close: boolean;
-  setClose: any;
+  open: boolean;
+  setOpen: any;
 };
 
-const Task_popover = ({ close, setClose }: Props) => {
-  // const [close, setClose] = useState(false)
+const TaskPopover = ({ open, setOpen }: Props) => {
+  const [close, setClose] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [addTask, setAddTask] = useState(false);
   const [addTaskArr, setAddTaskArr] = useState([]);
   const [addCheckList, setAddCheckList] = useState(false);
   const [submit, setSubmit] = useState(false);
-
+  let [isOpen, setIsOpen] = useState(true)
   const handleSubmit = () => {
     <AddTask />;
   };
 
-  return (
+  // setOpen(false)
+  console.log("poptask1", open);
+  const user = {
+    name: "ujjwol",
+  };
+
+  return !close && open ? (
     <div>
       <Popover.Panel className="absolute z-10 bg-white drop-shadow-lg -right-[1rem] bottom-[5rem] w-[38rem] text-gray-500 h-[32rem] overflow-scroll">
         <div className="flex flex-row justify-between items-center mx-2">
@@ -61,8 +71,7 @@ const Task_popover = ({ close, setClose }: Props) => {
             <XIcon
               className="w-8 text-gray-500"
               onClick={() => {
-                setClose(close);
-                console.log("hello", close);
+                setClose(true);
               }}
             />
           </div>
@@ -306,7 +315,48 @@ const Task_popover = ({ close, setClose }: Props) => {
         <div className="flex flex-row justify-between items-center mx-2">
           <span className="px-4 flex gap-4 mt-12 mb-6">
             <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
-              <ClockIcon className="w-7 h-7" />
+              <Popover className="relative">
+                <Popover.Button>
+                  <ClockIcon className="w-7 h-7" />
+                </Popover.Button>
+
+                <Popover.Panel className="absolute z-100">
+                  <div className="flex flex-row justify-content bg-white drop-shadow-lg w-[10rem] p-2">
+                    <div className="flex flex-row">
+                      <ChevronDoubleUpIcon className="w-4" />
+                      <h1>Urgent</h1>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row justify-content bg-white drop-shadow-lg w-[10rem] p-2">
+                    <div className="flex flex-row">
+                      <ChevronDoubleUpIcon className="w-4" />
+                      <h1>Urgent</h1>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row justify-content bg-white drop-shadow-lg w-[10rem] p-2">
+                    <div className="flex flex-row">
+                      <ChevronDoubleUpIcon className="w-4" />
+                      <h1>Urgent</h1>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row justify-content bg-white drop-shadow-lg w-[10rem] p-2">
+                    <div className="flex flex-row">
+                      <ChevronDoubleUpIcon className="w-4" />
+                      <h1>Urgent</h1>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row justify-content bg-white drop-shadow-lg w-[10rem] p-2">
+                    <div className="flex flex-row">
+                      <ChevronDoubleUpIcon className="w-4" />
+                      <h1>Urgent</h1>
+                    </div>
+                  </div>
+                </Popover.Panel>
+              </Popover>
             </i>
             <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
               <StarIcon className="w-7 h-7" />
@@ -318,9 +368,65 @@ const Task_popover = ({ close, setClose }: Props) => {
               <StarIcon className="w-7 h-7" />
             </i>
             <i className="p-1 h-fit border-2 border-dashed rounded-full hover:text-btncolor hover:border-btncolor cursor-pointer">
-              <CalendarIcon className="w-7 h-7" />
+              {/* <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+                <Dialog.Panel>
+                  
+                  <Dialog.Title><CalendarIcon className="w-7 h-7" /></Dialog.Title>
+                  <Dialog.Description>
+                  <Dependecies />
+                  </Dialog.Description>
+
+                  <p>
+                  
+                  </p>
+
+                  <button onClick={() => setIsOpen(false)}>Deactivate</button>
+                  <button onClick={() => setIsOpen(false)}>Cancel</button>
+                </Dialog.Panel>
+              </Dialog> */}
+
+              {/* <Popover className="relative">
+                <Popover.Button>
+                  <CalendarIcon className="w-7 h-7" />
+                </Popover.Button>
+
+                <Popover.Panel className="absolute z-10">
+                  <div className="relative bottom-[10rem] right-[20rem]">
+                    <Dependecies />
+                  </div>
+                </Popover.Panel>
+              </Popover> */}
             </i>
-            <EyeIcon className="w-7 h-7 cursor-pointer text-red-500 mt-1" />
+            <div className="relative">
+              <Popover className="relative">
+                <Popover.Button>
+                  <EyeIcon className="w-7 h-7 cursor-pointer text-red-500 mt-1" />
+                  <span className="absolute rounded-full text-[12px] px-1 w-5 h-5 text-white bg-red-600 bottom-6 left-3">
+                    1
+                  </span>
+                </Popover.Button>
+
+                <Popover.Panel className="absolute z-10">
+                  <div className="ml-2 justify-center items-center mt-5 drop-shadow-md bg-white p-2">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      className="bg-gray-300 rounded"
+                    />
+                    <hr className="mt-2" />
+                    <div className="flex flex-row mt-2 items-center">
+                      <div className="border border-red-500 w-12 h-12 rounded-full bg-red-500 items-center items-center justify-center flex flex-row">
+                        <div className="w-11 h-11 bg-yellow-400 rounded-full items-center justify-center flex">
+                          <span>UN</span>
+                        </div>
+                      </div>
+                      <span className="ml-3 font-bold">Me</span>
+                    </div>
+                  </div>
+                </Popover.Panel>
+              </Popover>
+            </div>
           </span>
           <div className="mt-4 text-white">
             <button
@@ -339,7 +445,7 @@ const Task_popover = ({ close, setClose }: Props) => {
         </div>
       </Popover.Panel>
     </div>
-  );
+  ) : null;
 };
 
-export default Task_popover;
+export default TaskPopover;

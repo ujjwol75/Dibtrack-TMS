@@ -2,7 +2,7 @@
 import Space from '../components/Space/Space'
 import React from 'react'
 import Sidebar from '../components/dashboard/Sidebar';
-import Calendar_component from '../components/dashboard/Calendar_component';
+import CalendarComponent from '../components/dashboard/CalendarComponent';
 import InviteSideBar from '../components/dashboard/InviteSideBar';
 import InviteMain from '../components/dashboard/InviteMain';
 // import CalendarTest from '../components/dashboard/CalendarTest';
