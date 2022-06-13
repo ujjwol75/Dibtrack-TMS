@@ -2,10 +2,31 @@ import React from 'react'
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { Fragment } from 'react'
+import NewSpaceModal from './NewSpaceModal'
+import ColorThemePopup from '../Space/ColorThemePopup'
 
 type Props = {}
 
+
 const ModalTabs = (props: Props) => {
+
+let [isOpen, setIsOpen] = useState(false);
+
+function closeModal() {
+  setIsOpen(false);
+}
+
+function openModal() {
+  setIsOpen(true);
+}
+
+const handleSubmit  = (e:any) => {
+  openModal()
+   e.preventDefault()
+  
+  console.log('clicked')
+  
+}
   return (
     <div className='mt-[30px]'>
         <Tab.Group>
@@ -36,11 +57,13 @@ const ModalTabs = (props: Props) => {
       </Tab.List>
       <Tab.Panels className="border-t border-gray-100 bg-bgsearchbar w-full">
         <Tab.Panel>
-            <form className='p-5 text-txtcolor'>
+            <form className='p-5 text-txtcolor' onSubmit={(e) => handleSubmit(e)}>
                 <label className='text-xs'>name</label>
                 <input type="text" name="" id=""  className = "bg-bgsearchbar mt-4 mb-4 pb-3 border-b border-gray-200  w-full focus:outline-none "
                 placeholder='ENTER SPACE NAME'/>
-                <button className='w-full bg-btncolor mt-5 p-4 text-white '>Next</button>
+                
+                <ColorThemePopup handleSubmit={handleSubmit} isopen = {isOpen}  closeModal = {closeModal} openModal = {openModal}/>
+                {/* <button className='w-full bg-btncolor mt-5 p-4 text-white '>Next</button> */}
             </form>
         </Tab.Panel>
         
@@ -52,3 +75,7 @@ const ModalTabs = (props: Props) => {
 }
 
 export default ModalTabs
+
+function e(e: any): void {
+  throw new Error('Function not implemented.')
+}
