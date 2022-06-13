@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { CalendarIcon, FlagIcon, AtSymbolIcon, InformationCircleIcon } from '@heroicons/react/solid'
 import Work from './Work/Work'
 import Tasks from '../dashboard/Tasks'
-import Task_popover from '../dashboard/Task_popover'
+import TaskPopover from '../dashboard/TaskPopover'
 
 type Props = {}
 
@@ -66,7 +66,7 @@ const HomeDib = (props: Props) => {
         </div>
         <div className='absolute button-1 right-0'>
 
-          {/* <Task_popover /> */}
+          <TaskPopover open={false} setOpen={undefined} />
         </div>
       </div>
     </>
