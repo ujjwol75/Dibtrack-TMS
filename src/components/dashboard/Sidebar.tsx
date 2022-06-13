@@ -23,6 +23,8 @@ import NewSpaceModal from "../sidebar/NewSpaceModal";
 import SpacePlusTab from "../sidebar/SpacePlusTab";
 import User from "../sidebar/User";
 import SpaceList from "../sidebar/SpaceList";
+import APIS from "../../constants/EndPoint";
+import useGetHook from "../../customHooks/useGetHook";
 
  
 type Props = {
@@ -31,16 +33,18 @@ type Props = {
 }
 function Sidebar(props:Props) {
   const {collapse,setCollapse} = props;
-  console.log('collapse in sidebar' , collapse)
 
   const handleCollapse = () => {
       setCollapse(!collapse)
-      
-      
   };
 
+  const { data:workSpaceData } = useGetHook({
+    queryKey: "workSpaceData",
+    url: APIS.WORKSPACE,
+  })
+console.log(workSpaceData,"workSpaceData")
   return (
-    <div className="z-1  relative h-[100vh]  relative">
+    <div className="z-1  relative h-[100vh]">
       <div
         className={`sidebar border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white ease-in-out  duration-2000`}>
         <div className="flex flex-row justify-between p-2">
@@ -157,9 +161,9 @@ function Sidebar(props:Props) {
                     <span className="text-[12px] ml-4 ">Everything</span>
                   </div>
                   
-                  <SpaceList />
+                  <SpaceList workSpaceData={workSpaceData}/>
 
-                  <div className="space flex flex-row justify-between p-2">
+                  {/* <div className="space flex flex-row justify-between p-2">
                     <div className="flex flex-row mt-2">
                       <ChevronRightIcon className="h-4 w-4 mt-1 hidden spaceicon" />
                       <div className="bg-btncolor h-6 w-6 font-bold text-xs pt-1 text-center text-white ml-2">
@@ -167,7 +171,7 @@ function Sidebar(props:Props) {
                       </div>
                       <span className="ml-2 text-xs mt-1">Space</span>
                     </div>
-                    <div className="right-col hidden flex flex-row mt-2">
+                    <div className="right-col  flex flex-row mt-2">
                     <Menu>
                       <Menu.Button>
                         <DotsHorizontalIcon className="h-4 w-4" />
@@ -186,7 +190,7 @@ function Sidebar(props:Props) {
                       </Menu>
                     
                     </div>
-                  </div>
+                  </div> */}
                 </Disclosure.Panel>
               </>
             )}

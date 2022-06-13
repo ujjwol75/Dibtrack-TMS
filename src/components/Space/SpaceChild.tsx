@@ -3,14 +3,19 @@ import React from 'react'
 import { Menu } from '@headlessui/react'
 import SpaceDropdown from '../sidebar/SpaceDropdown'
 
-type Props = {}
+type Props = {
+  spaceChildren?:any
+}
 
 const SpaceChild = (props: Props) => {
+  const {spaceChildren} = props
   return (
-    <div className='flex flex-row ml-4 justify-between hover:bg-bgsearchbar p-1'>
+    <div className='flex flex-col ml-4 justify-between hover:bg-bgsearchbar p-1'>
+      {spaceChildren?.map((item: any) => (
+        <div className="flex flex-row  p-1 justify-between">
         <div className="flex flex-row  p-1">
             <DotsCircleHorizontalIcon className='h-3 w-3 text-gray-500 mt-1'/>
-            <span className='ml-2 text-sm text-txtcolor'>List</span>
+            <span className='ml-2 text-sm text-txtcolor'>{item?.name}</span>
         </div>
         <div>
             <Menu>
@@ -23,7 +28,8 @@ const SpaceChild = (props: Props) => {
             </Menu>
         
         </div>
-
+        </div>
+      ))}
     </div>
   )
 }

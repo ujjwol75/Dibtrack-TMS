@@ -1,35 +1,57 @@
 import { Menu } from '@headlessui/react'
 import { DotsHorizontalIcon } from '@heroicons/react/outline'
-import { ChevronLeftIcon, PlusIcon, UserAddIcon } from '@heroicons/react/solid'
+import { ChevronLeftIcon,ChevronRightIcon, PlusIcon, UserAddIcon } from '@heroicons/react/solid'
 import React from 'react'
 import CircleUserIcon from '../../Reusable/CircleUserIcon'
 import SpaceDropdown from './SpaceDropdown'
 import SpacePlusTab from './SpacePlusTab'
 import { Disclosure } from '@headlessui/react'
 import SpaceChild from '../Space/SpaceChild'
-const  spaces = [
-    'space1' , 
-    'space2',
-    'space3'
-]
 
-type Props = {}
+
+type Props = {
+  workSpaceData?: any;
+}
 
 const SpaceList = (props: Props) => {
+  const { workSpaceData } = props;
   return (
     
     <div className='flex flex-col'>
       
-        {spaces.map((space) => (
+      {workSpaceData?.map((item: any) => (
+          
           <Disclosure>
           <>
           <Disclosure.Button>
-           <div className='flex flex-row hover:bg-bgsearchbar justify-between p-1 spaceitem'>
-                <div className='flex flex-row justify-center items-center'>
-                   <ChevronLeftIcon className='h-3 w-3 text-gray-400 mr-2' />
-                   <CircleUserIcon size = "xs"/>
-                   <span className='ml-2 text-xs'>{space}</span>
+           <div className='flex flex-row hover:bg-bgsearchbar p-1  justify-between' >
+                <div className="flex flex-row mt-2 justify-between">
+                      <ChevronRightIcon className="h-4 w-4 mt-1 spaceicon" />
+                      <div className="bg-btncolor h-6 w-6 font-bold text-xs pt-1 text-center text-white ml-2">
+                      {item?.get_title}
+                    </div>
+                  <span className="ml-2 text-xs mt-1">{item?.name}</span>
                 </div>
+                  <div className="right-col flex flex-row mt-2 ml-3">
+                    <Menu>
+                      <Menu.Button>
+                        <DotsHorizontalIcon className="h-4 w-4" />
+                      </Menu.Button>
+                      <Menu.Items>
+                            <SpaceDropdown/>
+                      </Menu.Items>
+                    </Menu>
+                      <Menu>
+                        <Menu.Button>
+                        <PlusIcon className="h-4 w-4 ml-2" />
+                        </Menu.Button>
+                        <Menu.Items>
+                          <SpacePlusTab />
+                        </Menu.Items>
+                      </Menu>
+                    
+                    </div>
+               
                 <div className='flex flex-row justify-center items-center text-gray-400 threeicons invisible'>
                     <Menu>
                         <Menu.Button>
@@ -53,9 +75,15 @@ const SpaceList = (props: Props) => {
                 </div>
            </div> 
            </Disclosure.Button>
-           <Disclosure.Panel>
-             <SpaceChild />
-           </Disclosure.Panel>
+              {item?.children?.length ?
+            <Disclosure.Panel className='ml-4 pl-4'>
+                <span>
+                  <SpaceList workSpaceData={item?.children} />
+                </span>
+              </Disclosure.Panel>
+              :
+              null
+              }
            </>
            </Disclosure>
         ))}
