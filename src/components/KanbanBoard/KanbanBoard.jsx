@@ -1,7 +1,7 @@
-import { Dialog, Menu } from '@headlessui/react'
 import React, { useState } from 'react'
 import Board from 'react-trello'
-import { createTranslate } from 'react-trello'
+import APIS from '../../constants/EndPoint'
+import usePostHook from '../../customHooks/usePostHook'
 import Modal from '../../Reusable/Modal'
 import CardPopup from './CardPopup/CardPopup'
 import KanbanCard from './KanbanCard'
@@ -10,6 +10,35 @@ const KanbanBoard = () => {
 
   const [openCardModal, setOpenCardModal] = useState(false)
   let [isOpen, setIsOpen] = useState(true)
+
+  const {
+    isPostLoading,
+    mutate: createLaneMutate,
+    successMsg,
+    addSuccessSnackBar,
+    setAddSuccessSnackBar,
+  } = usePostHook({ queryKey: "createdLane" });
+
+  const handleCreateLane = (e) => {
+    const url = APIS.TASK;
+    const formData = {
+      name: e?.title,
+      parent: null,
+      content_type: null,
+      object_id: null,
+      workspace: 3,
+      order: 4,
+      description: "",
+      estimated_time: null
+    };
+    try {
+      createLaneMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
@@ -79,6 +108,7 @@ const KanbanBoard = () => {
           }}
           style={{ backgroundColor: "transparent" }}
           components={components}
+          onLaneAdd={(e) => handleCreateLane(e)}
         />
       </div>
 

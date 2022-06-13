@@ -35,7 +35,7 @@ const CardPopupSection1 = (props: Props) => {
 
           {/* ASSIGN USERS */}
           <span className='flex items-center'>
-            <FlyoutMenu />
+            <FlyoutMenu userIconSizeProp="sm" />
             <UserAddIcon className='p-1 w-8 border-2 h-fit border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
           </span>
 
