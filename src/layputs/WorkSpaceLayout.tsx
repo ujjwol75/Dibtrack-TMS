@@ -6,15 +6,13 @@ import { accessToken } from "../helpers/sessionKey";
 
 const DashboardLayout = () => {
   const [showPop, setShowPop] = useState(false)
-  // const token = accessToken()
-
-  // const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/login")
-  //   }
-  // }, [token])
+  const token = accessToken()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!token) {
+      navigate("/login")
+    }
+  }, [token])
 
   return (
     <>
