@@ -7,6 +7,14 @@ import { accessToken } from "../helpers/sessionKey";
 const DashboardLayout = () => {
   
   const [collapse, setCollapse] = useState<boolean>(false);
+  const [showPop, setShowPop] = useState(false)
+  const token = accessToken()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!token) {
+      navigate("/login")
+    }
+  }, [token])
 
    console.log('workspace collapse: ' , collapse )
   return (
