@@ -66,7 +66,7 @@ const HomeDib = (props: Props) => {
         </div>
         <div className='absolute button-1 right-0'>
 
-          {/* <Task_popover /> */}
+          <Task_popover />
         </div>
       </div>
     </>
