@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../images/logo.png";
 import { Menu } from '@headlessui/react'
 import SettingsTab from "../sidebar/SettingsTab";
@@ -22,7 +22,8 @@ import SpaceDropdown from "../sidebar/SpaceDropdown";
 import NewSpaceModal from "../sidebar/NewSpaceModal";
 import SpacePlusTab from "../sidebar/SpacePlusTab";
 import User from "../sidebar/User";
-import CloseSideBar from "../sidebar/CloseSideBar";
+import SpaceList from "../sidebar/SpaceList";
+
  
 type Props = {
   collapse?:any;
@@ -41,9 +42,9 @@ function Sidebar(props:Props) {
   return (
     <div className="z-1  relative h-[100vh]  relative">
       <div
-        className="sidebar  border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white">
+        className={`sidebar border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white ease-in-out  duration-2000`}>
         <div className="flex flex-row justify-between p-2">
-          <img src={logo} className="h-[45px] w-[100px]" />
+          <img src={logo} className="h-[45px] w-[100px]" alt="logo"/>
           <div className="mt-2 flex flex-row">
             <Menu>
             <Menu.Button className = "mr-5"><CogIcon className=" settings h-5 w-5 text-gray-400" /></Menu.Button>
@@ -155,6 +156,8 @@ function Sidebar(props:Props) {
                       
                     <span className="text-[12px] ml-4 ">Everything</span>
                   </div>
+                  
+                  <SpaceList />
 
                   <div className="space flex flex-row justify-between p-2">
                     <div className="flex flex-row mt-2">
