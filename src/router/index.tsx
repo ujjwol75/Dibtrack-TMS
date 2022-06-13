@@ -10,6 +10,8 @@ import WorkSpaceDashboard from "../pages/Dashboard/WorkSpaceDashboard";
 import DashboardNotFound from "../pages/Error/DashboardNotFound";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layputs/DashboardLayout";
+import HomeDib from "../components/HomeDib/HomeDib";
+import HomeLayout from "../layputs/HomeLayout";
 
 
 // https://adarshaacharya.com.np/blog/role-based-auth-with-react-router-v6
@@ -44,6 +46,7 @@ const Router = () => {
         }
       >
         <Route path={"/dashboard"} element={<Dashboard/>}/>
+        <Route path={"/home"} element={<HomeLayout/>}/>
         <Route path="/*" element={<DashboardNotFound/>}/>
       </Route>
       <Route path="/signup" element={<Signup/>}/>
