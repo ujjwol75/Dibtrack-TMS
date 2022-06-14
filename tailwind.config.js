@@ -13,9 +13,11 @@ module.exports = {
         'profilecolor':'#afb42b',
         'txtcolor':'#575a60'
         
-      }
-    },
+      },
 
+     
+    },
+    
   },
   plugins: [
     require('tailwind-scrollbar'),
