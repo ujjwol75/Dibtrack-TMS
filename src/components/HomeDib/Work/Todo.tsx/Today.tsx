@@ -1,10 +1,15 @@
 import { Menu } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import React, { useState } from 'react'
+import RemainderPopOver from '../PopOver/RemainderPopOver'
 
-type Props = {}
+type Props = {
+    remainder:boolean
+    setRemainder:any
+}
 
 const Today = (props: Props) => {
+    const {remainder , setRemainder } = props
     const[task,setTask]=useState(false)
     return (
         <>
@@ -24,7 +29,8 @@ const Today = (props: Props) => {
 
 
                             <div >
-                                <span className='ml-4 text-sm text-gray-400' >+Task</span> <span className='ml-2 text-sm text-gray-400'> +Remainder</span>
+                                {/* <span className='ml-4 text-sm text-gray-400' >+Task</span> <span className='ml-2 text-sm text-gray-400' onClick={()=>{setRemainder(remainder!)}}> +Remainder</span> */}
+                                <span className='ml-4 text-sm text-gray-400' >+Task</span> <span><RemainderPopOver rtext={'+ remainder'}/></span>
                             </div>
                             <div >
 

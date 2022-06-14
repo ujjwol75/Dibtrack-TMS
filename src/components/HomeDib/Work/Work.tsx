@@ -7,10 +7,12 @@ import Done from './Done/Done'
 import Todo from './Todo.tsx/Todo '
 
 type Props = {
-    
+    remainder:boolean
+    setRemainder:any
 }
 
 const Work = (props: Props) => {
+    const {remainder , setRemainder } = props
     function classNames(...classes:any) {
         return classes.filter(Boolean).join(' ')
       }
@@ -65,7 +67,7 @@ const Work = (props: Props) => {
                         </Tab.List>
                         <hr />
                         <Tab.Panels>
-                            <Tab.Panel className='m-2'><Todo /></Tab.Panel>
+                            <Tab.Panel className='m-2'><Todo  remainder ={remainder} setRemainder = {setRemainder} /></Tab.Panel>
                             <Tab.Panel><Comment/></Tab.Panel>
                             <Tab.Panel><Done/></Tab.Panel>
                             <Tab.Panel><Delegated/></Tab.Panel>

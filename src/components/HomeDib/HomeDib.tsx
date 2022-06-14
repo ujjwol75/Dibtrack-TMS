@@ -3,11 +3,13 @@ import { CalendarIcon, FlagIcon, AtSymbolIcon, InformationCircleIcon } from '@he
 import Work from './Work/Work'
 import Tasks from '../dashboard/Tasks'
 import Task_popover from '../dashboard/Task_popover'
+import RemainderPopOver from './Work/PopOver/RemainderPopOver'
 
 type Props = {}
 
 const HomeDib = (props: Props) => {
   const [task, setTask] = useState(false)
+  const[remainder, setRemainder] = useState(false)
   return (
     <>
       <div className='relative'>
@@ -56,7 +58,7 @@ const HomeDib = (props: Props) => {
               </div>
             </div>
 
-            <Work />
+            <Work remainder ={remainder} setRemainder = {setRemainder}/>
 
           </div>
 
@@ -67,6 +69,7 @@ const HomeDib = (props: Props) => {
         <div className='absolute button-1 right-0'>
 
           {/* <Task_popover /> */}
+          {remainder?<RemainderPopOver rtext={'+ remainder'}/>:null}
         </div>
       </div>
     </>
