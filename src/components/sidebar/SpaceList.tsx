@@ -26,7 +26,7 @@ const SpaceList = (props: Props) => {
       {workSpaceData?.map((item: any) => {
         console.log(item,"item");
         return (
-          <Disclosure>
+          <Disclosure key={item.id}>
             <>
               <Disclosure.Button>
                 <div
@@ -35,7 +35,7 @@ const SpaceList = (props: Props) => {
                 >
                   <div className="flex flex-row mt-2">
                     <ChevronRightIcon className="h-4 w-4 mt-1 spaceicon" />
-                    <div className="bg-btncolor h-6 w-6 font-bold text-xs pt-1 text-center text-white ml-2">
+                    <div className={`bg-btncolor h-6 w-6 font-bold text-xs pt-1 text-center text-white ml-2`}>
                       {item?.get_title}
                     </div>
                     <span className="ml-2 text-xs mt-1">{item?.name}</span>

@@ -69,10 +69,10 @@ console.log(workSpaceData,"workSpaceData")
             <input
               type="text"
               className=" bg-bgsearchbar focus:outline-none hover:text-btncolor
-                border border-black-100 pl-12 text-sm text-gray-400 py-1"
+                border border-black-100 pl-12 text-sm text-gray-400 py-1 w-full"
               placeholder="Search"
             />
-            <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[10px] hover:text-blue-500" />
+            <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[20%] hover:text-blue-500" />
           </div>
 
 

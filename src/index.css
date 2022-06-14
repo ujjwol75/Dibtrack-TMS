@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+html , body {
+    scrollbar-color: #e61717;
+    scrollbar-width: 0px;
+}
+
 
 
  .login{
@@ -71,9 +76,9 @@
 }
 
 /* custom scrollbar *//* width */
-.scrollbar-thin {
+ .scrollbar-thin {
     scrollbar-color: #fafbfc !important;
-    z-index: 3;
+
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -84,8 +89,8 @@
   /* Track */
   ::-webkit-scrollbar-track {
     
-    border-radius: 0px;
-  }
+    border-radius: 0px; 
+   } 
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
@@ -93,13 +98,13 @@
 
     width:5px;
     
-  }
+  } 
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     width:0px !important;
     background: #fafbfc !important; 
-  }
+  } */ */
 
 
   @media screen {

@@ -80,8 +80,8 @@ const UserModal = (props: Props) => {
                       <div className="mt-3 flex flex-row mt-3">
                         <p>People</p>
                         <Link to  = "/dashboard">
-                        <button className="bg-btncolor px-2 text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent" onClick={closeModal}>
-                          <span className="flex fex-row outline-none">
+                        <button className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent" onClick={closeModal}>
+                          <span className="flex fex-row ">
                             <UserAddIcon className="h-4 w-3" />
                             <p className="ml-2">invite</p>
                           </span>
