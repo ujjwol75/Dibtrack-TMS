@@ -1,6 +1,7 @@
 import { Menu } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import React from 'react'
+import TodoBlock from './TodoBlock/TodoBlock'
 
 type Props = {}
 
@@ -18,17 +19,7 @@ const OverDue = (props: Props) => {
                             <span className='ml-2'>OverDue</span>
                         </Menu.Button>
                     </div>
-                    <div className='flex justify-between w-full '>
-
-
-                        <div >
-                            <span className='ml-4 text-sm text-gray-400'>+Task</span> <span className='ml-2 text-sm text-gray-400'> +Remainder</span>
-                        </div>
-                        <div >
-
-                            <span className=' text-sm text-gray-400'>fsd</span>
-                        </div>
-                    </div>
+                   <TodoBlock/>
                 </div>
                 <Menu.Items>
                     <Menu.Item>

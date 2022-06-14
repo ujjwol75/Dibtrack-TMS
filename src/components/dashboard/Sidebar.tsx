@@ -1,6 +1,7 @@
 import logo from "../../images/logo.png";
 import { Menu } from '@headlessui/react'
 import SettingsTab from "../sidebar/SettingsTab";
+import { Link } from 'react-router-dom'
 
 
 import {
@@ -87,7 +88,10 @@ console.log(workSpaceData,"workSpaceData")
               <div className="mr-3">
                 <HomeIcon className="h-4 w-5 " />
               </div>
-              <div>Home</div>
+              
+              <Link to={"./home"}>
+                    <div>Home</div>
+                </Link>
             </div>
             <div className="flex flex-row mt-3  w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
