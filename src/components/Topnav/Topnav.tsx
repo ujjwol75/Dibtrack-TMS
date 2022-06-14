@@ -102,7 +102,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
 
-            <span className='flex divide-x-2'>
+            <span className='flex divide-x-2 overflow-auto'>
               {collapse && <SidebarFlyoutMenu collapse={collapse} setCollapse={setCollapse} />}
               {/* {collapse && <MenuAlt1Icon className='h-8 w-8 mt-2' onClick={() => setCollapse(!collapse)} />} */}
               <Tab as={"span"} className='cursor-pointer'>
@@ -235,7 +235,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
               </Tab.Group>
             </div>
           </Tab.List>
-          <div className='flex flex-row'>
+          <div className='flex flex-row '>
             <div>
               <Subtopnav />
 
