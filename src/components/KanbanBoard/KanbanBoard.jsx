@@ -25,13 +25,15 @@ const KanbanBoard = () => {
     url: `${APIS.KANBAN_TASK}?workspace=${params?.id}`
   })
 
+
+  // HANDLE CREATE BOARD API
   const {
     isPostLoading,
     mutate: createBoardMutate,
     successMsg,
     addSuccessSnackBar,
     setAddSuccessSnackBar,
-  } = usePostHook({ queryKey: "createdBoard" });
+  } = usePostHook({ queryKey: `boardData${params?.id}` });
 
   const handleCreateBoard = (e) => {
     const url = APIS.CREATE_BOARD;
@@ -47,6 +49,8 @@ const KanbanBoard = () => {
     }
   }
 
+
+  // HANDLE CREATE CARD API 
   const handleCreateCard = (e, laneId) => {
     const url = APIS.TASK;
     const formData = {
@@ -66,6 +70,8 @@ const KanbanBoard = () => {
     }
   }
 
+
+  // VIEW CARD DETAIL 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
     setClickedCardInfo({
@@ -75,6 +81,7 @@ const KanbanBoard = () => {
     })
   }
 
+  //  HANDLE CARD DRAG AND DROP API
   const {
     isUpdateLoading,
     mutate: updateMutate,
@@ -93,6 +100,19 @@ const KanbanBoard = () => {
       updateMutate({ url, formData })
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  // HANDLE UPDATE BOARD API
+  const handleUpdateBoard = (laneId, data) => {
+    const url = `${APIS.TASK}${laneId}/`
+    const formData = {
+      name: data?.title,
+    }
+    try {
+      updateMutate({ url, formData })
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -164,10 +184,12 @@ const KanbanBoard = () => {
               style={{ backgroundColor: "transparent", position: 'relative' }}
               components={components}
               onLaneAdd={(e) => handleCreateBoard(e)}
+              onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
               onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
               handleDragEnd={
                 (cardId, sourceLaneId, targetLaneId, position, cardDetails) => handleCardDrag(cardId, sourceLaneId, targetLaneId, position, cardDetails)
               }
+
             />
           </div>
 
