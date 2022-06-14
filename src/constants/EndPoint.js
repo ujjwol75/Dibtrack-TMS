@@ -7,8 +7,9 @@ const APIS = {
   CURRENT_USER_CHANGE_PASSWORD: `/user/set_password/`,
 
   // TASKS
-  TASK: `/task/`,
-  KANBAN_TASK: `/task/status-wise-task/`,
+  TASK: `/task/`,    // FOR EDIT AND DELETE BOARD
+  KANBAN_TASK: `/task/status-wise-task/`,   
+  CREATE_BOARD: `/task/create-board/`,
   //Work Space 
   WORKSPACE:`/work-space/filter_work_space/`
 };

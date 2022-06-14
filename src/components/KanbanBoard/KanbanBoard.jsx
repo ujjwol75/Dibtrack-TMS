@@ -13,7 +13,7 @@ const KanbanBoard = () => {
 
   const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
     queryKey: "boardData",
-    url: `${APIS.KANBAN_TASK}?workspace=9`
+    url: `${APIS.KANBAN_TASK}?workspace=10`
   })
 
   console.log(boardsData, "boardsData")
@@ -33,7 +33,7 @@ const KanbanBoard = () => {
       parent: null,
       content_type: null,
       object_id: null,
-      workspace: 3,
+      workspace: 10,
       order: "6",
       description: "",
       estimated_time: null
