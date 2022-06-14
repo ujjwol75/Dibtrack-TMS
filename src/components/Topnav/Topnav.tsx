@@ -299,6 +299,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                 </div>
               </Tab.Panels>
             </div>
+            
           </div>  
         </Tab.Group>
       </div>
