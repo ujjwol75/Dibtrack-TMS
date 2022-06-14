@@ -26,7 +26,7 @@ type Props = {
 const SpacePlusTab = () => {
   return (
     <div className="absolute p-4 rounded bottom-[200px]  md:left-[195px] border border-gray-300 rounded shadow shadow-md
-    z-100 h-auto w-[250px] bg-white opacity-100 overflow-visible text-txtcolor">
+    z-50 h-auto w-[250px] bg-white  opacity-100  text-txtcolor">
       
      <Menu.Item>
      <div className="flex flex-row hover:bg-bgsearchbar p-1 text-sm">

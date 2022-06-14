@@ -43,9 +43,9 @@ function Sidebar(props:Props) {
   })
 console.log(workSpaceData,"workSpaceData")
   return (
-    <div className="z-1  relative h-[100vh]">
+    <div className="z-1  relative h-[100vh] sm:w-[100vw] md:w-full">
       <div
-        className={`sidebar border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white ease-in-out  duration-2000`}>
+        className={`sidebar border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white `}>
         <div className="flex flex-row justify-between p-2">
           <img src={logo} className="h-[45px] w-[100px]" alt="logo"/>
           <div className="mt-2 flex flex-row">
@@ -64,12 +64,12 @@ console.log(workSpaceData,"workSpaceData")
           </div>
         </div>
 
-        <div className="search-bar  flex flex-row justify-between mt-3 p-2">
-          <div className="search-input  relative ">
+        <div className="search-bar  flex flex-row items-center  mt-3 p-2">
+          <div className="search-input  relative w-full mr-[1%]">
             <input
               type="text"
               className=" bg-bgsearchbar focus:outline-none hover:text-btncolor
-                border border-black-100 pl-12 text-sm text-gray-400 py-1 w-[85%]"
+                border border-black-100 pl-12 text-sm text-gray-400 py-1"
               placeholder="Search"
             />
             <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[10px] hover:text-blue-500" />

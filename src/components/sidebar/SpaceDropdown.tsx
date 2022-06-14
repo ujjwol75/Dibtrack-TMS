@@ -23,7 +23,7 @@ type Props = {}
 
 const SpaceDropdown = (props: Props) => {
   return (
-    <div className="absolute bg-white opacity-100 p-4 rounded sm:left-[200px] md:bottom-[70px] left-[300px] text-txtcolor
+    <div className="absolute bg-white opacity-100 p-4 rounded  md:bottom-[100px] lg:bottom-[150px] xl:bottom-[200px]  text-txtcolor
     z-50 h-auto w-[300px]  border border-gray-200  shadow-md overflow-visible text-sm">
       <Menu.Item>
           <div className="flex flex-row justify-between hover:bg-bgsearchbar p-1">
