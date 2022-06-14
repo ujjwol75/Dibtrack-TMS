@@ -3,16 +3,20 @@ import { SearchIcon, ChevronDownIcon, ChevronUpIcon, FilterIcon, XIcon, PlusIcon
 import React,{useState} from 'react'
 import Down from '../Down/Down'
 import Show from '../Show/Show'
-import Collapseasignees from "./Collapseasignees"
+// import Collapseasignees from "./Collapseasignees"
 
-type Props = {}
+type Props = {
+  asignees:any,
+  setAsignees:any
+}
 
 const Subtopnav = (props: Props) => {
+    const {asignees,setAsignees} = props
     const [enabled, setEnabled] = useState(false)
     const [enabled1,setEnabled1] = useState(false)
     const [enabled2,setEnabled2] = useState(false)
     const [upShow,setUpShow] = useState(true)
-    const [collapse,setCollapse] = useState(true)
+    // const [collapse,setCollapse] = useState(true)
   return (
     <div>
       <div className='container-2 flex flex-row items-start justify-between px-5 py-2'> 
@@ -201,7 +205,7 @@ const Subtopnav = (props: Props) => {
             </Tab>
             <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
               <UsersIcon className='h-5 w-5'/>
-              <span onClick={()=>setCollapse(!collapse)}>Asignees</span>
+              <span onClick={()=>setAsignees(!asignees)}>Asignees</span>
               </Tab>
             <Tab className='px-5 py-2 hover:bg-gray-300'>
               {/* <div className='flex flex-row'>
@@ -228,7 +232,7 @@ const Subtopnav = (props: Props) => {
           </Tab.Panels>
         </Tab.Group>
       </div>
-      <div>
+      {/* <div>
       {
         collapse ? (
           <div className='collapse1 w-96 border z-100'>
@@ -278,7 +282,7 @@ const Subtopnav = (props: Props) => {
           </div>
         )
       }
-    </div>
+    </div> */}
     </div>
     
     </div>
