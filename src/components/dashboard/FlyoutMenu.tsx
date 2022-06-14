@@ -37,18 +37,18 @@ const FlyoutMenu = (props: Props) => {
   
   }
 
-  const handleClickOutside = (event:any) => {
-    if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-      event.stopPropagation()
-    }
-  }
+//   const handleClickOutside = (event:any) => {
+//     if (buttonRef.current && !buttonRef.current.contains(event.target)) {
+//       event.stopPropagation()
+//     }
+//   }
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-        document.removeEventListener("mousedown", handleClickOutside)
-      }
-})
+//   useEffect(() => {
+//     document.addEventListener("mousedown", handleClickOutside)
+//     return () => {
+//         document.removeEventListener("mousedown", handleClickOutside)
+//       }
+// })
 
   return (
     <div>

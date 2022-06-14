@@ -290,6 +290,7 @@ const Navbar = (props: Props) => {
                 </div>
               </Tab.Panels>
             </div>
+            
           </div>  
         </Tab.Group>
       </div>
