@@ -5,9 +5,14 @@ import CardPopupSection4 from './CardPopupSection4'
 import CardPopupSection5 from './CardPopupSection5'
 import CardPopupSection6 from './CardPopupSection6'
 
-type Props = {}
+type Props = {
+  clickedCardInfo?: any
+}
 
 const CardPopup = (props: Props) => {
+  const { clickedCardInfo } = props
+
+  console.log(clickedCardInfo)
   return (
     <div className='w-full grid grid-cols-5 divide-x divide-y '>
 
