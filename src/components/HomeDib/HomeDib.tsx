@@ -69,7 +69,7 @@ const HomeDib = (props: Props) => {
         <div className='absolute button-1 right-0'>
 
           {/* <Task_popover /> */}
-          {remainder?<RemainderPopOver rtext={'+ remainder'}/>:null}
+          {/* {remainder?<RemainderPopOver rtext={'+ Remainder'}/>:null} */}
         </div>
       </div>
     </>

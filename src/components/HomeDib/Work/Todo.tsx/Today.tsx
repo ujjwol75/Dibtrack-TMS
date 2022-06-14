@@ -1,7 +1,11 @@
 import { Menu } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import React, { useState } from 'react'
+import DropDownListBox from '../../../../Reusable/DropDownList/DropDownListBox'
+import DropDownMenu from '../../../../Reusable/DropDownList/DropDownMenu'
+import GroupBy from '../GroupBy'
 import RemainderPopOver from '../PopOver/RemainderPopOver'
+import TodoBlock from './TodoBlock/TodoBlock'
 
 type Props = {
     remainder:boolean
@@ -25,18 +29,7 @@ const Today = (props: Props) => {
                                 <span className='ml-2'>Today</span>
                             </Menu.Button>
                         </div>
-                        <div className='flex justify-between w-full '>
-
-
-                            <div >
-                                {/* <span className='ml-4 text-sm text-gray-400' >+Task</span> <span className='ml-2 text-sm text-gray-400' onClick={()=>{setRemainder(remainder!)}}> +Remainder</span> */}
-                                <span className='ml-4 text-sm text-gray-400' >+Task</span> <span><RemainderPopOver rtext={'+ remainder'}/></span>
-                            </div>
-                            <div >
-
-                                <span className=' text-sm text-gray-400'>fsd</span>
-                            </div>
-                        </div>
+                        <TodoBlock/>
                     </div>
                     
                     <Menu.Items>
