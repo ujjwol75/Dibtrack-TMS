@@ -65,17 +65,27 @@ import LBox from '../List/LBox';
 import SpacePopup from './Popup/SpacePopup';
 import ChevronDoubleRightIcon from '@heroicons/react/outline/ChevronDoubleRightIcon';
 import SidebarFlyoutMenu from '../sidebar/SidebarFlyout';
+import useGetHook from '../../customHooks/useGetHook';
+import { useParams } from 'react-router-dom';
+import APIS from '../../constants/EndPoint';
 type Props = {
   collapse?: any;
   setCollapse?: any;
 }
 
-const Navbar = ({collapse , setCollapse}: Props) => {
+const Navbar = ({ collapse, setCollapse }: Props) => {
   let [isOpen, setIsOpen] = useState(false)
   const [enabled, setEnabled] = useState(false)
   const [enabled1, setEnabled1] = useState(false)
   const [enabled2, setEnabled2] = useState(false)
   const [upShow, setUpShow] = useState(true)
+
+  const params = useParams()
+
+  const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
+    queryKey: `boardData${params?.id}`,
+    url: `${APIS.KANBAN_TASK}?workspace=${params?.id}`
+  })
 
   function closeModal() {
     setIsOpen(false)
@@ -84,32 +94,34 @@ const Navbar = ({collapse , setCollapse}: Props) => {
   function openModal() {
     setIsOpen(true)
   }
+
+  console.log(boardsData)
   return (
     <>
       <div className='mt-2'>
-        
+
         {/* <MenuAlt1Icon className='mt-3 h-5 w-5 text-black-300' /> */}
         <Tab.Group>
           <Tab.List className="flex flex-row justify-between">
             {/* LEFT TOPNAV */}
 
             <span className='flex'>
-            {collapse && <SidebarFlyoutMenu collapse = {collapse} setCollapse = {setCollapse}/>}
+              {collapse && <SidebarFlyoutMenu collapse={collapse} setCollapse={setCollapse} />}
               {/* {collapse && <MenuAlt1Icon className='h-8 w-8 mt-2' onClick={() => setCollapse(!collapse)} />} */}
               <Tab as={"span"} className='cursor-pointer'>
                 {({ selected }) => (
                   <>
-                    <span 
+                    <span
                       className={
                         selected ? 'border-transparent flex flex-row text-gray-500 hover:text-gray-700 border-gray-300 hover:border-gray-300 whitespace-nowrap items-center px-2 py-1 border-b-4 font-bold text-lg hover:border-b-4 dot-wrapper1 ml-2' : "flex flex-row px-2 py-1 items-center font-bold text-lg ml-2"}
                     >
-                        <span className='font-bold text-xl border rounded-lg bg-gray-400 text-white p-3 px-6'>S</span>
-                        <span className=''>Space</span>
-                        {/* <span><DotsHorizontalIcon className='h-5 w-5 dot1 invisible'/></span> */}
-                        <Popover className="relative">
-                          <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot1 mt-3 invisible'/></span></Popover.Button>
-                          <Spacepop/>
-                        </Popover>
+                      <span className='font-bold text-xl border rounded-lg bg-gray-400 text-white p-3 px-6'>S</span>
+                      <span className=''>Space</span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot1 invisible'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot1 mt-3 invisible' /></span></Popover.Button>
+                        <Spacepop />
+                      </Popover>
                     </span>
                   </>
 
@@ -123,13 +135,13 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       className={
                         selected ? 'border-transparent flex flex-row text-purple-500 border-purple-600 hover:text-purple-700 hover:border-purple-600 hover:border-b-4 whitespace-nowrap items-center mx-2 px-2 py-4 border-b-4 text-lg dot-wrapper' : "px-2 py-4 mx-2 flex flex-row items-center text-lg"}
                     >
-                        <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
-                        <span className='border-gray-400 pr-3'>List</span>
-                        {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
-                        <Popover className="relative">
-                          <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
-                          <Listpop/>
-                        </Popover>
+                      <span className=' border-gray-400 pl-3'><ViewListIcon className='h-7 w-5' /></span>
+                      <span className='border-gray-400 pr-3'>List</span>
+                      {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
+                      <Popover className="relative">
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot' /></span></Popover.Button>
+                        <Listpop />
+                      </Popover>
                     </span>
                   </>
 
@@ -147,8 +159,8 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       <span className=' border-gray-400 pr-3'>Board</span>
                       {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
                       <Popover className="relative">
-                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
-                        <Listpop/>
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot' /></span></Popover.Button>
+                        <Listpop />
                       </Popover>
                     </span>
                   </>
@@ -167,8 +179,8 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       <span className='border-gray-400 pr-3'>Space</span>
                       {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
                       <Popover className="relative">
-                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
-                        <Listpop/>
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot' /></span></Popover.Button>
+                        <Listpop />
                       </Popover>
                     </span>
                   </>
@@ -187,8 +199,8 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                       <span className='border-gray-400 pr-3'>Calendar</span>
                       {/* <span><DotsHorizontalIcon className='h-5 w-5 dot'/></span> */}
                       <Popover className="relative">
-                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot'/></span></Popover.Button>
-                        <Listpop/>
+                        <Popover.Button><span><DotsHorizontalIcon className='h-5 w-5 dot' /></span></Popover.Button>
+                        <Listpop />
                       </Popover>
                     </span>
                   </>
@@ -216,10 +228,10 @@ const Navbar = ({collapse , setCollapse}: Props) => {
             </span>
             {/* RIGHT TOPNAV */}
             <div>
-            
+
               <Tab.Group>
                 <div className=''>
-                  
+
                   <Tab.List className='flex flex-row space-x-2'>
                     <Tab className='flex flex-row px-5 py-2 items-center cursor-pointer border rounded-lg'>
                       <DesktopComputerIcon className='h-5 w-5' />
@@ -281,7 +293,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
           </Tab.List>
           <div className='flex flex-row'>
             <div>
-              <Subtopnav/>
+              <Subtopnav />
 
               <Tab.Panels>
                 <div className='bg-gray-100 h-full'>
@@ -299,8 +311,8 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                 </div>
               </Tab.Panels>
             </div>
-            
-          </div>  
+
+          </div>
         </Tab.Group>
       </div>
     </>
