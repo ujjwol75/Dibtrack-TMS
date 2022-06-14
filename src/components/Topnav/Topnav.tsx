@@ -11,7 +11,8 @@ import Subtopnav from './Subtopnav/Subtopnav';
 import { Popover } from '@headlessui/react';
 import CalendarComponent from '../dashboard/CalendarComponent';
 import { Listbox, Tab } from '@headlessui/react';
-import Collapseasignees from "./Subtopnav/Collapseasignees"
+// import Collapseasignees from "./Subtopnav/Collapseasignees"
+import Collapse from './Subtopnav/Collapse';
 import {
   ViewListIcon,
   ViewBoardsIcon,
@@ -76,6 +77,7 @@ const Navbar = ({collapse , setCollapse}: Props) => {
   const [enabled1, setEnabled1] = useState(false)
   const [enabled2, setEnabled2] = useState(false)
   const [upShow, setUpShow] = useState(true)
+  const [asignees,setAsignees] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
@@ -280,9 +282,8 @@ const Navbar = ({collapse , setCollapse}: Props) => {
             </div>
           </Tab.List>
           <div className='flex flex-row'>
-            <div>
-              <Subtopnav/>
-
+            <div className='w-full'>
+              <Subtopnav asignees={asignees} setAsignees={setAsignees} />
               <Tab.Panels>
                 <div className='bg-gray-100 h-full'>
                   <Tab.Panel>Content 1</Tab.Panel>
@@ -299,7 +300,9 @@ const Navbar = ({collapse , setCollapse}: Props) => {
                 </div>
               </Tab.Panels>
             </div>
-            
+            <div>
+              <Collapse asignees={asignees} setAsignees={setAsignees}/>  
+            </div>
           </div>  
         </Tab.Group>
       </div>
