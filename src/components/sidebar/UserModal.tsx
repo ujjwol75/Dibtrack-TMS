@@ -3,6 +3,7 @@ import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import Logout from "../Profile/Logout";
 type Props = {};
 
 const UserModal = (props: Props) => {
@@ -79,8 +80,8 @@ const UserModal = (props: Props) => {
                       <div className="mt-3 flex flex-row mt-3">
                         <p>People</p>
                         <Link to  = "/dashboard">
-                        <button className="bg-btncolor px-2 text-white rounded hover:bg-blue-500 py-1 ml-1 focus:outline-none " onClick={closeModal}>
-                          <span className="flex fex-row">
+                        <button className="bg-btncolor px-2 text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent" onClick={closeModal}>
+                          <span className="flex fex-row outline-none">
                             <UserAddIcon className="h-4 w-3" />
                             <p className="ml-2">invite</p>
                           </span>
@@ -118,7 +119,7 @@ const UserModal = (props: Props) => {
                         <div className="justify-self-end">
                           <button
                             type="button"
-                            className="inline-flex w-full justify-center rounded-sm  border border-transparent bg-blue-100 px-1 ml-4 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                            className="inline-flex w-full justify-center rounded-sm   bg-blue-100 px-1 ml-4 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none"
                             onClick={closeModal}
                           >
                             X
@@ -135,9 +136,10 @@ const UserModal = (props: Props) => {
                       </div>
                       <div className="mt-3 flex flex-row mt-3">Apps</div>
                       <div className="mt-3 flex flex-row mt-3">Rewards</div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <Logout />
+                      {/* <div className="mt-3 flex flex-row mt-3">
                         Logout
-                      </div>
+                      </div> */}
                        
                        <hr className="mb-5 mt-5"/>
                       <div className="mt-3 flex flex-row mt-5">

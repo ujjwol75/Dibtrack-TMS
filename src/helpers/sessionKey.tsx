@@ -24,9 +24,9 @@ export const removeKey = (key: string) => {
 
 
 export const accessToken = () => {
-  const authToken: any = JSON.parse(getKey('userAuth') || "");
+  const authToken: any = JSON.parse(getKey('userAuth') || "{}");
   const { accessToken, refreshToken, permissions, user } = authToken;
-  return accessToken
+  return accessToken 
 }
 
 export const permissions = () => {

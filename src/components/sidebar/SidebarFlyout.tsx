@@ -2,70 +2,61 @@ import { Fragment, useRef, useState, useEffect } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import CircleUserIcon from "../../Reusable/CircleUserIcon"
 import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup"
+import Sidebar from "../dashboard/Sidebar"
+import { MenuAlt1Icon } from "@heroicons/react/solid"
 
 
-
-
+  
+ 
 type Props = {
-  userIconSizeProp?: string
+    collapse: boolean
+    setCollapse: any
 }
 
-const FlyoutMenu = (props: Props) => {
+const SidebarFlyoutMenu = ({collapse , setCollapse}: Props) => {
+    let timeout:any
+    const timeoutDuration = 700
 
-  const { userIconSizeProp = "xs" } = props
+    const buttonRef = useRef<any>(null) 
+    const [openState, setOpenState] = useState(false)
 
-  let timeout: any
-  const timeoutDuration = 700
-
-  const buttonRef = useRef<any>(null)
-  const [openState, setOpenState] = useState(false)
-
-  const toggleMenu = (open: any) => {
-
+    const toggleMenu = (open: any) => {
+    
     setOpenState((openState) => !openState)
-
-    buttonRef?.current?.click()
+    
+     buttonRef?.current?.click() 
   }
 
 
-  const onHover = (open: any, action: string) => {
-
+  const onHover = ( open: any, action: string) => {
+      
+    
     if (
       (!open && !openState && action === "onMouseEnter") ||
       (open && openState && action === "onMouseLeave")
     ) {
-
-      clearTimeout(timeout)
-
-      timeout = setTimeout(() => toggleMenu(open), timeoutDuration)
+        
+    clearTimeout(timeout)
+      
+    timeout = setTimeout(() => toggleMenu(open), timeoutDuration)
     }
-
+  
   }
 
-  //   const handleClickOutside = (event:any) => {
-  //     if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-  //       event.stopPropagation()
-  //     }
-  //   }
 
-  //   useEffect(() => {
-  //     document.addEventListener("mousedown", handleClickOutside)
-  //     return () => {
-  //         document.removeEventListener("mousedown", handleClickOutside)
-  //       }
-  // })
 
   return (
     <div>
-      <Popover>
+         <Popover>
         {({ open }) => (
           <div
             onMouseEnter={() => onHover(open, "onMouseEnter")}
             onMouseLeave={() => onHover(open, "onMouseLeave")}
-
+            
           >
-            <Popover.Button ref={buttonRef} className="focus:outline-none">
-              <CircleUserIcon size={userIconSizeProp} />
+            <Popover.Button ref={buttonRef} className = "focus:outline-none">
+           
+            <MenuAlt1Icon className='h-8 w-8 mt-2' onClick={() => setCollapse(!collapse)} />
             </Popover.Button>
 
             <Transition
@@ -79,7 +70,7 @@ const FlyoutMenu = (props: Props) => {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel static className="z-10 absolute ">
-                <UserInfoPopup />
+                 <Sidebar setCollapse={undefined} />
               </Popover.Panel>
             </Transition>
           </div>
@@ -89,4 +80,8 @@ const FlyoutMenu = (props: Props) => {
   )
 }
 
-export default FlyoutMenu
+export default SidebarFlyoutMenu
+
+function setCollapse(arg0: boolean) {
+    throw new Error("Function not implemented.")
+}

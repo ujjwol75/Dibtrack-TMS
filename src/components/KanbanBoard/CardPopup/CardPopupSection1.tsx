@@ -1,11 +1,6 @@
-import { Popover } from '@headlessui/react'
 import { DotsHorizontalIcon, ShareIcon, UserAddIcon } from '@heroicons/react/outline'
 import { CheckIcon, XIcon, FlagIcon } from '@heroicons/react/solid'
-import React, { useRef } from 'react'
-import CircleUserIcon from '../../../Reusable/CircleUserIcon'
-import UserInfoPopup from '../../../Reusable/CircleUserIcon/UserInfoPopup'
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
-import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
 
@@ -40,7 +35,7 @@ const CardPopupSection1 = (props: Props) => {
 
           {/* ASSIGN USERS */}
           <span className='flex items-center'>
-            <FlyoutMenu />
+            <FlyoutMenu userIconSizeProp="sm" />
             <UserAddIcon className='p-1 w-8 border-2 h-fit border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
           </span>
 

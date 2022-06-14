@@ -5,7 +5,6 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 
 
   const token = accessToken()
-  console.log(token)
   const navigate = useNavigate()
   if (!token) {
     navigate("/login")

@@ -1,7 +1,8 @@
 import { useQuery } from "react-query";
 import { getApiData } from "../helpers/AxiosInstance";
 
-const useGetHook = ({ queryKey, url, parma }) => {
+const useGetHook = (props) => {
+  const { queryKey, url, parma } = props
   const { isLoading, isError, data, isSuccess } = useQuery(
     queryKey,
     async () => {
