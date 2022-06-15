@@ -95,6 +95,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
   function openModal() {
     setIsOpen(true)
   }
+  
   return (
     <>
       <div className='mt-2'>
