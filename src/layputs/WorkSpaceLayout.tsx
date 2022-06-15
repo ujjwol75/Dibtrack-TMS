@@ -25,10 +25,11 @@ const DashboardLayout = () => {
           <div className="grid grid-cols-5">
             <div className="col-span-5">
               <Topnav collapse={collapse} setCollapse={setCollapse} />
+              <Outlet />
             </div>
-            <div className="overflow-hidden">
-            <Outlet />
-            </div>
+            
+           
+          
           </div>)
 
           : (

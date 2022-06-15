@@ -21,11 +21,16 @@ const Subtopnav = (props: Props) => {
     <div>
       <div className='container-2 flex flex-row items-start justify-between px-5 py-2'> 
       <div className='flex flex-row items-center mt-2 cursor-pointer'>
-        <SearchIcon className='h-5 w-5'/>
+        <SearchIcon className='h-4  w-4 mt-1 text-gray-400'/>
         <input className='border-r-2 outline-none input' placeholder='Search tasks...'/>
         <Popover className="relative">
           {
-            upShow?<Popover.Button><ChevronDownIcon className='h-5 w-5' onClick={()=>setUpShow(false)}/></Popover.Button>:<Popover.Button><ChevronUpIcon className='h-5 w-5' onClick={()=>setUpShow(true)}/></Popover.Button>
+            upShow?<Popover.Button className="outline-none">
+              <ChevronDownIcon className='h-5 w-5 text-gray-500' onClick={()=>setUpShow(false)}/>
+              </Popover.Button>
+              :<Popover.Button className="outline-none">
+                <ChevronUpIcon className='h-5 w-5 text-gray-500' onClick={()=>setUpShow(true)}/>
+                </Popover.Button>
           }
           {/* <Popover.Button><ChevronDownIcon className='h-5 w-5'/></Popover.Button> */}
 
