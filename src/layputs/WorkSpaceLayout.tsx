@@ -26,7 +26,9 @@ const DashboardLayout = () => {
             <div className="col-span-5">
               <Topnav collapse={collapse} setCollapse={setCollapse} />
             </div>
+            <div className="overflow-hidden">
             <Outlet />
+            </div>
           </div>)
 
           : (
