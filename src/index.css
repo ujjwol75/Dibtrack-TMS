@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-=======
 *{
     margin:0px;
     padding:0px;
@@ -58,7 +51,6 @@ html , body {
       
       
   }
->>>>>>> 4bf289501f99df2486147ad06559adbe7cdddc1b
 
 
 
@@ -135,9 +127,6 @@ input::placeholder {
   background: #fafbfc !important;
 }
 
-    width: 5px;
-    background: #fafbfc !important; 
-  }
   
   
   /* Track */
