@@ -3,6 +3,7 @@ import { SearchIcon, ChevronDownIcon, ChevronUpIcon, FilterIcon, XIcon, PlusIcon
 import React,{useState} from 'react'
 import Down from '../Down/Down'
 import Show from '../Show/Show'
+import Collapseasignees from './Collapseasignees'
 // import Collapseasignees from "./Collapseasignees"
 
 type Props = {
@@ -60,13 +61,13 @@ const Subtopnav = (props: Props) => {
               </div> */}
               <Popover className="relative">
                 <Popover.Button>
-                  <div className='flex flex-row'>
-                    <FilterIcon className='h-5 w-5'/>
+                  <div className='flex flex-row text-gray-500'>
+                    <FilterIcon className='h-5 w-6 mt-1 '/>
                     <span>Filter</span>
                   </div>
                 </Popover.Button>
 
-                <Popover.Panel className="absolute bg-white z-10 mt-10 border p-4 w-96">
+                <Popover.Panel className="absolute bg-white z-10 mt-10 border p-4 w-96 shadow-lg rounded-md">
                   <div className="grid grid-cols-1">
                     <div className='text-left py-2'>
                       <span className='font-bold'>FILTER</span>
@@ -75,7 +76,7 @@ const Subtopnav = (props: Props) => {
                       <span>Where</span>
                       <div className='flex flex-row border w-60 px-2 py rounded-lg justify-between'>
                         <span>Select Filter</span>
- {/* <span><ChevronDownIcon className='h-5 w-5'/></span> */}
+                        {/* <span><ChevronDownIcon className='h-5 w-5'/></span> */}
                         <Popover className="relative">
                           <Popover.Button><span><ChevronDownIcon className='h-5 w-5'/></span></Popover.Button>
 
@@ -115,25 +116,25 @@ const Subtopnav = (props: Props) => {
                 </Popover.Panel>
               </Popover>
             </Tab>
-            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
-              <DuplicateIcon className='h-5 w-5'/>
+            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row text-gray-500'>
+              <DuplicateIcon className='h-5 w-5 mr-1'/>
               {/* <span className='text-purple-600'>Group by: status</span> */}
               <Popover className="relative">
-                <Popover.Button><span className='text-purple-600'>Group by: status</span></Popover.Button>
+                <Popover.Button><span className='text-btncolor'>Group by: status</span></Popover.Button>
 
-                <Popover.Panel className="absolute bg-white z-10 border w-60 mt-6 shadow-2xl">
+                <Popover.Panel className="absolute bg-white z-10 border w-60 mt-6 shadow-2xl text-gray-500 rounded-lg">
                   <div className="grid grid-cols-1 p-4">
                     <div className='text-left flex flex-row items-center py-2'>
                       <span className='pr-4'>GROUP BY</span>
                       <span><QuestionMarkCircleIcon className='h-5 w-5'/></span>
                     </div>
                     <div className='flex flex-row items-center text-left py-2'>
-                      <span><AnnotationIcon className='h-5 w-5'/></span>
+                      <span><AnnotationIcon className='h-5 w-5 mr-1'/></span>
                       <span>Status (default)</span>
                     </div>
                     <div className='flex flex-row items-center text-left justify-between py-2'>
                       <div className='flex flex-row items-center'>
-                        <span><SearchIcon className='h-5 w-5'/></span>
+                        <span><SearchIcon className='h-5 w-5 mr-1'/></span>
                         <span>Asignee</span>
                       </div>
                       <div>
@@ -141,15 +142,15 @@ const Subtopnav = (props: Props) => {
                       </div>
                     </div>
                     <div className='flex flex-row items-center text-left py-2'>
-                      <span><TagIcon className='h-5 w-5'/></span>
+                      <span><TagIcon className='h-5 w-5 mr-1'/></span>
                       <span>Tags</span>
                     </div>
                     <div className='flex flex-row items-center text-left py-2'>
-                      <span><CalendarIcon className='h-5 w-5'/></span>
+                      <span><CalendarIcon className='h-5 w-5 mr-1'/></span>
                       <span>Due date</span>
                     </div>
                     <div className='flex flex-row text-left items-center py-2'>
-                      <span><XCircleIcon className='h-5 w-5'/></span>
+                      <span><XCircleIcon className='h-5 w-5 mr-1'/></span>
                       <span>None</span>
                     </div>
 
@@ -157,7 +158,7 @@ const Subtopnav = (props: Props) => {
 
                     <div className='flex flex-row items-center text-left py-2 justify-between'>
                       <div className='flex flex-row items-center text-left'>
-                        <span><PencilIcon className='h-5 w-5'/></span>
+                        <span><PencilIcon className='h-5 w-5 mr-1'/></span>
                         <span>Custom Field</span>
                       </div>
                       <div>
@@ -174,11 +175,11 @@ const Subtopnav = (props: Props) => {
                 </Popover.Panel>
               </Popover>
             </Tab>
-            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
-              <LinkIcon className='h-5 w-5'/>
+            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row text-gray-500'>
+              <LinkIcon className='h-5 w-5 mr-1'/>
 {/* <span>Subtask</span> */}
-              <Popover className="relative">
-                <Popover.Button><span>Subtask</span></Popover.Button>
+              <Popover className="relative ">
+                <Popover.Button className="outline-none"><span>Subtask</span></Popover.Button>
 
                 <Popover.Panel className="absolute bg-white shadow-2xl mt-5 z-10 border w-60 p-4">
                   <div className="grid grid-cols-1">
@@ -204,12 +205,12 @@ const Subtopnav = (props: Props) => {
                 </Popover.Panel>
               </Popover>
             </Tab>
-            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
-              <UserIcon className='h-5 w-5'/>
+            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row text-gray-500'>
+              <UserIcon className='h-5 w-5 mr-1'/>
               <span>Me</span>
             </Tab>
-            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row'>
-              <UsersIcon className='h-5 w-5'/>
+            <Tab className='px-5 py-2 hover:bg-gray-300 flex flex-row text-gray-500'>
+              <UsersIcon className='h-5 w-5 mr-1'/>
               <span onClick={()=>setAsignees(!asignees)}>Asignees</span>
               </Tab>
             <Tab className='px-5 py-2 hover:bg-gray-300'>
@@ -217,10 +218,10 @@ const Subtopnav = (props: Props) => {
                 <EyeIcon className='h-5 w-5'/>
                 <span>Show</span>
               </div> */}
-              <Popover className="relative">
+              <Popover className="relative text-gray-500">
                 <Popover.Button>
                   <div className='flex flex-row'>
-                    <EyeIcon className='h-5 w-5'/>
+                    <EyeIcon className='h-4 w-4 mr-1 mt-1'/>
                     <span>Show</span>
                   </div>
               </Popover.Button>
@@ -237,9 +238,9 @@ const Subtopnav = (props: Props) => {
           </Tab.Panels>
         </Tab.Group>
       </div>
-      {/* <div>
+       {/* <div>
       {
-        collapse ? (
+        asignees ? (
           <div className='collapse1 w-96 border z-100'>
             <div className='p-4'>
               <div className='flex flex-row justify-between'>
@@ -283,11 +284,10 @@ const Subtopnav = (props: Props) => {
               </div>
           </div>
         ):(
-          <div className='collapse2'>
-          </div>
+          null
         )
       }
-    </div> */}
+    </div>  */}
     </div>
     
     </div>

@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 
 const DashboardNotFound: React.FC<any> = (props) => {
   return (
-      <div className=" sm:h-[25%] md:h-[57%] lg:h-[65%] xl:h-[70%] 2xl-h[80%] flex flex-col">
+      <div className=" min-h-screen flex flex-col">
         <main
-          className="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          className="flex-grow flex flex-col  h-full fy-centerjusti  max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0 flex justify-center">
             <Link to="/" className="inline-flex">
               <span className="sr-only">Workflow</span>

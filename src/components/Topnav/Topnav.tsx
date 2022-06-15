@@ -99,7 +99,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
   return (
     <>
-      <div className=" flex flex-row justify-between border-b border-blue-300 w-full">
+      <div className=" flex flex-row justify-between border-b border-blue-300 w-full py-4">
         <div className="flex flex-row items-center w-full">
           {collapse && (
             <MenuAlt1Icon
@@ -115,14 +115,14 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
             >
               s
             </span>
-            <p className=" flex ml-2 text-xs  font-bold text-[16px] mr-2 border-r border-gray-300 pr-2">
+            <p className=" flex ml-2 text-xs  font-bold text-[16px] mr-2 mt-1  border-r border-gray-300 pr-2">
               name
             </p>
           </div>
           {/* space name end */}
 
           {/* menu list */}
-          <div className="inline-flex w-[700px] overflow-x-auto no-scrollbar mt-5 pb-5  px-2">
+          <div className="flex flex-row w-[650px] overflow-x-auto no-scrollbar  px-2">
             {boardsData?.task_views?.map((value: any, index: number) => {
               return (
                 <ul className="text-gray-400">
@@ -152,16 +152,16 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
         
 
-        <div className="flex flex-row px-5 py-1 items-center cursor-pointer border rounded-lg">
-          <DesktopComputerIcon className="h-5 w-5 text-gray-400" />
-          <span className="text-md border-r-2 pr-2 text-txtcolor">Automate</span>
+        <div className="flex flex-row px-5 p-1 border border-gray-200 items-center cursor-pointer rounded">
+          <DesktopComputerIcon className="h-5 w-5 text-gray-400 mr-1" />
+          <span className="text-sm  pr-2 text-txtcolor">Automate</span>
           
           <Popover className="relative">
             {upShow ? (
-              <Popover.Button className="outline-none py-1">
+              <Popover.Button className="outline-none">
                 <span>
                   <ChevronDownIcon
-                    className="h-5 w-5 text-gray-400 ml-2 mt-1"
+                    className="h-5 w-5 text-gray-400 ml-1 mt-2"
                     onClick={() => setUpShow(false)}
                   />
                 </span>
@@ -170,7 +170,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
               <Popover.Button className="outline-none">
                 <span className="border-none">
                   <ChevronUpIcon
-                    className="h-5 w-5 text-gray-400 ml-2 mt-1"
+                    className="h-5 w-5 text-gray-400 ml-1 mt-2"
                     onClick={() => setUpShow(true)}
                   />
                 </span>
@@ -202,10 +202,10 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
         </div>
 
          {/* share */}
-         <div className='flex flex-row px-5  items-center border rounded-md ml-2'>
-               <div className='flex flex-row items-center'>
-                <ShareIcon className='h-5 w-5 text-gray-400 mr-2'/>
-                <span className='text-md text-txtcolor'>Share</span>
+         <div className='flex flex-row px-5  items-center  rounded-md ml-2'>
+               <div className='flex flex-row items-center p-2 border border-gray-200 rounded'>
+                <ShareIcon className='h-4 w-5 text-gray-400 mr-2'/>
+                <span className='text-sm text-txtcolor'>Share</span>
               </div> 
                
                 
@@ -217,7 +217,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
       </div>{" "}
       {/*end of main div */}
 
-      <Subtopnav asignees={undefined} setAsignees={undefined} />
+      <Subtopnav asignees={asignees} setAsignees={setAsignees} />
     </>
   );
 };

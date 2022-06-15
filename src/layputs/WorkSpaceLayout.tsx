@@ -22,8 +22,8 @@ const DashboardLayout = () => {
     <>
       {
         collapse ? (
-          <div className="grid grid-cols-5">
-            <div className="col-span-5">
+          <div className="grid grid-cols-5 h-full">
+            <div className="col-span-5 h-full">
               <Topnav collapse={collapse} setCollapse={setCollapse} />
               <Outlet />
             </div>
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
           </div>)
 
           : (
-            <div className="grid grid-cols-5">
+            <div className="grid grid-cols-5 h-full">
               <div className="col-span-1">
                 <Sidebar
                   collapse={collapse}
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
                 />
               </div>
 
-              <div className="col-span-4">
+              <div className="col-span-4 h-full">
                 <Topnav collapse={collapse} setCollapse={setCollapse} />
                 <Outlet />
               </div>
