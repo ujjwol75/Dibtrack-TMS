@@ -9,7 +9,7 @@ type Props = {}
 
 
 const ModalTabs = (props: Props) => {
-
+const [spaceName , setSpaceName] = useState<string>('')
 let [isOpen, setIsOpen] = useState(false);
 
 function closeModal() {
@@ -21,10 +21,10 @@ function openModal() {
 }
 
 const handleSubmit  = (e:any) => {
-  openModal()
+   openModal()
    e.preventDefault()
   
-  console.log('clicked')
+  console.log('space' , spaceName)
   
 }
   return (
@@ -59,8 +59,11 @@ const handleSubmit  = (e:any) => {
         <Tab.Panel>
             <form className='p-5 text-txtcolor' onSubmit={(e) => handleSubmit(e)}>
                 <label className='text-xs'>name</label>
-                <input type="text" name="" id=""  className = "bg-bgsearchbar mt-4 mb-4 pb-3 border-b border-gray-200  w-full focus:outline-none "
-                placeholder='ENTER SPACE NAME'/>
+                <input type="text" name="" id=""  
+                className = "bg-bgsearchbar mt-4 mb-4 pb-3 border-b border-gray-200  w-full focus:outline-none "
+                placeholder='ENTER SPACE NAME'
+                onChange={(e)=>  setSpaceName(e.target.value)}
+                />
                 
                 <ColorThemePopup handleSubmit={handleSubmit} isopen = {isOpen}  closeModal = {closeModal} openModal = {openModal}/>
                 {/* <button className='w-full bg-btncolor mt-5 p-4 text-white '>Next</button> */}

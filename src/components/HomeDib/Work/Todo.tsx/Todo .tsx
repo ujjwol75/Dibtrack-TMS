@@ -6,15 +6,19 @@ import OverDue from './OverDue'
 import Today from './Today'
 import Unscheduled from './Unscheduled'
 
-type Props = {}
+type Props = {
+  remainder:boolean
+  setRemainder:any
+}
 
 const Todo = (props: Props) => {
+  const {remainder , setRemainder } = props
   return (
     <>
       <div className='flex-col space-y-8 mt-6'>
 
         <div>
-          <Today/>
+          <Today remainder={remainder} setRemainder={setRemainder} />
         </div>
         <div>
           <OverDue/>

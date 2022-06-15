@@ -1,3 +1,5 @@
+import APIS from '../../../constants/EndPoint'
+import useGetHook from '../../../customHooks/useGetHook'
 import CardPopupSection1 from './CardPopupSection1'
 import CardPopupSection2 from './CardPopupSection2'
 import CardPopupSection3 from './CardPopupSection3'
@@ -5,9 +7,19 @@ import CardPopupSection4 from './CardPopupSection4'
 import CardPopupSection5 from './CardPopupSection5'
 import CardPopupSection6 from './CardPopupSection6'
 
-type Props = {}
+type Props = {
+  clickedCardInfo?: any
+}
 
 const CardPopup = (props: Props) => {
+  const { clickedCardInfo } = props
+
+  const { data: cardDetailData, isLoading: cardDetailDataLoading } = useGetHook({
+    queryKey: `cardDetail${clickedCardInfo?.cardId}`,
+    url: `${APIS.TASK}${clickedCardInfo?.cardId}`
+  })
+  
+  console.log(cardDetailData,"cardDetailData")
   return (
     <div className='w-full grid grid-cols-5 divide-x divide-y '>
 

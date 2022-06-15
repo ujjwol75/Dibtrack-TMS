@@ -8,7 +8,7 @@ function WorkSpaceDashboard() {
 const[sidePopUp,setSidePopUp] = useState(false)
   return (
     <>
-      <h1>WorkSpace Dashboard</h1>
+      {/* <h1>WorkSpace Dashboard</h1> */}
 
       {/* <SmallBox/> */}
       {/* <MidBox/> */}

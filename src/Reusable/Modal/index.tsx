@@ -48,7 +48,8 @@ const Modal = (props: Props) => {
                     {title}
                   </span>
                   <span title='Close' onClick={() => setIsOpen(false)}>
-                    <XIcon className='border border-gray-700 rounded-lg h-7 w-7 hover:border-btncolor hover:text-btncolor' />
+                <XIcon className='w-10 h-10 inline-block text-gray-400 cursor-pointer hover:text-btncolor hover:transition duration-500 ease-in-out hover:rotate-90 ' />
+                    {/* <XIcon className='border border-gray-700 rounded-lg h-7 w-7 hover:border-btncolor hover:text-btncolor' /> */}
                   </span>
                 </Dialog.Title>
                 <div>

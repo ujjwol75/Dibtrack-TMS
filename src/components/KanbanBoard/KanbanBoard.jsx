@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Board from 'react-trello'
 import APIS from '../../constants/EndPoint'
 import useGetHook from '../../customHooks/useGetHook'
+import usePatchHook from '../../customHooks/usePatchHook'
 import usePostHook from '../../customHooks/usePostHook'
 import Modal from '../../Reusable/Modal'
 import CardPopup from './CardPopup/CardPopup'
@@ -9,34 +11,36 @@ import KanbanCard from './KanbanCard'
 
 const KanbanBoard = () => {
 
-  const [openCardModal, setOpenCardModal] = useState(false)
+  const params = useParams()
 
-  const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
-    queryKey: "boardData",
-    url: `${APIS.KANBAN_TASK}?workspace=10`
+  const [openCardModal, setOpenCardModal] = useState(false)
+  const [clickedCardInfo, setClickedCardInfo] = useState({
+    cardId: "",
+    metaData: null,
+    laneId: ""
   })
 
-  console.log(boardsData, "boardsData")
+  const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
+    queryKey: `boardData${params?.id}`,
+    url: `${APIS.KANBAN_TASK}?workspace=${params?.id}`
+  })
 
+
+  // HANDLE CREATE BOARD API
   const {
     isPostLoading,
     mutate: createBoardMutate,
     successMsg,
     addSuccessSnackBar,
     setAddSuccessSnackBar,
-  } = usePostHook({ queryKey: "createdBoard" });
+  } = usePostHook({ queryKey: `boardData${params?.id}` });
 
   const handleCreateBoard = (e) => {
-    const url = APIS.TASK;
+    const url = APIS.CREATE_BOARD;
     const formData = {
       name: e?.title,
-      parent: null,
-      content_type: null,
-      object_id: null,
-      workspace: 10,
-      order: "6",
-      description: "",
-      estimated_time: null
+      workspace: params?.id,
+      color: ""
     };
     try {
       createBoardMutate({ url, formData });
@@ -45,6 +49,8 @@ const KanbanBoard = () => {
     }
   }
 
+
+  // HANDLE CREATE CARD API 
   const handleCreateCard = (e, laneId) => {
     const url = APIS.TASK;
     const formData = {
@@ -52,8 +58,8 @@ const KanbanBoard = () => {
       parent: laneId,
       content_type: null,
       object_id: null,
-      workspace: 9,
-      order: "7",
+      workspace: params?.id,
+      order: "1",
       description: "",
       estimated_time: null
     };
@@ -64,9 +70,50 @@ const KanbanBoard = () => {
     }
   }
 
+
+  // VIEW CARD DETAIL 
   const handleClickCard = (cardId, metadata, laneId) => {
     setOpenCardModal(true)
-    console.log(cardId, metadata, laneId)
+    setClickedCardInfo({
+      cardId: cardId,
+      metaData: metadata,
+      laneId: laneId
+    })
+  }
+
+  //  HANDLE CARD DRAG AND DROP API
+  const {
+    isUpdateLoading,
+    mutate: updateMutate,
+    updateSuccessSnackBar,
+    setUpdateSuccessSnackBar,
+  } = usePatchHook({ queryKey: `boardData${params?.id}` })
+
+  const handleCardDrag = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+    // console.log(cardId, sourceLaneId, targetLaneId, position, cardDetails)
+    const url = `${APIS.TASK}${cardId}/`
+    const formData = {
+      parent: targetLaneId,
+      order: position
+    }
+    try {
+      updateMutate({ url, formData })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  // HANDLE UPDATE BOARD API
+  const handleUpdateBoard = (laneId, data) => {
+    const url = `${APIS.TASK}${laneId}/`
+    const formData = {
+      name: data?.title,
+    }
+    try {
+      updateMutate({ url, formData })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   // const data = {
@@ -120,13 +167,13 @@ const KanbanBoard = () => {
         boardDataLoading ?
           "Loading..." :
           <div>
-            <Board data={{ lanes: boardsData && boardsData }}
+            <Board
+              data={boardsData && boardsData}
               draggable
               canAddLanes
               editable
               editLaneTitle
-              onDataChange={(newData) => { console.log(newData) }}
-
+              // onDataChange={(newData) => { console.log(newData) }}
               onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
               laneStyle={{
                 boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
@@ -137,13 +184,18 @@ const KanbanBoard = () => {
               style={{ backgroundColor: "transparent", position: 'relative' }}
               components={components}
               onLaneAdd={(e) => handleCreateBoard(e)}
+              onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
               onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
+              handleDragEnd={
+                (cardId, sourceLaneId, targetLaneId, position, cardDetails) => handleCardDrag(cardId, sourceLaneId, targetLaneId, position, cardDetails)
+              }
+
             />
           </div>
 
       }
-      <Modal title='Resualbe' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
-        <CardPopup />
+      <Modal title='' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
+        <CardPopup clickedCardInfo={clickedCardInfo} />
       </Modal>
     </>
   )

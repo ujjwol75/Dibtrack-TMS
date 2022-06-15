@@ -8,6 +8,7 @@ type Props = {}
 
 const HomeDib = (props: Props) => {
   const [task, setTask] = useState(false)
+  const [remainder, setRemainder] = useState(false)
   return (
     <>
       <div className='relative'>
@@ -56,7 +57,7 @@ const HomeDib = (props: Props) => {
               </div>
             </div>
 
-            <Work />
+            <Work remainder={remainder} setRemainder={setRemainder} />
 
           </div>
 

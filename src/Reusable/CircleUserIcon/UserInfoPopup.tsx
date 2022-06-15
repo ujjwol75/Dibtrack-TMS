@@ -5,7 +5,7 @@ type Props = {}
 
 const UserInfoPopup = (props: Props) => {
   return (
-    <div className='shadow-lg rounded-lg p-6 bg-slate-100'>
+    <div className='shadow-lg rounded-lg p-6 bg-slate-100 z-50'>
       <section className='flex justify-between gap-x-7'>
         <span className='px-8 py-7 text-3xl bg-green-500 rounded-full text-white'>
           SS
