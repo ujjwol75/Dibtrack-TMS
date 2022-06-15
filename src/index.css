@@ -2,55 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    margin:0px;
-    padding:0px;
-    box-sizing: border-box;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-html , body {
-    scrollbar-color: #e61717;
-    scrollbar-width: 0px;
+html,
+body {
+  scrollbar-color: #e61717;
+  scrollbar-width: 0px;
 }
-
-
-
- .login{
-     background-color: #fafbfc;
-     position: relative;
-     overflow:hidden;
- }
-
-
- .gradient{
-     background-image: linear-gradient(to right  , #725afa , #e44aa5);
-     position: absolute;
-     top: 60%;
-     left:-25px;
-     bottom:0px;
-     
-     min-height:600px;
-     border-radius: 270px;
-
- }
-
-  .form-container{
-     background-color: #fff;
-     position: absolute;
-     top:50%;
-     left:50%;
-     z-index: 20;
-     transform:translate(-50% , -50%)
- } 
-
- 
- input::placeholder {
-    
-      z-index:1;
-      font-size: 13px;
-      
-      
-  }
 
 
 
@@ -84,11 +46,44 @@ html , body {
 
 
 input::placeholder {
-
   z-index: 1;
   font-size: 13px;
+}
 
 
+
+.login {
+  background-color: #fafbfc;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.gradient {
+  background-image: linear-gradient(to right, #725afa, #e44aa5);
+  position: absolute;
+  top: 60%;
+  left: -25px;
+  bottom: 0px;
+
+  min-height: 600px;
+  border-radius: 270px;
+
+}
+
+.form-container {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  transform: translate(-50%, -50%)
+}
+
+
+input::placeholder {
+  z-index: 1;
+  font-size: 13px;
 }
 
 .sidebar:hover .settings {
@@ -127,27 +122,28 @@ input::placeholder {
   background: #fafbfc !important;
 }
 
-  
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    
-    border-radius: 0px; 
-   } 
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #fafbfc !important; 
 
-    width:5px;
-    
-  } 
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    width:0px !important;
-    background: #fafbfc !important; 
-  } */ */
+/* Track */
+::-webkit-scrollbar-track {
+
+  border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fafbfc !important;
+
+  width: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  width: 0px !important;
+  background: #fafbfc !important;
+}
+
+*/ */
 
 /* Track */
 ::-webkit-scrollbar-track {

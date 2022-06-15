@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const DashboardNotFound: React.FC<any> = (props) => {
   return (
-      <div className="min-h-screen pt-16 pb-12 flex flex-col bg-white">
+      <div className=" sm:h-[25%] md:h-[57%] lg:h-[65%] xl:h-[70%] 2xl-h[80%] flex flex-col">
         <main
           className="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0 flex justify-center">
@@ -14,7 +14,7 @@ const DashboardNotFound: React.FC<any> = (props) => {
                 alt="" />
             </Link>
           </div>
-          <div className="py-16">
+          <div className="pt-5 pb-3">
             <div className="text-center">
               <p
                 className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">404
@@ -34,7 +34,7 @@ const DashboardNotFound: React.FC<any> = (props) => {
           </div>
         </main>
         <footer
-          className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-3">
           <nav className="flex justify-center space-x-4">
             <Link to="#"
               className="text-sm font-medium text-gray-500 hover:text-gray-600">Contact
