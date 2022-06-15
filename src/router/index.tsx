@@ -39,7 +39,8 @@ const Router = () => {
           </PrivateRoute>
         }
       >
-        <Route path={"/:id"} element={<WorkSpaceDashboard />} />
+        <Route path={"/:spaceId"} element={<WorkSpaceDashboard />} />
+        <Route path={"/:spaceId/:slug/:id"} element={<WorkSpaceDashboard />} />
         <Route path={"/dashboard/:name"} element={<DynamicDashboard />} />
         <Route path="/*" element={<DashboardNotFound />} />
       </Route>

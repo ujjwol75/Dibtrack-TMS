@@ -1,26 +1,22 @@
 import { useState } from "react"
-import MidBox from "../../Reusable/BoxLayout/MidBox"
-import SmallBox from "../../Reusable/BoxLayout/SmallBox"
-import ButtonPopUp from "../../Reusable/SidePopUp/ButtonPopUp"
+import { useParams } from "react-router-dom"
+import NotFound from "../Error/NotFound"
+import KanbanBoard from "../WorkSpacePages/KanbanBoard"
 
 function WorkSpaceDashboard() {
   
-const[sidePopUp,setSidePopUp] = useState(false)
-  return (
-    <>
-      {/* <h1>WorkSpace Dashboard</h1> */}
+  const params = useParams()
+  const { id, slug, spaceId } = params
 
-      {/* <SmallBox/> */}
-      {/* <MidBox/> */}
+  switch (slug) {
+    case "board":
+      return <KanbanBoard />
+    case "form":
 
-      {/* <ButtonPopUp sidePopup ={sidePopUp}/> */}
+    default:
+      return <NotFound />
+  }
 
-      {/* { sidePopUp && <MidBox  /> } */}
-     {sidePopUp && <MidBox setBox={undefined}  /> } 
-      
-
-    </>
-  )
 }
 
 export default WorkSpaceDashboard
