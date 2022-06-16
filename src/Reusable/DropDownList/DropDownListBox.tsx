@@ -5,10 +5,11 @@ import { Fragment, useState } from 'react'
 type Props = {
   options?: any
   customButton?: any
+  buttonStyle?: string
 }
 
 const DropDownListBox = ((props: Props) => {
-  const { options, customButton } = props
+  const { options, customButton, buttonStyle } = props
   const people = [
     { id: '1', title: 'Wade Cooper', icon: <MailIcon className='w-5 h-5' /> },
     { id: '2', title: 'Arlene Mccoy', icon: <MailIcon className='w-5 h-5' /> },
@@ -17,8 +18,9 @@ const DropDownListBox = ((props: Props) => {
     { id: '5', title: 'Tanya Fox', icon: <MailIcon className='w-5 h-5' /> },
     { id: '6', title: 'Hellen Schmidt', icon: <MailIcon className='w-5 h-5' /> },
   ]
-  const [selected, setSelected] = useState(people[0])
+  const [selected, setSelected] = useState<any>()
 
+  console.log(options,"from list")
   return (
     <>
       <Listbox value={selected} onChange={setSelected}>
@@ -26,17 +28,21 @@ const DropDownListBox = ((props: Props) => {
           {
             customButton ?
               <Listbox.Button>
-                {customButton}
+                {selected ? selected?.clear ? customButton : selected?.icon : customButton}
               </Listbox.Button>
               :
-              <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                <span className="block truncate">{selected.title}</span>
-                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                  <SelectorIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </span>
+              <Listbox.Button className={`${buttonStyle ? buttonStyle : "relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"}`}>
+                <span className="block truncate">{people[0]?.title}</span>
+                {
+                  buttonStyle ?
+                    null :
+                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                      <SelectorIcon
+                        className="h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                }
               </Listbox.Button>
           }
           <Transition
@@ -45,7 +51,7 @@ const DropDownListBox = ((props: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute min-w-[8rem] mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute min-w-[10rem] mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {(options ? options : people).map((elem: any, index: number) => (
                 <Listbox.Option
                   key={index}

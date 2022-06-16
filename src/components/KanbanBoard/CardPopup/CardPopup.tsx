@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import APIS from '../../../constants/EndPoint'
 import useGetHook from '../../../customHooks/useGetHook'
 import CardPopupSection1 from './CardPopupSection1'
@@ -18,14 +19,20 @@ const CardPopup = (props: Props) => {
     queryKey: `cardDetail${clickedCardInfo?.cardId}`,
     url: `${APIS.TASK}${clickedCardInfo?.cardId}`
   })
+
+  useEffect(() => {
+
+  }, [cardDetailData])
   
-  console.log(cardDetailData,"cardDetailData")
+
   return (
     <div className='w-full grid grid-cols-5 divide-x divide-y '>
 
       {/* CARD SECTION 1 */}
       <div className='col-span-3'>
-        <CardPopupSection1 />
+        {
+          cardDetailDataLoading ? null : <CardPopupSection1 cardDetailData={cardDetailData} />
+        }
       </div>
 
       {/* CARD SECTION 2 */}
