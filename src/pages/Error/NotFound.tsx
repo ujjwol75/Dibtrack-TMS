@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 
 const NotFound: React.FC<any> = (props) => {
   return (
-    <div className="min-h-screen pt-16 pb-12 flex flex-col bg-white">
+    <div className=" pt-16  flex flex-col">
       <main
-        className="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        className="flex-grow flex flex-col  max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex-shrink-0 flex justify-center">
           <a href="/" className="inline-flex">
             <span className="sr-only">Workflow</span>
@@ -14,7 +14,7 @@ const NotFound: React.FC<any> = (props) => {
                  alt=""/>
           </a>
         </div>
-        <div className="py-16">
+        <div className="">
           <div className="text-center">
             <p
               className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">404
@@ -33,8 +33,8 @@ const NotFound: React.FC<any> = (props) => {
           </div>
         </div>
       </main>
-      <footer
-        className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mt-24">
         <nav className="flex justify-center space-x-4">
           <Link to="#"
                 className="text-sm font-medium text-gray-500 hover:text-gray-600">Contact
@@ -48,7 +48,7 @@ const NotFound: React.FC<any> = (props) => {
           <Link to="#"
                 className="text-sm font-medium text-gray-500 hover:text-gray-600">Twitter</Link>
         </nav>
-      </footer>
+      </div>
     </div>
   )
 }
