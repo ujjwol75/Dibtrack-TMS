@@ -6,38 +6,37 @@ type Props = {
   options?: any
   customButton?: any
   clearButtonStyle?: boolean
+  multiSelect?: boolean
+  selected: any
+  setSelected: any
 }
 
 
 const AutoComplete = (props: Props) => {
-  const { options, customButton, clearButtonStyle } = props
-  const people: any = [
-    { id: 1, title: 'Wade Cooper', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-    { id: 2, title: 'Arlene Mccoy', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-    { id: 3, title: 'Devon Webb', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-    { id: 4, title: 'Tom Cook', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-    { id: 5, title: 'Tanya Fox', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-    { id: 6, title: 'Hellen Schmidt', icon: <MailIcon className='w-5 h-5 text-indigo-600' /> },
-  ]
+  const { options,
+    customButton,
+    clearButtonStyle,
+    multiSelect = false,
+    selected,
+    setSelected,
+  } = props
 
-  const [selected, setSelected] = useState<any>()
+
   const [query, setQuery] = useState<string>('')
 
-
-  const filteredPeople =
+  const filteredItems =
     query === ''
-      ? people
-      : people.filter((person: any) =>
-        person.title
+      ? options
+      : options.filter((option: any) =>
+        option.title
           .toLowerCase()
           .replace(/\s+/g, '')
           .includes(query.toLowerCase().replace(/\s+/g, ''))
       )
 
   return (
-
     <>
-      <Combobox value={selected} onChange={setSelected}>
+      <Combobox value={selected} onChange={setSelected} multiple={multiSelect}>
         <div className="relative mt-1">
           {
             customButton ?
@@ -60,7 +59,7 @@ const AutoComplete = (props: Props) => {
           }
           <Transition
             as={Fragment}
-            leave="transition ease-in duration-300"
+            leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
@@ -71,7 +70,7 @@ const AutoComplete = (props: Props) => {
                 customButton ?
                   <div className={`relative min-w-full cursor-default overflow-hidden  bg-white text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm`}>
                     <Combobox.Input
-                      className="w-full py-2 pl-7 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+                      className="w-full py-2 pl-7 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 border-b"
                       displayValue={(person: any) => person?.name}
                       onChange={(event) => setQuery(event.target.value)}
                       style={{ outline: "none" }}
@@ -86,33 +85,29 @@ const AutoComplete = (props: Props) => {
                   null
               }
 
-              {filteredPeople.length === 0 && query !== '' ? (
+              {filteredItems.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                   Nothing found.
                 </div>
               ) : (
-                filteredPeople.map((elem: any) => (
+                filteredItems.map((elem: any) => (
                   <Combobox.Option
                     key={elem.id}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 px-4 ${active ? 'bg-indigo-100 text-indigo-800' : 'text-gray-900'
-                      }`
+                      `relative cursor-default select-none ${active ? 'bg-indigo-100 text-indigo-800' : 'text-gray-900'}`
                     }
                     value={elem}
                   >
                     {({ selected, active }) => (
                       <>
-                        <span className='flex items-center'>
+                        <span className={`flex items-center ${selected ? "bg-indigo-200" : ""}  px-4 py-2`}>
                           {
                             elem.icon ?
                               <span className='mr-2'>
                                 {elem.icon}
                               </span> : null
                           }
-                          <span
-                            className={`block truncate ${selected ? 'font-medium' : 'font-normal'
-                              }`}
-                          >
+                          <span className={`block truncate`}>
                             {elem.title}
                           </span>
                         </span>

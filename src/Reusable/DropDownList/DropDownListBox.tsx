@@ -6,10 +6,12 @@ type Props = {
   options?: any
   customButton?: any
   buttonStyle?: string
+  selected: any
+  setSelected: any
 }
 
 const DropDownListBox = ((props: Props) => {
-  const { options, customButton, buttonStyle } = props
+  const { options, customButton, buttonStyle, selected, setSelected } = props
   const people = [
     { id: '1', title: 'Wade Cooper', icon: <MailIcon className='w-5 h-5' /> },
     { id: '2', title: 'Arlene Mccoy', icon: <MailIcon className='w-5 h-5' /> },
@@ -18,9 +20,8 @@ const DropDownListBox = ((props: Props) => {
     { id: '5', title: 'Tanya Fox', icon: <MailIcon className='w-5 h-5' /> },
     { id: '6', title: 'Hellen Schmidt', icon: <MailIcon className='w-5 h-5' /> },
   ]
-  const [selected, setSelected] = useState<any>()
+  // const [selected, setSelected] = useState<any>()
 
-  console.log(options,"from list")
   return (
     <>
       <Listbox value={selected} onChange={setSelected}>
@@ -28,7 +29,8 @@ const DropDownListBox = ((props: Props) => {
           {
             customButton ?
               <Listbox.Button>
-                {selected ? selected?.clear ? customButton : selected?.icon : customButton}
+                {customButton}
+                {/* {selected ? selected?.clear ? customButton : selected?.icon : customButton} */}
               </Listbox.Button>
               :
               <Listbox.Button className={`${buttonStyle ? buttonStyle : "relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"}`}>

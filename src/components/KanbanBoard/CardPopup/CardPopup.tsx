@@ -20,11 +20,6 @@ const CardPopup = (props: Props) => {
     url: `${APIS.TASK}${clickedCardInfo?.cardId}`
   })
 
-  useEffect(() => {
-
-  }, [cardDetailData])
-  
-
   return (
     <div className='w-full grid grid-cols-5 divide-x divide-y '>
 

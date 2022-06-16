@@ -3,7 +3,7 @@ import {
   PlusCircleIcon,
   ExclamationIcon
 } from '@heroicons/react/solid'
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../Button/Button'
 import GrayBtn from '../Button/GrayBtn'
 import NameField from '../InputLayout/NameField'
@@ -12,12 +12,14 @@ import OptionText from '../InputLayout/OptionText'
 import List from '../DropDownList/DropDownListBox'
 
 type Props = {
- 
-  setBox:any
+
+  setBox: any
 }
 
 const MidBox = (props: Props) => {
-  const{ setBox} = props
+  const { setBox } = props
+
+  const [midBoxState, setMidBoxState] = useState<any>()
   return (
     <>
 
@@ -32,7 +34,7 @@ const MidBox = (props: Props) => {
             <div className='flex'>
               <div className='flex '>
                 {/* <input type="nameField" /> */}
-                <NameField name={'nameField'}  type={'text'}/>
+                <NameField name={'nameField'} type={'text'} />
                 <div className='border-y-2 border-r-2 border-gray-300 '>
                   <ChevronDownIcon className='w-7 h-7 cursor-pointer' />
                 </div>
@@ -47,7 +49,7 @@ const MidBox = (props: Props) => {
             {/* list-box */}
             <div>
 
-              <List />
+              <List selected={midBoxState} setSelected={setMidBoxState} />
             </div>
 
           </div>
@@ -57,8 +59,8 @@ const MidBox = (props: Props) => {
             <div>
               <p className='text-sm text-gray-400 font-thin ml-3'>OPTION</p>
             </div>
-        {/* FIELD Text */}
-            <OptionText name={'OptionField'} type={'text'}/>
+            {/* FIELD Text */}
+            <OptionText name={'OptionField'} type={'text'} />
           </div>
         </div>
 
@@ -72,7 +74,7 @@ const MidBox = (props: Props) => {
           <div className='flex'>
             <div className='w-1/2 flex'>
               <div className='mr-1'>
-                <ExclamationIcon className='h-6 w-6 mb-1 inline-block'/>
+                <ExclamationIcon className='h-6 w-6 mb-1 inline-block' />
               </div>
               <div>
                 <p className='text-sm text-gray-400 font-light'>Single selection
@@ -83,11 +85,11 @@ const MidBox = (props: Props) => {
             <div className='w-1/2'>
               <div className='flex justify-end mt-3'>
 
-                <span className='mr-2' onClick={()=>{setBox(false)}}>
+                <span className='mr-2' onClick={() => { setBox(false) }}>
 
-                  <GrayBtn text='Cancel'  />
+                  <GrayBtn text='Cancel' />
                 </span>
-                <span onClick={()=>{setBox(false)}}>
+                <span onClick={() => { setBox(false) }}>
 
                   <Button text='Add Column' />
                 </span>
