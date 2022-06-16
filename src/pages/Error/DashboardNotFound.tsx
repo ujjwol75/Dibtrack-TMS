@@ -3,10 +3,10 @@ import {Link} from "react-router-dom";
 
 const DashboardNotFound: React.FC<any> = (props) => {
   return (
-      <div className=" min-h-screen flex flex-col">
+      <div className=" flex flex-col">
         <main
-          className="flex-grow flex flex-col  h-full fy-centerjusti  max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex-shrink-0 flex justify-center">
+          className="flex-grow flex flex-col  fy-centerjusti  max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex-shrink-0 flex justify-center pt-16">
             <Link to="/" className="inline-flex">
               <span className="sr-only">Workflow</span>
               <img className="h-12 w-auto"
@@ -34,7 +34,7 @@ const DashboardNotFound: React.FC<any> = (props) => {
           </div>
         </main>
         <footer
-          className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-3">
+          className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-3 mt-24">
           <nav className="flex justify-center space-x-4">
             <Link to="#"
               className="text-sm font-medium text-gray-500 hover:text-gray-600">Contact
