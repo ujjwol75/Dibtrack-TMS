@@ -23,10 +23,10 @@ const ViewProfile = ({user}: Props) => {
     <>
         <td className="p-3 cursor-pointer" onClick={openModal} >
               <span className="flex flex-row">
-              <FlyoutMenu />
+              <FlyoutMenu user = {user} />
               {/* <CircleUserIcon size="sm" /> */}
 
-             <span className="ml-2">{user.name}</span> 
+             <span className="ml-2">{user.profile.full_name}</span> 
               </span>
               
         </td>

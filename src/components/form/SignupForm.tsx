@@ -26,7 +26,7 @@ const SignupForm = (props: Props) => {
               type="text"
               name="email"
               value={email}
-              placeholder="&#xf0e0;    Your email here"
+              placeholder="Your email here"
               className="p-2 mt-5 text-black-100 border-solid-black[1px] border border-black-100 focus:outline-none"
               onChange={(e)=> setEmail(e.target.value)}
             />
@@ -38,7 +38,7 @@ const SignupForm = (props: Props) => {
               type="password"
               name="password"
               value={password}
-              placeholder="&#xf023; Your password here"
+              placeholder="Your password here"
               className="input_password p-2 mt-5 text-black-100  border border-black-100 focus:outline-none
               focus:border-black-300"
               onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ const SignupForm = (props: Props) => {
               type="password"
               name="password"
               value={confirmpassword}
-              placeholder="&#xf023; Your password here"
+              placeholder="Your password here"
               className="input_password p-2 mt-5 text-black-100  border border-black-100 focus:outline-none
               focus:border-black-300"
               onChange={(e) => setConfirmPassword(e.target.value)}

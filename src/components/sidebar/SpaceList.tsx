@@ -21,20 +21,31 @@ type Props = {
 const SpaceList = (props: Props) => {
   const { workSpaceData } = props;
   const  navigate = useNavigate()
+
+  const handleSpaceRoute = (item:any) => {
+    if(item?.children?.length == 0 ){
+      navigate(`/${item.id}/board/2`)
+    }
+  }
   return (
     <div className="flex flex-col">
       {workSpaceData?.map((item: any) => {
+        console.log('workspacedata:' , workSpaceData)
         console.log(item,"item");
+
+       
         return (
           <Disclosure key={item.id}>
             <>
-              <Disclosure.Button>
+              
                 <div
                   className="flex flex-row  hover:bg-bgsearchbar p-1 w-full justify-between"
-                  onClick={() => navigate(`/${item.id}`)}
+                  onClick={() =>handleSpaceRoute(item)}
                 >
                   <div className="flex flex-row mt-2">
+                   <Disclosure.Button>
                     <ChevronRightIcon className="h-4 w-4 mt-1 spaceicon" />
+                    </Disclosure.Button>
                     <div className={`bg-btncolor h-6 w-6 font-bold text-xs pt-1 text-center text-white ml-2`}>
                       {item?.get_title}
                     </div>
@@ -82,7 +93,7 @@ const SpaceList = (props: Props) => {
                     <UserAddIcon className='h-4 w-4 mr-2 hover:text-blue-500'/>
                 </div> */}
                 </div>
-              </Disclosure.Button>
+             
               {item?.children?.length ? (
                 <Disclosure.Panel className="ml-4 pl-4">
                   <span>

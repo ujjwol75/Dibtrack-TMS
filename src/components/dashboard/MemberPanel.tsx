@@ -4,10 +4,14 @@ import CircleUserIcon from "../../Reusable/CircleUserIcon";
 import FlyoutMenu from "./FlyoutMenu";
 import UserSettings from "./UserSettings";
 import ViewProfile from "../Profile/ViewProfile";
+import APIS from "../../constants/EndPoint";
+import useGetHook from "../../customHooks/useGetHook";
 
-type Props = {};
+type Props = {
+  
+};
 
-const users = [
+const use = [
   {
     id: 1,
     name: "hari",
@@ -32,8 +36,16 @@ const users = [
 ];
 
 const MemberPanel = (props: Props) => {
+  
   const[copystatus , setCopyStatus] = useState<string>('copy')
+  
+  const { data: usersData } = useGetHook({
+    queryKey: "user",
+    url: `${APIS.USER}`
+  })
 
+  console.log('userData:  ' , usersData)
+ 
  
 
   return (
@@ -54,7 +66,7 @@ const MemberPanel = (props: Props) => {
         </tr>
       </thead>
       <tbody className="text-txtcolor ml-1">
-        {users.map((user) => (
+        {usersData?.map((user:any) => (
           <tr key = {user.id}>
                   <ViewProfile user = {user} />
             {/* <td className="p-3">
@@ -74,7 +86,7 @@ const MemberPanel = (props: Props) => {
                 <p>{user.email}</p>
                 <button className="bg-btncolor py-[2px] px-[4px] rounded  text-white ml-2 invisible copy" 
                  onClick={() => {
-                  navigator.clipboard.writeText(user.email)
+                  navigator.clipboard.writeText(user?.email)
                   setCopyStatus('copied')
                  } }
                 >
@@ -83,10 +95,10 @@ const MemberPanel = (props: Props) => {
               
             </td>
 
-            <td className="p-2 ">{user.role}</td>
-            <td className="p-2 ">{user.lastactive}</td>
+            <td className="p-2 ">{user?.role}</td>
+            <td className="p-2 ">{user?.last_login.substring(0 , 10)}</td>
             <td className="p-2 ">
-                <UserSettings  id = {user.id}/>
+                <UserSettings  id = {user?.id}/>
             </td>
           </tr>
         ))}
