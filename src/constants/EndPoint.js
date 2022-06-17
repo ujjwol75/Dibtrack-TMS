@@ -14,7 +14,8 @@ const APIS = {
   WORKSPACE: `/work-space/filter_work_space/`,
 
   // USERS
-  USER: `/user/`
+  USER: `/user/`,
+  ASSIGN: `/task-assign/`
 };
 
 export default APIS;

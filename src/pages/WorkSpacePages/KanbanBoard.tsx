@@ -87,7 +87,6 @@ const KanbanBoard = (props: Props) => {
 
   //  HANDLE CARD DRAG AND DROP API
   const handleCardDrag = (cardId: any, sourceLaneId: any, targetLaneId: any, position: any, cardDetails: any) => {
-    // console.log(cardId, sourceLaneId, targetLaneId, position, cardDetails)
     const url = `${APIS.TASK}${cardId}/`
     const formData = {
       parent: targetLaneId,

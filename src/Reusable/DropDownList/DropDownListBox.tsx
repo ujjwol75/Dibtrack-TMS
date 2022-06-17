@@ -1,6 +1,6 @@
 import { Listbox, Transition } from '@headlessui/react'
 import { SelectorIcon, MailIcon } from '@heroicons/react/solid'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 type Props = {
   options?: any
@@ -8,10 +8,12 @@ type Props = {
   buttonStyle?: string
   selected: any
   setSelected: any
+  handleAPICall?: any
+  initialValue?: any
 }
 
 const DropDownListBox = ((props: Props) => {
-  const { options, customButton, buttonStyle, selected, setSelected } = props
+  const { options, customButton, buttonStyle, selected, setSelected, handleAPICall, initialValue } = props
   const people = [
     { id: '1', title: 'Wade Cooper', icon: <MailIcon className='w-5 h-5' /> },
     { id: '2', title: 'Arlene Mccoy', icon: <MailIcon className='w-5 h-5' /> },
@@ -20,12 +22,25 @@ const DropDownListBox = ((props: Props) => {
     { id: '5', title: 'Tanya Fox', icon: <MailIcon className='w-5 h-5' /> },
     { id: '6', title: 'Hellen Schmidt', icon: <MailIcon className='w-5 h-5' /> },
   ]
-  // const [selected, setSelected] = useState<any>()
+
+  const handleSelect = (e: any) => {
+    setSelected(e)
+    handleAPICall(e.id)
+  }
+
+  // SET INITIAL VALUE
+  useEffect(() => {
+    if (initialValue) {
+      const found = options.find((object: any) => object.id == initialValue)
+      setSelected(found)
+    }
+  }, [initialValue])
+
 
   return (
     <>
-      <Listbox value={selected} onChange={setSelected}>
-        <div className="relative mt-1">
+      <Listbox value={selected} onChange={(e) => handleSelect(e)}>
+        <div className="">
           {
             customButton ?
               <Listbox.Button>
@@ -53,7 +68,7 @@ const DropDownListBox = ((props: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute min-w-[10rem] mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="z-50 absolute min-w-[10rem] mt-1 max-h-60 w-full overflow-auto rounded-md bg-red-500 opacity-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {(options ? options : people).map((elem: any, index: number) => (
                 <Listbox.Option
                   key={index}

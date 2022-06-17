@@ -37,7 +37,9 @@ const CardPopup = (props: Props) => {
 
       {/* CARD SECTION 3 */}
       <div className='col-span-3 min-h-[25rem]'>
-        <CardPopupSection3 />
+        {
+          cardDetailDataLoading ? null : <CardPopupSection3 cardDetailData={cardDetailData} />
+        }
       </div>
 
       {/* CARD SECTION 4 */}

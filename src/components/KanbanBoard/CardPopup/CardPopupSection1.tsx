@@ -4,7 +4,10 @@ import { url } from 'inspector'
 import { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
 import useGetHook from '../../../customHooks/useGetHook'
+import usePatchHook from '../../../customHooks/usePatchHook'
+import usePostHook from '../../../customHooks/usePostHook'
 import AutoComplete from '../../../Reusable/AutoComplete'
+
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
 import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
@@ -14,7 +17,6 @@ type Props = {
 }
 
 const CardPopupSection1 = (props: Props) => {
-
   const { cardDetailData } = props
 
   const [boardDropDownList, setBoardDropDownList] = useState<any>(null)
@@ -22,6 +24,12 @@ const CardPopupSection1 = (props: Props) => {
   const [boardState, setBoardState] = useState<any>()
   const [priorityState, setPriorityState] = useState<any>()
   const [userState, setUserState] = useState<any>([])
+
+  const [initialValuesState, setInitialValuesState] = useState({
+    user: null,
+    board: null,
+    priority: null
+  })
 
   const PriorityOptions = [
     { id: '1', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
@@ -41,9 +49,37 @@ const CardPopupSection1 = (props: Props) => {
     url: `${APIS.USER}`
   })
 
+  const {
+    isPostLoading,
+    mutate: assignMutate,
+    successMsg,
+    addSuccessSnackBar,
+    setAddSuccessSnackBar,
+  } = usePostHook({ queryKey: "assignUser", setOpenAddPopup: "" });
+
+  const {
+    isPatchLoading,
+    mutate: updateMutate,
+    addSuccessSnackBar: editSuccessSnackBar,
+    setAddSuccessSnackBar: setEditSuccessSnackBar,
+  } = usePatchHook({ queryKey: `boardData${cardDetailData?.workspace}`, setOpenEditPopup: "" })
+
+  const handleAssignUser = (usersList: any) => {
+    const url = APIS.ASSIGN;
+    const formData = {
+      task: cardDetailData.id,
+      assign_to: usersList
+    };
+    try {
+      assignMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   //  GENERATE BOARDS LIST
-  let emptyList: any = []
   useEffect(() => {
+    let emptyList: any = []
     setBoardDropDownList(null)
     if (BoardsList) {
       BoardsList?.map((elem: any) => {
@@ -60,8 +96,8 @@ const CardPopupSection1 = (props: Props) => {
   }, [BoardsList])
 
   // GENERATE USERS LIST
-  let emptyUserList: any = []
   useEffect(() => {
+    let emptyUserList: any = []
     setUserListState(null)
     if (usersData) {
       usersData?.map((elem: any) => {
@@ -77,6 +113,29 @@ const CardPopupSection1 = (props: Props) => {
   }, [usersData])
 
 
+  const handleChangeBoard = (value: any) => {
+    const url = `${APIS.TASK}${cardDetailData?.id}/`
+    const formData = {
+      parent: value,
+      order: "1" // stays at top of list
+    }
+    try {
+      updateMutate({ url, formData })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+  // SETTING ALL INITIAL VALUES
+  useEffect(() => {
+    setInitialValuesState({
+      user: null,
+      board: cardDetailData?.parent,
+      priority: null
+    })
+  }, [cardDetailData])
+
 
   return (
     <>
@@ -86,11 +145,15 @@ const CardPopupSection1 = (props: Props) => {
           {/* CHANGE BOARDS */}
           <>
             <DropDownListBox
+              initialValue={initialValuesState.board}
               selected={boardState}
               setSelected={setBoardState}
               options={boardDropDownList || []}
+              handleAPICall={handleChangeBoard}
               customButton={
-                <span className={`flex items-center p-1 px-5  
+                <span
+                  title={`${boardState ? boardState.title : ""}`}
+                  className={`flex items-center p-1 px-5 
                   border rounded text-white divide-x divide-white hover:border-black`}
                   style={{
                     backgroundColor: `${boardState ? boardState.color : boardDropDownList && boardDropDownList[0].color}`,
@@ -115,6 +178,7 @@ const CardPopupSection1 = (props: Props) => {
             <AutoComplete
               selected={userState}
               setSelected={setUserState}
+              handleAPICall={handleAssignUser}
               options={userListState || []}
               multiSelect={true}
               customButton={
@@ -124,17 +188,20 @@ const CardPopupSection1 = (props: Props) => {
           </span>
 
           <DropDownListBox
+            initialValue={initialValuesState.priority}
             selected={priorityState}
             setSelected={setPriorityState}
             options={PriorityOptions}
             customButton={
-              <FlagIcon className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer ${priorityState ? "" : "hover:text-btncolor hover:border-btncolor"} `}
-                style={{
-                  color: `${priorityState ? priorityState.color : null}`,
-                  border: `${priorityState ? priorityState.color : null} solid 1px`
+              <span title={`${priorityState ? priorityState.title : ""}`}>
+                <FlagIcon className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer ${priorityState ? "" : "hover:text-btncolor hover:border-btncolor"} `}
+                  style={{
+                    color: `${priorityState ? priorityState.color : null}`,
+                    border: `${priorityState ? priorityState.color : null} solid 1px`
 
-                }}
-              />
+                  }}
+                />
+              </span>
             }
           />
 
@@ -143,7 +210,9 @@ const CardPopupSection1 = (props: Props) => {
         <section className='flex space-x-5 items-center'>
           <span className='border p-1 flex space-x-1 rounded '>
             <ShareIcon className='w-4 h-4 ' />
-            <span className='text-xs'>Share</span>
+            <span className='text-xs'>
+              Share
+            </span>
           </span>
 
           <DotsHorizontalIcon

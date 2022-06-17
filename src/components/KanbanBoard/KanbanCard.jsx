@@ -1,6 +1,8 @@
 import { AdjustmentsIcon, CalendarIcon, CheckIcon, ClockIcon, DotsHorizontalIcon, FlagIcon, TagIcon } from '@heroicons/react/outline'
+import { XIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
 import CircleUserIcon from '../../Reusable/CircleUserIcon'
+import DropDownListBox from '../../Reusable/DropDownList/DropDownListBox'
 
 const KanbanCard = (props) => {
 
@@ -9,16 +11,21 @@ const KanbanCard = (props) => {
     title
   } = props
 
-  const [displayIcons, setDisplayIcons] = useState(false)
-  const clickDelete = (e) => {
+  const [displayIcons, setDisplayIcons] = useState(true)
+  const clickDelete = (e) => {}
 
-  }
-
+  const PriorityOptions = [
+    { id: '1', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
+    { id: '2', title: 'High', icon: <FlagIcon className='w-7 p-1 text-orange-500' />, color: "rgb(249 115 22)", },
+    { id: '3', title: 'Medium', icon: <FlagIcon className='w-7 p-1 text-blue-500' />, color: "rgb(59 130 246)", },
+    { id: '4', title: 'Low', icon: <FlagIcon className='w-7 p-1 text-gray-500' />, color: "rgb(107 114 128)", },
+    { id: null, title: 'Clear', icon: <XIcon className='w-6 h-6 text-red-500' />, color: "rgb(239 68 68 )", clear: true },
+  ]
   return (
     <>
       <div
         className='hover:shadow-lg border border-slate-200 bg-slate-50 my-2 rounded'
-        onMouseOver={() => setDisplayIcons(true)} onMouseLeave={() => setDisplayIcons(false)}
+        // onMouseOver={() => setDisplayIcons(true)} onMouseLeave={() => setDisplayIcons(false)}
       >
         <section onClick={onClick} className="cursor-pointer">
           <header className='flex justify-between p-3 '>
@@ -36,7 +43,13 @@ const KanbanCard = (props) => {
               <div className='flex gap-x-3'>
                 <CalendarIcon className='w-5 h-5 hover:text-primary cursor-pointer font-bold' title="Due Date" />
                 <TagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Tags" />
-                <FlagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Priority" />
+
+                <DropDownListBox
+                options={PriorityOptions}
+                  customButton={
+                    <FlagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Priority" />
+                  }
+                />
                 <ClockIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Estimated Time" />
               </div>
               <div className='flex gap-x-3'>
@@ -47,7 +60,7 @@ const KanbanCard = (props) => {
         }
       </div>
 
-      {/* <div className='w-52 max-w-md transform overflow-hidden rounded-2xl bg-gray-500 p-6 text-left align-middle shadow-xl transition-all'>
+      {/* <div className='absolute max-w-md transform overflow-hidden rounded-2xl bg-gray-500 p-6 text-left align-middle shadow-xl transition-all'>
 pokasopd
       </div> */}
     </>

@@ -1,9 +1,50 @@
 import { TagIcon } from '@heroicons/react/outline'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import APIS from '../../../constants/EndPoint'
+import usePatchHook from '../../../customHooks/usePatchHook'
 
-type Props = {}
+type Props = {
+  cardDetailData: any
+}
 
 const CardPopupSection3 = (props: Props) => {
+  const { cardDetailData } = props
+
+  const [cardDataState, setCardDataState] = useState<any>({
+    name: "",
+    description: ""
+  })
+
+  useEffect(() => {
+    setCardDataState({
+      name: cardDetailData.name,
+      description: cardDetailData.description
+    })
+  }, [cardDetailData])
+
+  const {
+    isPatchLoading,
+    mutate: updateMutate,
+    addSuccessSnackBar: editSuccessSnackBar,
+    setAddSuccessSnackBar: setEditSuccessSnackBar,
+  } = usePatchHook({ queryKey: `boardData${cardDetailData?.workspace}`, setOpenEditPopup: "" })
+
+  // FUCNTION TO UPDATE TASK NAME AND DESCRIPTION
+  const handleBlur = (value: any) => {
+    const url = `${APIS.TASK}${cardDetailData?.id}/`
+    const formData = {
+      name: value.name,
+      description: value.description
+    };
+    try {
+      updateMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  console.log(cardDataState)
+
   return (
     <>
       <section className='p-4 space-y-4'>
@@ -20,16 +61,20 @@ const CardPopupSection3 = (props: Props) => {
         </div>
 
         <input className='border hover:border-gray-500 text-4xl p-5 font-light w-full'
-          value={"Tasks"}
+          value={cardDataState.name}
+          placeholder="TASK NAME"
           style={{ outline: "none" }}
-          onChange={() => { }}
+          onChange={(e) => setCardDataState((prev: any) => ({ ...prev, name: e.target.value }))}
+          onBlur={() => { handleBlur(cardDataState) }}
         />
 
         <textarea className=' border hover:border-gray-500 text-xl p-3 font-light w-full '
-          value={"Task Description"}
+          value={cardDataState.description}
+          placeholder="TASK DESCRIPTION"
           style={{ outline: "none" }}
           rows={5}
-          onChange={() => { }}
+          onChange={(e) => setCardDataState((prev: any) => ({ ...prev, description: e.target.value }))}
+          onBlur={() => { handleBlur(cardDataState) }}
         />
 
       </section>

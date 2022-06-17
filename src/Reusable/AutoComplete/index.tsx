@@ -1,14 +1,15 @@
 import { Combobox, Transition } from '@headlessui/react'
 import { CheckIcon, MailIcon, SearchIcon, SelectorIcon } from '@heroicons/react/solid'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 
 type Props = {
   options?: any
   customButton?: any
   clearButtonStyle?: boolean
   multiSelect?: boolean
-  selected: any
-  setSelected: any
+  selected?: any
+  setSelected?: any
+  handleAPICall: any
 }
 
 
@@ -19,10 +20,25 @@ const AutoComplete = (props: Props) => {
     multiSelect = false,
     selected,
     setSelected,
+    handleAPICall,
   } = props
 
-
   const [query, setQuery] = useState<string>('')
+
+  const handleChange = (e: any) => {
+    setSelected(e)
+  }
+
+  let selectedList: any = []
+  const afterListClose = () => {
+    setQuery('')
+    if (multiSelect) {
+      selected.map((elem: any) => {
+        selectedList.push(elem.id)
+      })
+      handleAPICall(selectedList)
+    }
+  }
 
   const filteredItems =
     query === ''
@@ -36,8 +52,8 @@ const AutoComplete = (props: Props) => {
 
   return (
     <>
-      <Combobox value={selected} onChange={setSelected} multiple={multiSelect}>
-        <div className="relative mt-1">
+      <Combobox value={selected} onChange={(e) => handleChange(e)} multiple={multiSelect}>
+        <div className="relative">
           {
             customButton ?
               <Combobox.Button>
@@ -62,7 +78,7 @@ const AutoComplete = (props: Props) => {
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            afterLeave={() => setQuery('')}
+            afterLeave={() => afterListClose()}
           >
             <Combobox.Options className="absolute min-w-[13rem] mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {/* SEARCH BAR INSIDE  */}
