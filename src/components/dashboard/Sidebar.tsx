@@ -127,7 +127,7 @@ function Sidebar(props: Props) {
             )}
           </Disclosure>
 
-          <Disclosure>
+          <Disclosure defaultOpen={true}>
             {({open}) => (
               <>
                 <Disclosure.Button
