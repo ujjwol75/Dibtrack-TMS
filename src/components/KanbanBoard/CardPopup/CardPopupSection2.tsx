@@ -28,8 +28,6 @@ const CardPopupSection2 = (props: Props) => {
           <StarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
           <CalendarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
         </span>
-
-
       </section>
     </>
   )

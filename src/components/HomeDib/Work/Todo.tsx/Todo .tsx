@@ -1,5 +1,3 @@
-import { Menu } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
 import React from 'react'
 import NextTodo from './NextTodo'
 import OverDue from './OverDue'
@@ -7,18 +5,17 @@ import Today from './Today'
 import Unscheduled from './Unscheduled'
 
 type Props = {
-  remainder:boolean
-  setRemainder:any
+  remainder: boolean
+  setRemainder: any
 }
 
 const Todo = (props: Props) => {
-  const {remainder , setRemainder } = props
+  const {remainder, setRemainder} = props
   return (
     <>
       <div className='flex-col space-y-8 mt-6'>
-
         <div>
-          <Today remainder={remainder} setRemainder={setRemainder} />
+          <Today remainder={remainder} setRemainder={setRemainder}/>
         </div>
         <div>
           <OverDue/>
@@ -29,10 +26,6 @@ const Todo = (props: Props) => {
         <div>
           <Unscheduled/>
         </div>
-        
-        
-        
-
       </div>
     </>
   )

@@ -1,9 +1,10 @@
-import { ChevronUpIcon, PlusIcon, UserAddIcon } from "@heroicons/react/solid";
+import {ChevronUpIcon, PlusIcon, UserAddIcon} from "@heroicons/react/solid";
 import React from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import {Dialog, Transition} from "@headlessui/react";
+import {Fragment, useState} from "react";
+import {Link} from "react-router-dom";
 import Logout from "../Profile/Logout";
+
 type Props = {};
 
 const UserModal = (props: Props) => {
@@ -16,13 +17,14 @@ const UserModal = (props: Props) => {
   function openModal() {
     setIsOpen(true);
   }
+
   return (
     <div>
       <div className="flex flex-row " onClick={openModal}>
         <div className="h-8 w-8 rounded-full bg-profilecolor text-white p-2 text-center text-xs">
           P
         </div>
-        <ChevronUpIcon className="h-4 w-4 text-gray-400 ml-1 mt-2" />
+        <ChevronUpIcon className="h-4 w-4 text-gray-400 ml-1 mt-2"/>
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -36,7 +38,7 @@ const UserModal = (props: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25"/>
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -50,7 +52,8 @@ const UserModal = (props: Props) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[450px]  h-[435px] absolute md:bottom-3 md:left-[30px]   transform overflow-hidden rounded-md bg-white p-2 text-xs  shadow-2xl transition-all">
+                <Dialog.Panel
+                  className="w-[450px]  h-[435px] absolute md:bottom-3 md:left-[30px]   transform overflow-hidden rounded-md bg-white p-2 text-xs  shadow-2xl transition-all">
                   <div className="flex flex-row   w-full">
                     {/* column 1 */}
                     <div className="flex flex-col p- 2 text-center w-[35px]  h-[500px]  border-r border-gray-200 mt-4 ">
@@ -58,13 +61,14 @@ const UserModal = (props: Props) => {
                         <small className="mt-4">p</small>
                       </div>
                       <div className="h-7 w-7  rounded-full  text-white border-2 border-dotted border-gray-600 mt-2">
-                        <PlusIcon className="h-2 w-2 text-gray-500 text-xs m-2" />
+                        <PlusIcon className="h-2 w-2 text-gray-500 text-xs m-2"/>
                       </div>
                     </div>
 
                     {/* column 2 */}
 
-                    <div className="flex flex-col w-[200px] border-r border-gray-200 text-md text-gray-600  content-start text-gray-500 p-3">
+                    <div
+                      className="flex flex-col w-[200px] border-r border-gray-200 text-md text-gray-600  content-start text-gray-500 p-3">
                       <span className="inline-flex">
                         <div className="h-8 w-8 rounded-full bg-profilecolor text-white p-2 text-center text-xs">
                           P
@@ -79,13 +83,16 @@ const UserModal = (props: Props) => {
                       </div>
                       <div className="mt-3 flex flex-row mt-3">
                         <p>People</p>
-                        <Link to  = "/dashboard">
-                        <button className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent" onClick={closeModal}>
+                        <Link to="/dashboard">
+                          <button
+                            className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent"
+                            onClick={closeModal}>
                           <span className="flex fex-row ">
-                            <UserAddIcon className="h-4 w-3" />
+                            <UserAddIcon className="h-4 w-3"/>
                             <p className="ml-2">invite</p>
                           </span>
-                        </button></Link>
+                          </button>
+                        </Link>
                       </div>
                       <div className="mt-3 flex flex-row mt-3">Clickapps</div>
                       <div className="mt-3 flex flex-row mt-3">Spaces</div>
@@ -97,7 +104,7 @@ const UserModal = (props: Props) => {
                       </div>
                       <div className="mt-3 flex flex-row mt-3">Trash</div>
 
-                      <hr className="mt-5 mb-5 bg-gray-500" />
+                      <hr className="mt-5 mb-5 bg-gray-500"/>
 
                       <button className="bg-btncolor px-4 text-white rounded hover:bg-blue-500 py-2">
                         upgrade
@@ -136,25 +143,19 @@ const UserModal = (props: Props) => {
                       </div>
                       <div className="mt-3 flex flex-row mt-3">Apps</div>
                       <div className="mt-3 flex flex-row mt-3">Rewards</div>
-                      <Logout />
+                      <Logout/>
                       {/* <div className="mt-3 flex flex-row mt-3">
                         Logout
                       </div> */}
-                       
-                       <hr className="mb-5 mt-5"/>
+
+                      <hr className="mb-5 mt-5"/>
                       <div className="mt-3 flex flex-row mt-5">
                         Help
                       </div>
                       <div className="mt-3 flex flex-row mt-5">Hotkeys</div>
-
-                      
-                      
-
                       <div className="mt-3 flex flex-row mt-3">Dark Mode</div>
                     </div>
                   </div>
-
-                  
                 </Dialog.Panel>
               </Transition.Child>
             </div>

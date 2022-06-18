@@ -1,5 +1,5 @@
-import { Popover } from '@headlessui/react'
-import { DesktopComputerIcon, EyeOffIcon, StarIcon } from '@heroicons/react/solid'
+import {Popover} from '@headlessui/react'
+import {DesktopComputerIcon, EyeOffIcon, StarIcon} from '@heroicons/react/solid'
 import React from 'react'
 
 type Props = {}
@@ -22,11 +22,11 @@ const SpacePopup = (props: Props) => {
             <span>Favourite</span>
           </div>
           <hr/>
-                              
+
           <span className='p-2 pt-4'><i>Limited permission</i></span>
         </div>
 
-        <img src="/solutions.jpg" alt="" />
+        {/*<img src="/solutions.jpg" alt="" />*/}
       </Popover.Panel>
     </>
   )

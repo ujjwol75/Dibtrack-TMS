@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import APIS from '../../../constants/EndPoint'
 import useGetHook from '../../../customHooks/useGetHook'
 import CardPopupSection1 from './CardPopupSection1'

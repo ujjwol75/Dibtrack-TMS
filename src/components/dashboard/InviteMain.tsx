@@ -1,5 +1,4 @@
-import { Menu } from "@headlessui/react";
-import { ChevronUpIcon, SearchIcon } from "@heroicons/react/solid";
+import {SearchIcon} from "@heroicons/react/solid";
 import React from "react";
 import InviteTab from "./InviteTab";
 import MemberDropdown from "./MemberDropdown";
@@ -20,29 +19,22 @@ const InviteMain = (props: Props) => {
             className="w-full bg-white border border-gray-500  focus:outline-none p-2 pl-10"
             placeholder="search by name or email"
           ></input>
-          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3" />
+          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3"/>
         </div>
-
         <div className=" relative flex flex-row">
           <input
             type="text"
             className="w-ful bg-white border  border-gray-500 text-low focus:outline-none p-2 pl-10"
             placeholder="Invite by email"
           ></input>
-            <MemberDropdown />
-            
-          
-          
-
+          <MemberDropdown/>
           <div className="bg-btncolor text-white border border-gray-500 py-3 ml-0 px-4 text-sm flex flex-row">
             <p>invite</p>
           </div>
-
-          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3 mt-1 ml-1" />
+          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3 mt-1 ml-1"/>
         </div>
       </div>
-
-      <InviteTab />
+      <InviteTab/>
     </div>
   );
 };

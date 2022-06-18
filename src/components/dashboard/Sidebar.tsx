@@ -2,8 +2,6 @@ import logo from "../../images/logo.png";
 import {Menu} from '@headlessui/react'
 import SettingsTab from "../sidebar/SettingsTab";
 import {Link} from 'react-router-dom'
-
-
 import {
   CogIcon,
   ChevronDoubleLeftIcon,
@@ -14,13 +12,10 @@ import {
   BellIcon,
   PlusIcon,
   ViewGridIcon,
-  DotsHorizontalIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
 import {Disclosure} from "@headlessui/react";
-import SpaceDropdown from "../sidebar/SpaceDropdown";
 import NewSpaceModal from "../sidebar/NewSpaceModal";
-import SpacePlusTab from "../sidebar/SpacePlusTab";
 import User from "../sidebar/User";
 import SpaceList from "../sidebar/SpaceList";
 import APIS from "../../constants/EndPoint";
@@ -274,10 +269,6 @@ function Sidebar(props: Props) {
           <User/>
         </div>
       </div>
-
-      {/* <div className="w-full fixed bottom-0 left-0">
-        
-        </div> */}
     </div>
   )
 }

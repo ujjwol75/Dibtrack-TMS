@@ -1,16 +1,13 @@
-import React, { Fragment,useState } from "react";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import React, {Fragment, useState} from "react";
+import {Calendar, dateFnsLocalizer} from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
-import { Menu } from "@headlessui/react";
-import { Dialog, Transition } from '@headlessui/react';
+import {Dialog, Transition} from '@headlessui/react';
 import {XIcon} from '@heroicons/react/solid';
 import CalendarRightBar from "./CalendarRightBar";
-
 
 
 const locales = {
@@ -25,16 +22,10 @@ const localizer = dateFnsLocalizer({
 });
 
 function CalendarComponent() {
+  const handleSelect = () => {
+    setIsOpen(true)
 
-  const [currentSelectedDate, setCurrentSelectedDate] = useState(new Date())
-    const [currentSelectedSlot, setCurrentSelectedSlot] = useState({})
-
-    const handleSelect = () => {
-        
-        console.log("clicked")
-        setIsOpen(true)
-        
-     };
+  };
 
   let [isOpen, setIsOpen] = useState(false)
   const [inputValue, setInputValue] = useState("");
@@ -43,11 +34,7 @@ function CalendarComponent() {
     setIsOpen(false)
   }
 
-  function openModal() {
-    setIsOpen(true)
-  }
-
-  function sendModal(){
+  function sendModal() {
     setIsOpen(false)
     console.log(inputValue)
   }
@@ -66,7 +53,7 @@ function CalendarComponent() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-25"/>
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y">
@@ -80,7 +67,8 @@ function CalendarComponent() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -102,12 +90,11 @@ function CalendarComponent() {
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                      "
-                        id="exampleFormControlTextarea1"
-                        placeholder="Your message"
-                        value={inputValue}
-                        onChange={e=>setInputValue(e.target.value)}
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      id="exampleFormControlTextarea1"
+                      placeholder="Your message"
+                      value={inputValue}
+                      onChange={e => setInputValue(e.target.value)}
                     ></textarea>
                   </Dialog.Title>
 
@@ -127,32 +114,27 @@ function CalendarComponent() {
         </Dialog>
       </Transition>
 
-      <div  style={{display:"flex"}}>
-        <div className="h-screen overflow-scroll" style={{width:"1200px"}}>
-        <Calendar
-               localizer={localizer}
-               // events={myEventsList}
-               events={[]}
-               startAccessor="start"
-               endAccessor="end"
-               views={['month']}
-               selectable={true}
-               onSelectSlot={handleSelect}
-               popup={true}
-               // slotPropGetter={() => }
-               // date={new Date()}
-               // onNavigate={handleSelectNavigate}
-               className="w-full cursor-pointer"
-               style={{height:"800px", margin:"0 10px 0 0px",backgroundColor:"white"}}
-               
-            
-            />
+      <div style={{display: "flex"}}>
+        <div className="h-screen overflow-scroll" style={{width: "1200px"}}>
+          <Calendar
+            localizer={localizer}
+            // events={myEventsList}
+            events={[]}
+            startAccessor="start"
+            endAccessor="end"
+            views={['month']}
+            selectable={true}
+            onSelectSlot={handleSelect}
+            popup={true}
+            // slotPropGetter={() => }
+            // date={new Date()}
+            // onNavigate={handleSelectNavigate}
+            className="w-full cursor-pointer"
+            style={{height: "800px", margin: "0 10px 0 0px", backgroundColor: "white"}}
+          />
         </div>
-      
-          <CalendarRightBar />
+        <CalendarRightBar/>
       </div>
-
-      
     </div>
   );
 }
