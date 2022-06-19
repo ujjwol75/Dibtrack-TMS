@@ -1,12 +1,12 @@
-import React, {Fragment, useState} from "react";
-import {Calendar, dateFnsLocalizer} from "react-big-calendar";
+import React, { Fragment, useState } from "react";
+import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import {Dialog, Transition} from '@headlessui/react';
-import {XIcon} from '@heroicons/react/solid';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/solid';
 import CalendarRightBar from "./CalendarRightBar";
 
 
@@ -53,7 +53,7 @@ function CalendarComponent() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25"/>
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y">
@@ -73,7 +73,7 @@ function CalendarComponent() {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    <XIcon className="h-6 w-6" onClick={closeModal}/>
+                    <XIcon className="h-6 w-6" onClick={closeModal} />
                     <textarea
                       className="
                         form-control
@@ -114,8 +114,8 @@ function CalendarComponent() {
         </Dialog>
       </Transition>
 
-      <div style={{display: "flex"}}>
-        <div className="h-screen overflow-scroll" style={{width: "1200px"}}>
+      <div style={{ display: "flex" }}>
+        <div className="h-screen overflow-scroll" style={{ width: "1200px" }}>
           <Calendar
             localizer={localizer}
             // events={myEventsList}
@@ -129,11 +129,11 @@ function CalendarComponent() {
             // slotPropGetter={() => }
             // date={new Date()}
             // onNavigate={handleSelectNavigate}
-            className="w-full cursor-pointer"
-            style={{height: "800px", margin: "0 10px 0 0px", backgroundColor: "white"}}
+            className="w-full cursor-pointer h-[500px]"
+            style={{ margin: "0 10px 0 0px", backgroundColor: "white" }}
           />
         </div>
-        <CalendarRightBar/>
+        <CalendarRightBar />
       </div>
     </div>
   );

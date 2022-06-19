@@ -1,8 +1,6 @@
-import { Menu } from "@headlessui/react";
-import { ChevronUpIcon, SearchIcon } from "@heroicons/react/solid";
-import React, { useState } from "react";
+import { SearchIcon } from "@heroicons/react/solid";
+import { useState } from "react";
 import APIS from "../../constants/EndPoint";
-import useGetHook from "../../customHooks/useGetHook";
 import usePostHook from "../../customHooks/usePostHook";
 import InviteTab from "./InviteTab";
 import MemberDropdown from "./MemberDropdown";
@@ -10,8 +8,7 @@ import MemberDropdown from "./MemberDropdown";
 type Props = {};
 
 const InviteMain = (props: Props) => {
-  
-  const [email , setEmail] =useState<string>('')
+  const [email, setEmail] = useState<string>("");
 
   const {
     isPostLoading,
@@ -21,23 +18,22 @@ const InviteMain = (props: Props) => {
     setAddSuccessSnackBar,
   } = usePostHook({ queryKey: `inviteUser`, setOpenAddPopup: "" });
 
-
   //handle invite user API
 
   const handleInviteUser = () => {
-    console.log('user invite clicked')
+    console.log("user invite clicked");
     const url = APIS.INVITE;
     const formData = {
-      email:email
+      email: email,
     };
     try {
       inviteUserMutate({ url, formData });
     } catch (e) {
       console.log(e);
     }
-  }
-  console.log('message' , successMsg)
-  
+  };
+  console.log("message", successMsg);
+
   return (
     <div className="p-5 text-gray-400 w-full">
       <div className="flex flex-row justify-between w-full">
@@ -56,15 +52,12 @@ const InviteMain = (props: Props) => {
         <div className=" relative flex flex-row">
           <input
             type="text"
-            value = {email}
+            value={email}
             className="w-full bg-white border  border-gray-500 text-low focus:outline-none p-2 pl-10"
             placeholder="Invite by email"
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-            <MemberDropdown />
-            
-          
-          
+          <MemberDropdown />
 
           <div className="bg-btncolor text-white border border-gray-500 py-3 ml-0 px-4 text-sm flex flex-row cursor-pointer">
             <p onClick={handleInviteUser}>invite</p>

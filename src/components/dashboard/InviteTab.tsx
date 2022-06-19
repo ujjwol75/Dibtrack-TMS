@@ -1,22 +1,12 @@
-import React , {useEffect, useState} from "react";
 import { Fragment } from "react";
 import { Tab } from "@headlessui/react";
 import { QuestionMarkCircleIcon } from "@heroicons/react/solid";
 import MemberPanel from "./MemberPanel";
-import useGetHook from "../../customHooks/useGetHook";
-import APIS from "../../constants/EndPoint";
+
 const InviteTab = () => {
   const membersCount = 1;
   const GuestMembersCount = 0;
 
- 
-
-  // const { data: usersData } = useGetHook({
-  //   queryKey: "user",
-  //   url: `${APIS.USER}`
-  // })
- 
-  
   return (
     <div>
       <Tab.Group>
@@ -54,22 +44,24 @@ const InviteTab = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <MemberPanel/>
-
+            <MemberPanel />
           </Tab.Panel>
           <Tab.Panel>
             <div className="text-center my-auto h-screen mt-[100px] text-txtcolor">
-              <p className="text-2xl">Add Guests to give them a limited view of ClickUp </p>
+              <p className="text-2xl">
+                Add Guests to give them a limited view of ClickUp{" "}
+              </p>
 
               <div>
                 <p className="mt-1">Guests don't have access to Spaces</p>
                 <p className="mt-1">
                   {" "}
-                  Guests can't create Spaces,
-                  Folders, or Lists
+                  Guests can't create Spaces, Folders, or Lists
                 </p>
 
-                <a href="#" className="mt-1">Learn how to add Guests</a>
+                <a href="#" className="mt-1">
+                  Learn how to add Guests
+                </a>
               </div>
             </div>
           </Tab.Panel>
