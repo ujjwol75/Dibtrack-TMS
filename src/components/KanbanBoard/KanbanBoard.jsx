@@ -92,7 +92,7 @@ const KanbanBoard = (props) => {
       </div>
 
       <Modal title='' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
-        <CardPopup clickedCardInfo={clickedCardInfo} />
+        <CardPopup clickedCardInfo={clickedCardInfo} handleCreateSubTask={handleCreateCard}/>
       </Modal>
     </>
   )

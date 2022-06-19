@@ -11,8 +11,6 @@ import {
 
 import ImportTab from "./ImportTab";
 type Props = {
-  icon: any;
-  title: string;
 };
 
 const SpacePlusTab = (props: Props) => {

@@ -7,7 +7,7 @@ type Props = {};
 const ImportTab = (props: Props) => {
   return (
     <div
-      className="absolute p-4 md:bottom-[50px] left-[195px] border border-gray-300 rounded shadow shadow-md
+      className="absolute p-4 md:bottom-[50px] left-[195px] border border-gray-300 rounded shadow-md
     z-100 h-auto w-[200px] bg-white opacity-100 overflow-visible"
     >
       <Menu.Item>

@@ -24,8 +24,8 @@ const DropDownListBox = ((props: Props) => {
   ]
 
   const handleSelect = (e: any) => {
-    setSelected(e)
     handleAPICall(e.id)
+    setSelected(e)
   }
 
   // SET INITIAL VALUE
@@ -39,8 +39,8 @@ const DropDownListBox = ((props: Props) => {
 
   return (
     <>
-      <Listbox value={selected} onChange={(e) => handleSelect(e)}>
-        <div className="">
+      <Listbox value={selected} onChange={(e) => handleSelect(e)} >
+        <div className='relative mt-1'>
           {
             customButton ?
               <Listbox.Button>
@@ -68,7 +68,7 @@ const DropDownListBox = ((props: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="z-50 absolute min-w-10 w-52  mt-1 max-h-60 overflow-auto rounded-md bg-white opacity-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="z-50 absolute min-w-10 w-40 mt-1 max-h-60 overflow-auto rounded-md bg-white opacity-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {(options ? options : people).map((elem: any, index: number) => (
                 <Listbox.Option
                   key={index}

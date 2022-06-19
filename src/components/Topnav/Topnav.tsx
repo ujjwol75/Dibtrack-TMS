@@ -88,9 +88,8 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
           <div className="flex flex-row w-[650px] overflow-x-auto no-scrollbar  px-2">
             {boardsData?.task_views?.map((value: any, index: number) => {
               return (
-                <ul className="text-gray-400">
+                <ul className="text-gray-400"  key={index} >
                   <Link
-                    key={index}
                     to={`/${params?.spaceId}/${value.slug}/${value.id}`}
                   >
                     <li className="mr-5 flex flex-row pr-2 border-r hover:border-b-2 border-gray-300">

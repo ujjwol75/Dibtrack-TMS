@@ -68,7 +68,7 @@ const UserModal = (props: Props) => {
                     {/* column 2 */}
 
                     <div
-                      className="flex flex-col w-[200px] border-r border-gray-200 text-md text-gray-600  content-start text-gray-500 p-3">
+                      className="flex flex-col w-[200px] border-r border-gray-200 text-md content-start text-gray-500 p-3">
                       <span className="inline-flex">
                         <div className="h-8 w-8 rounded-full bg-profilecolor text-white p-2 text-center text-xs">
                           P
@@ -94,15 +94,15 @@ const UserModal = (props: Props) => {
                           </button>
                         </Link>
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">Clickapps</div>
-                      <div className="mt-3 flex flex-row mt-3">Spaces</div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3">Clickapps</div>
+                      <div className="flex flex-row mt-3">Spaces</div>
+                      <div className="flex flex-row mt-3">
                         Integrations
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3">
                         Template center
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">Trash</div>
+                      <div className="flex flex-row mt-3">Trash</div>
 
                       <hr className="mt-5 mb-5 bg-gray-500" />
 
@@ -110,12 +110,12 @@ const UserModal = (props: Props) => {
                         upgrade
                       </button>
 
-                      <div className="mt-3 flex flex-row mt-3">permissions</div>
+                      <div className="flex flex-row mt-3">permissions</div>
                     </div>
 
                     {/* third column */}
 
-                    <div className="flex flex-col w-[200px]  text-md text-gray-600  content-start text-gray-500 p-3">
+                    <div className="flex flex-col w-[200px]  text-md content-start text-gray-500 p-3">
                       <span className="flex flex-row ">
                         <div className="h-8 w-8 rounded-full bg-profilecolor text-white p-2 text-center text-xs">
                           P
@@ -134,26 +134,26 @@ const UserModal = (props: Props) => {
                         </div>
                       </span>
 
-                      <div className="mt-3 flex flex-row mt-3"> My Settings</div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3"> My Settings</div>
+                      <div className="flex flex-row mt-3">
                         Notifications
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3">
                         Layout size and style
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">Apps</div>
-                      <div className="mt-3 flex flex-row mt-3">Rewards</div>
+                      <div className="flex flex-row mt-3">Apps</div>
+                      <div className="flex flex-row mt-3">Rewards</div>
                       <Logout />
-                      {/* <div className="mt-3 flex flex-row mt-3">
+                      {/* <div className="flex flex-row mt-3">
                         Logout
                       </div> */}
 
                       <hr className="mb-5 mt-5" />
-                      <div className="mt-3 flex flex-row mt-5">
+                      <div className="flex flex-row mt-5">
                         Help
                       </div>
-                      <div className="mt-3 flex flex-row mt-5">Hotkeys</div>
-                      <div className="mt-3 flex flex-row mt-3">Dark Mode</div>
+                      <div className="flex flex-row mt-5">Hotkeys</div>
+                      <div className="flex flex-row mt-3">Dark Mode</div>
                     </div>
                   </div>
                 </Dialog.Panel>

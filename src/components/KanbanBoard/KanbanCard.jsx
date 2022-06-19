@@ -34,14 +34,17 @@ const KanbanCard = (props) => {
             <CircleUserIcon />
           </header>
           <div className='flex items-center space-x-2 text-xs my-3 px-3' >
-            <AdjustmentsIcon className='text-blue-300 w-5 h-5' /><span>1</span>
+            <span title='Sub Tasks'>
+              <AdjustmentsIcon className='text-blue-300 w-5 h-5' />
+            </span>
+            <span>1</span>
           </div>
         </section>
         {
           displayIcons ?
             <div className='flex justify-between border-t border-slate-200 opacity-50 px-2 py-1'
             >
-              <div className='flex gap-x-3'>
+              <div className='flex items-center gap-x-3'>
                 <CalendarIcon className='w-5 h-5 hover:text-primary cursor-pointer font-bold' title="Due Date" />
                 <TagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Tags" />
 
@@ -56,7 +59,7 @@ const KanbanCard = (props) => {
                 />
                 <ClockIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Estimated Time" />
               </div>
-              <div className='flex gap-x-3'>
+              <div className='flex items-center gap-x-3'>
                 <CheckIcon className='w-5 h-5 hover:text-green-500 cursor-pointer' title="Done" />
                 <DotsHorizontalIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="More Options" />
               </div>
