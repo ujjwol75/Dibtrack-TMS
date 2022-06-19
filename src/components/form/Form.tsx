@@ -21,7 +21,7 @@ function Form(props: Props) {
               type="text"
               name="email"
               value={credentials.email}
-              placeholder="&#xf0e0;    Your email here"
+              placeholder="Your email here"
               className="p-2 mt-5 text-black-100 border-solid-black[1px] border border-black-100 focus:outline-none"
               onChange={(e) => setCredentials((prevState: any) => ({ ...prevState, email: e.target.value }))}
             />
@@ -33,7 +33,7 @@ function Form(props: Props) {
               type="password"
               name="password"
               value={credentials.password}
-              placeholder="&#xf023; Your password here"
+              placeholder="Your password here"
               className="input_password p-2 mt-5 text-black-100  border border-black-100 focus:outline-none
               focus:border-black-300"
               onChange={(e) => setCredentials((prevState: any) => ({ ...prevState, password: e.target.value }))}

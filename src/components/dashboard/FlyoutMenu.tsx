@@ -7,12 +7,13 @@ import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup"
 
 
 type Props = {
-  userIconSizeProp?: string
+  userIconSizeProp?: string,
+  user:any
 }
 
 const FlyoutMenu = (props: Props) => {
 
-  const { userIconSizeProp = "xs" } = props
+  const { userIconSizeProp = "xs" , user } = props
 
   let timeout: any
   const timeoutDuration = 700
@@ -65,9 +66,9 @@ const FlyoutMenu = (props: Props) => {
 
           >
             <Popover.Button ref={buttonRef} className="focus:outline-none">
-              <CircleUserIcon size={userIconSizeProp} />
+              <CircleUserIcon size={userIconSizeProp}  />
             </Popover.Button>
-
+            
             <Transition
               show={open}
               as={Fragment}
