@@ -1,13 +1,15 @@
+import LoaderButton from "../../Reusable/Loader/LoaderButton"
 
 type Props = {
   credentials: any
   setCredentials: any
   handleFunction: any
+  loading: boolean
 }
 
 function Form(props: Props) {
 
-  const { handleFunction, credentials, setCredentials } = props
+  const { handleFunction, credentials, setCredentials, loading } = props
   return (
     <div className=" form-container  w-[400px]  bg-white-100 min-h-[400px] flex flex-col px-10 py-5 rounded-md">
       <h1 className="text-center text-2xl font-bold font-16">welcome back !</h1>
@@ -41,8 +43,10 @@ function Form(props: Props) {
             <div className="input_password"></div>
           </div>
           <div className="mt-5">
-            <button className="bg-btncolor px-4 py-2 w-full rounded-lg hover:bg-blue-500 text-white">
-              Log in
+            <button className="bg-btncolor flex items-center justify-center px-4 py-2 w-full rounded-lg hover:bg-blue-500 text-white">
+              {loading ?
+                <span className="pr-2"><LoaderButton /></span> : null
+              } <span>Log in</span>
             </button>
           </div>
           <p className="text-center mt-5 text-xs">or login with SSO</p>

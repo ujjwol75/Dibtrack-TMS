@@ -11,8 +11,9 @@ const KanbanCard = (props) => {
     title
   } = props
 
-  const [displayIcons, setDisplayIcons] = useState(true)
-  const clickDelete = (e) => {}
+  const [displayIcons, setDisplayIcons] = useState(false)
+  const [priorityState, setPriorityState] = useState(null)
+  const clickDelete = (e) => { }
 
   const PriorityOptions = [
     { id: '1', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
@@ -25,7 +26,7 @@ const KanbanCard = (props) => {
     <>
       <div
         className='hover:shadow-lg border border-slate-200 bg-slate-50 my-2 rounded'
-        // onMouseOver={() => setDisplayIcons(true)} onMouseLeave={() => setDisplayIcons(false)}
+        onMouseOver={() => setDisplayIcons(true)} onMouseLeave={() => setDisplayIcons(false)}
       >
         <section onClick={onClick} className="cursor-pointer">
           <header className='flex justify-between p-3 '>
@@ -45,7 +46,10 @@ const KanbanCard = (props) => {
                 <TagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Tags" />
 
                 <DropDownListBox
-                options={PriorityOptions}
+                  initialValue={null}
+                  selected={priorityState}
+                  setSelected={setPriorityState}
+                  options={PriorityOptions}
                   customButton={
                     <FlagIcon className='w-5 h-5 hover:text-primary cursor-pointer' title="Priority" />
                   }
@@ -59,10 +63,6 @@ const KanbanCard = (props) => {
             </div> : null
         }
       </div>
-
-      {/* <div className='absolute max-w-md transform overflow-hidden rounded-2xl bg-gray-500 p-6 text-left align-middle shadow-xl transition-all'>
-pokasopd
-      </div> */}
     </>
   )
 }

@@ -52,7 +52,7 @@ function Login() {
     <div>
       <div className="login h-[100vh] w-screen overflow-hidden ">
         <Navbar text="signup" text1='Dont have an account? ' />
-        <Form credentials={credentials} setCredentials={setCredentials} handleFunction={handleLogin} />
+        <Form credentials={credentials} setCredentials={setCredentials} handleFunction={handleLogin} loading={isPostLoading} />
         <div className='gradient w-[110%]  transform -rotate-12 '></div>
       </div>
     </div>

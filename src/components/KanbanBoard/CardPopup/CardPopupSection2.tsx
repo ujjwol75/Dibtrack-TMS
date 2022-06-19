@@ -1,5 +1,6 @@
 import { CalendarIcon, ClockIcon, StarIcon } from '@heroicons/react/outline'
 import React from 'react'
+import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 
 type Props = {}
 
@@ -24,9 +25,30 @@ const CardPopupSection2 = (props: Props) => {
         </span>
 
         <span className='px-4 flex gap-3'>
-          <ClockIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-          <StarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-          <CalendarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+          <DropDownMenu
+            options={null}
+            CustomMenuButton={
+              <ClockIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+            }
+          >
+            <div className='w-full h-10'>pasjdoij</div>
+          </DropDownMenu>
+          <DropDownMenu
+            options={null}
+            CustomMenuButton={
+              <StarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+            }
+          >
+            <div className='w-full h-10'>pasjdoij</div>
+          </DropDownMenu>
+          <DropDownMenu
+            options={null}
+            CustomMenuButton={
+              <CalendarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+            }
+          >
+            <div className='w-full h-10'>pasjdoij</div>
+          </DropDownMenu>
         </span>
 
 

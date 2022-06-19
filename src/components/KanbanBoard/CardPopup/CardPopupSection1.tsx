@@ -1,14 +1,15 @@
 import { DotsHorizontalIcon, ShareIcon, UserAddIcon } from '@heroicons/react/outline'
-import { CheckIcon, XIcon, FlagIcon } from '@heroicons/react/solid'
-import { url } from 'inspector'
+import { CheckIcon, XIcon, FlagIcon, TrashIcon, PlusIcon, PencilIcon, ColorSwatchIcon, DuplicateIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
+import useDeleteHook from '../../../customHooks/useDeleteHook'
 import useGetHook from '../../../customHooks/useGetHook'
 import usePatchHook from '../../../customHooks/usePatchHook'
 import usePostHook from '../../../customHooks/usePostHook'
 import AutoComplete from '../../../Reusable/AutoComplete'
 
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
+import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
 
@@ -63,6 +64,13 @@ const CardPopupSection1 = (props: Props) => {
     addSuccessSnackBar: editSuccessSnackBar,
     setAddSuccessSnackBar: setEditSuccessSnackBar,
   } = usePatchHook({ queryKey: `boardData${cardDetailData?.workspace}`, setOpenEditPopup: "" })
+
+  const {
+    isLoading,
+    mutate: deleteMutate,
+    setRemoveSuccessSnackBar,
+    removeSuccessSnackBar,
+  } = useDeleteHook({ queryKey: `boardData${cardDetailData?.workspace}` })
 
   const handleAssignUser = (usersList: any) => {
     const url = APIS.ASSIGN;
@@ -126,7 +134,6 @@ const CardPopupSection1 = (props: Props) => {
     }
   }
 
-
   // SETTING ALL INITIAL VALUES
   useEffect(() => {
     setInitialValuesState({
@@ -136,6 +143,22 @@ const CardPopupSection1 = (props: Props) => {
     })
   }, [cardDetailData])
 
+  const handleDeleteTask = () => {
+    const url = `${APIS.TASK}${cardDetailData?.id}/`
+    try {
+      deleteMutate(url);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const menuOptions = [
+    { id: '1', title: "Add", icon: <PlusIcon className='w-6 text-blue-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '2', title: "Edit", icon: <PencilIcon className='w-6 text-yellow-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '3', title: "Create", icon: <ColorSwatchIcon className='w-6 text-green-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '4', title: "Duplicate", icon: <DuplicateIcon className='w-6 text-orange-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '5', title: "Delete", icon: <TrashIcon className='w-6 text-red-500' />, action: () => handleDeleteTask() },
+  ]
 
   return (
     <>
@@ -215,9 +238,13 @@ const CardPopupSection1 = (props: Props) => {
             </span>
           </span>
 
-          <DotsHorizontalIcon
-            className='w-8 h-8 hover:text-btncolor cursor-pointer'
-            onClick={() => { }}
+          <DropDownMenu
+            options={menuOptions}
+            CustomMenuButton={
+              <DotsHorizontalIcon
+                className='w-8 h-8 hover:text-btncolor cursor-pointer'
+              />
+            }
           />
         </section>
       </section>

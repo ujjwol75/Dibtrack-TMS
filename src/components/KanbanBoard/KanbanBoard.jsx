@@ -14,7 +14,8 @@ const KanbanBoard = (props) => {
     handleClickCard,
     handleCardDrag,
     handleUpdateBoard,
-    handleCreateCard
+    handleCreateCard,
+    handleDeleteTask
   } = props
 
   // const data = {
@@ -64,7 +65,7 @@ const KanbanBoard = (props) => {
 
   return (
     <>
-      <div>
+      <div className='relative'>
         <Board
           data={boardsData && boardsData}
           draggable
@@ -78,7 +79,7 @@ const KanbanBoard = (props) => {
             backgroundColor: "white",
             borderRadius: "0.375rem",
           }}
-          style={{ backgroundColor: "transparent", position:"relative"}}
+          style={{ backgroundColor: "transparent" }}
           components={components}
           onLaneAdd={(e) => handleCreateBoard(e)}
           onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
@@ -86,7 +87,7 @@ const KanbanBoard = (props) => {
           handleDragEnd={
             (cardId, sourceLaneId, targetLaneId, position, cardDetails) => handleCardDrag(cardId, sourceLaneId, targetLaneId, position, cardDetails)
           }
-
+          onLaneDelete={(laneId) => handleDeleteTask(laneId)}
         />
       </div>
 

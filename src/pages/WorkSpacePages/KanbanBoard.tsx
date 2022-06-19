@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import KanbanBoardComponent from "../../components/KanbanBoard/KanbanBoard"
 import APIS from '../../constants/EndPoint'
+import useDeleteHook from '../../customHooks/useDeleteHook'
 import useGetHook from '../../customHooks/useGetHook'
 import usePatchHook from '../../customHooks/usePatchHook'
 import usePostHook from '../../customHooks/usePostHook'
+import LoaderAnimation from '../../Reusable/Loader/LoaderAnimation'
 
 type Props = {
   spaceId: any
@@ -112,11 +114,27 @@ const KanbanBoard = (props: Props) => {
     }
   }
 
+  const {
+    isLoading,
+    mutate: deleteMutate,
+    setRemoveSuccessSnackBar,
+    removeSuccessSnackBar,
+  } = useDeleteHook({ queryKey: `boardData${spaceId}` })
+
+  const handleDeleteTask = (value: any) => {
+    const url = `${APIS.TASK}${value}/`
+    try {
+      deleteMutate(url);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <>
       {
         boardDataLoading ?
-          "Loading..." :
+          <div className='flex justify-center'><LoaderAnimation /></div> :
           <KanbanBoardComponent
             openCardModal={openCardModal}
             setOpenCardModal={setOpenCardModal}
@@ -127,6 +145,7 @@ const KanbanBoard = (props: Props) => {
             handleCreateCard={handleCreateCard}
             handleCardDrag={handleCardDrag}
             handleUpdateBoard={handleUpdateBoard}
+            handleDeleteTask={handleDeleteTask}
           />
       }
     </>
