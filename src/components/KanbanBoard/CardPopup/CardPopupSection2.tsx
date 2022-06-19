@@ -50,8 +50,6 @@ const CardPopupSection2 = (props: Props) => {
             <div className='w-full h-10'>pasjdoij</div>
           </DropDownMenu>
         </span>
-
-
       </section>
     </>
   )

@@ -17,7 +17,6 @@ import {
   MenuAlt1Icon,
   HomeIcon,
 } from "@heroicons/react/solid";
-
 import useGetHook from "../../customHooks/useGetHook";
 import { Link, useParams } from "react-router-dom";
 import APIS from "../../constants/EndPoint";
@@ -29,7 +28,6 @@ type Props = {
 
 const Navbar = ({ collapse, setCollapse }: Props) => {
   let [isOpen, setIsOpen] = useState(false);
-
   const [upShow, setUpShow] = useState(true);
   const [asignees, setAsignees] = useState(false);
 
@@ -95,7 +93,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
                     key={index}
                     to={`/${params?.spaceId}/${value.slug}/${value.id}`}
                   >
-                    <li className="mr-5 flex flex-row pr-2 border-r border-gray-300 hover:border-b-2 border-gray-300">
+                    <li className="mr-5 flex flex-row pr-2 border-r hover:border-b-2 border-gray-300">
                       <HomeIcon className="h-4 w-4 text-gray-400" />
                       <span className="text-sm ml-1 text-txtcolor capitalize">
                         {" "}
@@ -173,7 +171,8 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
             <Models isOpen={isOpen} closeModal={closeModal} />
           </div>
         </div>
-      </div>{" "}
+      </div>
+      {" "}
       {/*end of main div */}
       <Subtopnav asignees={asignees} setAsignees={setAsignees} />
     </>

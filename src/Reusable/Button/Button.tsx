@@ -1,5 +1,3 @@
-import React from 'react'
-import LoaderButton from '../Loader/LoaderButton'
 
 type Props = {
   text: string

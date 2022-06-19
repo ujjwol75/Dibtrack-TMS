@@ -1,4 +1,4 @@
-const APIS = {
+const APIS: any = {
   // AUTH
   LOGIN: `/token/create/`,
   VERIFY: `/auth/jwt/verify/`,

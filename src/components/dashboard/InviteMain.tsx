@@ -51,9 +51,8 @@ const InviteMain = (props: Props) => {
             className="w-full bg-white border border-gray-500  focus:outline-none p-2 pl-10"
             placeholder="search by name or email"
           ></input>
-          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3" />
+          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3"/>
         </div>
-
         <div className=" relative flex flex-row">
           <input
             type="text"
@@ -70,12 +69,10 @@ const InviteMain = (props: Props) => {
           <div className="bg-btncolor text-white border border-gray-500 py-3 ml-0 px-4 text-sm flex flex-row cursor-pointer">
             <p onClick={handleInviteUser}>invite</p>
           </div>
-
-          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3 mt-1 ml-1" />
+          <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3 mt-1 ml-1"/>
         </div>
       </div>
-
-      <InviteTab />
+      <InviteTab/>
     </div>
   );
 };

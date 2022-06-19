@@ -1,6 +1,6 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-import React, { Fragment } from 'react'
+import {Dialog, Transition} from '@headlessui/react'
+import {XIcon} from '@heroicons/react/outline'
+import React, {Fragment} from 'react'
 
 type Props = {
   isOpen: boolean,
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const DescriptionModal = (props: Props) => {
-  const { isOpen, setIsOpen, children, title, screenSize = false } = props
+  const {isOpen, setIsOpen, children, title, screenSize = false} = props
   return (
 
     <Transition appear show={isOpen} as={Fragment}>
@@ -25,7 +25,7 @@ const DescriptionModal = (props: Props) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black bg-opacity-25"/>
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto ">
@@ -39,7 +39,8 @@ const DescriptionModal = (props: Props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className={`${screenSize ? "max-w-7xl h-[40rem]" : "max-w-md"} absolute h-screen w-[30rem]  transform overflow-hidden rounded-lg bg-white text-left right-0 shadow-xl transition-all `}>
+              <Dialog.Panel
+                className={`${screenSize ? "max-w-7xl h-[40rem]" : "max-w-md"} absolute h-screen w-[30rem]  transform overflow-hidden rounded-lg bg-white text-left right-0 shadow-xl transition-all `}>
                 <Dialog.Title
                   as="h3"
                   className="text-lg flex justify-between items-align-center font-medium leading-6 text-gray-900 bg-gray-200 p-4"
@@ -48,7 +49,8 @@ const DescriptionModal = (props: Props) => {
                     {title}
                   </span>
                   <span title='Close' onClick={() => setIsOpen(false)}>
-                    <XIcon className='border border-gray-700 rounded-lg h-7 w-7 hover:border-btncolor hover:text-btncolor' />
+                    <XIcon
+                      className='border border-gray-700 rounded-lg h-7 w-7 hover:border-btncolor hover:text-btncolor'/>
                   </span>
                 </Dialog.Title>
                 <div className=''>

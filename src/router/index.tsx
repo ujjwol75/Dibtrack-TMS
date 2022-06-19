@@ -65,7 +65,7 @@ const Router = () => {
         </PrivateRoute>
       }
       >
-        <Route path={"/home"} element={<HomeDib />} />
+        <Route path={"/"} element={<HomeDib />} />
       </Route>
 
 

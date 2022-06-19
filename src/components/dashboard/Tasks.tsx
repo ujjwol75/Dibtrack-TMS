@@ -1,8 +1,7 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, {useState, Fragment} from "react";
 import {
   SearchIcon,
   ChevronUpIcon,
-  ChevronDownIcon,
   TicketIcon,
   ChevronRightIcon,
   PlusSmIcon,
@@ -10,7 +9,7 @@ import {
   ViewGridIcon,
 } from "@heroicons/react/solid";
 import CalendarRightBar from "./CalendarRightBar";
-import { Tab, Menu, Transition, Disclosure, Popover } from "@headlessui/react";
+import {Tab, Menu, Transition, Disclosure, Popover} from "@headlessui/react";
 import TaskPopover from "./TaskPopover";
 
 type Props = {};
@@ -23,10 +22,6 @@ const Tasks = (props: Props) => {
     setHide(true);
   }
 
-    console.log("tasks", open)
-
-
-
   return !hide ? (
     <>
       <div className="flex flex-col text-sm">
@@ -36,7 +31,7 @@ const Tasks = (props: Props) => {
               <h1 className="text-lg">Tasks</h1>
             </div>
             <div className="flex flex-row">
-              <SearchIcon className="w-4 hover:bg-gray-300 mr-3 text-gray-500 hover:text-red-600 cursor-pointer" />
+              <SearchIcon className="w-4 hover:bg-gray-300 mr-3 text-gray-500 hover:text-red-600 cursor-pointer"/>
               <p
                 className="hover:bg-gray-200 rounded-sm px-2 text-gray-500 hover:text-red-600 cursor-pointer"
                 onClick={handleHide}
@@ -48,21 +43,21 @@ const Tasks = (props: Props) => {
           <Tab.Group>
             <Tab.List>
               <Tab as={Fragment}>
-                {({ selected }) => (
+                {({selected}) => (
                   <button
                     className={
                       selected
                         ? "text-red-500 border-box border-b-[2px] h-12 border-red-500"
                         : "text-black"
                     }
-                    style={{ marginRight: "20px", marginLeft: "-6rem" }}
+                    style={{marginRight: "20px", marginLeft: "-6rem"}}
                   >
                     Unscheduled
                   </button>
                 )}
               </Tab>
               <Tab as={Fragment}>
-                {({ selected }) => (
+                {({selected}) => (
                   <button
                     className={
                       selected
@@ -74,7 +69,7 @@ const Tasks = (props: Props) => {
                   </button>
                 )}
               </Tab>
-              <hr />
+              <hr/>
             </Tab.List>
             <Tab.Panels>
               <Tab.Panel className="ml-4 mt-4 relative flex flex-col">
@@ -141,7 +136,7 @@ const Tasks = (props: Props) => {
                         </Menu>
                       </div>
                     </span>
-                    <ChevronUpIcon className="w-4 ml-0.5 cursor-pointer text-red-500" />
+                    <ChevronUpIcon className="w-4 ml-0.5 cursor-pointer text-red-500"/>
                   </div>
                   <div>
                     <h1>0 tasks</h1>
@@ -150,7 +145,7 @@ const Tasks = (props: Props) => {
 
                 <div className="flex flex-row justify-between mt-4">
                   <div className="flex flex-row text-sm text-gray-500">
-                    <TicketIcon className="w-5" />
+                    <TicketIcon className="w-5"/>
                     <p>sdfsdfs</p>
                   </div>
                   <p className="text-red-500">2 days ago</p>
@@ -158,7 +153,7 @@ const Tasks = (props: Props) => {
 
                 <div className="flex flex-row justify-between mt-4">
                   <div className="flex flex-row text-sm text-gray-500">
-                    <TicketIcon className="w-5" />
+                    <TicketIcon className="w-5"/>
                     <p>ssewewe</p>
                   </div>
                   <p className="text-red-500">1 days ago</p>
@@ -228,7 +223,7 @@ const Tasks = (props: Props) => {
                         </Menu>
                       </div>
                     </span>
-                    <ChevronUpIcon className="w-4 ml-0.5 cursor-pointer text-red-500" />
+                    <ChevronUpIcon className="w-4 ml-0.5 cursor-pointer text-red-500"/>
                   </div>
                   <div>
                     <p>0 tasks</p>
@@ -237,7 +232,7 @@ const Tasks = (props: Props) => {
 
                 <div className="flex flex-row justify-between mt-4">
                   <div className="flex flex-row text-sm text-gray-500">
-                    <TicketIcon className="w-5" />
+                    <TicketIcon className="w-5"/>
                     <p>sdfsdfs</p>
                   </div>
                   <p className="text-red-500">2 days ago</p>
@@ -245,7 +240,7 @@ const Tasks = (props: Props) => {
 
                 <div className="flex flex-row justify-between mt-4">
                   <div className="flex flex-row text-sm text-gray-500">
-                    <TicketIcon className="w-5" />
+                    <TicketIcon className="w-5"/>
                     <p>ssewewe</p>
                   </div>
                   <p className="text-red-500">1 days ago</p>
@@ -253,13 +248,14 @@ const Tasks = (props: Props) => {
               </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
-          <hr className="mt-40" />
+          <hr className="mt-40"/>
 
           <div className="-mt-[80px]">
             <Disclosure>
-              {({ open }) => (
+              {({open}) => (
                 <>
-                  <Disclosure.Button className="flex flex-row justify-between hover:bg-gray-200 cursor-pointer w-full h-10">
+                  <Disclosure.Button
+                    className="flex flex-row justify-between hover:bg-gray-200 cursor-pointer w-full h-10">
                     Is team pricing available?
                     <ChevronRightIcon
                       className={`${
@@ -271,7 +267,7 @@ const Tasks = (props: Props) => {
                   </Disclosure.Button>
 
                   <Disclosure.Panel className="flex flex-row">
-                    <PlusSmIcon className="w-6 mt-3 bg-gray-300 mr-2" />
+                    <PlusSmIcon className="w-6 mt-3 bg-gray-300 mr-2"/>
                     <p className="mt-3">Add Calendar</p>
                   </Disclosure.Panel>
                 </>
@@ -280,16 +276,18 @@ const Tasks = (props: Props) => {
           </div>
 
           <div className="flex flex-row justify-end text-sm">
-            <button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg mt-3 cursor ml-0">
+            <button
+              className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg mt-3 cursor ml-0">
               <p>Save</p>
-              <ChevronDoubleUpIcon className="w-3 text-black ml-1" />
+              <ChevronDoubleUpIcon className="w-3 text-black ml-1"/>
             </button>
           </div>
 
           <div className="flex flex-row justify-end mt-2 text-sm">
             <Popover className="relative">
-              <Popover.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
-                <PlusSmIcon className="w-4" />
+              <Popover.Button
+                className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
+                <PlusSmIcon className="w-4"/>
                 <p>Task</p>
               </Popover.Button>
               <Popover.Panel className="absolute z-10">
@@ -298,71 +296,72 @@ const Tasks = (props: Props) => {
             </Popover>
             <div className="relative">
               <Menu>
-                <Menu.Button className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
-                  <ViewGridIcon className="w-4" />
+                <Menu.Button
+                  className="flex flex-row bg-white text-center text-red-500 font-bold py-2 px-4 rounded-lg shadow-lg cursor ml-2">
+                  <ViewGridIcon className="w-4"/>
                 </Menu.Button>
                 <Menu.Items className="bg-white w-40 absolute -top-[255px] right-[26px] drop-shadow-lg rounded-lg ">
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Record Clip</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Track Time</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Reminder (r)</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Notepad(p)</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">New Doc</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Calendar</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div className="flex flex-row justify-between p-2 text-sm">
                       <div className="flex flex-row">
-                        <PlusSmIcon className="text-red-500 w-6 pr-1" />
+                        <PlusSmIcon className="text-red-500 w-6 pr-1"/>
                         <h1 className="text-black">Task tray</h1>
                       </div>
-                      <PlusSmIcon className="text-red-500 w-4" />
+                      <PlusSmIcon className="text-red-500 w-4"/>
                     </div>
                   </Menu.Item>
                 </Menu.Items>
@@ -373,7 +372,7 @@ const Tasks = (props: Props) => {
       </div>
     </>
   ) : (
-    <CalendarRightBar />
+    <CalendarRightBar/>
   );
 };
 

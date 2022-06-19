@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { Fragment } from 'react'
-import NewSpaceModal from './NewSpaceModal'
 import ColorThemePopup from '../Space/ColorThemePopup'
 
 type Props = {}

@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import Logout from "../Profile/Logout";
+
 type Props = {};
 
 const UserModal = (props: Props) => {
@@ -16,6 +17,7 @@ const UserModal = (props: Props) => {
   function openModal() {
     setIsOpen(true);
   }
+
   return (
     <div>
       <div className="flex flex-row " onClick={openModal}>
@@ -50,7 +52,8 @@ const UserModal = (props: Props) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[450px]  h-[435px] absolute md:bottom-3 md:left-[30px]   transform overflow-hidden rounded-md bg-white p-2 text-xs  shadow-2xl transition-all">
+                <Dialog.Panel
+                  className="w-[450px]  h-[435px] absolute md:bottom-3 md:left-[30px]   transform overflow-hidden rounded-md bg-white p-2 text-xs  shadow-2xl transition-all">
                   <div className="flex flex-row   w-full">
                     {/* column 1 */}
                     <div className="flex flex-col p- 2 text-center w-[35px]  h-[500px]  border-r border-gray-200 mt-4 ">
@@ -64,7 +67,8 @@ const UserModal = (props: Props) => {
 
                     {/* column 2 */}
 
-                    <div className="flex flex-col w-[200px] border-r border-gray-200 text-md text-gray-600  content-start text-gray-500 p-3">
+                    <div
+                      className="flex flex-col w-[200px] border-r border-gray-200 text-md text-gray-600  content-start text-gray-500 p-3">
                       <span className="inline-flex">
                         <div className="h-8 w-8 rounded-full bg-profilecolor text-white p-2 text-center text-xs">
                           P
@@ -73,19 +77,22 @@ const UserModal = (props: Props) => {
                         <p className="mt-2 ml-2">my workspace</p>
                       </span>
 
-                      <div className="mt-3 flex flex-row mt-3">Settings</div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3">Settings</div>
+                      <div className="flex flex-row mt-3">
                         Import/Export
                       </div>
-                      <div className="mt-3 flex flex-row mt-3">
+                      <div className="flex flex-row mt-3">
                         <p>People</p>
-                        <Link to  = "/dashboard">
-                        <button className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent" onClick={closeModal}>
-                          <span className="flex fex-row ">
-                            <UserAddIcon className="h-4 w-3" />
-                            <p className="ml-2">invite</p>
-                          </span>
-                        </button></Link>
+                        <Link to="/dashboard">
+                          <button
+                            className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent"
+                            onClick={closeModal}>
+                            <span className="flex fex-row ">
+                              <UserAddIcon className="h-4 w-3" />
+                              <p className="ml-2">invite</p>
+                            </span>
+                          </button>
+                        </Link>
                       </div>
                       <div className="mt-3 flex flex-row mt-3">Clickapps</div>
                       <div className="mt-3 flex flex-row mt-3">Spaces</div>
@@ -140,21 +147,15 @@ const UserModal = (props: Props) => {
                       {/* <div className="mt-3 flex flex-row mt-3">
                         Logout
                       </div> */}
-                       
-                       <hr className="mb-5 mt-5"/>
+
+                      <hr className="mb-5 mt-5" />
                       <div className="mt-3 flex flex-row mt-5">
                         Help
                       </div>
                       <div className="mt-3 flex flex-row mt-5">Hotkeys</div>
-
-                      
-                      
-
                       <div className="mt-3 flex flex-row mt-3">Dark Mode</div>
                     </div>
                   </div>
-
-                  
                 </Dialog.Panel>
               </Transition.Child>
             </div>

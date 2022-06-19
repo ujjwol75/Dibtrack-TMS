@@ -22,7 +22,7 @@ const InviteTab = () => {
       <Tab.Group>
         <Tab.List className="mt-5 text-md p-3 flex flex-row">
           <Tab as={Fragment}>
-            {({ selected }) => (
+            {({selected}) => (
               <span
                 className={
                   selected
@@ -36,17 +36,17 @@ const InviteTab = () => {
           </Tab>
 
           <Tab as={Fragment}>
-            {({ selected }) => (
+            {({selected}) => (
               <span
                 className={
                   selected
                     ? "bg-white text-txtcolor focus:outline-none"
-                    : "bg-white text-gray-400 cursor-pointer" 
+                    : "bg-white text-gray-400 cursor-pointer"
                 }
               >
                 <span className="flex flex-row">
                   <p>Guest Members ({GuestMembersCount})</p>
-                  <QuestionMarkCircleIcon className="h-5 w-5" />
+                  <QuestionMarkCircleIcon className="h-5 w-5"/>
                 </span>
               </span>
             )}
@@ -54,7 +54,7 @@ const InviteTab = () => {
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-              <MemberPanel />
+            <MemberPanel/>
 
           </Tab.Panel>
           <Tab.Panel>
@@ -65,7 +65,7 @@ const InviteTab = () => {
                 <p className="mt-1">Guests don't have access to Spaces</p>
                 <p className="mt-1">
                   {" "}
-                 Guests can't create Spaces,
+                  Guests can't create Spaces,
                   Folders, or Lists
                 </p>
 

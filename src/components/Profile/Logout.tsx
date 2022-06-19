@@ -1,13 +1,11 @@
-
-
-import { useNavigate } from "react-router-dom";
-import { removeKey } from "../../helpers/sessionKey";
+import {useNavigate} from "react-router-dom";
+import {removeKey} from "../../helpers/sessionKey";
 
 
 type Props = {}
 
 const Logout = (props: Props) => {
-  
+
   const navigate = useNavigate();
 
   const handleLogOut = () => {
