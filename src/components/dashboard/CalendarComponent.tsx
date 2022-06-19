@@ -142,8 +142,8 @@ function CalendarComponent() {
                // slotPropGetter={() => }
                // date={new Date()}
                // onNavigate={handleSelectNavigate}
-               className="w-full cursor-pointer"
-               style={{height:"800px", margin:"0 10px 0 0px",backgroundColor:"white"}}
+               className="w-full cursor-pointer h-[500px]"
+               style={{margin:"0 10px 0 0px",backgroundColor:"white"}}
                
             
             />

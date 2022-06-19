@@ -50,7 +50,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
   return (
     <>
-      <div className=" flex flex-row justify-between border-b border-blue-300 w-full py-4">
+      <div className=" flex flex-row justify-between border-b border-blue-300 w-full py-1">
         <div className="flex flex-row items-center w-full">
           {collapse && (
             <MenuAlt1Icon
@@ -114,8 +114,8 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
         {/* right topnav end */}
         <div className="flex flex-row">
-          <div className="flex flex-row px-5 p-1 border border-gray-200 items-center cursor-pointer rounded">
-            <DesktopComputerIcon className="h-5 w-5 text-gray-400 mr-1" />
+          <div className="flex flex-row px-5  border border-gray-200 items-center cursor-pointer rounded">
+            <DesktopComputerIcon className="h-4 w-5 text-gray-400 mr-1" />
             <span className="text-sm  pr-2 text-txtcolor">Automate</span>
 
             <Popover className="relative">
@@ -123,7 +123,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
                 <Popover.Button className="outline-none">
                   <span>
                     <ChevronDownIcon
-                      className="h-5 w-5 text-gray-400 ml-1 mt-2"
+                      className="h-5 w-5 text-gray-400 ml-1"
                       onClick={() => setUpShow(false)}
                     />
                   </span>
@@ -132,7 +132,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
                 <Popover.Button className="outline-none">
                   <span className="border-none">
                     <ChevronUpIcon
-                      className="h-5 w-5 text-gray-400 ml-1 mt-2"
+                      className="h-5 w-5 text-gray-400 ml-1"
                       onClick={() => setUpShow(true)}
                     />
                   </span>
@@ -165,7 +165,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
           {/* share */}
           <div className="flex flex-row px-5  items-center  rounded-md ml-2">
-            <div className="flex flex-row items-center p-2 border border-gray-200 rounded">
+            <div className="flex flex-row items-center p-1 px-2 border border-gray-200 rounded">
               <ShareIcon className="h-4 w-5 text-gray-400 mr-2" />
               <span className="text-sm text-txtcolor">Share</span>
             </div>
