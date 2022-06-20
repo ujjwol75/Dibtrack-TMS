@@ -10,8 +10,7 @@ import {
 } from "@heroicons/react/solid";
 
 import ImportTab from "./ImportTab";
-type Props = {
-};
+type Props = {}
 
 const SpacePlusTab = (props: Props) => {
   return (

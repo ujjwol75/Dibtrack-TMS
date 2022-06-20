@@ -119,6 +119,8 @@ input::placeholder {
 
 ::-webkit-scrollbar {
   width: 5px;
+  height:10px;
+  background-color: ;
   background: #fafbfc !important;
 }
 

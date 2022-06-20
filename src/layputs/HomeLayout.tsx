@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/dashboard/Sidebar';
+import Topnav from '../components/HomeDib/Topnav';
 import { accessToken } from '../helpers/sessionKey';
 
 type Props = {}
@@ -23,6 +24,7 @@ const HomeLayout = (props: Props) => {
         collapse ? (
           <div className="grid grid-cols-5">
             <div className="col-span-5">
+              <Topnav collapse = {collapse} setCollapse = {setCollapse} />
               <Outlet />
             </div>
           </div>)
@@ -37,6 +39,7 @@ const HomeLayout = (props: Props) => {
               </div>
 
               <div className="col-span-4">
+                <Topnav  collapse = {collapse} setCollapse = {setCollapse}/>
                 <Outlet />
               </div>
             </div>
