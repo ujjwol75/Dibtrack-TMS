@@ -1,9 +1,10 @@
-import { useState } from "react";
+import {useState } from "react";
 
 import Models from "./Models/Models";
 
 import Subtopnav from "./Subtopnav/Subtopnav";
 import { Popover } from "@headlessui/react";
+
 
 // import Collapseasignees from "./Subtopnav/Collapseasignees"
 
@@ -16,10 +17,12 @@ import {
   SparklesIcon,
   MenuAlt1Icon,
   HomeIcon,
+  ChevronRightIcon,
 } from "@heroicons/react/solid";
 import useGetHook from "../../customHooks/useGetHook";
 import { Link, useParams } from "react-router-dom";
 import APIS from "../../constants/EndPoint";
+import React from "react";
 
 type Props = {
   collapse?: any;
@@ -30,14 +33,18 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
   let [isOpen, setIsOpen] = useState(false);
   const [upShow, setUpShow] = useState(true);
   const [asignees, setAsignees] = useState(false);
-
+  const [activeItem , setActiveItem] = useState(2)
+  console.log(activeItem)
   const params = useParams();
+
+  const listItemRef = React.createRef<HTMLDivElement>()
+ 
 
   const { data: boardsData, isLoading: boardDataLoading } = useGetHook({
     queryKey: `boardData${params?.spaceId}`,
     url: `${APIS.KANBAN_TASK}?workspace=${params?.spaceId}`,
   });
-  console.log("boarddata", boardsData);
+
   function closeModal() {
     setIsOpen(false);
   }
@@ -46,9 +53,12 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
     setIsOpen(true);
   }
 
+  //scroll menu items on click
+ 
+
   return (
     <>
-      <div className=" flex flex-row justify-between border-b border-blue-300 w-full py-1">
+      <div className=" flex flex-row justify-between border-b border-blue-300 w-full py-1 ">
         <div className="flex flex-row items-center w-full">
           {collapse && (
             <MenuAlt1Icon
@@ -84,18 +94,23 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
 
           {/* space name end */}
 
+
+
           {/* menu list */}
-          <div className="flex flex-row w-[650px] overflow-x-auto no-scrollbar  px-2">
+         
+          <div className="flex flex-row w-[650px] overflow-x-auto  px-2" ref = {listItemRef}>
             {boardsData?.task_views?.map((value: any, index: number) => {
               return (
-                <ul className="text-gray-400">
+                <ul>
                   <Link
                     key={index}
                     to={`/${params?.spaceId}/${value.slug}/${value.id}`}
                   >
-                    <li className="mr-5 flex flex-row pr-2 border-r hover:border-b-2 border-gray-300">
-                      <HomeIcon className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm ml-1 text-txtcolor capitalize">
+                    <li 
+                    onClick={() => setActiveItem(value.id)}
+                    className={ activeItem === value.id ? " mr-5 flex flex-row text-btncolor pr-2 border-b border-r border-btncolor ":"mr-5 flex flex-row pr-2 border-r border-gray-300 text-gray-500" }>
+                      <HomeIcon className="h-4 w-4" />
+                      <span className="text-sm ml-1  capitalize"> 
                         {" "}
                         {value.view_type_name}
                       </span>
@@ -105,7 +120,12 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
               );
             })}
           </div>
+          
         </div>
+        
+        <ChevronRightIcon 
+         
+        className="h-10 w-10 text-gray-500 mr-24 hover:text-btncolor cursor-pointer"/> 
         {/* menu list end */}
 
         {/* right topnav */}

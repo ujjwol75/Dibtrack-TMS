@@ -2,6 +2,7 @@ import {Fragment, useRef, useState} from "react"
 import {Popover, Transition} from "@headlessui/react"
 import CircleUserIcon from "../../Reusable/CircleUserIcon"
 import UserInfoPopup from "../../Reusable/CircleUserIcon/UserInfoPopup"
+import CircleUserIcon1 from "../../Reusable/CircleUserIcon/icon1"
 
 
 type Props = {
@@ -45,7 +46,7 @@ const FlyoutMenu = (props: Props) => {
 
           >
             <Popover.Button ref={buttonRef} className="focus:outline-none">
-              <CircleUserIcon size={userIconSizeProp}  />
+              <CircleUserIcon1 size={userIconSizeProp} color = "bg-green-500" />
             </Popover.Button>
             
             <Transition

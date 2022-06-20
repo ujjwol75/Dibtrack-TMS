@@ -4,18 +4,21 @@ import UserSettings from "./UserSettings";
 import ViewProfile from "../Profile/ViewProfile";
 import APIS from "../../constants/EndPoint";
 import useGetHook from "../../customHooks/useGetHook";
+import LoaderAnimation from "../../Reusable/Loader/LoaderAnimation";
 
 type Props = {};
 
 const MemberPanel = (props: Props) => {
   const [copystatus, setCopyStatus] = useState<string>("copy");
 
-  const { data: usersData } = useGetHook({
+  const { data: usersData  , isLoading:usersDataLoading} = useGetHook({
     queryKey: "user",
     url: `${APIS.USER}`,
   });
 
-  return (
+  return usersDataLoading ? (
+         <div className="flex justify-center"><LoaderAnimation /></div>
+  ) :(
     <table className="  text-xs border border-slate-400 w-full">
       <thead className="border-b border-slate-400 rounded">
       <tr>
