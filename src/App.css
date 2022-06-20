@@ -1,46 +1,44 @@
-
-
 .App {
   text-align: center;
 }
 
-.collapse2{
+.collapse2 {
   display: none;
 }
 
-.view{
+.view {
   overflow-y: scroll;
   height: 600px;
 }
 
-.container-2{
+.container-2 {
   z-index: -1;
 }
 
-.input{
+.input {
   padding-left: 5px;
 }
 
-.dot{
+.dot {
   display: none;
 }
 
-.dot-wrapper:hover .dot{
+.dot-wrapper:hover .dot {
   display: block;
   color: gray;
 }
 
-.dot-wrapper1:hover .dot1{
+.dot-wrapper1:hover .dot1 {
   visibility: visible;
 }
 
-.automate{
+.automate {
   position: absolute;
   top: 50px;
   right: -100px;
 }
 
-.show{
+.show {
   position: absolute;
   top: 50px;
   right: -70px;
@@ -49,6 +47,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.sub-task-div:focus-within {
+  border-color: #7b68ee;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -76,6 +78,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

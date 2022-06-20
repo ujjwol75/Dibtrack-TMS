@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
   InformationCircleIcon,
   CheckIcon,
   ArrowCircleUpIcon,
 } from "@heroicons/react/solid";
-import {ArrowCircleDownIcon} from "@heroicons/react/outline";
+import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 
 import EditTodo from './EditTodo';
 import Ltodo from './Ltodo';
@@ -27,9 +27,9 @@ const LBox = (props: Props) => {
       <div className='w-full shadow-2xl h-auto m-auto  p-2 my-4 rounded-md'>
         <div className='flex justify-between'>
           <div className='flex '>
-            <ArrowCircleDownIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2'/>
+            <ArrowCircleDownIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2' />
             <span>List</span>
-            <InformationCircleIcon className='w-4 h-4 m-1 text-sm text-gray-400 font-light mx-2'/>
+            <InformationCircleIcon className='w-4 h-4 m-1 text-sm text-gray-400 font-light mx-2' />
             <div className='flex'>
               <div><p className='text-sm text-gray-400 font-light mx-2 cursor-pointer' onClick={() => {
                 setTopEdit(!topEdit)
@@ -45,17 +45,17 @@ const LBox = (props: Props) => {
             </div>
           </div>
           <div>
-            <div className='flex'><CheckIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2'/> <p
+            <div className='flex'><CheckIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2' /> <p
               className='text-sm text-gray-400 font-light mx-2'>ADD COMMENT</p></div>
           </div>
 
         </div>
-        <hr/>
-        {topEdit && <EditTodo/>}
+        <hr />
+        {topEdit && <EditTodo />}
         <div className='flex-col '>
           <div className='flex  relative '>
             <div className='mt-[3.25rem] absolute left-1 '>
-              <ArrowCircleDownIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2'/>
+              <ArrowCircleDownIcon className='w-5 h-5 text-sm text-gray-400 font-light mx-2' />
             </div>
             <div className='w-full'>
               <div className='mt-[3.25rem]  w-[93.333333%] h-5 mx-auto flex justify-between    '>
@@ -65,7 +65,7 @@ const LBox = (props: Props) => {
                     <div className='flex space-x-1'>
                       <div className=' bg-gray-200'><p className='text-sm text-gray-400 font-light '>TO DO</p></div>
                       <div className='flex'><p className='text-sm text-gray-400 font-light mx-2'>Task</p>
-                        < ArrowCircleUpIcon className='w-4 h-4 text-blue-400'/></div>
+                        < ArrowCircleUpIcon className='w-4 h-4 text-blue-400' /></div>
                     </div>
 
                   </div>
@@ -78,14 +78,13 @@ const LBox = (props: Props) => {
                 </div>
               </div>
               {
-                listItem.map((item: any) => {
+                listItem.map((item: any, index: any) => {
                   return (
-
-                    <Ltodo item={item}/>
+                    <Ltodo item={item} key={index} />
                   )
                 })
               }
-              {add && <EditTodo/>}
+              {add && <EditTodo />}
             </div>
           </div>
 
@@ -95,8 +94,8 @@ const LBox = (props: Props) => {
         }}>+New task</p>
 
       </div>
-      <AddDescription setSidepop={setSidepop} sidepop={sidepop}/>
-      <AddComment setSidepop={setComment} sidepop={comment}/>
+      <AddDescription setSidepop={setSidepop} sidepop={sidepop} />
+      <AddComment setSidepop={setComment} sidepop={comment} />
     </>
   )
 }
