@@ -16,7 +16,8 @@ const APIS: any = {
   // USERS
   USER: `/user/`,
   ASSIGN: `/task-assign/`,
-  INVITE: `/user/invite_user/`
+  INVITE: `/user/invite_user/`,
+  SIGNUP: `user/signup/`
 };
 
 export default APIS;
