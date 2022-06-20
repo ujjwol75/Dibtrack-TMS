@@ -37,7 +37,7 @@ const MemberPanel = (props: Props) => {
       </thead>
       <tbody className="text-txtcolor ml-1">
         {usersData?.map((user: any) => (
-          <tr key={user.id}>
+          <tr key={user?.id}>
             <ViewProfile user={user} />
 
             <td className="p-3 flex flex-row useremail">
@@ -57,7 +57,7 @@ const MemberPanel = (props: Props) => {
             </td>
 
             <td className="p-2 ">{user?.role}</td>
-            <td className="p-2 ">{user?.last_login.substring(0, 10)}</td>
+            <td className="p-2 ">{user?.last_login?.substring(0, 10)}</td>
             <td className="p-2 ">
               <UserSettings id={user?.id} />
             </td>
