@@ -9,10 +9,11 @@ import CardPopupSection6 from './CardPopupSection6'
 
 type Props = {
   clickedCardInfo?: any
+  handleCreateSubTask?:any
 }
 
 const CardPopup = (props: Props) => {
-  const { clickedCardInfo } = props
+  const { clickedCardInfo,handleCreateSubTask } = props
 
   const { data: cardDetailData, isLoading: cardDetailDataLoading } = useGetHook({
     queryKey: `cardDetail${clickedCardInfo?.cardId}`,
@@ -20,7 +21,7 @@ const CardPopup = (props: Props) => {
   })
 
   return (
-    <div className='w-full grid grid-cols-5 divide-x divide-y '>
+    <div className='w-full grid grid-cols-5 divide-x divide-y'>
 
       {/* CARD SECTION 1 */}
       <div className='col-span-3'>
@@ -31,13 +32,15 @@ const CardPopup = (props: Props) => {
 
       {/* CARD SECTION 2 */}
       <div className='col-span-2'>
-        <CardPopupSection2 />
+        {
+          cardDetailDataLoading ? null : <CardPopupSection2 cardDetailData={cardDetailData} />
+        }
       </div>
 
       {/* CARD SECTION 3 */}
       <div className='col-span-3 min-h-[25rem]'>
         {
-          cardDetailDataLoading ? null : <CardPopupSection3 cardDetailData={cardDetailData} />
+          cardDetailDataLoading ? null : <CardPopupSection3 cardDetailData={cardDetailData} handleCreateSubTask={handleCreateSubTask} />
         }
       </div>
 

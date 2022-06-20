@@ -11,7 +11,6 @@ import {
 
 import ImportTab from "./ImportTab";
 type Props = {
-
 };
 
 const SpacePlusTab = (props: Props) => {

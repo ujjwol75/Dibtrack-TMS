@@ -6,12 +6,13 @@ type Props = {
   // using option does not render children
   options?: any
   children?: any
+  handleBlurFunction?: any
 }
 
 const DropDownMenu = (props: Props) => {
-  const { CustomMenuButton, options, children } = props
+  const { CustomMenuButton, options, children, handleBlurFunction } = props
   return (
-    <Menu as="div">
+    <Menu as="div" className={"relative"}>
       <div>
         <Menu.Button >
           {CustomMenuButton}
@@ -25,9 +26,14 @@ const DropDownMenu = (props: Props) => {
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
-        afterLeave={() => { console.log("first") }}
+        afterLeave={
+          handleBlurFunction ?
+            () => handleBlurFunction()
+            :
+            () => { /* JUST AN EMPTY FUNCTION */ }
+        }
       >
-        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 mt-2 w-fit origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           {
             options ?
               options?.map((elem: any, index: number) => (
