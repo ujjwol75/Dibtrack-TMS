@@ -51,7 +51,7 @@ const GroupBy = ((props: Props) => {
                   GroupBy
                 </div>
               </div>
-              {(options ? options : people).map((elem: any, index: number) => (
+              {(options ? options : people)?.map((elem: any, index: number) => (
                 <Listbox.Option
                   key={index}
                   className={({active}) =>

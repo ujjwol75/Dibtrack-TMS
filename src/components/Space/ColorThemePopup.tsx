@@ -91,7 +91,7 @@ const ColorThemePopup = (
                           SPACE COLORS
                         </span>
                         <div className="flex flex-row mt-2">
-                          {ThemeColors.map((ThemeColor) => (
+                          {ThemeColors?.map((ThemeColor) => (
                             <ColorDiv
                               color={ThemeColor}
                               setThemeColor={setThemeColor}
