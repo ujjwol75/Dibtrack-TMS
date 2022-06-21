@@ -15,7 +15,7 @@ const FlyoutMenu = (props: Props) => {
   const { userIconSizeProp = "xs" , user } = props
 
   let timeout: any
-  const timeoutDuration = 700
+  const timeoutDuration = 100
 
   const buttonRef = useRef<any>(null)
   const [openState, setOpenState] = useState(false)
@@ -26,6 +26,7 @@ const FlyoutMenu = (props: Props) => {
   }
 
   const onHover = (open: any, action: string) => {
+    console.log('open' , open)
     if (
       (!open && !openState && action === "onMouseEnter") ||
       (open && openState && action === "onMouseLeave")
@@ -35,7 +36,8 @@ const FlyoutMenu = (props: Props) => {
       timeout = setTimeout(() => toggleMenu(open), timeoutDuration)
     }
   }
-
+ 
+ console.log('openstate' , openState)
   return (
     <div>
       <Popover>
@@ -43,7 +45,7 @@ const FlyoutMenu = (props: Props) => {
           <div
             onMouseEnter={() => onHover(open, "onMouseEnter")}
             onMouseLeave={() => onHover(open, "onMouseLeave")}
-
+            onClick = {() => onHover(open ,"onMouseLeave")}
           >
             <Popover.Button ref={buttonRef} className="outline-none">
               <CircleUserIcon1 size={userIconSizeProp} color = "bg-green-500" />

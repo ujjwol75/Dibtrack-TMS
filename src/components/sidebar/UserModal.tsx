@@ -81,9 +81,11 @@ const UserModal = (props: Props) => {
                       <div className="flex flex-row mt-3">
                         Import/Export
                       </div>
-                      <div className="flex flex-row mt-3">
-                        <p>People</p>
+                      
+                        
                         <Link to="/dashboard">
+                        <div className="flex flex-row mt-3">
+                          <p>People</p>
                           <button
                             className="bg-btncolor px-2 outline-none text-white rounded hover:bg-blue-500 py-1 ml-1 hover:border-transparent"
                             onClick={closeModal}>
@@ -92,8 +94,9 @@ const UserModal = (props: Props) => {
                               <p className="ml-2">invite</p>
                             </span>
                           </button>
+                          </div>
                         </Link>
-                      </div>
+                     
                       <div className="flex flex-row mt-3">Clickapps</div>
                       <div className="flex flex-row mt-3">Spaces</div>
                       <div className="flex flex-row mt-3">
