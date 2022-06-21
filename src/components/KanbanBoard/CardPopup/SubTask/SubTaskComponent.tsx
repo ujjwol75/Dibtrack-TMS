@@ -1,10 +1,8 @@
-import { UserAddIcon } from '@heroicons/react/outline'
-import { DotsHorizontalIcon } from '@heroicons/react/solid'
-import React, { useEffect, useState } from 'react'
-import AutoComplete from '../../../../Reusable/AutoComplete'
-import DropDownListBox from '../../../../Reusable/DropDownList/DropDownListBox'
-import DropDownMenu from '../../../../Reusable/DropDownList/DropDownMenu'
-import LoaderButton from '../../../../Reusable/Loader/LoaderButton'
+import { ColorSwatchIcon, DotsHorizontalIcon, DuplicateIcon, PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/solid'
+import { useEffect, useState } from 'react'
+import BoardStatus from '../../../../Reusable/TaskComponents/BoardStatus'
+import TaskMenu from '../../../../Reusable/TaskComponents/TaskMenu'
+
 
 type Props = {
   boardDropDownList: any
@@ -14,40 +12,45 @@ type Props = {
   updateSubTaskLoading: any
 }
 
+
 const SubTaskComponent = (props: Props) => {
 
   const { boardDropDownList, userListState, data, handleEditSubTask, updateSubTaskLoading } = props
 
   const [boardState, setBoardState] = useState<any>()
   const [userState, setUserState] = useState<any>([])
-  const [subTaskState, setSubTaskState] = useState<any>({
-    title: ""
+
+  const [initialValuesState, setInitialValuesState] = useState<any>({
+    user: null,
+    board: null,
+    priority: null,
+    title: "",
   })
 
+  const menuOptions = [
+    { id: '1', title: "Add", icon: <PlusIcon className='w-6 text-blue-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '2', title: "Edit", icon: <PencilIcon className='w-6 text-yellow-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '3', title: "Create", icon: <ColorSwatchIcon className='w-6 text-green-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '4', title: "Duplicate", icon: <DuplicateIcon className='w-6 text-orange-500' />, action: () => { console.log("Not Implemented") } },
+    { id: '5', title: "Delete", icon: <TrashIcon className='w-6 text-red-500' />, action: () => { } },
+  ]
+
   useEffect(() => {
-    setSubTaskState((prev: any) => ({ ...prev, title: data?.name }))
+    setInitialValuesState((prev: any) => ({ ...prev, title: data?.name }))
   }, [data])
 
   return (
     <div className='border sub-task-div border-transparent bg-slate-100 w-full flex items-center space-x-2 px-3 p-1 rounded'>
-      <DropDownListBox
-        options={boardDropDownList || []}
-        selected={boardState}
-        setSelected={setBoardState}
+      <BoardStatus
+        initialValue={initialValuesState.board}
+        boardState={boardState}
+        setBoardState={setBoardState}
         handleAPICall={() => { }}
-        customButton={
-          <span
-            title={`${boardState ? boardState.title : ""}`}
-            className={`flex items-center p-[6px] -mt-2 border rounded `}
-            style={{
-              backgroundColor: `${boardState ? boardState.color : "#d8d8d8"}`,
-            }}
-          >
-          </span>
-        }
+        boardDropDownList={boardDropDownList}
+        fullButton={false}
       />
 
-      <AutoComplete
+      {/* <AutoComplete
         selected={userState}
         setSelected={setUserState}
         handleAPICall={() => { }}
@@ -57,36 +60,29 @@ const SubTaskComponent = (props: Props) => {
           <UserAddIcon
             className='p-1 w-7 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
         }
-      />
+      /> */}
 
       <input
         type="text"
         style={{ outline: "none" }}
         className="bg-transparent px-3 max-w-[12rem]"
         placeholder='Sub Task Name'
-        value={subTaskState.title}
-        onChange={(e) => { setSubTaskState((prev: any) => ({ ...prev, title: e.target.value })) }}
-      />
-      <DropDownMenu
-        options={[]}
-        CustomMenuButton={
-          <DotsHorizontalIcon
-            className='w-5 h-5 hover:text-btncolor cursor-pointer'
-          />
-        }
+        value={initialValuesState.title}
+        onChange={(e) => { setInitialValuesState((prev: any) => ({ ...prev, title: e.target.value })) }}
       />
       <span className='flex items-center space-x-2'>
-
         <button
           className='bg-btncolor hover:bg-indigo-600 rounded px-2 h-fit text-sm text-white'
-          onClick={() => handleEditSubTask(data.id, subTaskState.title)}
+          onClick={() => handleEditSubTask(data.id, initialValuesState.title)}
         >
-          {
+          {/* {
             updateSubTaskLoading ? <LoaderButton /> : "Edit"
-          }
-
+          } */}
+          Edit
         </button>
       </span>
+
+      <TaskMenu size={"xs"} deleteTaskAction={() => { }} />
     </div>
   )
 }

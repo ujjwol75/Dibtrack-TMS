@@ -4,7 +4,9 @@ import APIS from '../../../constants/EndPoint'
 import usePatchHook from '../../../customHooks/usePatchHook'
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
 import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
+import CalendarMenu from '../../../Reusable/TaskComponents/CalendarMenu'
 import EstimatedTime from '../../../Reusable/TaskComponents/EstimatedTime'
+import KpiPoints from '../../../Reusable/TaskComponents/KpiPoints'
 
 type Props = {
   cardDetailData: any
@@ -60,49 +62,21 @@ const CardPopupSection2 = (props: Props) => {
 
         <div className=' px-4 flex items-center justify-between w-full'>
           <span className='flex gap-5'>
-            <DropDownMenu
-              options={null}
-              CustomMenuButton={
-                <ClockIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-              }
-            >
-              <div className='p-4 text-base '>
-                <EstimatedTime
-                  card2ValuesState={card2ValuesState}
-                  setCard2ValuesState={setCard2ValuesState}
-                  stateObjectKey="estimatedTime"
-                  handleBlurFunction={handleBlurEstimateTime}
-                />
-              </div>
-            </DropDownMenu>
 
-            <DropDownListBox
-              options={[{ id: null, title: "--" }, { id: 1, title: "1" }, { id: 2, title: "2" }, { id: 4, title: "4" }, { id: 6, title: "6" }, { id: 8, title: "8" }]}
-              selected={kpiPoints}
-              setSelected={setKpiPoints}
-              handleAPICall={() => { }}
-              customButton={
-                kpiPoints ?
-                  <>
-                    <p>KPI POINTS</p>
-                    <span className='flex items-center gap-2 text-black'>
-                      <StarIcon className='w-5 text-btncolor cursor-pointer ' />
-                      <p>{kpiPoints?.title}</p>
-                    </span>
-                  </>
-                  :
-                  <StarIcon className='w-9 p-1 -mt-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-              }
+            <EstimatedTime
+              card2ValuesState={card2ValuesState}
+              setCard2ValuesState={setCard2ValuesState}
+              stateObjectKey="estimatedTime"
+              handleBlurFunction={handleBlurEstimateTime}
             />
 
-            <DropDownMenu
-              options={null}
-              CustomMenuButton={
-                <CalendarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-              }
-            >
-              <div className='p-4 text-lg '>pasjdoij</div>
-            </DropDownMenu >
+            <KpiPoints
+              kpiPoints={kpiPoints}
+              setKpiPoints={setKpiPoints}
+              handleChangeKpiPoints={() => { }}
+            />
+
+            <CalendarMenu />
           </span>
 
           <span>

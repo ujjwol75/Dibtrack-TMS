@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react'
 import AutoComplete from '../../../../Reusable/AutoComplete'
 import DropDownListBox from '../../../../Reusable/DropDownList/DropDownListBox'
 import LoaderButton from '../../../../Reusable/Loader/LoaderButton'
+import UserContainer from '../../../../Reusable/TaskComponents/AssignedUser/UserContainer'
+import BoardStatus from '../../../../Reusable/TaskComponents/BoardStatus'
+import CalendarMenu from '../../../../Reusable/TaskComponents/CalendarMenu'
+import EstimatedTime from '../../../../Reusable/TaskComponents/EstimatedTime'
+import KpiPoints from '../../../../Reusable/TaskComponents/KpiPoints'
+import PriorityFlag from '../../../../Reusable/TaskComponents/PriorityFlag'
 
 type Props = {
   cardDetailData: any
@@ -15,65 +21,86 @@ type Props = {
 const AddSubTaskComponent = (props: Props) => {
   const { cardDetailData, handleCreateSubTask, boardDropDownList, userListState, isPostLoading } = props
 
-  const [subTaskState, setSubTaskState] = useState<any>({
-    title: ""
+  // const [subTaskState, setSubTaskState] = useState<any>({
+  //   title: ""
+  // })
+
+  const [initialValuesState, setInitialValuesState] = useState<any>({
+    user: null,
+    board: null,
+    priority: null,
+    title: "",
+    estimatedTime: null
   })
 
   const [boardState, setBoardState] = useState<any>()
+  const [priorityState, setPriorityState] = useState<any>()
+  const [kpiPoints, setKpiPoints] = useState<any>(null)
   const [userState, setUserState] = useState<any>([])
 
   useEffect(() => {
-    setSubTaskState((prev: any) => ({ ...prev, title: "" }))
+    setInitialValuesState((prev: any) => ({ ...prev, title: "" }))
   }, [cardDetailData])
 
 
   return (
     <div className='border sub-task-div w-full flex items-center justify-between px-3 p-1 rounded'>
       <span className='flex'>
-        <DropDownListBox
-          options={boardDropDownList || []}
-          selected={boardState}
-          setSelected={setBoardState}
+        <BoardStatus
+          initialValue={initialValuesState.board}
+          boardState={boardState}
+          setBoardState={setBoardState}
           handleAPICall={() => { }}
-          customButton={
-            <span
-              title={`${boardState ? boardState.title : ""}`}
-              className={`flex items-center p-[6px] -mt-2 border rounded `}
-              style={{
-                backgroundColor: `${boardState ? boardState.color : "#d8d8d8"}`,
-              }}
-            >
-            </span>
-          }
+          boardDropDownList={boardDropDownList}
+          fullButton={false}
         />
         <input
           type="text"
           style={{ outline: "none" }}
           className="bg-transparent px-3"
           placeholder='Sub Task Name'
-          value={subTaskState.title}
-          onChange={(e) => { setSubTaskState((prev: any) => ({ ...prev, title: e.target.value })) }}
+          value={initialValuesState.title}
+          onChange={(e) => { setInitialValuesState((prev: any) => ({ ...prev, title: e.target.value })) }}
         />
       </span>
       <span className='flex items-center space-x-2'>
 
-        <span className='flex items-center'>
-          <AutoComplete
-            selected={userState}
-            setSelected={setUserState}
-            handleAPICall={() => { }}
-            options={userListState || []}
-            multiSelect={true}
-            customButton={
-              <UserAddIcon
-                className='p-1 w-7 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-            }
-          />
-        </span>
+        <CalendarMenu />
+
+        <EstimatedTime
+          card2ValuesState={initialValuesState}
+          setCard2ValuesState={setInitialValuesState}
+          stateObjectKey="estimatedTime"
+          handleBlurFunction={() => { }}
+        />
+
+        {/* KPI POINTS */}
+        <KpiPoints
+          kpiPoints={kpiPoints}
+          setKpiPoints={setKpiPoints}
+          handleChangeKpiPoints={() => { }}
+        />
+
+        {/* PRIORITY FLAGS */}
+        <PriorityFlag
+          initialValue={initialValuesState.priority}
+          priorityState={priorityState}
+          setPriorityState={setPriorityState}
+          handleAPICall={() => { }}
+        />
+
+        {/* ASSIGN USERS */}
+        <UserContainer
+          userState={userState}
+          setUserState={setUserState}
+          handleAssignUser={() => { }}
+          userListState={userListState || []}
+          size={"xs"}
+        />
 
         <button
           className='bg-btncolor hover:bg-indigo-600 rounded px-2 h-fit text-sm text-white'
-          onClick={() => handleCreateSubTask(subTaskState, cardDetailData?.id)}
+          onClick={() => handleCreateSubTask(initialValuesState, cardDetailData?.id)}
         >
           {
             isPostLoading ? <LoaderButton /> : "Save"

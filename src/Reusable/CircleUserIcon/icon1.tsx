@@ -3,20 +3,19 @@ import React from 'react'
 
 type Props = {
   size: string
-  color:any
-  
+  color: any
+
 }
 
 const CircleUserIcon1 = (props: Props) => {
-  const { size , color } = props
+  const { size, color } = props
   return (
     <>
-      <span className={` ${size === "xs" ? "px-[6px] py-[4px] text-xs" : size === "md" ? "px-3 py-2" : size === "lg" ? "px-6 py-5": size === "sm" ? "px-[6px] py-[6px]" : ""} 
-      h-fit rounded-full ${color} text-white cursor-pointer`}>
+      <span className={` ${size === "xs" ? "p-1 text-xs" : size === "md" ? "p-3" : size === "lg" ? "px-6 py-5" : size === "sm" ? "px-[6px] py-[3px]" : ""} 
+      flex justify-center items-center rounded-full ${color} text-white cursor-pointer`}>
         SS
       </span>
     </>
   )
 }
-
 export default CircleUserIcon1

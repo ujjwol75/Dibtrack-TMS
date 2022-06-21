@@ -10,6 +10,10 @@ import AutoComplete from '../../../Reusable/AutoComplete'
 
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
 import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
+import UserContainer from '../../../Reusable/TaskComponents/AssignedUser/UserContainer'
+import BoardStatus from '../../../Reusable/TaskComponents/BoardStatus'
+import PriorityFlag from '../../../Reusable/TaskComponents/PriorityFlag'
+import TaskMenu from '../../../Reusable/TaskComponents/TaskMenu'
 import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
 
@@ -32,13 +36,6 @@ const CardPopupSection1 = (props: Props) => {
     priority: null
   })
 
-  const PriorityOptions = [
-    { id: '1', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
-    { id: '2', title: 'High', icon: <FlagIcon className='w-7 p-1 text-orange-500' />, color: "rgb(249 115 22)", },
-    { id: '3', title: 'Medium', icon: <FlagIcon className='w-7 p-1 text-blue-500' />, color: "rgb(59 130 246)", },
-    { id: '4', title: 'Low', icon: <FlagIcon className='w-7 p-1 text-gray-500' />, color: "rgb(107 114 128)", },
-    { id: null, title: 'Clear', icon: <XIcon className='w-6 h-6 text-red-500' />, color: "rgb(239 68 68 )" },
-  ]
 
   const { data: BoardsList } = useGetHook({
     queryKey: "Boards",
@@ -152,42 +149,19 @@ const CardPopupSection1 = (props: Props) => {
     }
   }
 
-  const menuOptions = [
-    { id: '1', title: "Add", icon: <PlusIcon className='w-6 text-blue-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '2', title: "Edit", icon: <PencilIcon className='w-6 text-yellow-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '3', title: "Create", icon: <ColorSwatchIcon className='w-6 text-green-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '4', title: "Duplicate", icon: <DuplicateIcon className='w-6 text-orange-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '5', title: "Delete", icon: <TrashIcon className='w-6 text-red-500' />, action: () => handleDeleteTask() },
-  ]
-
   return (
     <>
       <section className='p-4 w-full flex items-center justify-between relative'>
         <section className='flex items-center space-x-5'>
 
           {/* CHANGE BOARDS */}
-          <DropDownListBox
+          <BoardStatus
             initialValue={initialValuesState.board}
-            selected={boardState}
-            setSelected={setBoardState}
-            options={boardDropDownList || []}
+            boardState={boardState}
+            setBoardState={setBoardState}
             handleAPICall={handleChangeBoard}
-            customButton={
-              <span
-                title={`${boardState ? boardState.title : ""}`}
-                className={`flex items-center p-1 px-5 
-                  border rounded text-white divide-x divide-white hover:border-black`}
-                style={{
-                  backgroundColor: `${boardState ? boardState.color : boardDropDownList && boardDropDownList[0].color}`,
-                }}
-              >
-                <div
-                  className='pr-3 text-sm'>{boardState ? boardState.title : boardDropDownList && boardDropDownList[0].title}</div>
-                <span className='pl-3'>&gt;</span>
-              </span>
-            }
+            boardDropDownList={boardDropDownList}
           />
-
 
           {/* CHECK ICON */}
           <span className='h-fit p-2 border hover:border-green-600 hover:text-green-600 rounded'>
@@ -195,9 +169,14 @@ const CardPopupSection1 = (props: Props) => {
           </span>
 
           {/* ASSIGN USERS */}
-          <span className='flex items-center'>
-            {/* <FlyoutMenu userIconSizeProp="sm" /> */}
-            <AutoComplete
+          <UserContainer
+            userState={userState}
+            setUserState={setUserState}
+            handleAssignUser={handleAssignUser}
+            userListState={userListState || []}
+            size={"sm"}
+          />
+          {/* <AutoComplete
               selected={userState}
               setSelected={setUserState}
               handleAPICall={handleAssignUser}
@@ -207,31 +186,15 @@ const CardPopupSection1 = (props: Props) => {
                 <UserAddIcon
                   className='p-1 w-9 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
               }
-            />
-          </span>
+            /> */}
 
-          <DropDownListBox
+
+          <PriorityFlag
             initialValue={initialValuesState.priority}
-            selected={priorityState}
-            setSelected={setPriorityState}
-            options={PriorityOptions}
+            priorityState={priorityState}
+            setPriorityState={setPriorityState}
             handleAPICall={() => { }}
-            customButton={
-              priorityState?.id === null ?
-                <FlagIcon className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer`} />
-                :
-                <span title={`${priorityState ? priorityState.title : ""}`}>
-                  <FlagIcon
-                    className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer ${priorityState ? "" : "hover:text-btncolor hover:border-btncolor"} `}
-                    style={{
-                      color: `${priorityState ? priorityState.color : null}`,
-                      border: `${priorityState ? priorityState.color : null} solid 1px`
-                    }}
-                  />
-                </span>
-            }
           />
-
         </section>
 
         <section className='flex space-x-5 items-center'>
@@ -242,14 +205,7 @@ const CardPopupSection1 = (props: Props) => {
             </span>
           </span>
 
-          <DropDownMenu
-            options={menuOptions}
-            CustomMenuButton={
-              <DotsHorizontalIcon
-                className='w-8 h-8 hover:text-btncolor cursor-pointer'
-              />
-            }
-          />
+          <TaskMenu size='sm' deleteTaskAction={handleDeleteTask} />
         </section>
       </section>
     </>
