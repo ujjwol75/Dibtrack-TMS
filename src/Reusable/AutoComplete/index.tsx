@@ -33,7 +33,7 @@ const AutoComplete = (props: Props) => {
   const afterListClose = () => {
     setQuery('')
     if (multiSelect) {
-      selected.map((elem: any) => {
+      selected?.map((elem: any) => {
         selectedList.push(elem.id)
       })
       handleAPICall(selectedList)
@@ -106,7 +106,7 @@ const AutoComplete = (props: Props) => {
                   Nothing found.
                 </div>
               ) : (
-                filteredItems.map((elem: any) => (
+                filteredItems?.map((elem: any) => (
                   <Combobox.Option
                     key={elem.id}
                     className={({ active }) =>

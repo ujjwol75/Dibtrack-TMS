@@ -78,7 +78,7 @@ const LBox = (props: Props) => {
                 </div>
               </div>
               {
-                listItem.map((item: any, index: any) => {
+                listItem?.map((item: any, index: any) => {
                   return (
                     <Ltodo item={item} key={index} />
                   )

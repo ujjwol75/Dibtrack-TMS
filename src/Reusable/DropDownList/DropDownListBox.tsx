@@ -69,7 +69,7 @@ const DropDownListBox = ((props: Props) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="z-50 absolute min-w-10 w-40 mt-1 max-h-60 overflow-auto rounded-md bg-white opacity-100 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {(options ? options : people).map((elem: any, index: number) => (
+              {(options ? options : people)?.map((elem: any, index: number) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>
