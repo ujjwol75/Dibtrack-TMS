@@ -45,7 +45,7 @@ const FlyoutMenu = (props: Props) => {
             onMouseLeave={() => onHover(open, "onMouseLeave")}
 
           >
-            <Popover.Button ref={buttonRef} className="focus:outline-none">
+            <Popover.Button ref={buttonRef} className="outline-none">
               <CircleUserIcon1 size={userIconSizeProp} color = "bg-green-500" />
             </Popover.Button>
             

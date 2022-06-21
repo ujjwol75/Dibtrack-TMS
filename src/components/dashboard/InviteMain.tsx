@@ -35,7 +35,7 @@ const InviteMain = (props: Props) => {
   console.log("message", successMsg);
 
   return (
-    <div className="p-5 text-gray-400 w-full">
+    <div className="p-5 text-gray-400 w-full flex flex-col h-screen">
       <div className="flex flex-row justify-between w-full">
         <p className="text-2xl font-bold ">Manage People</p>
         <p className="text-blue-300">learn More</p>

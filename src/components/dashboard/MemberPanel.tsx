@@ -15,11 +15,11 @@ const MemberPanel = (props: Props) => {
     queryKey: "user",
     url: `${APIS.USER}`,
   });
-
+  
   return usersDataLoading ? (
          <div className="flex justify-center"><LoaderAnimation /></div>
   ) :(
-    <table className="  text-xs border border-slate-400 w-full">
+    <table className="text-xs border border-slate-400 w-full  overflow-scroll">
       <thead className="border-b border-slate-400 rounded">
       <tr>
         <th className="ml-1 py-2 flex flex-row text-left">
@@ -35,11 +35,11 @@ const MemberPanel = (props: Props) => {
         <th className="p-2 text-left ">SETTINGS</th>
       </tr>
       </thead>
-      <tbody className="text-txtcolor ml-1">
+      <tbody className="text-txtcolor ml-1 overflow-auto">
         {usersData?.map((user: any) => (
           <tr key={user?.id}>
             <ViewProfile user={user} />
-
+            
             <td className="p-3 flex flex-row useremail">
               <button className="border border-btncolor py-[1px] px-[6px] text-[8px] mr-2 text-btncolor rounded-md">
                 OWNER
