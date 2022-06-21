@@ -11,10 +11,11 @@ type Props = {
   handleCreateSubTask: any
   isPostLoading:boolean
   handleEditSubTask:any
+  updateSubTaskLoading:boolean
 }
 
 const CardPopupSection3 = (props: Props) => {
-  const { cardDetailData, handleCreateSubTask,isPostLoading,handleEditSubTask } = props
+  const { cardDetailData, handleCreateSubTask,isPostLoading,handleEditSubTask,updateSubTaskLoading } = props
 
   const [cardDataState, setCardDataState] = useState<any>({
     name: "",
@@ -146,6 +147,7 @@ const CardPopupSection3 = (props: Props) => {
                   userListState={userListState}
                   handleEditSubTask={handleEditSubTask}
                   data={elem}
+                  updateSubTaskLoading={updateSubTaskLoading}
                 />
               </Fragment>
             ))

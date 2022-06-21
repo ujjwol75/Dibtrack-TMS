@@ -31,18 +31,17 @@ const CardPopup = (props: Props) => {
 
 
   const {
-    isPatchLoading,
+    isPatchLoading:updateSubTaskLoading,
     mutate: updateMutate,
     addSuccessSnackBar: editSuccessSnackBar,
     setAddSuccessSnackBar: setEditSuccessSnackBar,
   } = usePatchHook({ queryKey: `cardDetail${clickedCardInfo?.cardId}`, setOpenEditPopup: "" })
 
   //  HANDLE EDIT SUBTASK API
-  const handleEditSubTask = (cardId: any, sourceLaneId: any, targetLaneId: any, position: any, cardDetails: any) => {
+  const handleEditSubTask = (cardId: any, cardName: string) => {
     const url = `${APIS.TASK}${cardId}/`
     const formData = {
-      parent: targetLaneId,
-      order: position
+      name: cardName
     }
     try {
       updateMutate({ url, formData })
@@ -99,6 +98,7 @@ const CardPopup = (props: Props) => {
               handleCreateSubTask={handleCreateSubTask}
               handleEditSubTask={handleEditSubTask}
               isPostLoading={isPostLoading}
+              updateSubTaskLoading={updateSubTaskLoading}
             />
         }
       </div>
