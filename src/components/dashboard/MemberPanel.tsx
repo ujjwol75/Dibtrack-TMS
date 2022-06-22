@@ -23,9 +23,9 @@ const MemberPanel = (props: Props) => {
       <thead className="border-b border-slate-400 rounded">
       <tr>
         <th className="ml-1 py-2 flex flex-row text-left">
-          <div className="rounded-full bg-btncolor text-xs flex justify-center items-center text-white mr-1  h-5 w-5">
+          <span className="rounded-full bg-btncolor text-xs flex justify-center items-center text-white mr-1  h-5 w-5">
             <p className="mb-[2px]">x</p>
-          </div>
+          </span>
           <p>NAME</p>
           <ChevronDownIcon className="h-5 w-5 text-btncolor"/>
         </th>

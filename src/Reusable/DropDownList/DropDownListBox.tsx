@@ -25,6 +25,7 @@ const DropDownListBox = ((props: Props) => {
 
   const handleSelect = (e: any) => {
     handleAPICall(e.id)
+    console.log(e)
     setSelected(e)
   }
 

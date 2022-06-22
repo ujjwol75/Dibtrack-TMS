@@ -194,6 +194,7 @@ const CardPopupSection1 = (props: Props) => {
             priorityState={priorityState}
             setPriorityState={setPriorityState}
             handleAPICall={() => { }}
+            size = 'md'
           />
         </section>
 

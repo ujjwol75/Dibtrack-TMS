@@ -80,7 +80,7 @@ const AutoComplete = (props: Props) => {
             leaveTo="opacity-0"
             afterLeave={() => afterListClose()}
           >
-            <Combobox.Options className="absolute z-50 min-w-[15rem] mt-1 max-h-60 overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute right-6 z-50 min-w-[15rem] mt-1 max-h-60 overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
               {/* SEARCH BAR INSIDE  */}
               {
                 customButton ?

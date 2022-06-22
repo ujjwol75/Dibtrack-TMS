@@ -4,6 +4,8 @@ import APIS from "../../constants/EndPoint";
 import usePostHook from "../../customHooks/usePostHook";
 import InviteTab from "./InviteTab";
 import MemberDropdown from "./MemberDropdown";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {};
 
@@ -13,13 +15,14 @@ const InviteMain = (props: Props) => {
   const {
     isPostLoading,
     mutate: inviteUserMutate,
+    isPostSuccess:isInviteSuccess , 
     successMsg,
     addSuccessSnackBar,
     setAddSuccessSnackBar,
   } = usePostHook({ queryKey: `inviteUser`, setOpenAddPopup: "" });
 
   //handle invite user API
-
+  console.log('invite success: '  , isInviteSuccess)
   const handleInviteUser = () => {
     console.log("user invite clicked");
     const url = APIS.INVITE;
@@ -32,7 +35,14 @@ const InviteMain = (props: Props) => {
       console.log(e);
     }
   };
-  console.log("message", successMsg);
+  //notify
+  const notify = () => {
+    toast("user invited successfully")
+  }
+  
+  if(isInviteSuccess){
+    notify()
+  }
 
   return (
     <div className="p-5 text-gray-400 w-full flex flex-col h-screen">
@@ -61,6 +71,7 @@ const InviteMain = (props: Props) => {
 
           <div className="bg-btncolor text-white border border-gray-500 py-3 ml-0 px-4 text-sm flex flex-row cursor-pointer">
             <p onClick={handleInviteUser}>invite</p>
+            <ToastContainer />
           </div>
           <SearchIcon className="h-5 w-5 text-gray-500 absolute left-2  bottom-3 mt-1 ml-1"/>
         </div>
