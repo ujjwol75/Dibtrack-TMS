@@ -138,7 +138,8 @@ const KanbanBoard = (props: Props) => {
     <>
       {
         boardDataLoading ?
-          <div className='flex justify-center'><LoaderAnimation /></div> :
+          <div className='flex justify-center'><LoaderAnimation /></div> 
+          :
           <KanbanBoardComponent
             openCardModal={openCardModal}
             setOpenCardModal={setOpenCardModal}

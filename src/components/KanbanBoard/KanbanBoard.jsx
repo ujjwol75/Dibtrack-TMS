@@ -29,12 +29,6 @@ const KanbanBoard = (props) => {
   //       ]
   //     },
   //     {
-  //       id: 'lane2',
-  //       title: 'Completed',
-  //       label: '0/0',
-  //       cards: []
-  //     },
-  //     {
   //       id: 'PLANNED',
   //       title: 'Planned Tasks 2',
   //       label: '20/70',
@@ -75,51 +69,49 @@ const KanbanBoard = (props) => {
 
   return (
     <>
-      <div className="relative">
-        <Board
-          data={boardsData && boardsData}
-          draggable
-          canAddLanes
-          editable
-          editLaneTitle
-          // onDataChange={(newData) => { console.log(newData) }}
-          onCardClick={(cardId, _, laneId) => {
-            handleClickCard(cardId, _, laneId);
-          }}
-          laneStyle={{
-            boxShadow:
-              "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-            backgroundColor: "white",
-            borderRadius: "0.375rem",
-          }}
-          style={{
-            backgroundColor: "transparent",
-            height: "100%",
-            width: "100%",
-            overflow: "auto",
-          }}
-          components={components}
-          onLaneAdd={(e) => handleCreateBoard(e)}
-          onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
-          onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
-          handleDragEnd={(
+      <Board
+        data={boardsData && boardsData}
+        draggable
+        canAddLanes
+        editable
+        editLaneTitle
+        // onDataChange={(newData) => { console.log(newData) }}
+        onCardClick={(cardId, _, laneId) => {
+          handleClickCard(cardId, _, laneId);
+        }}
+        laneStyle={{
+          boxShadow:
+            "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+          backgroundColor: "white",
+          borderRadius: "0.375rem",
+        }}
+        style={{
+          backgroundColor: "transparent",
+          width: "100%",
+          height: "84vh",
+          overflow: "auto",
+        }}
+        components={components}
+        onLaneAdd={(e) => handleCreateBoard(e)}
+        onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
+        onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
+        handleDragEnd={(
+          cardId,
+          sourceLaneId,
+          targetLaneId,
+          position,
+          cardDetails
+        ) =>
+          handleCardDrag(
             cardId,
             sourceLaneId,
             targetLaneId,
             position,
             cardDetails
-          ) =>
-            handleCardDrag(
-              cardId,
-              sourceLaneId,
-              targetLaneId,
-              position,
-              cardDetails
-            )
-          }
-          onLaneDelete={(laneId) => handleDeleteTask(laneId)}
-        />
-      </div>
+          )
+        }
+        onLaneDelete={(laneId) => handleDeleteTask(laneId)}
+      />
 
       <Modal title='' isOpen={openCardModal} setIsOpen={setOpenCardModal} screenSize={true}>
         <CardPopup clickedCardInfo={clickedCardInfo} setOpenCardModal={setOpenCardModal} handleDeleteTask={handleDeleteTask} />
