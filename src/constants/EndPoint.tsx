@@ -14,6 +14,7 @@ const APIS: any = {
   WORKSPACE: `/work-space/filter_work_space/`,
   PRIORITY: `/priority-model/`,
   KPI_POINTS: `/kpi-point/`,
+  CREATEWORKSPACE: `/work-space/` , 
 
   // USERS
   USER: `/user/`,

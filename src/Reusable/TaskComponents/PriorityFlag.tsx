@@ -7,10 +7,11 @@ type Props = {
   priorityState: any
   setPriorityState: any
   handleAPICall: any
+  size:any
 }
 
 const PriorityFlag = (props: Props) => {
-  const { initialValue, priorityState, setPriorityState, handleAPICall } = props
+  const { initialValue, priorityState, setPriorityState, handleAPICall   , size} = props
 
   const PriorityOptions = [
     { id: 'Urgent', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
@@ -28,11 +29,11 @@ const PriorityFlag = (props: Props) => {
       handleAPICall={handleAPICall ? handleAPICall : () => { }}
       customButton={
         priorityState?.id === null ?
-          <FlagIcon className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer`} />
+          <FlagIcon className={`${size == 'sm' ? 'w-7': size == 'md' ? 'w-9': ''} p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer`} />
           :
           <span title={`${priorityState ? priorityState.title : ""}`}>
             <FlagIcon
-              className={`w-9 p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer ${priorityState ? "" : "hover:text-btncolor hover:border-btncolor"} `}
+              className={`${size == 'sm' ? 'w-7': size == 'md' ? 'w-9': ''} p-1 border-2 border-dashed rounded-full text-gray-400 cursor-pointer ${priorityState ? "" : "hover:text-btncolor hover:border-btncolor"} `}
               style={{
                 color: `${priorityState ? priorityState.color : null}`,
                 border: `${priorityState ? priorityState.color : null} solid 1px`

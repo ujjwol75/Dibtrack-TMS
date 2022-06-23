@@ -1,10 +1,9 @@
-import Board from 'react-trello'
-import Modal from '../../Reusable/Modal'
-import CardPopup from './CardPopup/CardPopup'
-import KanbanCard from './KanbanCard'
+import Board from "react-trello";
+import Modal from "../../Reusable/Modal";
+import CardPopup from "./CardPopup/CardPopup";
+import KanbanCard from "./KanbanCard";
 
 const KanbanBoard = (props) => {
-
   const {
     openCardModal,
     setOpenCardModal,
@@ -15,8 +14,8 @@ const KanbanBoard = (props) => {
     handleCardDrag,
     handleUpdateBoard,
     handleCreateCard,
-    handleDeleteTask
-  } = props
+    handleDeleteTask,
+  } = props;
 
   // const data = {
   //   lanes: [
@@ -58,14 +57,25 @@ const KanbanBoard = (props) => {
   // }
 
   const components = {
-    AddCardLink: ({ onClick }) => <button className='px-3 py-1 mt-3 hover:text-primary' onClick={onClick}>+ New Card</button>,
+    AddCardLink: ({ onClick }) => (
+      <button className="px-3 py-1 mt-3 hover:text-primary" onClick={onClick}>
+        + New Card
+      </button>
+    ),
     Card: KanbanCard,
-    NewLaneSection: ({ onClick }) => <button className='ml-[50%] mt-1 border px-7 -z-1 py-1 hover:text-primary' onClick={onClick}>+ Add Lane</button>
+    NewLaneSection: ({ onClick }) => (
+      <button
+        className="ml-[50%] mt-1 border px-7 -z-1 py-1 hover:text-primary"
+        onClick={onClick}
+      >
+        + Add Lane
+      </button>
+    ),
   };
 
   return (
     <>
-      <div className='relative'>
+      <div className="relative">
         <Board
           data={boardsData && boardsData}
           draggable
@@ -73,19 +83,39 @@ const KanbanBoard = (props) => {
           editable
           editLaneTitle
           // onDataChange={(newData) => { console.log(newData) }}
-          onCardClick={(cardId, _, laneId) => { handleClickCard(cardId, _, laneId) }}
+          onCardClick={(cardId, _, laneId) => {
+            handleClickCard(cardId, _, laneId);
+          }}
           laneStyle={{
-            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            boxShadow:
+              "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
             backgroundColor: "white",
             borderRadius: "0.375rem",
           }}
-          style={{ backgroundColor: "transparent" }}
+          style={{
+            backgroundColor: "transparent",
+            height: "100%",
+            width: "100%",
+            overflow: "auto",
+          }}
           components={components}
           onLaneAdd={(e) => handleCreateBoard(e)}
           onLaneUpdate={(laneId, data) => handleUpdateBoard(laneId, data)}
           onCardAdd={(e, laneId) => handleCreateCard(e, laneId)}
-          handleDragEnd={
-            (cardId, sourceLaneId, targetLaneId, position, cardDetails) => handleCardDrag(cardId, sourceLaneId, targetLaneId, position, cardDetails)
+          handleDragEnd={(
+            cardId,
+            sourceLaneId,
+            targetLaneId,
+            position,
+            cardDetails
+          ) =>
+            handleCardDrag(
+              cardId,
+              sourceLaneId,
+              targetLaneId,
+              position,
+              cardDetails
+            )
           }
           onLaneDelete={(laneId) => handleDeleteTask(laneId)}
         />
@@ -95,7 +125,7 @@ const KanbanBoard = (props) => {
         <CardPopup clickedCardInfo={clickedCardInfo} setOpenCardModal={setOpenCardModal} handleDeleteTask={handleDeleteTask} />
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default KanbanBoard
+export default KanbanBoard;

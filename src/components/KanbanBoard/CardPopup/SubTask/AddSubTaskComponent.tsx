@@ -87,6 +87,7 @@ const AddSubTaskComponent = (props: Props) => {
           priorityState={priorityState}
           setPriorityState={setPriorityState}
           handleAPICall={() => { }}
+          size='sm'
         />
 
         {/* ASSIGN USERS */}

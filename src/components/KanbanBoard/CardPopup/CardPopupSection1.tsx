@@ -1,15 +1,11 @@
-import { DotsHorizontalIcon, ShareIcon, UserAddIcon } from '@heroicons/react/outline'
-import { CheckIcon, XIcon, FlagIcon, TrashIcon, PlusIcon, PencilIcon, ColorSwatchIcon, DuplicateIcon } from '@heroicons/react/solid'
+import { ShareIcon } from '@heroicons/react/outline'
+import { CheckIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
-import useDeleteHook from '../../../customHooks/useDeleteHook'
 import useGetHook from '../../../customHooks/useGetHook'
 import usePatchHook from '../../../customHooks/usePatchHook'
 import usePostHook from '../../../customHooks/usePostHook'
-import AutoComplete from '../../../Reusable/AutoComplete'
 
-import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
-import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 import UserContainer from '../../../Reusable/TaskComponents/AssignedUser/UserContainer'
 import BoardStatus from '../../../Reusable/TaskComponents/BoardStatus'
 import PriorityFlag from '../../../Reusable/TaskComponents/PriorityFlag'
@@ -178,24 +174,12 @@ const CardPopupSection1 = (props: Props) => {
             userListState={userListState || []}
             size={"sm"}
           />
-          {/* <AutoComplete
-              selected={userState}
-              setSelected={setUserState}
-              handleAPICall={handleAssignUser}
-              options={userListState || []}
-              multiSelect={true}
-              customButton={
-                <UserAddIcon
-                  className='p-1 w-9 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-              }
-            /> */}
-
-
           <PriorityFlag
             initialValue={initialValuesState.priority}
             priorityState={priorityState}
             setPriorityState={setPriorityState}
             handleAPICall={handleAssignPriority}
+            size='md'
           />
         </section>
 

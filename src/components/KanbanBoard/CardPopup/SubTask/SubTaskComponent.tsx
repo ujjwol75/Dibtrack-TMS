@@ -43,18 +43,6 @@ const SubTaskComponent = (props: Props) => {
         fullButton={false}
       />
 
-      {/* <AutoComplete
-        selected={userState}
-        setSelected={setUserState}
-        handleAPICall={() => { }}
-        options={userListState || []}
-        multiSelect={true}
-        customButton={
-          <UserAddIcon
-            className='p-1 w-7 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-        }
-      /> */}
-
       <input
         type="text"
         style={{ outline: "none" }}

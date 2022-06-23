@@ -1,15 +1,16 @@
-import {Dialog, Transition} from "@headlessui/react";
-import {ChevronLeftIcon} from "@heroicons/react/solid";
-
-import {Fragment, useState} from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ChevronLeftIcon } from "@heroicons/react/solid";
+import { Fragment, useState } from "react";
 import CircleUserIcon1 from "../../Reusable/CircleUserIcon/icon1";
 import ColorDiv from "./ColorDiv";
 
 type Props = {
-  handleSubmit: any;
+  handleCreateNewWorkSpace: any;
   isopen: boolean;
   closeModal: any;
   openModal: any;
+  spaceName: string;
+  parent: any;
 };
 
 const ThemeColors = [
@@ -20,14 +21,21 @@ const ThemeColors = [
   "bg-orange-700",
 ];
 
-const ColorThemePopup = (
-  {
-    handleSubmit,
-    isopen,
-    closeModal,
-    openModal,
-  }: Props) => {
+const ColorThemePopup = ({
+  handleCreateNewWorkSpace,
+  spaceName,
+  isopen,
+  closeModal,
+  openModal,
+  parent,
+}: Props) => {
   const [color, setThemeColor] = useState<string>("bg-green-500");
+ 
+
+  const handleWorkSpaceSubmit = (e: any) => {
+    openModal();
+    handleCreateNewWorkSpace(spaceName, parent, color);
+  }; 
   
   return (
     <div>
@@ -49,7 +57,7 @@ const ColorThemePopup = (
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25"/>
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -63,8 +71,7 @@ const ColorThemePopup = (
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel
-                  className="w-[800px] h-[500px] transform overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all">
+                <Dialog.Panel className="w-[800px] h-[500px] transform overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all">
                   <div className=" w-full mt-2 bg-bgsearchbar flex flex-col">
                     <div className="flex flex-row justify-around p-4 border-b border-gray-200">
                       <ChevronLeftIcon
@@ -85,7 +92,7 @@ const ColorThemePopup = (
                     </div>
 
                     <div className="w-full  bg-bgsearchbar flex flex-row  mt-20 pl-20">
-                      <CircleUserIcon1 size="lg" color={color}/>
+                      <CircleUserIcon1 size="lg" color={color} />
                       <div className="ml-12">
                         <span className="text-gray-400 text-md">
                           SPACE COLORS
@@ -102,7 +109,10 @@ const ColorThemePopup = (
                     </div>
 
                     <button
-                      className="flex flex-row w-full p-3 mt-20 text-white bg-btncolor flex justify-center items-center text-lg">NEXT
+                      className="flex flex-row w-full p-3 mt-20 text-white bg-btncolor flex justify-center items-center text-lg"
+                      onClick={handleWorkSpaceSubmit}
+                    >
+                      NEXT
                     </button>
                   </div>
                 </Dialog.Panel>
