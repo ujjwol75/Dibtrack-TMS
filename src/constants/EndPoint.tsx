@@ -12,6 +12,7 @@ const APIS: any = {
   CREATE_BOARD: `/task/create-board/`,
   //Work Space 
   WORKSPACE: `/work-space/filter_work_space/`,
+  CREATEWORKSPACE: `/work-space/` , 
 
   // USERS
   USER: `/user/`,

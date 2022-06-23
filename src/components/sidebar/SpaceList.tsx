@@ -10,10 +10,15 @@ import {useNavigate} from "react-router-dom";
 
 type Props = {
   workSpaceData?: any;
+  isOpen:boolean 
+  closeModal:any 
+  openModal:any
+  handleCreateNewWorkSpace:any
+  setParent?:any
 };
 
 const SpaceList = (props: Props) => {
-  const {workSpaceData} = props;
+  const {workSpaceData , isOpen , closeModal , openModal , handleCreateNewWorkSpace, setParent} = props;
   const navigate = useNavigate();
 
   const handleSpaceRoute = (item: any) => {
@@ -49,7 +54,7 @@ const SpaceList = (props: Props) => {
                     <DotsHorizontalIcon className="h-4 w-4"/>
                   </Menu.Button>
                   <Menu.Items>
-                    <SpaceDropdown/>
+                    <SpaceDropdown setParent={setParent} parentId={item?.id} isOpen = {isOpen} openModal = {openModal} closeModal = {closeModal} handleCreateNewWorkSpace = {handleCreateNewWorkSpace}/>
                   </Menu.Items>
                 </Menu>
                 <Menu>
@@ -66,7 +71,13 @@ const SpaceList = (props: Props) => {
             {item?.children?.length ? (
               <Disclosure.Panel className="ml-4 pl-4">
                   <span>
-                    <SpaceList workSpaceData={item?.children || []}/>
+                    <SpaceList workSpaceData={item?.children || []} 
+                      isOpen = {isOpen}
+                      openModal = {openModal}
+                      closeModal = {closeModal}
+                      handleCreateNewWorkSpace = {handleCreateNewWorkSpace}
+                      setParent={setParent}
+                    />
                   </span>
               </Disclosure.Panel>
             ) : null}

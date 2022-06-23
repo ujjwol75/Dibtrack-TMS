@@ -18,6 +18,7 @@ import {
   MenuAlt1Icon,
   HomeIcon,
   ChevronRightIcon,
+  TrashIcon,
 } from "@heroicons/react/solid";
 import useGetHook from "../../customHooks/useGetHook";
 import { Link, useParams } from "react-router-dom";
@@ -130,35 +131,35 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
         {/* right topnav */}
 
         {/* right topnav end */}
-        <div className="flex flex-row">
-          <div className="flex flex-row px-5  border border-gray-200 items-center cursor-pointer rounded">
-            <DesktopComputerIcon className="h-4 w-5 text-gray-400 mr-1" />
-            <span className="text-sm  pr-2 text-txtcolor">Automate</span>
-
+        <div className="inline-flex">
+          <div className=" inline-flex border my-auto p-[1px] items-center rounded py-[3px]">
+           <DesktopComputerIcon className="h-4 w-5 text-gray-400 " />
+            <p className="text-sm text-txtcolor">Automate</p>
+          
             <Popover className="relative">
               {upShow ? (
-                <Popover.Button className="outline-none">
-                  <span>
+                <Popover.Button className="outline-none border-none flex items-center">
+                  
                     <ChevronDownIcon
-                      className="h-5 w-5 text-gray-400 ml-1"
+                      className="h-6 w-5 text-gray-400  ml-1 "
                       onClick={() => setUpShow(false)}
                     />
-                  </span>
+                  
                 </Popover.Button>
               ) : (
                 <Popover.Button className="outline-none">
-                  <span className="border-none">
+                  
                     <ChevronUpIcon
                       className="h-5 w-5 text-gray-400 ml-1"
                       onClick={() => setUpShow(true)}
                     />
-                  </span>
+                  
                 </Popover.Button>
               )}
               {/* <Popover.Button><span><ChevronDownIcon className='h-5 w-5'/></span></Popover.Button> */}
-
-              <Popover.Panel className="absolute shadow-2xl automate z-10 border w-40 bg-white p-4 text-sm ">
-                <div className="grid grid-cols-1">
+            
+              <Popover.Panel className="absolute shadow-2xl automate z-10 border p-4 w-40 bg-white text-sm ">
+                <div className="flex flex-col ">
                   <div className="text-left py-2">
                     <span>CUSTOMIZE SPACE</span>
                   </div>
@@ -179,7 +180,7 @@ const Navbar = ({ collapse, setCollapse }: Props) => {
               </Popover.Panel>
             </Popover>
           </div>
-
+          
           {/* share */}
           <div className="flex flex-row px-5  items-center  rounded-md ml-2">
             <div className="flex flex-row items-center p-1 px-2 border border-gray-200 rounded">

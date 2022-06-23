@@ -4,31 +4,21 @@ import {Fragment, useState} from "react";
 import {PlusIcon} from "@heroicons/react/solid";
 import ModalTabs from "./ModalTabs";
 
-type Props = {};
+type Props = {
+  handleCreateNewWorkSpace:any
+  isOpen:boolean
+  setIsOpen?:any
+
+  closeModal:any
+};
 
 const NewSpaceModal = (props: Props) => {
-  let [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
+  const{handleCreateNewWorkSpace ,isOpen,closeModal,setIsOpen }=props;
+  
 
   return (
     <div>
-      <div
-        className="flex flex-row justify-center w-[90%] mx-auto bg-bgsearchbar py-2 
-                                   rounded-sm hover:bg-gray-300 text-xs"
-        onClick={openModal}
-      >
-        <span>
-          <PlusIcon className="h-4 w-3 text-xs"/>
-        </span>
-        <span className="text-[12px] ml-1 ">NEW SPACE</span>
-      </div>
+      
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -68,7 +58,7 @@ const NewSpaceModal = (props: Props) => {
                       </button>
                     </div>
                   </div>
-                  <ModalTabs/>
+                    <ModalTabs handleCreateNewWorkSpace = {handleCreateNewWorkSpace}/>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

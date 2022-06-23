@@ -1,7 +1,9 @@
 import logo from "../../images/logo.png";
-import {Menu} from '@headlessui/react'
+import { Menu } from "@headlessui/react";
 import SettingsTab from "../sidebar/SettingsTab";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import {toast } from 'react-toastify';
+
 import {
   CogIcon,
   ChevronDoubleLeftIcon,
@@ -14,43 +16,98 @@ import {
   ViewGridIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
-import {Disclosure} from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import NewSpaceModal from "../sidebar/NewSpaceModal";
 import User from "../sidebar/User";
 import SpaceList from "../sidebar/SpaceList";
 import APIS from "../../constants/EndPoint";
 import useGetHook from "../../customHooks/useGetHook";
 import LoaderAnimation from "../../Reusable/Loader/LoaderAnimation";
-
+import usePostHook from "../../customHooks/usePostHook";
+import { useState } from "react";
+import Modal from "../../Reusable/Modal";
+import ModalTabs from "../sidebar/ModalTabs";
 
 type Props = {
   collapse?: any;
-  setCollapse: any
-}
+  setCollapse: any;
+};
 
 function Sidebar(props: Props) {
-  const {collapse, setCollapse} = props;
+  const [parent, setParent] = useState<any>();
+
+  let [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+    setParent("");
+  }
+
+  const { collapse, setCollapse } = props;
 
   const handleCollapse = () => {
-    setCollapse(!collapse)
+    setCollapse(!collapse);
   };
 
-  const {data: workSpaceData, isLoading: workSpaceDataLoading} = useGetHook({
+  const { data: workSpaceData, isLoading: workSpaceDataLoading } = useGetHook({
     queryKey: "workSpaceData",
     url: APIS.WORKSPACE,
-  })
+  });
+
+  //function for toastify
+  const notify = () => toast("workspace successfully created!!!");
+
+  //create new space api
+
+  const {
+    isPostLoading,
+    mutate: createWorkSpaceMutate,
+    isPostSuccess: createWorkSpaceSuccess,
+    successMsg,
+    addSuccessSnackBar,
+    setAddSuccessSnackBar,
+  } = usePostHook({ queryKey: `workSpaceData`, setOpenAddPopup: "" });
+
+  //function for handling api call for new workspace
+
+  const handleCreateNewWorkSpace = (name: any, parent: any , color:any) => {
+    const url = APIS.CREATEWORKSPACE;
+    const formData = {
+      name: name,
+      parent: parent,
+      color:color
+    };
+
+    try {
+      createWorkSpaceMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+    if(createWorkSpaceSuccess){
+      console.log('sucecesssfdk')
+      notify()
+      closeModal()
+    }
+  };
 
   return (
     <div className="z-1  relative h-[100vh] sm:w-[100vw] md:w-full">
       <div
-        className={`sidebar border  h-full  border-black-100 overflow-auto scrollbar-thin bg-white `}>
+        className={`sidebar border  h-full  border-black-100 overflow-auto no-scrollbar bg-white `}
+      >
         <div className="flex flex-row justify-between p-2">
-          <img src={logo} className="h-[45px] w-[100px]" alt="logo"/>
+          <img src={logo} className="h-[45px] w-[100px]" alt="logo" />
           <div className="mt-2 flex flex-row">
             <Menu>
-              <Menu.Button className="mr-5"><CogIcon className=" settings h-5 w-5 text-gray-400"/></Menu.Button>
+              <Menu.Button className="mr-5">
+                <CogIcon className=" settings h-5 w-5 text-gray-400" />
+              </Menu.Button>
               <Menu.Items>
-                <SettingsTab/>
+                <SettingsTab />
               </Menu.Items>
             </Menu>
             <ChevronDoubleLeftIcon
@@ -67,10 +124,9 @@ function Sidebar(props: Props) {
                 border border-black-100 pl-12 text-sm text-gray-400 py-1 w-full"
               placeholder="Search"
             />
-            <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[20%] hover:text-blue-500"/>
+            <SearchIcon className="h-4 w-5 text-gray-400 absolute left-5 bottom-[20%] hover:text-blue-500" />
           </div>
-          <div
-            className="p-1 mt-[3px] flex justify-center items-center bg-bgsearchbar text-center text-gray-500  text-xs h-[30px] w-[40px]">
+          <div className="p-1 mt-[3px] flex justify-center items-center bg-bgsearchbar text-center text-gray-500  text-xs h-[30px] w-[40px]">
             <i className="fa-solid fa-bolt text-black-300 hover:text-blue-400  "></i>
           </div>
         </div>
@@ -79,7 +135,7 @@ function Sidebar(props: Props) {
           <div className="flex flex-col">
             <div className="flex flex-row mt-3  w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
-                <HomeIcon className="h-4 w-5 "/>
+                <HomeIcon className="h-4 w-5 " />
               </div>
 
               <Link to={"/"}>
@@ -88,13 +144,13 @@ function Sidebar(props: Props) {
             </div>
             <div className="flex flex-row mt-3  w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
-                <BellIcon className="h-4 w-5 "/>
+                <BellIcon className="h-4 w-5 " />
               </div>
               <div>Notifications</div>
             </div>
             <div className="flex flex-row mt-3 w-full hover:bg-bgsearchbar p-2">
               <div className="mr-3">
-                <ArrowNarrowDownIcon className="h-4 w-5 "/>
+                <ArrowNarrowDownIcon className="h-4 w-5 " />
               </div>
               <div>Show More</div>
             </div>
@@ -103,7 +159,7 @@ function Sidebar(props: Props) {
 
         <div className="grid-cols-1 w-full mt-5">
           <Disclosure>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button
                   className="flex w-full justify-between  bg-white-100 px-2  py-3
@@ -111,7 +167,8 @@ function Sidebar(props: Props) {
                 >
                   <span>FAVOURITES</span>
                   <ChevronUpIcon
-                    className={`${open ? "rotate-180 transform" : ""
+                    className={`${
+                      open ? "rotate-180 transform" : ""
                     } h-5 w-5 text-gray-500`}
                   />
                 </Disclosure.Button>
@@ -125,7 +182,7 @@ function Sidebar(props: Props) {
           </Disclosure>
 
           <Disclosure defaultOpen={true}>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button
                   className="flex w-full justify-between  bg-white-100 px-2  py-3
@@ -134,25 +191,58 @@ function Sidebar(props: Props) {
                   <span>SPACES</span>
                   <span className="flex flex-row">
                     <SearchIcon
-                      className={`${open ? "block" : "hidden"
+                      className={`${
+                        open ? "block" : "hidden"
                       } h-5 w-4  text-gray-500`}
                     />
                     <ChevronUpIcon
-                      className={`${open ? "rotate-180 transform" : ""
+                      className={`${
+                        open ? "rotate-180 transform" : ""
                       } h-5 w-5 text-gray-500 ml-3`}
                     />
                   </span>
                 </Disclosure.Button>
                 <Disclosure.Panel className="pt-4 pb-2 text-gray-500 hover:cursor-pointer">
-                  <NewSpaceModal/>
+                  <div
+                    className="flex flex-row justify-center w-[90%] mx-auto bg-bgsearchbar py-2 
+                                   rounded-sm hover:bg-gray-300 text-xs"
+                    onClick={openModal}
+                  >
+                    <span>
+                      <PlusIcon className="h-4 w-3 text-xs" />
+                    </span>
+                    <span className="text-[12px] ml-1 ">NEW SPACE</span>
+                  </div>
+
+                  <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={""}>
+                    <div>
+                      <h1 className="text-center text-4xl text-gray-300 ">
+                        CREATE NEW SPACE
+                      </h1>
+                      <ModalTabs
+                        handleCreateNewWorkSpace={handleCreateNewWorkSpace}
+                        parent={parent}
+                      />
+                    </div>
+                  </Modal>
                   <div className="flex flex-row justify-start bg-white py-2  hover:bg-gray-300 text-xs mt-2">
-                    <ViewGridIcon className="h-4 w-4 text-xs ml-2"/>
+                    <ViewGridIcon className="h-4 w-4 text-xs ml-2" />
                     <span className="text-[12px] ml-4 ">Everything</span>
                   </div>
-                  {
-                    workSpaceDataLoading ? <LoaderAnimation/> :
-                      <SpaceList workSpaceData={Array.isArray(workSpaceData) ? workSpaceData : []}/>
-                  }
+                  {workSpaceDataLoading ? (
+                    <LoaderAnimation />
+                  ) : (
+                    <SpaceList
+                      workSpaceData={
+                        Array.isArray(workSpaceData) ? workSpaceData : []
+                      }
+                      isOpen={isOpen}
+                      openModal={setIsOpen}
+                      closeModal={closeModal}
+                      setParent={setParent}
+                      handleCreateNewWorkSpace={handleCreateNewWorkSpace}
+                    />
+                  )}
 
                   {/* <div className="space flex flex-row justify-between p-2">
                     <div className="flex flex-row mt-2">
@@ -197,7 +287,7 @@ function Sidebar(props: Props) {
           </Disclosure>
 
           <Disclosure>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button
                   className="flex w-full justify-between  bg-white-100 px-2  py-3
@@ -206,11 +296,13 @@ function Sidebar(props: Props) {
                   <span>DASHBOARDS</span>
                   <span className="flex flex-row">
                     <SearchIcon
-                      className={`${open ? "block" : "hidden"
+                      className={`${
+                        open ? "block" : "hidden"
                       } h-5 w-4 text-gray-500`}
                     />
                     <ChevronUpIcon
-                      className={`${open ? "rotate-180 transform" : ""
+                      className={`${
+                        open ? "rotate-180 transform" : ""
                       } h-5 w-5 text-gray-500 ml-3`}
                     />
                   </span>
@@ -219,12 +311,12 @@ function Sidebar(props: Props) {
                 <Disclosure.Panel className=" pb-2 text-sm text-gray-500 hover:bg-bgsearchbar">
                   <div className="space flex flex-row justify-between p-2">
                     <div className="flex flex-row mt-2">
-                      <ChevronRightIcon className="h-4 w-4 mt-1"/>
+                      <ChevronRightIcon className="h-4 w-4 mt-1" />
 
                       <span className="ml-2 text-xs mt-1">My Dashboards</span>
                     </div>
 
-                    <PlusIcon className="h-4 w-4 ml-2 mt-2"/>
+                    <PlusIcon className="h-4 w-4 ml-2 mt-2" />
                   </div>
                 </Disclosure.Panel>
               </>
@@ -232,7 +324,7 @@ function Sidebar(props: Props) {
           </Disclosure>
 
           <Disclosure>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button
                   className="flex w-full justify-between  bg-white-100 px-2  py-3 
@@ -240,16 +332,16 @@ function Sidebar(props: Props) {
                 >
                   <span>DOCS</span>
                   <ChevronUpIcon
-                    className={`${open ? "rotate-180 transform" : ""
+                    className={`${
+                      open ? "rotate-180 transform" : ""
                     } h-5 w-5 text-gray-500`}
                   />
                 </Disclosure.Button>
 
                 <Disclosure.Panel className=" pt-4 pb-2 text-sm text-gray-500 cursor-pointer">
-                  <div
-                    className="flex flex-row justify-center w-[95%] mx-auto bg-bgsearchbar py-2 rounded-sm hover:bg-gray-300 text-xs">
+                  <div className="flex flex-row justify-center w-[95%] mx-auto bg-bgsearchbar py-2 rounded-sm hover:bg-gray-300 text-xs">
                     <span>
-                      <PlusIcon className="h-4 w-3 text-xs"/>
+                      <PlusIcon className="h-4 w-3 text-xs" />
                     </span>
                     <span className="text-[12px] ml-1 ">NEW DOCS</span>
                   </div>
@@ -271,11 +363,11 @@ function Sidebar(props: Props) {
           </Disclosure>
         </div>
         <div className="w-full absolute bottom-0">
-          <User/>
+          <User />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Sidebar;

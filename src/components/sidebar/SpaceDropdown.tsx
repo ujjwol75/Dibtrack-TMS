@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Menu} from "@headlessui/react";
 import {
   ChevronRightIcon,
@@ -19,10 +19,25 @@ import {
 import SpacePlusTab from './SpacePlusTab';
 import TemplateTab from './TemplateTab';
 import SpaceSettingsTab from './SpaceSettingsTab';
+import { useState } from "react";
+import NewSpaceModal from "./NewSpaceModal";
 
-type Props = {}
+type Props = {
+  isOpen:boolean 
+  openModal:any 
+  closeModal:any
+  handleCreateNewWorkSpace : any
+  parentId:any
+  setParent:any
+}
 
 const SpaceDropdown = (props: Props) => {
+   const{isOpen , openModal , closeModal , handleCreateNewWorkSpace, parentId,setParent} = props  
+
+   const handleOpenModal = ()=>{
+     setParent(parentId)
+      openModal(true)
+   }
   return (
     <div className="absolute bg-white opacity-100 p-4 rounded  md:bottom-[100px] lg:bottom-[150px] xl:bottom-[200px]  text-txtcolor
     z-50 h-auto w-[300px]  border border-gray-200  shadow-md overflow-visible text-sm">
@@ -42,6 +57,20 @@ const SpaceDropdown = (props: Props) => {
           </Menu>
         </div>
       </Menu.Item>
+
+      <Menu.Item>
+        <div className="flex flex-row justify-between hover:bg-bgsearchbar p-1">
+          <div className='flex flex-row'>
+            <PlusIcon className="h-4 w-4 mt-1"/>
+            <p className='ml-2'>Create subworkspace</p>
+          </div>
+          
+              <ChevronRightIcon className="h-5 w-5"  onClick = {()=>handleOpenModal()} />
+              
+            
+        </div>
+      </Menu.Item>
+
 
       <Menu.Item>
         <div className="flex flex-row  hover:bg-bgsearchbar p-1">
