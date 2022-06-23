@@ -11,10 +11,12 @@ import CardPopupSection6 from './CardPopupSection6'
 
 type Props = {
   clickedCardInfo?: any
+  setOpenCardModal?: any
+  handleDeleteTask?: any
 }
 
 const CardPopup = (props: Props) => {
-  const { clickedCardInfo } = props
+  const { clickedCardInfo, setOpenCardModal, handleDeleteTask } = props
 
   const { data: cardDetailData, isLoading: cardDetailDataLoading } = useGetHook({
     queryKey: `cardDetail${clickedCardInfo?.cardId}`,
@@ -31,7 +33,7 @@ const CardPopup = (props: Props) => {
 
 
   const {
-    isPatchLoading:updateSubTaskLoading,
+    isPatchLoading: updateSubTaskLoading,
     mutate: updateMutate,
     addSuccessSnackBar: editSuccessSnackBar,
     setAddSuccessSnackBar: setEditSuccessSnackBar,
@@ -76,7 +78,14 @@ const CardPopup = (props: Props) => {
       {/* CARD SECTION 1 */}
       <div className='col-span-3'>
         {
-          cardDetailDataLoading ? null : <CardPopupSection1 cardDetailData={cardDetailData} />
+          cardDetailDataLoading ?
+            null
+            :
+            <CardPopupSection1
+              cardDetailData={cardDetailData}
+              setOpenCardModal={setOpenCardModal}
+              handleDeleteTask={handleDeleteTask}
+            />
         }
       </div>
 
@@ -97,6 +106,7 @@ const CardPopup = (props: Props) => {
               cardDetailData={cardDetailData}
               handleCreateSubTask={handleCreateSubTask}
               handleEditSubTask={handleEditSubTask}
+              handleDeleteSubTask={handleDeleteTask}
               isPostLoading={isPostLoading}
               updateSubTaskLoading={updateSubTaskLoading}
             />

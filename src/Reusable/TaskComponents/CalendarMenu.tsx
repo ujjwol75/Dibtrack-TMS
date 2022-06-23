@@ -1,19 +1,16 @@
 import { CalendarIcon } from '@heroicons/react/outline'
-import React from 'react'
-import DropDownMenu from '../DropDownList/DropDownMenu'
+import React, { useEffect, useRef, useState } from 'react'
 
 type Props = {}
 
 const CalendarMenu = (props: Props) => {
+
   return (
-    <DropDownMenu
-      options={null}
-      CustomMenuButton={
-        <CalendarIcon className='w-9 p-1 mt-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
-      }
-    >
-      <div className='p-4 text-lg '>pasjdoij</div>
-    </DropDownMenu >
+    <>
+      <input type="date"
+        className='bg-transparent w-9 h-9 text-xl mt-1 p-1  border-2 border-dashed rounded-full outline-none  stroke-gray-400 hover:text-btncolor hover:border-btncolor'
+      />
+    </>
   )
 }
 

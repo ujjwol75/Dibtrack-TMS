@@ -1,7 +1,8 @@
 import { CalendarIcon, ClockIcon, EyeIcon, StarIcon } from '@heroicons/react/outline'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
 import usePatchHook from '../../../customHooks/usePatchHook'
+import usePostHook from '../../../customHooks/usePostHook'
 import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
 import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 import CalendarMenu from '../../../Reusable/TaskComponents/CalendarMenu'
@@ -15,18 +16,32 @@ type Props = {
 const CardPopupSection2 = (props: Props) => {
 
   const { cardDetailData } = props
+
   const [card2ValuesState, setCard2ValuesState] = useState<any>({
     estimatedTime: null,
+    kpiPoints: null
   })
-
   const [kpiPoints, setKpiPoints] = useState<any>(null)
+
+  // SETTING INITIAL VALUES
+  useEffect(() => {
+    setCard2ValuesState((prev: any) => ({ ...prev, estimatedTime: cardDetailData?.estimated_time }))
+    setCard2ValuesState((prev: any) => ({ ...prev, kpiPoints: cardDetailData?.kpi_points }))
+  }, [cardDetailData])
 
   const {
     isPatchLoading,
     mutate: updateMutate,
     addSuccessSnackBar: editSuccessSnackBar,
     setAddSuccessSnackBar: setEditSuccessSnackBar,
-  } = usePatchHook({ queryKey: `boardData${cardDetailData?.workspace}`, setOpenEditPopup: "" })
+  } = usePatchHook({ queryKey: `cardDetail${cardDetailData?.id}`, setOpenEditPopup: "" })
+
+
+  const {
+    mutate: createMutate,
+    addSuccessSnackBar,
+    setAddSuccessSnackBar,
+  } = usePostHook({ queryKey: `cardDetail${cardDetailData?.id}`, setOpenAddPopup: "" })
 
 
   const handleBlurEstimateTime = (value: any) => {
@@ -36,6 +51,20 @@ const CardPopupSection2 = (props: Props) => {
     }
     try {
       updateMutate({ url, formData })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const handleChangeKpiPoints = (value: any) => {
+    const url = APIS.KPI_POINTS
+    const formData = {
+      points: value,
+      content_type: cardDetailData?.get_content_type_id,
+      object_id: cardDetailData?.id
+    }
+    try {
+      createMutate({ url, formData })
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +90,7 @@ const CardPopupSection2 = (props: Props) => {
         </span>
 
         <div className=' px-4 flex items-center justify-between w-full'>
-          <span className='flex gap-5'>
+          <span className='flex gap-2'>
 
             <EstimatedTime
               card2ValuesState={card2ValuesState}
@@ -71,9 +100,10 @@ const CardPopupSection2 = (props: Props) => {
             />
 
             <KpiPoints
+              initialValue={card2ValuesState.kpiPoints}
               kpiPoints={kpiPoints}
               setKpiPoints={setKpiPoints}
-              handleChangeKpiPoints={() => { }}
+              handleChangeKpiPoints={handleChangeKpiPoints}
             />
 
             <CalendarMenu />

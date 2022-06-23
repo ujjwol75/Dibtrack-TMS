@@ -19,11 +19,14 @@ import FlyoutMenu from '../../dashboard/FlyoutMenu'
 
 type Props = {
   cardDetailData: any
+  setOpenCardModal: any
+  handleDeleteTask: any
 }
 
 const CardPopupSection1 = (props: Props) => {
-  const { cardDetailData } = props
+  const { cardDetailData, setOpenCardModal, handleDeleteTask } = props
 
+  console.log(cardDetailData)
   const [boardDropDownList, setBoardDropDownList] = useState<any>(null)
   const [userListState, setUserListState] = useState<any>()
   const [boardState, setBoardState] = useState<any>()
@@ -38,7 +41,7 @@ const CardPopupSection1 = (props: Props) => {
 
 
   const { data: BoardsList } = useGetHook({
-    queryKey: "Boards",
+    queryKey: `Boards${cardDetailData?.workspace}`,
     url: `${APIS.TASK}?workspace=${cardDetailData?.workspace}`
   })
 
@@ -53,7 +56,7 @@ const CardPopupSection1 = (props: Props) => {
     successMsg,
     addSuccessSnackBar,
     setAddSuccessSnackBar,
-  } = usePostHook({ queryKey: "assignUser", setOpenAddPopup: "" });
+  } = usePostHook({ queryKey: `Boards${cardDetailData?.workspace}`, setOpenAddPopup: "" });
 
   const {
     isPatchLoading,
@@ -62,19 +65,26 @@ const CardPopupSection1 = (props: Props) => {
     setAddSuccessSnackBar: setEditSuccessSnackBar,
   } = usePatchHook({ queryKey: `boardData${cardDetailData?.workspace}`, setOpenEditPopup: "" })
 
-  const {
-    isLoading,
-    mutate: deleteMutate,
-    setRemoveSuccessSnackBar,
-    removeSuccessSnackBar,
-  } = useDeleteHook({ queryKey: `boardData${cardDetailData?.workspace}` })
-
   const handleAssignUser = (usersList: any) => {
     const url = APIS.ASSIGN;
     const formData = {
       task: cardDetailData.id,
       assign_to: usersList
     };
+    try {
+      assignMutate({ url, formData });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  const handleAssignPriority = (e: any) => {
+    const url = APIS.PRIORITY;
+    const formData = {
+      content_type: cardDetailData?.get_content_type_id,
+      object_id: cardDetailData?.id,
+      priority: e
+    }
     try {
       assignMutate({ url, formData });
     } catch (e) {
@@ -136,18 +146,10 @@ const CardPopupSection1 = (props: Props) => {
     setInitialValuesState({
       user: null,
       board: cardDetailData?.parent,
-      priority: null
+      priority: cardDetailData?.priority?.priority
     })
   }, [cardDetailData])
 
-  const handleDeleteTask = () => {
-    const url = `${APIS.TASK}${cardDetailData?.id}/`
-    try {
-      deleteMutate(url);
-    } catch (e) {
-      console.log(e);
-    }
-  }
 
   return (
     <>
@@ -193,7 +195,7 @@ const CardPopupSection1 = (props: Props) => {
             initialValue={initialValuesState.priority}
             priorityState={priorityState}
             setPriorityState={setPriorityState}
-            handleAPICall={() => { }}
+            handleAPICall={handleAssignPriority}
           />
         </section>
 
@@ -205,7 +207,7 @@ const CardPopupSection1 = (props: Props) => {
             </span>
           </span>
 
-          <TaskMenu size='sm' deleteTaskAction={handleDeleteTask} />
+          <TaskMenu size='sm' deleteTaskAction={handleDeleteTask} taskId={cardDetailData?.id} isCard={true} />
         </section>
       </section>
     </>

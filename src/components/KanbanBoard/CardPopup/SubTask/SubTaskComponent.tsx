@@ -10,12 +10,13 @@ type Props = {
   data: any
   handleEditSubTask: any
   updateSubTaskLoading: any
+  handleDeleteSubTask:any
 }
 
 
 const SubTaskComponent = (props: Props) => {
 
-  const { boardDropDownList, userListState, data, handleEditSubTask, updateSubTaskLoading } = props
+  const { boardDropDownList, userListState, data, handleEditSubTask, updateSubTaskLoading,handleDeleteSubTask } = props
 
   const [boardState, setBoardState] = useState<any>()
   const [userState, setUserState] = useState<any>([])
@@ -26,14 +27,6 @@ const SubTaskComponent = (props: Props) => {
     priority: null,
     title: "",
   })
-
-  const menuOptions = [
-    { id: '1', title: "Add", icon: <PlusIcon className='w-6 text-blue-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '2', title: "Edit", icon: <PencilIcon className='w-6 text-yellow-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '3', title: "Create", icon: <ColorSwatchIcon className='w-6 text-green-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '4', title: "Duplicate", icon: <DuplicateIcon className='w-6 text-orange-500' />, action: () => { console.log("Not Implemented") } },
-    { id: '5', title: "Delete", icon: <TrashIcon className='w-6 text-red-500' />, action: () => { } },
-  ]
 
   useEffect(() => {
     setInitialValuesState((prev: any) => ({ ...prev, title: data?.name }))
@@ -82,7 +75,7 @@ const SubTaskComponent = (props: Props) => {
         </button>
       </span>
 
-      <TaskMenu size={"xs"} deleteTaskAction={() => { }} />
+      <TaskMenu size={"xs"} deleteTaskAction={handleDeleteSubTask} taskId={data?.id}/>
     </div>
   )
 }

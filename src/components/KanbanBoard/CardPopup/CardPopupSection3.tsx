@@ -12,10 +12,11 @@ type Props = {
   isPostLoading:boolean
   handleEditSubTask:any
   updateSubTaskLoading:boolean
+  handleDeleteSubTask:any
 }
 
 const CardPopupSection3 = (props: Props) => {
-  const { cardDetailData, handleCreateSubTask,isPostLoading,handleEditSubTask,updateSubTaskLoading } = props
+  const { cardDetailData, handleCreateSubTask,isPostLoading,handleEditSubTask,updateSubTaskLoading,handleDeleteSubTask } = props
 
   const [cardDataState, setCardDataState] = useState<any>({
     name: "",
@@ -52,7 +53,6 @@ const CardPopupSection3 = (props: Props) => {
       console.log(e);
     }
   }
-
 
   const { data: BoardsList } = useGetHook({
     queryKey: "Boards",
@@ -103,7 +103,7 @@ const CardPopupSection3 = (props: Props) => {
 
   return (
     <>
-      <section className='p-4 space-y-4 h-full overflow-y-auto'>
+      <section className='p-4 space-y-4 h-full pb-[15rem] overflow-y-auto overflow-x-hidden'>
         <div className='flex space-x-3 items-center text-sm'>
           <span className='bg-yellow-300 text-yellow-600 px-2 rounded-r-full cursor-pointer'>
             sample tags A
@@ -146,6 +146,7 @@ const CardPopupSection3 = (props: Props) => {
                   boardDropDownList={boardDropDownList}
                   userListState={userListState}
                   handleEditSubTask={handleEditSubTask}
+                  handleDeleteSubTask={handleDeleteSubTask}
                   data={elem}
                   updateSubTaskLoading={updateSubTaskLoading}
                 />

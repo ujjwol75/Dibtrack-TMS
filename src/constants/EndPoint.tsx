@@ -12,6 +12,8 @@ const APIS: any = {
   CREATE_BOARD: `/task/create-board/`,
   //Work Space 
   WORKSPACE: `/work-space/filter_work_space/`,
+  PRIORITY: `/priority-model/`,
+  KPI_POINTS: `/kpi-point/`,
 
   // USERS
   USER: `/user/`,

@@ -121,10 +121,14 @@ const KanbanBoard = (props: Props) => {
     removeSuccessSnackBar,
   } = useDeleteHook({ queryKey: `boardData${spaceId}` })
 
-  const handleDeleteTask = (value: any) => {
+  const handleDeleteTask = (value: any, card: boolean) => {
     const url = `${APIS.TASK}${value}/`
     try {
       deleteMutate(url);
+      // IF DELETED ITEM IS CARD THEN CLOSE MODAL
+      if (card) {  
+        setOpenCardModal(false)
+      }
     } catch (e) {
       console.log(e);
     }
