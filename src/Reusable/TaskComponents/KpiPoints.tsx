@@ -37,7 +37,7 @@ const KpiPoints = (props: Props) => {
             </span>
           </>
           :
-          <StarIcon className={`${size == 'sm' ? 'w-7' : size == 'md' ? 'w-9 p-1' : ''}   border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer `} />
+          <StarIcon className={`${size == 'sm' ? 'w-6' : size == 'md' ? 'w-9 p-1' : ''}   border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer `} />
       }
     />
   )

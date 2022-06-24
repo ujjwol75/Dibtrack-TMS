@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
 import usePatchHook from '../../../customHooks/usePatchHook'
@@ -13,7 +14,7 @@ type Props = {
 const CardPopupSection2 = (props: Props) => {
 
   const { cardDetailData } = props
-
+  console.log(cardDetailData)
   const [card2ValuesState, setCard2ValuesState] = useState<any>({
     estimatedTime: null,
     kpiPoints: null,
@@ -75,8 +76,8 @@ const CardPopupSection2 = (props: Props) => {
         {/* CREATED TIME */}
         <span className='px-3'>
           <p>CREATED</p>
-          <span className='flex text-black'>
-            <p>Jun 16</p><p>12:57</p>
+          <span className=' text-black'>
+            {moment(cardDetailData?.created).format('MMM D, h:mm a')}
           </span>
         </span>
 

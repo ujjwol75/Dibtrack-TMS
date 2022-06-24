@@ -1,5 +1,6 @@
 import { ClockIcon } from '@heroicons/react/outline'
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid'
+import moment from 'moment'
 import React from 'react'
 import DropDownMenu from '../DropDownList/DropDownMenu'
 
@@ -20,7 +21,7 @@ const EstimatedTime = (props: Props) => {
         options={null}
         CustomMenuButton={
           card2ValuesState[stateObjectKey] ?
-            <span className='text-xs' title={"6 hours remaining"}>
+            <span className='text-xs' title={moment().subtract(7, 'hours').format("hh").toString() + "hrs remaining"}>
               <p>ESTIMATED</p>
               <span className='text-gray-900'>{card2ValuesState[stateObjectKey]}</span>
             </span>

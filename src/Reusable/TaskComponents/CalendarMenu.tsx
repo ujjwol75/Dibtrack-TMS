@@ -34,7 +34,7 @@ const CalendarMenu = (props: Props) => {
             {detail ? <span>START DATE</span> : null}
             <span className="group flex items-center space-x-1 text-gray-900">
               <p>
-                {moment(calendarState[startDateKey]).format("MMM Do")}
+                {moment(calendarState[startDateKey]).format("MMM D")}
               </p>
               {/* START DATE CLEAR BUTTON  */}
               <XIcon className="group-hover:visible invisible w-3 text-white bg-btncolor border border-btncolor cursor-pointer rounded-full"
@@ -46,6 +46,7 @@ const CalendarMenu = (props: Props) => {
           <input
             type="date"
             title="START DATE"
+            max={moment(calendarState[endDateKey]).format("YYYY-MM-DD")}
             value={calendarState[startDateKey]}
             onChange={(e) => setCalendarState((prev: any) => ({ ...prev, [startDateKey]: e.target.value }))}
             className={`bg-transparent ${size == 'sm' ? 'w-7 h-7 pt-[1px] pr-[1.5px] text-lg' : size == 'md' ? 'w-9 h-9 text-xl p-1 mt-1' : ''} border-2 border-dashed rounded-full outline-none stroke-gray-400 hover:text-btncolor hover:border-btncolor`}
@@ -61,7 +62,7 @@ const CalendarMenu = (props: Props) => {
             {detail ? <span>END DATE</span> : null}
             <span className="group flex items-center space-x-1 text-gray-900">
               <p>
-                {moment(calendarState[endDateKey]).format("MMM Do")}
+                {moment(calendarState[endDateKey]).format("MMM D")}
               </p>
               {/* END DATE CLEAR BUTTON  */}
               <XIcon className="group-hover:visible invisible w-3 text-white bg-btncolor border border-btncolor cursor-pointer  rounded-full"
@@ -73,6 +74,7 @@ const CalendarMenu = (props: Props) => {
           <input
             type="date"
             title="END DATE"
+            min={moment().format("YYYY-MM-DD")}
             value={calendarState[endDateKey]}
             onChange={(e) => setCalendarState((prev: any) => ({ ...prev, [endDateKey]: e.target.value }))}
             className={`bg-transparent ${size == 'sm' ? 'w-7 h-7 pt-[1px] pr-[1.5px] text-lg' : size == 'md' ? 'w-9 h-9 text-xl p-1 mt-1' : ''}  border-2 border-dashed rounded-full outline-none  stroke-gray-400 hover:text-btncolor hover:border-btncolor`}
