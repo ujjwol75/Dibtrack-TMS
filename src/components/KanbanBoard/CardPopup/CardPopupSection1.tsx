@@ -21,8 +21,7 @@ type Props = {
 
 const CardPopupSection1 = (props: Props) => {
   const { cardDetailData, setOpenCardModal, handleDeleteTask } = props
-
-  console.log(cardDetailData)
+  
   const [boardDropDownList, setBoardDropDownList] = useState<any>(null)
   const [userListState, setUserListState] = useState<any>()
   const [boardState, setBoardState] = useState<any>()

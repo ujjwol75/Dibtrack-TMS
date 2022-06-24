@@ -20,7 +20,10 @@ const APIS: any = {
   USER: `/user/`,
   ASSIGN: `/task-assign/`,
   INVITE: `/user/invite_user/`,
-  SIGNUP: `user/signup/`
+  SIGNUP: `user/signup/`,
+
+  //COMMENT
+  COMMENT:'/comment/'
 };
 
 export default APIS;
