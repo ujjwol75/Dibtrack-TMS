@@ -96,7 +96,7 @@ function Sidebar(props: Props) {
 
   return (
     <>
-      <div className="z-1 relative h-screen sm:w-[100vw] md:w-full">
+      <div className=" h-screen sm:w-[100vw] md:w-full">
         <div
           className={`sidebar border  h-full  border-black-100 overflow-auto no-scrollbar bg-white `}
         >
@@ -158,7 +158,7 @@ function Sidebar(props: Props) {
             </div>
           </div>
 
-          <div className="grid-cols-1 w-full mt-5 relative">
+          <div className="grid-cols-1 w-full mt-5">
             <Disclosure>
               {({ open }) => (
                 <>

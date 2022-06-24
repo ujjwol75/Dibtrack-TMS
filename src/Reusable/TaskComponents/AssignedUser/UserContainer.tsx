@@ -17,13 +17,13 @@ const UserContainer = (props: Props) => {
     <span className='flex items-center space-x-1'>
       {/* <FlyoutMenu userIconSizeProp="sm" /> */}
       <span className='-space-x-3 flex items-center'>
-        <span className='z-10'>
+        <span>
           <CircleUserIcon1 size={size} color="bg-green-500" />
         </span>
-        <span className='z-20'>
+        <span >
           <CircleUserIcon1 size={size} color="bg-blue-500" />
         </span>
-        <span className='z-30'>
+        <span>
           <CircleUserIcon1 size={size} color="bg-red-500" />
         </span>
       </span>

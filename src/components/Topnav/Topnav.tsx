@@ -18,7 +18,6 @@ import {
   MenuAlt1Icon,
   HomeIcon,
   ChevronRightIcon,
-  TrashIcon,
 } from "@heroicons/react/solid";
 import useGetHook from "../../customHooks/useGetHook";
 import { Link, useParams } from "react-router-dom";

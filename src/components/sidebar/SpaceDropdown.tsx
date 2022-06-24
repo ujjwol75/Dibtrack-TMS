@@ -1,5 +1,5 @@
 
-import {Menu} from "@headlessui/react";
+import { Menu } from "@headlessui/react";
 import {
   ChevronRightIcon,
   PlusIcon,
@@ -13,61 +13,56 @@ import {
   TemplateIcon,
   CogIcon,
   ArchiveIcon
-
-
 } from "@heroicons/react/solid";
 import SpacePlusTab from './SpacePlusTab';
 import TemplateTab from './TemplateTab';
 import SpaceSettingsTab from './SpaceSettingsTab';
-import { useState } from "react";
-import NewSpaceModal from "./NewSpaceModal";
 
 type Props = {
-  isOpen:boolean 
-  openModal:any 
-  closeModal:any
-  handleCreateNewWorkSpace : any
-  parentId:any
-  setParent:any
+  isOpen: boolean
+  openModal: any
+  closeModal: any
+  handleCreateNewWorkSpace: any
+  parentId: any
+  setParent: any
 }
 
 const SpaceDropdown = (props: Props) => {
-   const{isOpen , openModal , closeModal , handleCreateNewWorkSpace, parentId,setParent} = props  
+  const { isOpen, openModal, closeModal, handleCreateNewWorkSpace, parentId, setParent } = props
 
-   const handleOpenModal = ()=>{
-     setParent(parentId)
-      openModal(true)
-   }
+  const handleOpenModal = () => {
+    setParent(parentId)
+    openModal(true)
+  }
   return (
     <div className="absolute bg-white opacity-100 p-4 rounded  md:bottom-[100px] lg:bottom-[150px] xl:bottom-[200px]  text-txtcolor
-    z-50 h-auto w-[300px]  border border-gray-200  shadow-md overflow-visible text-sm">
+     h-auto w-[300px] border z-30 border-gray-200  shadow-md text-sm">
       <Menu.Item>
         <div className="flex flex-row justify-between hover:bg-bgsearchbar p-1">
           <div className='flex flex-row'>
-            <PlusIcon className="h-4 w-4 mt-1"/>
+            <PlusIcon className="h-4 w-4 mt-1" />
             <p className='ml-2'>Create new</p>
           </div>
           <Menu>
             <Menu.Button>
-              <ChevronRightIcon className="h-5 w-5"/>
+              <ChevronRightIcon className="h-5 w-5" />
             </Menu.Button>
             <Menu.Items>
-              <SpacePlusTab/>
+              <SpacePlusTab />
             </Menu.Items>
           </Menu>
         </div>
       </Menu.Item>
 
-      <Menu.Item>
-        <div className="flex flex-row justify-between hover:bg-bgsearchbar p-1">
+      <Menu.Item >
+        <div className="flex flex-row justify-between hover:bg-bgsearchbar p-1"
+          onClick={() => handleOpenModal()}
+        >
           <div className='flex flex-row'>
-            <PlusIcon className="h-4 w-4 mt-1"/>
+            <PlusIcon className="h-4 w-4 mt-1" />
             <p className='ml-2'>Create subworkspace</p>
           </div>
-          
-              <ChevronRightIcon className="h-5 w-5"  onClick = {()=>handleOpenModal()} />
-              
-            
+          <ChevronRightIcon className="h-5 w-5" />
         </div>
       </Menu.Item>
 
@@ -75,7 +70,7 @@ const SpaceDropdown = (props: Props) => {
       <Menu.Item>
         <div className="flex flex-row  hover:bg-bgsearchbar p-1">
 
-          <PencilIcon className="h-4 w-4 mt-1"/>
+          <PencilIcon className="h-4 w-4 mt-1" />
           <p className='ml-2'>Rename</p>
 
         </div>
@@ -85,41 +80,41 @@ const SpaceDropdown = (props: Props) => {
       <Menu.Item>
         <div className="flex flex-row  hover:bg-bgsearchbar p-1">
 
-          <LinkIcon className="h-4 w-4 mt-1"/>
+          <LinkIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Link</p>
 
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row  border-b border-gray-200 hover:bg-bgsearchbar p-1 pb-4">
-          <DuplicateIcon className="h-4 w-4 mt-1"/>
+          <DuplicateIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Duplicate</p>
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row hover:bg-bgsearchbar p-1 mt-2 ">
-          <StarIcon className="h-4 w-4 mt-1"/>
+          <StarIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Add To Favorites</p>
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row pb-4 p-1 hover:bg-bgsearchbar border-b border-gray-200">
-          <EyeOffIcon className="h-4 w-4 mt-1"/>
+          <EyeOffIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Hide</p>
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row justify-between p-1 hover:bg-bgsearchbar">
           <div className='flex flex-row'>
-            <TemplateIcon className="h-4 w-4 mt-1"/>
+            <TemplateIcon className="h-4 w-4 mt-1" />
             <p className='ml-3'>Template center</p>
           </div>
           <Menu>
             <Menu.Button>
-              <ChevronRightIcon className="h-5 w-5"/>
+              <ChevronRightIcon className="h-5 w-5" />
             </Menu.Button>
             <Menu.Items>
-              <TemplateTab/>
+              <TemplateTab />
             </Menu.Items>
           </Menu>
         </div>
@@ -128,15 +123,15 @@ const SpaceDropdown = (props: Props) => {
       <Menu.Item>
         <div className="flex flex-row  p-1 justify-between border-b border-gray-200 hover:bg-bgsearchbar">
           <div className='flex flex-row'>
-            <CogIcon className="h-4 w-4 mt-1"/>
+            <CogIcon className="h-4 w-4 mt-1" />
             <p className='ml-3'>Space Settings</p>
           </div>
           <Menu>
             <Menu.Button>
-              <ChevronRightIcon className="h-5 w-5 "/>
+              <ChevronRightIcon className="h-5 w-5 " />
             </Menu.Button>
             <Menu.Items>
-              <SpaceSettingsTab/>
+              <SpaceSettingsTab />
             </Menu.Items>
           </Menu>
 
@@ -144,19 +139,19 @@ const SpaceDropdown = (props: Props) => {
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row hover:bg-bgsearchbar p-1 mt-2">
-          <ShareIcon className="h-4 w-4 mt-1"/>
+          <ShareIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Share and Permissions</p>
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row  p-1 hover:bg-bgsearchbar">
-          <ArchiveIcon className="h-4 w-4 mt-1"/>
+          <ArchiveIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Archive</p>
         </div>
       </Menu.Item>
       <Menu.Item>
         <div className="flex flex-row  text-red-600 p-1 hover:bg-bgsearchbar">
-          <TrashIcon className="h-4 w-4 mt-1"/>
+          <TrashIcon className="h-4 w-4 mt-1" />
           <p className='ml-3'>Delete</p>
         </div>
       </Menu.Item>

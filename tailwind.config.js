@@ -7,19 +7,25 @@ module.exports = {
         'btncolor': '#7b68ee',
         'bgsearchbar': '#f6f7f9',
         'primary': '#5b43ea',
-        'bgsearchbar':'#f6f7f9',
-        'tableBorder':'text-gray-200',
+        'bgsearchbar': '#f6f7f9',
+        'tableBorder': 'text-gray-200',
         'lightGray': '#D1D5DB',
-        'profilecolor':'#afb42b',
-        'txtcolor':'#575a60'
-        
+        'profilecolor': '#afb42b',
+        'txtcolor': '#575a60'
+
       },
 
-     
+
     },
-    
+
   },
   plugins: [
     require('tailwind-scrollbar'),
+
   ],
+  variants: {
+    extend: {
+      display: ["group-hover", "group-active", "group-focus"],
+    },
+  },
 }

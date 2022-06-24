@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
-import HomeDib from "../components/HomeDib/HomeDib";
 import Topnav from "../components/Topnav/Topnav";
 import { accessToken } from "../helpers/sessionKey";
 
@@ -15,8 +14,7 @@ const DashboardLayout = () => {
   }, [token]);
 
   const [collapse, setCollapse] = useState<boolean>(false);
-
-  console.log("workspace collapse: ", collapse);
+  
   return (
     <>
       {collapse ? (
@@ -27,12 +25,12 @@ const DashboardLayout = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-5 h-full">
+        <div className="grid grid-cols-5 h-full relative">
           <div className="col-span-1">
             <Sidebar collapse={collapse} setCollapse={setCollapse} />
           </div>
 
-          <div className="col-span-4">
+          <div className="col-span-4 ">
             <Topnav collapse={collapse} setCollapse={setCollapse} />
             <Outlet />
           </div>

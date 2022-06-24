@@ -7,10 +7,11 @@ type Props = {
   kpiPoints: any
   setKpiPoints: any
   handleChangeKpiPoints: any
+  size?: any
 }
 
 const KpiPoints = (props: Props) => {
-  const { kpiPoints, setKpiPoints, handleChangeKpiPoints, initialValue } = props
+  const { kpiPoints, setKpiPoints, handleChangeKpiPoints, initialValue, size = "md" } = props
 
   const KpiOptions = [
     { id: null, title: "--", icon: <XIcon className='w-6 h-6 text-red-500' /> },
@@ -36,7 +37,7 @@ const KpiPoints = (props: Props) => {
             </span>
           </>
           :
-          <StarIcon className='w-9 p-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+          <StarIcon className={`${size == 'sm' ? 'w-7' : size == 'md' ? 'w-9 p-1' : ''}   border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer `} />
       }
     />
   )

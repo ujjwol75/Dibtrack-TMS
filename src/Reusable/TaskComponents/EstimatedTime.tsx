@@ -8,10 +8,11 @@ type Props = {
   setCard2ValuesState: any
   stateObjectKey?: any
   handleBlurFunction?: any
+  size?: any
 }
 
 const EstimatedTime = (props: Props) => {
-  const { card2ValuesState, setCard2ValuesState, stateObjectKey, handleBlurFunction } = props
+  const { card2ValuesState, setCard2ValuesState, stateObjectKey, handleBlurFunction, size = "md" } = props
 
   return (
     <>
@@ -24,10 +25,10 @@ const EstimatedTime = (props: Props) => {
               <span className='text-gray-900'>{card2ValuesState[stateObjectKey]}</span>
             </span>
             :
-            <ClockIcon className='w-9 p-1 mt-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer ' />
+            <ClockIcon className={` ${size == 'sm' ? 'w-7 p-[2px]' : size == 'md' ? 'w-9 p-1 ' : ''} mt-1 border-2 border-dashed rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer `} />
         }
       >
-        <div className='flex items-center gap-2 p-4 text-base'>
+        <div className='flex items-center gap-2 -mt-2 p-4 text-base'>
           <div className='block'>
             Time Estimate:
           </div>

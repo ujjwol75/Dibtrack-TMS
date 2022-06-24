@@ -19,7 +19,9 @@ const CardPopupSection2 = (props: Props) => {
 
   const [card2ValuesState, setCard2ValuesState] = useState<any>({
     estimatedTime: null,
-    kpiPoints: null
+    kpiPoints: null,
+    startDate: null,
+    endDate: null
   })
   const [kpiPoints, setKpiPoints] = useState<any>(null)
 
@@ -74,7 +76,7 @@ const CardPopupSection2 = (props: Props) => {
     <>
       <section className='p-4 flex items-center text-gray-400 divide-x text-xs'>
         {/* CREATED TIME */}
-        <span className='px-5'>
+        <span className='px-3'>
           <p>CREATED</p>
           <span className='flex gap-2 text-black'>
             <p>Jun 16</p><p>12:57</p>
@@ -82,37 +84,40 @@ const CardPopupSection2 = (props: Props) => {
         </span>
 
         {/* TIME TRACKED */}
-        <span className='px-5'>
+        <span className='px-3'>
           <p>TIME TRACKED</p>
           <span className='flex gap-2 text-black'>
             <p>00:00:00</p>
           </span>
         </span>
 
-        <div className=' px-4 flex items-center justify-between w-full'>
-          <span className='flex gap-2'>
+        <span className='px-3'>
+          <EstimatedTime
+            card2ValuesState={card2ValuesState}
+            setCard2ValuesState={setCard2ValuesState}
+            stateObjectKey="estimatedTime"
+            handleBlurFunction={handleBlurEstimateTime}
+          />
+        </span>
 
-            <EstimatedTime
-              card2ValuesState={card2ValuesState}
-              setCard2ValuesState={setCard2ValuesState}
-              stateObjectKey="estimatedTime"
-              handleBlurFunction={handleBlurEstimateTime}
-            />
+        <span className='px-3'>
+          <KpiPoints
+            initialValue={card2ValuesState.kpiPoints}
+            kpiPoints={kpiPoints}
+            setKpiPoints={setKpiPoints}
+            handleChangeKpiPoints={handleChangeKpiPoints}
+          />
+        </span>
 
-            <KpiPoints
-              initialValue={card2ValuesState.kpiPoints}
-              kpiPoints={kpiPoints}
-              setKpiPoints={setKpiPoints}
-              handleChangeKpiPoints={handleChangeKpiPoints}
-            />
+        <span className='px-3'>
+          <CalendarMenu
+            calendarState={card2ValuesState}
+            setCalendarState={setCard2ValuesState}
+            startDateKey="startDate"
+            endDateKey="endDate"
+          />
+        </span>
 
-            <CalendarMenu />
-          </span>
-
-          <span>
-            <EyeIcon className='w-9 p-1 rounded-full text-gray-400 hover:text-btncolor hover:border-btncolor cursor-pointer' />
-          </span>
-        </div>
       </section>
     </>
   )
