@@ -33,7 +33,9 @@ const SubTaskComponent = (props: Props) => {
     board: null,
     priority: null,
     title: "",
-    estimatedTime: null
+    estimatedTime: null,
+    startDateKey: null,
+    endDateKey: null
   })
 
   useEffect(() => {
@@ -71,9 +73,16 @@ const SubTaskComponent = (props: Props) => {
         </button>
       </span>
 
-      <span className='flex items-center space-x-2 invisible group-hover:visible'>
-        {/* <CalendarMenu
-          size="sm" calendarState={undefined} setCalendarState={undefined} /> */}
+      <span className='flex items-center text-xs space-x-2 invisible group-hover:visible'>
+        <CalendarMenu
+          size="sm"
+          calendarState={initialValuesState}
+          setCalendarState={setInitialValuesState}
+          startDateKey="startDate"
+          endDateKey="endDate"
+          detail={false}
+          handleAPICall={() => { }}
+        />
 
         <EstimatedTime
           card2ValuesState={initialValuesState}

@@ -39,7 +39,7 @@ const Modal = (props: Props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className={`${screenSize ? "max-w-7xl h-[40rem]" : "w-[50rem] "}  transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all`}>
+              <Dialog.Panel className={`${screenSize ? "max-w-8xl h-[40rem]" : "w-[50rem] "}  transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all`}>
                 <Dialog.Title
                   as="h3"
                   className="text-lg flex justify-between items-align-center font-medium leading-6 text-gray-900 bg-gray-200 p-4"
