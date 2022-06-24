@@ -2,7 +2,9 @@ import {CloudIcon} from '@heroicons/react/outline'
 
 type Props = {}
 
+
 const CardPopupSection5 = (props: Props) => {
+  
   return (
     <>
       <section className='p-4 text-center flex justify-center items-center gap-3'>

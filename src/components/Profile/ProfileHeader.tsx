@@ -2,6 +2,7 @@ import {PencilIcon} from '@heroicons/react/solid'
 import React, {useState} from 'react'
 import CircleUserIcon from '../../Reusable/CircleUserIcon'
 import ProfileDropdown from './ProfileDropdown'
+import {currentTime} from '../../utils/formattedTime'
 
 type Props = {
   user: any
@@ -10,12 +11,7 @@ type Props = {
 
 const ProfileHeader = ({user}: Props) => {
   const [enable, setEnable] = useState<boolean>(false)
-  const now = new Date()
-  const current = now.toLocaleTimeString('en-US', {
-
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  
 
 
   return (
@@ -48,7 +44,7 @@ const ProfileHeader = ({user}: Props) => {
                   onClick={() => setEnable(true)}/>
               </span>
               <p className='ml-2 text-gray-500'>{user.email}</p>
-              <p className='ml-4 text-gray-500'>{current}</p>
+              <p className='ml-4 text-gray-500'>{currentTime()}</p>
             </div>
           </div>
         </div>

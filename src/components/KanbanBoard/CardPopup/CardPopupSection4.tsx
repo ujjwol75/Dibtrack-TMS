@@ -1,50 +1,56 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import Comments from "../../../Reusable/TaskComponents/comments/Comments";
 
-type Props = {}
+type Props = {
+  commentData?: any;
+  clickedCardInfo?: any;
+  handleCreateComment: any;
+  commentRef: any;
+  scrollState?: boolean;
+  setScrollState: any;
+};
 
 const CardPopupSection4 = (props: Props) => {
+  const {
+    commentData,
+    scrollState,
+    clickedCardInfo,
+    handleCreateComment,
+    commentRef,
+    setScrollState,
+  } = props;
+
+  useEffect(() => {
+   
+    if (scrollState) {
+      commentRef.current?.scrollIntoView(false);
+    }
+    setScrollState(true ? false : true);
+  }, [scrollState, commentData]);
+
   return (
     <>
-      <section className='px-6 pt-8 h-full bg-slate-100 space-y-3 text-sm'>
-        <section className='flex justify-between'>
-          <span>
-            <span className='text-btncolor'>User Name</span>
-            &nbsp;&nbsp;
-            <span className='text-gray-500 '>Action</span>
-            &nbsp;&nbsp;
-            <span className='text-btncolor'>Assign to </span>
-          </span>
-          <span className='text-gray-500'>
-            June 9, 2010
-          </span>
-        </section>
-        <section className='flex justify-between'>
-          <span>
-            <span className='text-btncolor'>User Name</span>
-            &nbsp;&nbsp;
-            <span className='text-gray-500 '>Action</span>
-            &nbsp;&nbsp;
-            <span className='text-btncolor'>Assign to </span>
-          </span>
-          <span className='text-gray-500'>
-            June 9, 2010
-          </span>
-        </section>
-        <section className='flex justify-between'>
-          <span>
-            <span className='text-btncolor'>User Name</span>
-            &nbsp;&nbsp;
-            <span className='text-gray-500 '>Action</span>
-            &nbsp;&nbsp;
-            <span className='text-btncolor'>Assign to </span>
-          </span>
-          <span className='text-gray-500'>
-            June 9, 2010
-          </span>
+      <section className="px-6 pt-8 h-full bg-slate-100 space-y-3 text-sm overflow-auto">
+        <section className="flex justify-between ">
+          <div className="flex flex-col w-full overflow-auto" ref={commentRef}>
+            {commentData?.map((comment: any) => {
+              return (
+                <>
+                  <Comments
+                    commentData={commentData}
+                    clickedCardInfo={clickedCardInfo}
+                    comments={comment}
+                    handleCreateComment={handleCreateComment}
+                    commentRef={commentRef}
+                  />
+                </>
+              );
+            })}
+          </div>
         </section>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default CardPopupSection4
+export default CardPopupSection4;
