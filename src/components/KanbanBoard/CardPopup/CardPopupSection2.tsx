@@ -1,10 +1,7 @@
-import { CalendarIcon, ClockIcon, EyeIcon, StarIcon } from '@heroicons/react/outline'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import APIS from '../../../constants/EndPoint'
 import usePatchHook from '../../../customHooks/usePatchHook'
 import usePostHook from '../../../customHooks/usePostHook'
-import DropDownListBox from '../../../Reusable/DropDownList/DropDownListBox'
-import DropDownMenu from '../../../Reusable/DropDownList/DropDownMenu'
 import CalendarMenu from '../../../Reusable/TaskComponents/CalendarMenu'
 import EstimatedTime from '../../../Reusable/TaskComponents/EstimatedTime'
 import KpiPoints from '../../../Reusable/TaskComponents/KpiPoints'
@@ -115,7 +112,7 @@ const CardPopupSection2 = (props: Props) => {
             setCalendarState={setCard2ValuesState}
             startDateKey="startDate"
             endDateKey="endDate"
-            handleAPICall={()=>{}}
+            handleAPICall={() => { }}
             detail={true}
           />
         </span>

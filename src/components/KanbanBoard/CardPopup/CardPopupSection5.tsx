@@ -1,5 +1,4 @@
 import {CloudIcon} from '@heroicons/react/outline'
-import React from 'react'
 
 type Props = {}
 
