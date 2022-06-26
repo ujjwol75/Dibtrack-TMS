@@ -14,7 +14,7 @@ type Props = {
 const CardPopupSection2 = (props: Props) => {
 
   const { cardDetailData } = props
-  console.log(cardDetailData)
+
   const [card2ValuesState, setCard2ValuesState] = useState<any>({
     estimatedTime: null,
     kpiPoints: null,
@@ -27,6 +27,8 @@ const CardPopupSection2 = (props: Props) => {
   useEffect(() => {
     setCard2ValuesState((prev: any) => ({ ...prev, estimatedTime: cardDetailData?.estimated_time }))
     setCard2ValuesState((prev: any) => ({ ...prev, kpiPoints: cardDetailData?.kpi_points }))
+    setCard2ValuesState((prev: any) => ({ ...prev, startDate: cardDetailData?.start_date }))
+    setCard2ValuesState((prev: any) => ({ ...prev, endDate: cardDetailData?.due_date }))
   }, [cardDetailData])
 
   const {
@@ -70,6 +72,20 @@ const CardPopupSection2 = (props: Props) => {
     }
   }
 
+  const handleBlurEndStartDate = (value: any) => {
+    const url = `${APIS.TASK}${cardDetailData?.id}/`
+    const formData = {
+      start_date: value,
+      end_date: value
+    }
+    console.log(formData)
+    // try {
+    //   updateMutate({ url, formData })
+    // } catch (e) {
+    //   console.log(e);
+    // }
+  }
+
   return (
     <>
       <section className='py-4 px-2 flex items-center text-gray-400 divide-x text-xs'>
@@ -82,7 +98,7 @@ const CardPopupSection2 = (props: Props) => {
         </span>
 
         {/* TIME TRACKED */}
-        <span className='px-3'>
+        <span className='px-3' title='NOT IMPLEMENTED'>
           <p>TIME TRACKED</p>
           <span className='flex text-black'>
             <p>00:00:00</p>
@@ -113,7 +129,7 @@ const CardPopupSection2 = (props: Props) => {
             setCalendarState={setCard2ValuesState}
             startDateKey="startDate"
             endDateKey="endDate"
-            handleAPICall={() => { }}
+            handleAPICall={handleBlurEndStartDate}
             detail={true}
           />
         </span>

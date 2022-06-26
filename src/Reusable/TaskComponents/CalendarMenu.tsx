@@ -12,7 +12,7 @@ type Props = {
 }
 
 const CalendarMenu = (props: Props) => {
-  const { size = "md", calendarState, setCalendarState, startDateKey, endDateKey, detail = true } = props
+  const { size = "md", calendarState, setCalendarState, startDateKey, endDateKey, detail = true,handleAPICall } = props
 
   const handleClearStartDate = () => {
     setCalendarState((prev: any) => ({ ...prev, [startDateKey]: null }))
@@ -50,6 +50,7 @@ const CalendarMenu = (props: Props) => {
             value={calendarState[startDateKey]}
             onChange={(e) => setCalendarState((prev: any) => ({ ...prev, [startDateKey]: e.target.value }))}
             className={`bg-transparent ${size == 'sm' ? 'w-7 h-7 pt-[1px] pr-[1.5px] text-lg' : size == 'md' ? 'w-9 h-9 text-xl p-1 mt-1' : ''} border-2 border-dashed rounded-full outline-none stroke-gray-400 hover:text-btncolor hover:border-btncolor`}
+          onBlur={()=>{handleAPICall()}}
           />
         : null
       }
