@@ -18,13 +18,13 @@ const UserContainer = (props: Props) => {
       {/* <FlyoutMenu userIconSizeProp="sm" /> */}
       <span className='-space-x-3 flex items-center'>
         <span>
-          <CircleUserIcon1 size={size} color="bg-green-500" />
+          <CircleUserIcon1 size={size} color="bg-green-500" user={{'full_name' :'hari'}} />
         </span>
         <span >
-          <CircleUserIcon1 size={size} color="bg-blue-500" />
+          <CircleUserIcon1 size={size} color="bg-blue-500" user={{'full_name' :'hari'}}/>
         </span>
         <span>
-          <CircleUserIcon1 size={size} color="bg-red-500" />
+          <CircleUserIcon1 size={size} color="bg-red-500"  user={{'full_name' :'hari'}}/>
         </span>
       </span>
       <UserSelection

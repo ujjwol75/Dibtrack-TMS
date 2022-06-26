@@ -5,11 +5,12 @@ import ViewProfile from "../Profile/ViewProfile";
 import APIS from "../../constants/EndPoint";
 import useGetHook from "../../customHooks/useGetHook";
 import LoaderAnimation from "../../Reusable/Loader/LoaderAnimation";
+import MemberTableBody from "./MemberTableBody";
 
 type Props = {};
 
 const MemberPanel = (props: Props) => {
-  const [copystatus, setCopyStatus] = useState<string>("copy");
+  
 
   const { data: usersData  , isLoading:usersDataLoading} = useGetHook({
     queryKey: "user",
@@ -19,7 +20,7 @@ const MemberPanel = (props: Props) => {
   return usersDataLoading ? (
          <div className="flex justify-center"><LoaderAnimation /></div>
   ) :(
-    <table className="text-xs border border-slate-400 w-full">
+    <table className="text-xs border border-slate-400 w-full table table-auto">
       <thead className="border-b border-slate-400 rounded">
       <tr>
         <th className="ml-1 py-2 flex flex-row text-left">
@@ -35,33 +36,10 @@ const MemberPanel = (props: Props) => {
         <th className="p-2 text-left ">SETTINGS</th>
       </tr>
       </thead>
-      <tbody className="text-txtcolor ml-1 ">
+      <tbody className="text-txtcolor ml-1 w-full">
         {usersData?.map((user: any) => (
-          <tr key={user?.id}>
-            <ViewProfile user={user} />
-            
-            <td className="p-3 flex flex-row useremail">
-              <button className="border border-btncolor py-[1px] px-[6px] text-[8px] mr-2 text-btncolor rounded-md">
-                OWNER
-              </button>
-              <p>{user?.email}</p>
-              <button
-                className="bg-btncolor py-[2px] px-[4px] rounded  text-white ml-2 invisible copy"
-                onClick={() => {
-                  navigator.clipboard.writeText(user?.email);
-                  setCopyStatus("copied");
-                }}
-              >
-                {copystatus}
-              </button>
-            </td>
-
-            <td className="p-2 ">{user?.role}</td>
-            <td className="p-2 ">{user?.last_login?.substring(0, 10)}</td>
-            <td className="p-2 ">
-              <UserSettings id={user?.id} />
-            </td>
-          </tr>
+          <MemberTableBody user = {user} />
+          
         ))}
       </tbody>
     </table>

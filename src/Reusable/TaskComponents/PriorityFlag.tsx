@@ -12,7 +12,7 @@ type Props = {
 
 const PriorityFlag = (props: Props) => {
   const { initialValue, priorityState, setPriorityState, handleAPICall   , size} = props
-
+  
   const PriorityOptions = [
     { id: 'Urgent', title: 'Urgent', icon: <FlagIcon className='w-7 p-1 text-red-500' />, color: "rgb(239 68 68 )", },
     { id: 'High', title: 'High', icon: <FlagIcon className='w-7 p-1 text-orange-500' />, color: "rgb(249 115 22)", },
