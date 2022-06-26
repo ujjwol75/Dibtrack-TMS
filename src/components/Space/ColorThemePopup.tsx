@@ -92,7 +92,7 @@ const ColorThemePopup = ({
                     </div>
 
                     <div className="w-full  bg-bgsearchbar flex flex-row  mt-20 pl-20">
-                      <CircleUserIcon1 size="lg" color={color} />
+                      <CircleUserIcon1 size="lg" color={color} user = {{'full_name' :'hari'}} />
                       <div className="ml-12">
                         <span className="text-gray-400 text-md">
                           SPACE COLORS

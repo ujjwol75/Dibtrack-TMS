@@ -1,4 +1,4 @@
-import logo from "../../images/logo.png";
+import logo from "../../images/logo5.png";
 import { Menu } from "@headlessui/react";
 import SettingsTab from "../sidebar/SettingsTab";
 import { Link } from "react-router-dom";
@@ -100,8 +100,8 @@ function Sidebar(props: Props) {
         <div
           className={`sidebar border  h-full  border-black-100 overflow-auto no-scrollbar bg-white `}
         >
-          <div className="flex flex-row justify-between p-2">
-            <img src={logo} className="h-[45px] w-[100px]" alt="logo" />
+          <div className="flex flex-row justify-between p-4 items-center">
+            <img src={logo} className="h-[80px] w-[100px]" alt="logo" />
             <div className="mt-2 flex flex-row">
               <Menu>
                 <Menu.Button className="mr-5">

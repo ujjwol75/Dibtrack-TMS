@@ -23,7 +23,7 @@ const Comments = (props: Props) => {
     <>
       <div className="flex flex-row w-full p-3 space-x-2">
         <span>
-          <CircleUserIcon1 size="sm" color="bg-btncolor" />
+          <CircleUserIcon1 size="sm" color="bg-btncolor" user = {comments.user} />
         </span>
 
         <div className="bg-white w-[100%] h-auto rounded-lg flex flex-col">

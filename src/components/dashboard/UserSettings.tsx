@@ -1,5 +1,7 @@
 import {DotsHorizontalIcon, DuplicateIcon} from '@heroicons/react/solid'
-import React from 'react'
+
+
+
 import {Menu} from '@headlessui/react'
 
 type Props = {

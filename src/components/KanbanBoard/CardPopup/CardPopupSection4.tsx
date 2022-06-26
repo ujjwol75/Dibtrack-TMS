@@ -26,7 +26,7 @@ const CardPopupSection4 = (props: Props) => {
       commentRef.current?.scrollIntoView(false);
     }
     setScrollState(true ? false : true);
-  }, [scrollState, commentData]);
+  }, [commentData]);
 
   return (
     <>
